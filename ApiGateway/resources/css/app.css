@@ -1,0 +1,171 @@
+/* Change the background color on mouse-over */
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+html {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.buttonImg {
+    margin-left: -104.5px; /*104.5px is half of the button's width*/
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    text-align: center;
+}
+
+.buttonImg:hover {
+    cursor: pointer;
+}
+
+.img {
+    display: block;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.text {
+    margin: 30px;
+}
+
+.text p {
+    font-size: x-large;
+}
+
+.headerText {
+    text-align: center;
+    color: #f8fafc;
+}
+
+/* Style the header with a grey background and some padding */
+.header {
+    overflow: hidden;
+    background-color:#7497b1;
+    padding: 10px 10px;
+}
+
+/* Style the header links */
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+    float: right;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.header2 {
+    /* The image used */
+    background-image: url("../../public/img/capa.png");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.slogan {
+    font-size: 40px;
+    padding: 200px 200px;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.buttonImg {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -104.5px; /*104.5px is half of the button's width*/
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+.img {
+    display: block;
+    margin: auto;
+}
+
+.content {
+    word-wrap: break-word;
+    overflow: scroll;
+}
+
+.profile {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.emp-profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img {
+    text-align: center;
+}
+.profile-img img {
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
