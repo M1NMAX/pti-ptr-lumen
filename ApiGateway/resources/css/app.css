@@ -115,6 +115,53 @@ html {
 
 }
 
+.catg {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    }
+  
+  
+.botao {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+  
+.imagem {
+    opacity: 1;
+    display: absolute;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    padding: 20px
+}
+  
+.centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #7e9a29;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+  
+.botao:hover .imagem {
+    opacity: 0.3;
+}
+  
+.botao:hover .centro {
+    background-color: #144061;
+}
+  
+
 .buttonImg {
     position: absolute;
     bottom: 10px;
