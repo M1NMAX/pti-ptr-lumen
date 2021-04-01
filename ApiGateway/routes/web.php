@@ -1,4 +1,5 @@
 <?php
+//use App\Http\Controllers\UsersController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -16,3 +17,5 @@
 $router->get('/', function () {
     return view('home');
 });
+
+$router->post('/register', 'UserController@register');
