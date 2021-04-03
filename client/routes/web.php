@@ -52,17 +52,19 @@ $router->get('grant_client', function(){
 });
 
 $router->get('email', function(){
-    $response = Http::get(env('APIGATEWAY_URL').'email');
+    $response = Http::withToken(env('ACCESS_TOKEN'))->get(env('APIGATEWAY_URL').'email');
 
-    //dd($response->json());
-    return view('test', ['response'=> $response,]);
+    dd($response->json());
+    // return view('test', ['response'=> $response,]);
 });
 
 $router->get('fake', function(){
         $response=Http::post(env('APIGATEWAY_URL').'register',[
             'name'=> 'max',
             'email'=>'max@gmail.com',
-            'password'=>'password'
+
         ] );
+
             dd($response->json());
+
 });
