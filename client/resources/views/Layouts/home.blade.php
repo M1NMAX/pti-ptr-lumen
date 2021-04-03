@@ -23,7 +23,8 @@
 
           <div class="buttonImg">
                 <img src="img/scroll.png" class="img" width="50%"/>
-                <h3>Ver mais</h3>
+                <a href="#down">Ver mais</a>
+
           </div>
           
     </body>
