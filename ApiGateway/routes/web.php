@@ -1,5 +1,6 @@
 <?php
-//use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UsersController;
+use App\Models\User;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -18,4 +19,14 @@ $router->get('/', function () {
     return view('home');
 });
 
-$router->post('/register', 'UserController@register');
+// $router->get('/key', function() {
+//     return \Illuminate\Support\Str::random(32);
+// });
+
+
+
+$router->post('/register', 'UsersController@register');
+
+$router->get('/email', function() {
+    return User::where('id', 3)->first();
+});
