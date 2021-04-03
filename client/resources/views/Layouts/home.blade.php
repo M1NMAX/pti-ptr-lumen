@@ -27,10 +27,6 @@
         </div>  
           <div class="text" id = "down">
             @yield('content')
-          </div>
-
-          
-          
-          
+          </div>          
     </body>
 </html>

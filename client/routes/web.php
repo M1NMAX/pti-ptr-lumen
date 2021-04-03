@@ -62,6 +62,15 @@ $router->get('grant_client', function(){
 $router->get('email', function(){
     $response = Http::get(env('APIGATEWAY_URL').'email');
 
-    dd($response->json());
+    //dd($response->json());
+    return view('test', ['response'=> $response,]);
+});
 
+$router->get('fake', function(){
+        $response=Http::post(env('APIGATEWAY_URL').'register',[
+            'name'=> 'max',
+            'email'=>'max@gmail.com',
+            'password'=>'password'
+        ] );
+            dd($response->json());
 });

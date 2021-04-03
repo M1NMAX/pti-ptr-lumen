@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UsersController;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -16,7 +17,7 @@ use App\Models\User;
 */
 
 $router->get('/', function () {
-    return view('home');
+    return "APIGATEWAY";
 });
 
 // $router->get('/key', function() {
@@ -24,9 +25,13 @@ $router->get('/', function () {
 // });
 
 
+    $router->post('/register', 'UsersController@register');
 
-$router->post('/register', 'UsersController@register');
 
 $router->get('/email', function() {
     return User::where('id', 3)->first();
 });
+
+// $router->post('/fake', function (Request $request) {
+//     dd($request['name']);
+// });
