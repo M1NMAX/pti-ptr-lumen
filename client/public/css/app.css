@@ -10015,7 +10015,7 @@ html {
     z-index: 2;
 }
 
-.buttonImg {
+.img {
     margin-left: -104.5px; /*104.5px is half of the button's width*/
     filter: invert(1);
     text-align: center;
@@ -10099,7 +10099,7 @@ html {
    background-image: url(../img/capa.png?58db183a3931eb00b4cd5de7cce802f5);
 
     /* Full height */
-    height: 100%;
+    width: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
@@ -10109,13 +10109,27 @@ html {
 }
 
 .slogan {
-    font-size: 60px;
+    font-size:-webkit-xxx-large;
     padding: 200px 200px;
     text-align: center;
     font-weight: bold;
     color: white;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
+.buttonImg{
+    text-align: center;
+    color: white;
+}
+
+.buttonImg{
+  text-align: center;
+  color: white;
+}
+
+.buttonImgLink:hover{
+  text-decoration: none;
+  color: #144061;
 }
 
 .search-bar{
@@ -10124,18 +10138,12 @@ html {
 
 .pesquisa{
   float: right;
-  margin-left: 1025px;
   padding: 6px;
   margin-top: 8px;
   margin-right: 16px;
   border: none;
   font-size: 17px;
 }
-
-.catg {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  }
 
 
 .botao {
@@ -10174,72 +10182,57 @@ html {
   opacity: 0.3;
 }
 
-.botao:hover .centro {
+.principal:hover .centro {
   background-color: #144061;
 }
 
+.plusPhoto:hover  {
+  background-color: #144061;
+}
 
-.buttonImg {
-  position: absolute;
-  bottom: 10px;
+.plusPhoto {
+  top: 50%;
   left: 50%;
-  margin-left: -104.5px; /*104.5px is half of the button's width*/
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  background-color: #7497b1;
+  color: white;
+  font-size: 16px;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius:50%;
+  text-align: center;
 }
 
 
-.buttonImg {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    margin-left: -104.5px; /*104.5px is half of the button's width*/
-    filter: invert(1);
-}
 
 .img {
     display: block;
     margin: auto;
 }
 
-.content {
-    word-wrap: break-word;
-    overflow: scroll;
+
+
+/*For mobile phones*/
+@media only screen and (min-width: 320px){
+  .catg {
+    display: grid;
+    grid-template-columns: auto;
+    }
 }
 
-.profile {
-    width: 80%;
-    margin: 0 auto;
+/*For tablets*/
+@media only screen and (min-width: 600px){
+  .catg {
+    display: grid;
+    grid-template-columns: auto auto;
+    }
 }
 
-.emp-profile {
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: #fff;
-}
-.profile-img {
-    text-align: center;
-}
-.profile-img img {
-    width: 70%;
-    height: 100%;
-}
-.profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-}
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
+/*For desktops*/
+@media only screen and (min-width: 768px){
+  .catg {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    }
 }
 

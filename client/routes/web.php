@@ -20,6 +20,14 @@ $router->get('/', function () {
     return view('home');
 });
 
+$router->get('/register', function () {
+    return view('register');
+});
+
+$router->get('/login', function () {
+    return view('login');
+});
+
 // $router->get('login', ['as' => 'login', function () {
 //     $state = Str::random(40);
 
