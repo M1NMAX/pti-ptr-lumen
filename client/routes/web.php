@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
@@ -20,9 +21,17 @@ $router->get('/', function () {
     return view('home');
 });
 
-$router->get('/register', function () {
-    return view('register');
-});
+$router->get('register', [
+    'as' => 'register', 'uses' => 'RegisterController@showPage'
+]);
+
+$router->post('register', [
+    'as' => 'register', 'uses' => 'RegisterController@registeUser'
+]);
+
+// $router->get('/register', function () {
+//     return view('register');
+// });
 
 $router->get('/login', function () {
     return view('login');
