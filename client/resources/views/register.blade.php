@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +6,7 @@
         <link rel="stylesheet" href="/css/app.css">
         
     </head>
-    <body>
+    <body class="log">
         <div class="header">
             <a href="/" class="logo">SweetUni</a>
             <div class="header-right">
@@ -15,8 +14,15 @@
               <a href="/register">Registo</a>
             </div>
         </div>
-        <div class="header2">
-            @yield('content')
+        <div class="container">
+            <form>
+            
+                <label for="user">Username:</label><br>
+                <input type="text" name="user"><br>
+                <label for="pass">Password:</label><br>
+                <input type="password" name="pass">
+
+            </form>
         </div> 
           
     </body>
