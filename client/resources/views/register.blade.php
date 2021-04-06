@@ -1,44 +1,29 @@
-@extends('layouts.register')
-
-@section('content')
-<div class="header2"> 
-    <div class="d-flex justify-content-center ">
-        <form action="" method="POST">
-             {{--@csrf--}} 
-            <div class="input-group input-group-lg mb-3">
-                <input type="text" class="form-control form-control-sm "
-                    id="username" placeholder="Username" name="username" >
-                
-                 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SweetUni</title>
+        <link rel="stylesheet" href="/css/app.css">
+        
+    </head>
+    <body class="log">
+        <div class="header">
+            <a href="/" class="logo">SweetUni</a>
+            <div class="header-right">
+              <a href="/login">Login</a>
+              <a href="/register">Registo</a>
             </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control form-control-sm"
-                id="name" placeholder="Name" name="name" >
-                    
-               
-                </div>
-            <div class="mb-3">
-                <input type="email" class="form-control form-control-sm "
-                    id="email" placeholder="Email" name="email">
-                    
-                   
-                </div>
-                <div class="input-group mb-3">
-                <input type="password" class="form-control form-control-sm"
-                    id="password" placeholder="Password" name="password">
-                    
-                
-                </div>
-                <div class="input-group mb-3">
-                <input type="password" class="form-control form-control-sm "
-                id="password_confirmation" placeholder="Repeat Password" name="password_confirmation">
+        </div>
+        <div class="container">
+            <form>
+            
+                <label for="user">Username:</label><br>
+                <input type="text" name="user"><br>
+                <label for="pass">Password:</label><br>
+                <input type="password" name="pass">
 
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary btn-sm m-3">Submit</button>
-                    <button type="reset" class="btn btn-primary btn-sm m-3"> Reset</button>
-                </div>
-        </form>
-    </div>
-</div>
-@endsection
+            </form>
+        </div> 
+          
+    </body>
+</html>
