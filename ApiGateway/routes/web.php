@@ -25,7 +25,7 @@ $router->get('/', function () {
 // });
 
 
-    $router->post('/register', 'UsersController@register');
+$router->post('/register', 'UsersController@register');
 
 $router->group(['middleware' => 'clients'], function () use ($router) {
     $router->get('/email', function() {

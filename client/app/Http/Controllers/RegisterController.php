@@ -25,16 +25,14 @@ class RegisterController extends Controller
 
     public function registeUser(Request $request)
     {
-        $response=Http::post(env('APIGATEWAY_URL').'register',[
-            'name'=> 'max',
-
-        ] );
+        // dd($request->all());
+        $response=Http::post(env('APIGATEWAY_URL').'register',$request->all());
 
         if($response->failed()){
-
+            dd($response->json());
             return view('auth.register',['response'=>json_encode($response->collect())]);
         }
-
-        // dd($request->flexRadio);
+        $reply = json_decode($response->getBody(), true);
+        return redirect('/');
     }
 }

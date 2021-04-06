@@ -26,25 +26,26 @@ class UsersController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
+            'username'=>'required|max:30',
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if($validator->fails()){
-            return response(['message' => 'Validation errors', 'errors' =>  $validator->errors(), 'status' => false], 422);
+            return response(['errors' =>  $validator->errors()->all()], 422);
         }
 
         $user = User::create([
+            'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'password' =>Hash::make($request->password),
+
         ]);
 
         $data['token'] = $user->createToken('myapi')->accessToken;
-        $data['name'] = $user->name;
-
-        return response(['data'=> $data, 'message'=> 'Account created successfully', 'status'=>true]);
+        return response($data,200);
 
     }
 }
