@@ -28,6 +28,23 @@ $router->get('/login', function () {
     return view('login');
 });
 
+$router->get('/test', function () {
+    return view('test');
+});
+
+$router->get('/fakeLogin', function(){
+    $response=Http::post(env('APIGATEWAY_URL').'login',[
+        'email'=> 'max@test',
+        'password'=>'password'
+    ] );
+
+
+    $resp = json_decode($response->getBody());
+    // $resp = json_decode($response->getBody(), true);
+
+    return view('test')->with('resp', $resp);
+});
+
 $router->get('/profileUser', function () {
     return view('profileUser');
 });
@@ -81,6 +98,7 @@ $router->get('fake', function(){
 
         ] );
 
-            dd($response->json());
+        $response = json_decode($response->getBody(), true);
+        return redirect('test', ['response'=>$response]);
 
 });
