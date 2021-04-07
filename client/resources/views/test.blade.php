@@ -3,7 +3,15 @@
 
     </head>
     <body>
-            <p>{{$response['name']}}</p>
+
+
+        <p>{{$resp['token']}}</p>
+
+
+
+
+
+
         <p>ola</p>
     </body>
 
