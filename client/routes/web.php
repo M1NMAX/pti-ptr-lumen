@@ -28,6 +28,10 @@ $router->get('/login', function () {
     return view('login');
 });
 
+$router->get('/profileUser', function () {
+    return view('profileUser');
+});
+
 // $router->get('login', ['as' => 'login', function () {
 //     $state = Str::random(40);
 
