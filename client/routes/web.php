@@ -39,9 +39,11 @@ $router->get('/fakeLogin', function(){
     ] );
 
 
-    $resp = json_decode($response->getBody(), true);
+    $resp = json_decode($response->getBody());
+    // $resp = json_decode($response->getBody(), true);
 
-    return view('test')->with('response', $resp);
+    return view('test')->with('resp', $resp);
+});
 
 $router->get('/profileUser', function () {
     return view('profileUser');
