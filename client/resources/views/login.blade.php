@@ -9,7 +9,7 @@
                 <input type="text" name="user"><br><br>
                 <label for="pass">Password:</label>
                 <input type="password" name="pass"><br><br>
-                <input type="submit" value="Entrar!"><br><br>
+                <input type="submit" class="centro2" value="Entrar!"><br><br>
                 <p>Ainda não tem conta? <a href="/register">Registar</a></p>
             </form>
 @endsection
