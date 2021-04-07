@@ -42,6 +42,9 @@ $router->get('/fakeLogin', function(){
     $resp = json_decode($response->getBody(), true);
 
     return view('test')->with('response', $resp);
+
+$router->get('/profileUser', function () {
+    return view('profileUser');
 });
 
 // $router->get('login', ['as' => 'login', function () {
