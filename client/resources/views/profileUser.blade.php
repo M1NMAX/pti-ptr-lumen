@@ -6,7 +6,7 @@
             <div class="profile-img">
                 <img style="width:100%" src="../img/standartUser2.png" alt="Standart profile picture of the user"/>
                 <div class="btn btn-lg">
-                    <form  action="../resources/Actions/newImage.blade.php" method="post" enctype="multipart/form-data">
+                    <form  action="/actions/newImage" method="POST" enctype="multipart/form-data">
                         <input class="w3-input" type="file" name="fileInput" id="submeterImagem" >
                         <p class="w3-text-grey w3-padding">Clique na imagem para alterá-la</p>
                         <input class="confImg" style="" class="w3-input" type="submit" name="perfilImg" value="Confirmar">

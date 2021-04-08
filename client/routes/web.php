@@ -29,6 +29,16 @@ $router->get('/login', function () {
     return view('login');
 });
 
+$router->get('/actions/newImage', function () {
+    return view('actions/newImage');
+});
+
+$router->get('/inc/navbar', function () {
+    return view('/inc/navbar');
+});
+//$router->get('/actions/profileUser', 'newImage@add'); Carol
+//$router->post('/actions/newImage', 'newImage@add');
+
 $router->post('/attemptLogin', function(Request $request){
     $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
 

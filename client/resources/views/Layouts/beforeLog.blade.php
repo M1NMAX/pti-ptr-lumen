@@ -9,13 +9,7 @@
         
     </head>
     <body class="log">    
-        <div class="header">
-            <a href="/" class="logo">SweetUni</a>
-            <div class="header-right">
-              <a href="/login">Login</a>
-              <a href="/register">Registo</a>
-            </div>
-        </div>
+        @include('inc.navbar')
         <div class="container">
             @yield('content')
         </div> 
