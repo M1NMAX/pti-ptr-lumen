@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -25,7 +26,6 @@ class UsersController extends Controller
 
     public function register(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'username'=>'required|max:30',
             'name' => 'required',
@@ -42,7 +42,6 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' =>Hash::make($request->password),
-
         ]);
 
         $token = $user->createToken('access_token')->accessToken;
@@ -61,6 +60,7 @@ class UsersController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
 
+
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -72,5 +72,14 @@ class UsersController extends Controller
         return response(['user'=>$user, 'token'=>$token], 200);
     }
 
+
+    public function logout (Request $request) {
+
+        $user = User::where('email', $request->email)->first();
+        $token = $user()->token();
+        $token->revoke();
+        $response = ['message' => 'You have been successfully logged out!'];
+        return response($response, 200);
+    }
 
 }

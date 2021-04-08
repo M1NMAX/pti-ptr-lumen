@@ -1,12 +1,7 @@
 @extends('layouts.home')
 
 @section('content')
-    @auth
-        <p>ola</p>
-    @endauth
-    @guest
-        <p>um</p>
-    @endguest
+
     <div class="search-bar">
         <input class="pesquisa" type="text" placeholder="Search..">
     </div>

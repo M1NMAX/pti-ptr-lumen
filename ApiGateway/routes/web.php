@@ -2,6 +2,7 @@
 use App\Http\Controllers\UsersController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -27,12 +28,14 @@ $router->get('/', function () {
 
 $router->post('/register', 'UsersController@register');
 $router->post('/login', 'UsersController@login');
+$router->post('/logout', 'UsersController@logout');
 
-$router->group(['middleware' => 'clients'], function () use ($router) {
-    $router->get('/email', function() {
-        return User::where('id', 3)->first();
-    });
+$router->get('/email', function() {
+    return "hollo";
 });
+// $router->group(['middleware' => 'clients'], function () use ($router) {
+
+// });
 
 
 // $router->post('/fake', function (Request $request) {

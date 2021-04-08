@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use App\Http\Controllers\LoginController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -28,8 +29,19 @@ $router->get('/login', function () {
     return view('login');
 });
 
-$router->get('/test', function () {
-    return view('test');
+$router->post('/attemptLogin', function(Request $request){
+    $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
+
+        if($response->failed()){
+            dd($response->json());
+            return view('login',['response'=>json_encode($response->collect())]);
+        }
+        $resp = json_decode($response->getBody(), true);
+        return view('dashboard')->with('resp', $resp) ;
+});
+
+$router->get('/dashboard', function () {
+    return view('dashboard');
 });
 
 $router->get('/fakeLogin', function(){
@@ -37,13 +49,11 @@ $router->get('/fakeLogin', function(){
         'email'=> 'max@test',
         'password'=>'password'
     ] );
-
-
     $resp = json_decode($response->getBody());
     // $resp = json_decode($response->getBody(), true);
-
-    return view('test')->with('resp', $resp);
+    return view('dashboard')->with('resp', $resp);
 });
+
 
 $router->get('/profileUser', function () {
     return view('profileUser');
@@ -53,36 +63,6 @@ $router->get('/registerAlojamento', function () {
     return view('registerAlojamento');
 });
 
-// $router->get('login', ['as' => 'login', function () {
-//     $state = Str::random(40);
-
-//     $query = http_build_query([
-//         'client_id'=>env('CLIENT_ID'),
-//         'redirect_url'=>env('REDIRECT_URL'),
-//         'response_type'=>'code',
-//         'scope'=>'',
-//         'state'=>$state,
-//     ]);
-
-//     return redirect('http://localhost:8010/v1/oauth/token?'.$query);
-//     //
-// }]);
-
-// $router->get('callback', function(Request $request){
-//     dd($request->all());
-// });
-
-$router->get('grant_client', function(){
-    $response = Http::post(env('APIGATEWAY_URL').'v1/oauth/token',[
-        'grant_type' =>env('GRANT_TYPE'),
-        'client_id' => env('CLIENT_ID'),
-        'client_secret' => env('CLIENT_SECRET'),
-        'scope'=>''
-    ]);
-
-    dd($response->json());
-
-});
 
 $router->get('email', function(){
     $response = Http::withToken(env('ACCESS_TOKEN'))->get(env('APIGATEWAY_URL').'email');
