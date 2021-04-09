@@ -73,13 +73,17 @@ class UsersController extends Controller
     }
 
 
-    public function logout (Request $request) {
+    // public function logout(Request $request) {
+    //     $token = $request->bearerToken();
+    //     if ($token) {
+    //         $id = (new Parser())->parse($token)->getHeader('jti');
+    //         DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => 1]);
+    //     }
 
-        $user = User::where('email', $request->email)->first();
-        $token = $user()->token();
-        $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
-        return response($response, 200);
-    }
+    //     return [
+    //         'status' => 'success',
+    //         'message' => 'Logout successfully.'
+    //     ];
+  //}
 
 }

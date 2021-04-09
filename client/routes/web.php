@@ -25,9 +25,12 @@ $router->get('/register', function () {
     return view('register');
 });
 
-$router->get('/login', function () {
-    return view('login');
-});
+$router->get('login', ['as' => 'login', 'uses' => 'LoginController@showPage']);
+$router->post('login', ['as' => 'login', 'uses' => 'LoginController@attemptLogin']);
+
+// $router->get('/login', function () {
+//     return view('login');
+// });
 
 $router->post('/attemptLogin', function(Request $request){
     $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
@@ -72,11 +75,15 @@ $router->get('email', function(){
 });
 
 $router->get('fake', function(){
-        $response=Http::post(env('APIGATEWAY_URL').'register',[
-            'name'=> 'max',
-            'email'=>'max@gmail.com',
+    $response = Http::post('http://localhost:8010/v1/oauth/token', [
+        'grant_type'=>'password',
+        'client_id' => 2,
+        'client_secret'=>'NrU6Vctf0QaadU5ASkLCb26MPrGqP17gqWfILUbK',
+        'username'=>'max@test',
+        'password'=>'password'
 
-        ] );
+    ]);
+    dd($response);
 
         $response = json_decode($response->getBody(), true);
         return redirect('test', ['response'=>$response]);

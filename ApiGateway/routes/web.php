@@ -29,15 +29,3 @@ $router->get('/', function () {
 $router->post('/register', 'UsersController@register');
 $router->post('/login', 'UsersController@login');
 $router->post('/logout', 'UsersController@logout');
-
-$router->get('/email', function() {
-    return "hollo";
-});
-// $router->group(['middleware' => 'clients'], function () use ($router) {
-
-// });
-
-
-// $router->post('/fake', function (Request $request) {
-//     dd($request['name']);
-// });

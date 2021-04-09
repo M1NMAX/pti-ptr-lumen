@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,14 +25,17 @@ class RegisterController extends Controller
 
     public function attemptLogin(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
 
         if($response->failed()){
-            dd($response->json());
-            return view('login',['response'=>json_encode($response->collect())]);
+            $resp = json_decode($response->getBody());
+            //dd($resp->errors);
+            //['status'=>'true' ,'response'=> $resp]
+            return redirect()->route('login'); //view('login',['errors'=>]);
         }
-        $reply = json_decode($response->getBody(), true);
-        return redirect('test', ['r'=>$reply]);
+        $resp = json_decode($response->getBody());
+        //$request->session()->put('status', 'ols');
+        return view('dashboard')->with('resp', $resp);
     }
 }
