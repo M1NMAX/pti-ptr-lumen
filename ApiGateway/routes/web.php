@@ -17,15 +17,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-$router->get('/', function () {
-    return "APIGATEWAY";
-});
-
 // $router->get('/key', function() {
 //     return \Illuminate\Support\Str::random(32);
 // });
 
+$router->get('/', function () {
+    return "APIGATEWAY";
+});
+
+$router->get('/email', function (Request $request) {
+    return auth()->user(); //"APIGATEWAY";
+});
 
 $router->post('/register', 'UsersController@register');
 $router->post('/login', 'UsersController@login');
-$router->post('/logout', 'UsersController@logout');
+$router->get('/logout', 'UsersController@logout');
+

@@ -35,6 +35,7 @@ class LoginController extends Controller
             return redirect()->route('login'); //view('login',['errors'=>]);
         }
         $resp = json_decode($response->getBody());
+        dd($resp);
         //$request->session()->put('status', 'ols');
         return view('dashboard')->with('resp', $resp);
     }
