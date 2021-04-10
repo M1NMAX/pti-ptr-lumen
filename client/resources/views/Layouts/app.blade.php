@@ -8,14 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/app.js" type="text/javascript"></script>
     </head>
-    <body>
-        <div class="header">  <!--MUDAR BARRA DEPOIS DE FAZER SESSOES-->
-            <a href="/" class="logo">SweetUni</a>
-            <div class="header-right">
-              <a href="/login">Login</a>
-              <a href="/register">Registo</a>
-            </div>
-        </div>
+    <body class="log" >
+        @include('inc.navbar')
         <div >
             @yield('content')
         </div> 

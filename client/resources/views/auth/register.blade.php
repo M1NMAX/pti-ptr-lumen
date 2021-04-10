@@ -1,7 +1,7 @@
-@extends('layouts.beforeLog')
+@extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-center ">
+<div class="d-flex justify-content-center container ">
     <form action="" method="POST">
         <h2> Registo </h2> 
         <div class="row"> <!-- ROW 1 -->

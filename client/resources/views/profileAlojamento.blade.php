@@ -3,14 +3,15 @@
 @section('content')
     <div class="profile">
         <div class="w3-third w3-padding-large">
-            <div class="profile-img"> <!-- standartUser2.png"-->
-                <img style="width:100%" src="../img/ProfileImg/joao.jpg" alt="Standart profile picture of the user"/>
+            <div class="profile-img"> 
+                <img style="width:100%" src="../img/basicRoom.png" alt="Standart profile picture of the room"/>
                 <div class="btn btn-lg">
                     <form  action="/actions/newImage" method="POST" enctype="multipart/form-data">
                         <input class="w3-input" type="file" name="fileInput" id="submeterImagem" >
                         <p class="w3-text-grey w3-padding">Clique na imagem para alterá-la</p>
                         <input class="confImg" style="" class="w3-input" type="submit" name="perfilImg" value="Confirmar">
                     </form>
+                    <button>Estou interessado </button>
                 </div>
             </div>
         </div>
@@ -19,77 +20,118 @@
                 <div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Username: </label>
+                            <label>Morada: </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>0DragonFire0</p>
+                            <p>Rua do sol</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Nome Completo:</label>
+                            <label>Preço: </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>João</p>
+                            <p>100€</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Email:</label>
+                            <label>Estado de ocupação:</label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>checheche@gmail.com</p>
+                            <p>Reservado</p>
+                        </div>
+                    </div>
+                    <h3>Informações sobre o Alojamento</h3>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Número de quartos:  </label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>3</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Data de Nascimento: </label>
+                            <label>Número de casas de banho:  </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>21/01/2000</p>
+                            <p>2</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Nº de contribuinte: </label>
+                            <label>Área: </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>123457789</p>
-                        </div>
-                    </div>
-                    <div class="row w3-margin-left w3-margin-top">
-                        <div class="col-md-4 profile">
-                            <label>Características Pessoais: </label>
-                        </div>
-                        <div class="col-md-7 profile">
-                            <p>Organizado, vou para a cama cedo, gosto de limpar casas de banho</p>
+                            <p>100m<sup>2</sup> </p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top w3-margin-left">
                         <div class="col-md-4 profile">
-                            <label>Preferências:</label>
+                            <label>Orientação solar:</label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>Gostava de viver só com rapazes, de preferência da faculdade onde ando.</p>
+                            <p>Norte (N)</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Sou: </label>
+                            <label>Acesso à Internet: </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>Estudante</p>
+                            <p>Existe</p>
                         </div>
                     </div>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
-                            <label>Instituição</label>
+                            <label>Limpeza: </label>
                         </div>
                         <div class="col-md-7 profile">
-                            <p>UL-FCUL</p>
+                            <p>Cada um faz a sua própria</p>
                         </div>
                     </div>
-                    
+                    <h3>Requisitos dos inquilinos</h3>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Faixa Etária: </label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>18-23</p>
+                        </div>
+                    </div>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Género preferecial: </label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>Masculino</p>
+                        </div>
+                    </div>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Permite fumadores? </label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>Não</p>
+                        </div>
+                    </div>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Permite animais de estimação?</label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>Não</p>
+                        </div>
+                    </div>
+                    <div class="row w3-margin-left w3-margin-top">
+                        <div class="col-md-4 profile">
+                            <label>Outras informações complementares</label>
+                        </div>
+                        <div class="col-md-7 profile">
+                            <p>Não pode ter visitas </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

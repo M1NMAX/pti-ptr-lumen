@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function showPage()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function attemptLogin(Request $request)
