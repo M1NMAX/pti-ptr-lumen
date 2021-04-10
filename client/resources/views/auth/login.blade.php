@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class = "container">
+<div class = "containerA">
 <!-- class="w3-container w3-blue w3-center w3-display-middle w3-padding-32"-->
 
     <form method="POST" action="{{ route('login')}}" >
