@@ -10522,6 +10522,11 @@ html {
     background-size: cover;
 }
 
+.background {
+    background-color: #d4ae5e;
+    background-size: cover;
+}
+
 .containerA {
     position: relative;
     border-radius: 5px;
@@ -10690,3 +10695,25 @@ html {
 .profile {
     color: white;
 }
+/*___________________________________________PROFILE_______________________________________________________________*/
+
+/*___________________________________________PROFILEAlojamento_______________________________________________________________*/
+
+
+.interesse {
+    top: 50%;
+    left: 50%;
+    background-color: #7e9a29;
+    color: white;
+    font-size: 25px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.interesse:hover {
+    background-color: #90989e;
+}
+/*___________________________________________PROFILEAlojamento_______________________________________________________________*/

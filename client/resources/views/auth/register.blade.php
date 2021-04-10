@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.appImg')
 
 @section('content')
 <div class="containerA d-flex justify-content-center">
-    <form action="" method="POST">
+    <form action="{{route('register')}}" method="POST">
         <h2> Registo </h2> 
 
     <div class="row align-items-start">

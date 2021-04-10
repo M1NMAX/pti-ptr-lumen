@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appImg')
 
 @section('content')
 <div class = "containerA">

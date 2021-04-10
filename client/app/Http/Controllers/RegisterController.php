@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $response=Http::post(env('APIGATEWAY_URL').'register',$request->all());
 
         if($response->failed()){
-            dd($response->json());
+            dd($response->status());
             return view('auth.register',['response'=>json_encode($response->collect())]);
         }
         $reply = json_decode($response->getBody(), true);

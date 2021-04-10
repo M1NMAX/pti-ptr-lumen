@@ -6,18 +6,19 @@
             <div class="profile-img"> 
                 <img style="width:100%" src="../img/basicRoom.png" alt="Standart profile picture of the room"/>
                 <div class="btn btn-lg">
-                    <form  action="/actions/newImage" method="POST" enctype="multipart/form-data">
+                   <!-- <form  action="/actions/newImage" method="POST" enctype="multipart/form-data">
                         <input class="w3-input" type="file" name="fileInput" id="submeterImagem" >
                         <p class="w3-text-grey w3-padding">Clique na imagem para alterá-la</p>
                         <input class="confImg" style="" class="w3-input" type="submit" name="perfilImg" value="Confirmar">
-                    </form>
-                    <button>Estou interessado </button>
+                    </form> -->
+                    <button class="interesse w3-center">Estou interessado!</button> <button class="interesse w3-center"> <i class="fa fa-envelope"></i></button>
                 </div>
             </div>
         </div>
         <div class="w3-twothird profile w3-padding-large">
             <div class="tab-content profile" id="myTabContent">
                 <div>
+                    <h3>Quarto num apartamento T2 só para rapazes </h3>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
                             <label>Morada: </label>
@@ -42,7 +43,7 @@
                             <p>Reservado</p>
                         </div>
                     </div>
-                    <h3>Informações sobre o Alojamento</h3>
+                    <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
                             <label>Número de quartos:  </label>
@@ -91,7 +92,7 @@
                             <p>Cada um faz a sua própria</p>
                         </div>
                     </div>
-                    <h3>Requisitos dos inquilinos</h3>
+                    <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
                     <div class="row w3-margin-left w3-margin-top">
                         <div class="col-md-4 profile">
                             <label>Faixa Etária: </label>
