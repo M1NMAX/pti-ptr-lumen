@@ -31,6 +31,7 @@ $router->get('/register', function () {
 
 $router->get('login', ['as' => 'login', 'uses' => 'LoginController@showPage']);
 $router->post('login', ['as' => 'login', 'uses' => 'LoginController@attemptLogin']);
+$router->get('logout', ['as' => 'logout', 'uses' => 'LoginController@attemptLogout']);
 
 
 $router->get('/actions/newImage', function () {
