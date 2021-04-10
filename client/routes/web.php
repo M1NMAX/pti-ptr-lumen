@@ -21,6 +21,10 @@ $router->get('/', function () {
     return view('home');
 });
 
+$router->get('/profileAlojamento', function () {
+    return view('profileAlojamento');
+});
+
 $router->get('/register', function () {
     return view('auth.register');
 });
