@@ -22,7 +22,7 @@ $router->get('/', function () {
 });
 
 $router->get('/register', function () {
-    return view('register');
+    return view('auth.register');
 });
 
 $router->get('login', ['as' => 'login', 'uses' => 'LoginController@showPage']);
@@ -38,6 +38,10 @@ $router->get('/actions/newImage', function () {
 
 $router->get('/inc/navbar', function () {
     return view('/inc/navbar');
+});
+
+$router->get('/reg', function () {
+    return view('reg');
 });
 //$router->get('/actions/profileUser', 'newImage@add'); Carol
 //$router->post('/actions/newImage', 'newImage@add');

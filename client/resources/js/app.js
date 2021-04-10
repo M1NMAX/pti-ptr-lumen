@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-    //esse codigo aqui dentro
   
     $('.confImg').on('click', function(){
         const novaImagem = document.getElementById("submeterImagem");
