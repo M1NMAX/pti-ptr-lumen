@@ -49,6 +49,7 @@ class UsersController extends Controller
 
     }
 
+
     public function login(Request $request)
     {
         $validator= Validator::make($request->all(), [
@@ -59,7 +60,6 @@ class UsersController extends Controller
         if($validator->fails()){
             return response(['errors'=>$validator->errors()->all()], 422);
         }
-
 
         $user = User::where('email', $request->email)->first();
 
@@ -73,17 +73,11 @@ class UsersController extends Controller
     }
 
 
-    // public function logout(Request $request) {
-    //     $token = $request->bearerToken();
-    //     if ($token) {
-    //         $id = (new Parser())->parse($token)->getHeader('jti');
-    //         DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => 1]);
-    //     }
-
-    //     return [
-    //         'status' => 'success',
-    //         'message' => 'Logout successfully.'
-    //     ];
-  //}
+    public function logout (Request $request) {
+        $token = $request->user()->token();
+        $token->revoke();
+        $response = ['message' => 'You have been successfully logged out!'];
+        return response($response, 200);
+    }
 
 }

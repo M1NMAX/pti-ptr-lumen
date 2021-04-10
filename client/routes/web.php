@@ -21,16 +21,18 @@ $router->get('/', function () {
     return view('home');
 });
 
+$router->get('/profileAlojamento', function () {
+    return view('profileAlojamento');
+});
+
 $router->get('/register', function () {
     return view('auth.register');
 });
 
 $router->get('login', ['as' => 'login', 'uses' => 'LoginController@showPage']);
 $router->post('login', ['as' => 'login', 'uses' => 'LoginController@attemptLogin']);
+$router->get('logout', ['as' => 'logout', 'uses' => 'LoginController@attemptLogout']);
 
-// $router->get('/login', function () {
-//     return view('login');
-// });
 
 $router->get('/actions/newImage', function () {
     return view('actions/newImage');
@@ -46,16 +48,6 @@ $router->get('/reg', function () {
 //$router->get('/actions/profileUser', 'newImage@add'); Carol
 //$router->post('/actions/newImage', 'newImage@add');
 
-$router->post('/attemptLogin', function(Request $request){
-    $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
-
-        if($response->failed()){
-            dd($response->json());
-            return view('login',['response'=>json_encode($response->collect())]);
-        }
-        $resp = json_decode($response->getBody(), true);
-        return view('dashboard')->with('resp', $resp) ;
-});
 
 $router->get('/dashboard', function () {
     return view('dashboard');
@@ -81,25 +73,4 @@ $router->get('/registerAlojamento', function () {
 });
 
 
-$router->get('email', function(){
-    $response = Http::withToken(env('ACCESS_TOKEN'))->get(env('APIGATEWAY_URL').'email');
 
-    dd($response->json());
-    // return view('test', ['response'=> $response,]);
-});
-
-$router->get('fake', function(){
-    $response = Http::post('http://localhost:8010/v1/oauth/token', [
-        'grant_type'=>'password',
-        'client_id' => 2,
-        'client_secret'=>'NrU6Vctf0QaadU5ASkLCb26MPrGqP17gqWfILUbK',
-        'username'=>'max@test',
-        'password'=>'password'
-
-    ]);
-    dd($response);
-
-        $response = json_decode($response->getBody(), true);
-        return redirect('test', ['response'=>$response]);
-
-});
