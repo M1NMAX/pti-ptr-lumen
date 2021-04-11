@@ -6,18 +6,17 @@
 
     <form method="POST" action="{{ route('login')}}" >
         <h2> Login </h2> <br><br>
-        @isset($status)
-        <h1>um</h1>
-    @foreach ($errors as $error )
-        <h1>{{$error }} </h1>
-    @endforeach
-@endisset
+        @isset($resp)
+            @foreach ($resp->errors as $error)
+                <p>{{ $error}}</p>
+             @endforeach
+        @endisset
         <label for="user">Username:</label>
         <input type="text" name="email"><br><br>
         <label for="pass">Password:</label>
         <input type="password" name="password"><br><br>
         <input type="submit" class="centro2" value="Entrar!"><br><br>
-        <p>Ainda não tem conta? <a href="/register">Registar</a></p>
+        <p>Ainda não tem conta? <a href="{{route('register')}}">Registar</a></p>
     </form>
 </div>
 @endsection

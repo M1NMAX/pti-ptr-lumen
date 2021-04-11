@@ -30,19 +30,20 @@ class LoginController extends Controller
 
         if($response->failed()){
             $resp = json_decode($response->getBody());
-            //dd($resp->errors);
+           // dd($resp->errors);
             //['status'=>'true' ,'response'=> $resp]
-            return redirect()->route('login'); //view('login',['errors'=>]);
+            return view('auth.login')->with('resp', $resp); //view('login',['errors'=>]);
         }
         $resp = json_decode($response->getBody());
-        $request->session()->put('token', $resp->token);
-        //dd();
-        //$request->session()->put('status', 'ols');
+        request()->session()->put('token', $resp->token);
+        request()->session()->put('user.data', $resp->user);
+
         return view('dashboard')->with('resp', $resp);
     }
 
     public function attemptLogout(Request $request){
         $response=Http::post(env('APIGATEWAY_URL').'login',$request->all());
+       //Verificar o estado da resposta e eliminar a session
         return view('/')->with('response', json_decode($response->getBody()));
 
     }

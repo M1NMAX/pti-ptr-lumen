@@ -18,7 +18,8 @@ use App\Http\Controllers\LoginController;
 */
 
 $router->get('/', function () {
-    return view('home');
+    $user= request()->session()->get('user');
+    return view('home')->with('user', $user);
 });
 
 $router->get('/profileAlojamento', function () {
@@ -53,7 +54,8 @@ $router->get('/reg', function () {
 
 
 $router->get('/dashboard', function () {
-    return view('dashboard');
+    $user= request()->session()->get('user');
+    return view('dashboard')->with('user', $user);
 });
 
 $router->get('/fakeLogin', function(){

@@ -3,7 +3,13 @@
 @section('content')
 <div class="containerA d-flex justify-content-center">
     <form action="{{route('register')}}" method="POST">
-        <h2> Registo </h2> 
+        <h2> Registo </h2>
+
+        @isset($resp)
+            @foreach ($resp->errors as $error)
+                <p>{{ $error}}</p>
+            @endforeach
+        @endisset
 
     <div class="row align-items-start">
     <div class="col">
