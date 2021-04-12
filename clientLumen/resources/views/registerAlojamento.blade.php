@@ -25,7 +25,7 @@
     <input type="radio" id="reservado" name="ocupacao" value="reservado">
     <label for="reservado">Reservado</label><br>
     <input type="radio" id="ocupado" name="ocupacao" value="ocupado">
-    <label for="ocupado">Não existe</label><br>
+    <label for="ocupado">Ocupado</label><br>
     </div>
   </div>
 <!--Infos alojamento-->
