@@ -1,0 +1,44 @@
+.img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(./img/capa.png);
+  width: 100%;
+}
+
+html,
+body,
+body > div,
+.app {
+  height: 100%;
+}
+
+.buttonImg {
+  vertical-align: bottom;
+  text-align: center;
+}
+
+.buttonImgLink:hover {
+  text-decoration: none;
+  color: #144061;
+}
+
+.buttonImg:hover {
+  cursor: pointer;
+}
+
+.buttonImg2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: invert(1);
+  bottom: 0;
+}
+
+.slogan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
