@@ -19,7 +19,7 @@ function Register() {
         e.preventDefault();
 
         try {
-        const response = await api.post('api/register', { });
+        const response = await api.post('api/register', {fullName, email, username, password, type, uni});
         localStorage.setItem('token', response.data.token);
 
         history.push('/lists');
