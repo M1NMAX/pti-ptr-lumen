@@ -3,6 +3,7 @@ import {Container, Card} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
 import capa from '../../img/capa.png'
 import NavBarHome from '../../Components/NavBarHome'
+import Search from '../../Components/Search'
 import '../../App.css'
 function Homepage() {
     return (
@@ -17,6 +18,7 @@ function Homepage() {
                     <a className="buttonImgLink" href='#down'>Ver mais</a>
                 </div>
              </Container>
+             <Search/>
         </div>
 
     )

@@ -118,11 +118,11 @@ class ProfileAlojamento extends React.Component {
                         <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                         <Form.Group controlId="formCategory4">
                             <Form.Label>Número de quartos: :</Form.Label>
-                            <Form.Control type="int" defaultValue="2"/>
+                            <Form.Control type="number" defaultValue="2"/>
                         </Form.Group>
                         <Form.Group controlId="formCategory5">
                             <Form.Label>Número de casas de banho:</Form.Label>
-                            <Form.Control type="int" defaultValue="2" />
+                            <Form.Control type="number" defaultValue="2" />
                         </Form.Group>
                         <Form.Group controlId="formCategory6">
                             <Form.Label>Área: </Form.Label>
@@ -189,7 +189,7 @@ class ProfileAlojamento extends React.Component {
                                 />
                             </Col>
                         </Form.Group>
-                        <Form.Group controlId="formCategory9">
+                        <Form.Group controlId="formCategory8">
                             <Form.Label>Acesso à Internet:</Form.Label>
                             <Col sm={10}>
                                 <Form.Check
@@ -208,40 +208,112 @@ class ProfileAlojamento extends React.Component {
                                 />
                             </Col>
                         </Form.Group>
-
-
-            {/* _______________________*/}
-                        <Form.Group controlId="formCategory8">
-                            <Form.Label>Preferências:</Form.Label>
-                            <Form.Control type="text" defaultValue="Gostava de viver só com rapazes, de preferência da faculdade onde ando"/>
-                        </Form.Group>
                         <Form.Group controlId="formCategory9">
-                            <Form.Label>Estou interessado em:</Form.Label>
+                            <Form.Label>Limpeza:</Form.Label>
                             <Col sm={10}>
                                 <Form.Check
-                                checked={"alugarAlojamento" === "alugarAlojamento"}
+                                checked={"propria" === "propria"}
                                 type="radio"
-                                label="Alugar um alojamento"
-                                name="alugarAlojamento"
-                                id="alugarAlojamento"
+                                label="Cada um faz a sua própria"
+                                name="propria"
+                                id="propria"
                                 />
                                 <Form.Check
-                                checked={"alugarAlojamento"=== "tenhoAlojamento"}
+                                checked={"propria"=== "profissionais"}
                                 type="radio"
-                                label="Tenho um alojamento para alugar"
-                                name="tenhoAlojamento"
-                                id="tenhoAlojamento"
+                                label="É feita por profissionais"
+                                name="profissionais"
+                                id="profissionais"
                                 />
                             </Col>
                         </Form.Group>
+
+                        <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
                         <Form.Group controlId="formCategory10">
-                            <Form.Label>Instituição:</Form.Label>
-                            <Form.Control type="text" defaultValue="UL-FCUL"/>
+                            <Form.Label>Faixa Etária:</Form.Label>
+                            <Form.Control type="number" min="17" max="26" defaultValue="18" />
+                            <Form.Control type="number" min="18" max="27" defaultValue="23" />
                         </Form.Group>
-                     <Form.Group controlId="formCategory4">
-                            <Form.Control type="file" name="profileImage" onChange={this.changeProfileImage}/>
+                        <Form.Group controlId="formCategory11">
+                            <Form.Label>Género preferecial:</Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                checked={"m" === "m"}
+                                type="radio"
+                                label="Masculino"
+                                name="m"
+                                id="m"
+                                />
+                                <Form.Check
+                                checked={"m"=== "f"}
+                                type="radio"
+                                label="Feminino"
+                                name="f"
+                                id="f"
+                                />
+                                <Form.Check
+                                checked={"m"=== "mix"}
+                                type="radio"
+                                label="Misto"
+                                name="mix"
+                                id="mix"
+                                />
+                                <Form.Check
+                                checked={"ind" === "m"}
+                                type="radio"
+                                label="Indiferente"
+                                name="ind"
+                                id="ind"
+                                />                                
+                            </Col>
                         </Form.Group>
-            <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>
+                        <Form.Group controlId="formCategory12">
+                            <Form.Label>Permite fumadores?</Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                checked={"simF" === "simF"}
+                                type="radio"
+                                label="Sim"
+                                name="simF"
+                                id="simF"
+                                />
+                                <Form.Check
+                                checked={"simF"=== "naoF"}
+                                type="radio"
+                                label="Não"
+                                name="naoF"
+                                id="naoF"
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group controlId="formCategory13">
+                            <Form.Label>Permite animais de estimação?</Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                checked={"simA" === "simA"}
+                                type="radio"
+                                label="Sim"
+                                name="simA"
+                                id="simA"
+                                />
+                                <Form.Check
+                                checked={"simA"=== "naoA"}
+                                type="radio"
+                                label="Não"
+                                name="naoA"
+                                id="naoA"
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group controlId="formCategory14">
+                            <Form.Label>Outras informações complementares:</Form.Label>
+                            <Form.Control type="text" defaultValue=""/>
+                        </Form.Group>
+                        
+                        <Form.Group controlId="formCategory15">
+                                <Form.Control type="file" name="profileImage" onChange={this.changeProfileImage}/>
+                        </Form.Group>
+                        <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>
                     </Form>
                 </Col>
 
