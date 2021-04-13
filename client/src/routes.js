@@ -5,8 +5,8 @@ import Register from "./Pages/Register";
 import Header from './Components/Header'
 import Chat from "./Pages/Chat";
 import Homepage from './Pages/HomePage/'
-import ProfileUser from './Components/ProfileUser'
-import ProfileAlojamento from './Components/ProfileAlojamento'
+import ProfileUser from './Pages/ProfileUser'
+import ProfileAlojamento from './Pages/ProfileAlojamento'
 import capa from './img/capa.png'
 import './App.css'
 function Routes() {
@@ -17,6 +17,8 @@ function Routes() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/chat" exact component={Chat} />
+            <Route path="/profileUser" exact component={ProfileUser} />
+            <Route path="/profileAlojamento" exact component={ProfileAlojamento} />
           </Switch>
         </BrowserRouter>
       );
