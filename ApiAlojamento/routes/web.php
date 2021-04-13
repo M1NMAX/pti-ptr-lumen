@@ -19,69 +19,105 @@ $router->get('/', function () use ($router) {
 
 
 
-
  
 
-$router->group(['prefix' => 'users'], function () use ($router) {
-    $router->get('/', 'UserController@index');
-    $router->get('/{users}', 'UserController@show');
-    $router->post('/', 'UserController@store');
-    $router->put('/{users}', 'UserController@update');
-    $router->delete('/{users}', 'UserController@destroy');
-});  
-
 $router->group(['prefix' => 'alojamento'], function () use ($router) {
-    /*getters*/
-    $router->get('/', 'AlojamentoController@index');
-    $router->get('/{id}', 'AlojamentoController@showId');
+    //-------------GETS----------------
 
+    //BUSCAR TODOS OS ALOJAMENTOS
+    $router->get('/', 'AlojamentoController@index');
+    //MOSTRAR ALOJAMENTO COM O ID
+    $router->get('/{id}', 'AlojamentoController@showId');
+    //VER AS CARACTERISTICAS DO ALOJAMENTO
+    $router->get('/{id}/showCaracteristicas', 'AlojamentoController@showCaracteristicas');
+    //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)
+    $router->get('/busyDates/{id}', 'AlojamentoController@busyDates');
+
+    //-------------POSTS----------------
+
+    //ADICIONA O ALOJAMENTO
     $router->post('/', 'AlojamentoController@store');
 
+    //-------------PUTS----------------
 
+    //RATE ALOJAMENTO
     $router->put('/{id}/rate/{value}', 'AlojamentoController@rate');
+    //UPDATE ALOJAMENTO
     $router->put('/{id}', 'AlojamentoController@update');
+    //ADICIONAR CARACTERISTICA
+    $router->put('/{id}/addCaracteristica', 'AlojamentoController@addCaracteristica');
 
+    //-------------DELETES----------------
 
-
+    //ELIMINA O ALOJAMENTO
     $router->delete('/{alojamento}', 'AlojamentoController@destroy');
     //$router->delete('/{caracteristica}', 'CaracteristicaController@deleteC');
 
-    
-    //Caracteristicas
-    $router->put('/{id}/addCaracteristica', 'AlojamentoController@addCaracteristica');
-    $router->get('/{id}/showCaracteristicas', 'AlojamentoController@showCaracteristicas');
-    //$router->delete('/{caracteristica}', 'CaracteristicaController@deleteC');
 });
 
 $router->group(['prefix' => 'ac'], function () use ($router) {
-    $router->post('/addCaract', 'ACController@addCaract');
-
+    //AINDA NAO PRECISEI DE POR NADA AQUI
 });
 
 $router->group(['prefix' => 'caracteristica'], function () use ($router) {
+    //-------------GETS----------------
+
+    //BUSCAR TODAS AS CARACTERISTICAS
     $router->get('/', 'CaracteristicaController@index');
-    $router->post('/', 'CaracteristicaController@store');
-    $router->put('/{caracteristica}', 'CaracteristicaController@update');
-    $router->delete('/{caracteristica}', 'CaracteristicaController@destroy');
-
-
-
+    //FILTRAR PELAS CARACTERISTICAS DADAS NO ROUTE (EX: 2,3)
     $router->get('/filter/{ids}', 'CaracteristicaController@filter');
+
+    //-------------POSTS----------------
+
+    //ADICIONAR CARACTERISTICA
+    $router->post('/', 'CaracteristicaController@store');
+
+    //-------------PUTS----------------
+
+    //UPDATE A CARACTERISTICA
+    $router->put('/{caracteristica}', 'CaracteristicaController@update');
+
+    //-------------DELETES----------------
+
+    //ELIMINAR A CARACTERISTICA
+    $router->delete('/{caracteristica}', 'CaracteristicaController@destroy');
 
 });
 
 $router->group(['prefix' => 'aluguer'], function () use ($router) {
+    //-------------GETS----------------
     $router->get('/', 'AluguerController@index');
+
+    //-------------POSTS----------------
+
     $router->post('/', 'AluguerController@store');
+
+    //-------------PUTS----------------
+
     $router->put('/{aluguer}', 'AluguerController@update');
+    
+    //-------------DELETES----------------
+
     $router->delete('/{aluguer}', 'AluguerController@destroy');
 });
 
 $router->group(['prefix' => 'aluguerpending'], function () use ($router) {
-    $router->get('/', 'AluguerPendingController@index');
-    $router->post('/', 'AluguerPendingController@store');
-    $router->put('/{aluguer}', 'AluguerPendingController@update');
-    $router->delete('/{aluguer}', 'AluguerPendingController@destroy');
+    //-------------GETS----------------
 
-    $router->delete('accept/{id}', 'AluguerPendingController@accept');
+    $router->get('/', 'AluguerPendingController@index');
+    $router->get('/{idSenhorio}', 'AluguerPendingController@senhorioIdSearch');
+    
+    //-------------POSTS----------------
+
+    $router->post('/', 'AluguerPendingController@store');
+    $router->post('accept/{id}', 'AluguerPendingController@accept');
+    
+    //-------------PUTS----------------
+
+    $router->put('/{aluguer}', 'AluguerPendingController@update');
+
+    //-------------DELETES----------------
+    
+    $router->delete('/{aluguer}', 'AluguerPendingController@destroy');
+    
 });

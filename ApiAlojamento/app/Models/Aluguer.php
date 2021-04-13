@@ -21,6 +21,12 @@ class Aluguer extends Model implements AuthenticatableContract, AuthorizableCont
 
     protected $table = "aluguer";
     protected $fillable = [
-        'alojamento_id', 'caracteristica_id','preco','dataInicio', 'dataFim'
+        'alojamento_id', 'user_id','preco','dataInicio', 'dataFim'
     ];   
+
+    public $timestamps = false;
+    
+    public function alojamentos(){
+        return $this->belongsToMany(Alojamento::class);
+    }
 }

@@ -24,6 +24,8 @@ class Caracteristica extends Model implements AuthenticatableContract, Authoriza
         'name',
     ];
 
+    public $timestamps = false;
+
     public function alojamentos(){
         return $this->belongsToMany(Alojamento::class);
     }

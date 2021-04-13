@@ -20,7 +20,11 @@ class CreateAlojamentoTable extends Migration
             $table->float('rating');
             $table->integer('nRates');
             $table->integer('preco');
-            $table->integer('coordenadas');    
+            $table->string('streetName');
+            $table->string('city');
+            $table->string('country');
+            $table->integer('latitude');  
+            $table->integer('longitude');    
             $table->timestamps();       
         });
     } 

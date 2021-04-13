@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AC;
 
-class ACController extends Controller
+class AAController extends Controller
 {
 
     private $alojamento_caracteristica;
@@ -29,12 +29,12 @@ class ACController extends Controller
         return AC::find($id); 
     }
 
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         //$this->alojamento_caracteristica->AC::create($request->all());
         $alojamento_caracteristica = AC::create($request->all());
         return response()->json(['data' => ['message' => 'Associação AC foi criada com sucesso']]);
-    }
+    }*/
 
     public function update($alojamento_caracteristica, Request $request)
     {
