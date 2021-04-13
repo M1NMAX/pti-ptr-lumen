@@ -53,7 +53,7 @@ function Register() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                     <Form.Label>Confirmar Password</Form.Label>
-                    <Form.Control type="password" placeholder="PasswordConfirmation" value={password} onChange={e => setPassword(e.target.value)} />
+                    <Form.Control type="password" placeholder="PasswordConf" value={password} onChange={e => setPasswordConf(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicType">
