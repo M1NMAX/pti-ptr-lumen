@@ -80,4 +80,28 @@ class UsersController extends Controller
         return response($response, 200);
     }
 
+    public function index(){
+        $users = User::get();
+        return response($users, 200);
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return response($user, 200);
+    }
+    public function update($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+        $response = ['message' => 'your data have been successfully updated'];
+        return response($response, 200);
+    }
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        $response = ['message' => 'your data have been successfully deleted'];
+        return response($response, 200);
+    }
 }
