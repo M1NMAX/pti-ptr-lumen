@@ -19,10 +19,13 @@ function Register() {
         e.preventDefault();
 
         try {
-        const response = await api.post('api/register', {fullName, email, username, password, type, uni});
-        localStorage.setItem('token', response.data.token);
-
-        history.push('/lists');
+        const response = await api.post('api/register', {fullName, email, username, password, type, uni}).then(async (res) =>{
+            if(res.data.status){
+                const responseLogin = await api.post('api/login', { email, password });
+                localStorage.setItem('token', responseLogin.data.token);
+                history.push('/lists');
+            }
+        });
         } catch (err) {
         alert('Falha no Registo, tente novamente.');
         }

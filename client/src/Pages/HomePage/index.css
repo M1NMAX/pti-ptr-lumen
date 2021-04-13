@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.centro {
+.center {
   text-align: center;
 }
 
@@ -16,6 +16,6 @@
   color: white;
 }
 
-.buttonImgLink:hover{
+.buttonImgLink:hover {
   text-decoration: none;
 }

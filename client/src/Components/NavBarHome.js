@@ -7,9 +7,7 @@ import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
 function NavBarHome() {
     return (
         <div className="header">
-            
-
-            <Switch>
+          <Switch>
                 <Route exact path="/" >
                     <Navbar bg="white" expand="lg">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
@@ -20,7 +18,6 @@ function NavBarHome() {
                                 <Nav.Link href="/register">Registo</Nav.Link>
                                 <Nav.Link href="/chat"> Chat</Nav.Link>
                                 <Nav.Link href="/profileUser"> Perfil</Nav.Link>
-                                <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
