@@ -4,6 +4,18 @@
   margin-right: auto;
 }
 
-.center {
+.slogan {
   text-align: center;
+}
+
+.centro {
+  text-align: center;
+}
+
+.buttonImgLink {
+  color: white;
+}
+
+.buttonImgLink:hover{
+  text-decoration: none;
 }

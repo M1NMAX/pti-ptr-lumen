@@ -40,15 +40,17 @@ function Homepage() {
             height:"100%"
           }}>
             <NavBarHome/>
-            <Container fluid>
+            <Container >
                 <h1 className="slogan">Your sweet home away from home</h1>
-                <div className="buttonImg">
-                    <img src={scroll} className="buttonImg2"/> 
-                    <a className="buttonImgLink" href='#down'>Ver mais</a>
+                <div className="buttonImg" >
+                    <a href='#down'> 
+                        <img src={scroll} className="buttonImg2"  width="10%"/> 
+                        <a className="buttonImgLink" href='#down'>Ver mais</a>
+                    </a>
                 </div>
              </Container>
-             <Search/>
             </div>
+            <Search/>
             {content}
         </div>
 
