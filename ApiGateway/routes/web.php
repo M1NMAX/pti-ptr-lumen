@@ -29,7 +29,16 @@ $router->get('/email', function (Request $request) {
     return auth()->user(); //"APIGATEWAY";
 });
 
-$router->post('/register', 'UsersController@register');
-$router->post('/login', 'UsersController@login');
-$router->get('/logout', 'UsersController@logout');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('/login', 'UsersController@login');
+    $router->get('/logout', 'UsersController@logout');
+    $router->post('/register', 'UsersController@register'); //Create
 
+    $router->group(['prefix' => 'users'], function () use ($router) {
+
+        $router->get('/', 'UsersController@index');
+        $router->get('/{id}', 'UsersController@show');
+        $router->put('/{id}', 'UsersController@update');
+        $router->delete('/{id}', 'UsersController@destroy');
+    });
+});

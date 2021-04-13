@@ -6,13 +6,6 @@
   width: 100%;
 }
 
-html,
-body,
-body > div,
-.app {
-  height: 100%;
-}
-
 .buttonImg {
   vertical-align: bottom;
   text-align: center;
@@ -41,4 +34,10 @@ body > div,
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+
+html,
+body,
+.App {
+  height: 100%;
 }
