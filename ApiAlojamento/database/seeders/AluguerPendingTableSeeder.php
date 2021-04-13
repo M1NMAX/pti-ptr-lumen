@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users;
 
-class UsersTableSeeder extends Seeder
+use App\Models\AluguerPending;
+
+class AluguerPendingTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        Users::factory(\App\Users::class)->create();
+        AluguerPending::factory(\App\AluguerPending::class)->create();
     }
 }

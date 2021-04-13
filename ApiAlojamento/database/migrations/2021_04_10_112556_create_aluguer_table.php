@@ -20,7 +20,6 @@ class CreateAluguerTable extends Migration
             $table->integer('preco');
             $table->date('dataInicio');
             $table->date('dataFim');
-            $table->timestamps();
         });
     }
 

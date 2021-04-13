@@ -6,25 +6,38 @@ import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import './index.css'
 import alojamento from '../../img/basicRoom.png'
+import { AnimationWrapper } from 'react-hover-animation'
 function Homepage() {
     const n = 8; // Or something else
     const content = [...Array(n)].map((e, i) => 
     <Row>
         <Col>
+            <Card className="mb-4 mt-4 ml-4 mr-4 center">
+                <AnimationWrapper>
+                    <a href="/profileAlojamento">
+                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
+                    </a>
+                </AnimationWrapper>
+                <Card.Title className="center">alojamento</Card.Title>
+            </Card> 
+        </Col>
+        <Col>
            <Card className="mb-4 mt-4 ml-4 mr-4 center">
-               <Card.Img className="img" src={alojamento}></Card.Img>
+                <AnimationWrapper>
+                    <a href="/profileAlojamento">
+                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
+                    </a>
+                </AnimationWrapper>
                <Card.Title className="center">alojamento</Card.Title>
             </Card> 
         </Col>
         <Col>
            <Card className="mb-4 mt-4 ml-4 mr-4 center">
-               <Card.Img className="img" src={alojamento}></Card.Img>
-               <Card.Title className="center">alojamento</Card.Title>
-            </Card> 
-        </Col>
-        <Col>
-           <Card className="mb-4 mt-4 ml-4 mr-4 center">
-               <Card.Img className="img" src={alojamento}></Card.Img>
+                <AnimationWrapper>
+                    <a href="/profileAlojamento">
+                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
+                    </a>
+                </AnimationWrapper>
                <Card.Title className="center">alojamento</Card.Title>
             </Card> 
         </Col>

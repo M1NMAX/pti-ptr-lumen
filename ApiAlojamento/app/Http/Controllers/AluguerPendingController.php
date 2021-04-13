@@ -31,6 +31,11 @@ class AluguerPendingController extends Controller
         return AluguerPending::find($id); 
     }
 
+    public function senhorioIdSearch($idSenhorio)
+    {
+        return AluguerPending::where('senhorio_id', $idSenhorio)->get(); 
+    }
+
     public function store(Request $request)
     {
         //$this->alojamento_caracteristica->AC::create($request->all());
@@ -71,4 +76,6 @@ class AluguerPendingController extends Controller
 
         return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso']]);
     }
+
+
 }

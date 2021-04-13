@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Alojamento;
 use App\Models\Caracteristica;
-
+use App\Models\Aluguer;
 
 class AlojamentoController extends Controller
 {
@@ -128,5 +128,12 @@ class AlojamentoController extends Controller
         $alojamento = $this->alojamento->find($alojamento);
         $alojamento->delete();
         return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso']]);
+    }
+
+    public function busyDates($id,Request $request)
+    {
+        $alojamento = $this->alojamento->find($id);
+        return $alojamento->alugueres;
+    
     }
 }
