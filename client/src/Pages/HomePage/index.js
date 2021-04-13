@@ -1,13 +1,42 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container, Card} from 'react-bootstrap'
+import {Container, Card,Row,Col} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
 import capa from '../../img/capa.png'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
-import '../../App.css'
+import './index.css'
+import alojamento from '../../img/basicRoom.png'
 function Homepage() {
+    const n = 8; // Or something else
+    const content = [...Array(n)].map((e, i) => 
+    <Row>
+        <Col>
+           <Card className="mb-4 mt-4 ml-4 mr-4 center">
+               <Card.Img className="img" src={alojamento}></Card.Img>
+               <Card.Title className="center">alojamento</Card.Title>
+            </Card> 
+        </Col>
+        <Col>
+           <Card className="mb-4 mt-4 ml-4 mr-4 center">
+               <Card.Img className="img" src={alojamento}></Card.Img>
+               <Card.Title className="center">alojamento</Card.Title>
+            </Card> 
+        </Col>
+        <Col>
+           <Card className="mb-4 mt-4 ml-4 mr-4 center">
+               <Card.Img className="img" src={alojamento}></Card.Img>
+               <Card.Title className="center">alojamento</Card.Title>
+            </Card> 
+        </Col>
+
+
+    </Row>
+    
+    
+    )
     return (
-        <div className="App img" style={{
+        <div className="App img">
+            <div className="App img" style={{
             height:"100%"
           }}>
             <NavBarHome/>
@@ -19,6 +48,8 @@ function Homepage() {
                 </div>
              </Container>
              <Search/>
+            </div>
+            {content}
         </div>
 
     )

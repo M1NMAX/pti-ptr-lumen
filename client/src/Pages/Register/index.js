@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import '../Login/index.css'
+import './index.css'
 import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
