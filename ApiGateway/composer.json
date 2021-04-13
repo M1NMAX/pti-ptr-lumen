@@ -9,7 +9,8 @@
         "dusterio/lumen-passport": "^0.3.4",
         "guzzlehttp/guzzle": "^7.3",
         "illuminate/session": "^8.36",
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "nordsoftware/lumen-cors": "^3.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

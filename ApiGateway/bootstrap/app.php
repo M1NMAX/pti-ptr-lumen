@@ -66,6 +66,7 @@ $app->singleton(
 $app->configure('app');
 
 $app->configure('auth');
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -80,6 +81,11 @@ $app->configure('auth');
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
+
+$app->middleware([
+	'Nord\Lumen\Cors\CorsMiddleware',
+]);
+
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
@@ -105,6 +111,8 @@ $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 \Dusterio\LumenPassport\LumenPassport::routes($app ,['prefix' => 'v1/oauth']);
+
+$app->register('Nord\Lumen\Cors\CorsServiceProvider');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

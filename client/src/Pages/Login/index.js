@@ -6,6 +6,8 @@ import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
 import {Container, Card, Form, Button} from 'react-bootstrap'
+
+
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,8 +19,7 @@ function Login() {
         try {
         const response = await api.post('api/login', { email, password });
         localStorage.setItem('token', response.data.token);
-
-        history.push('/lists');
+        history.push('/');
         } catch (err) {
         alert('Falha no login, tente novamente.');
         }
@@ -26,8 +27,8 @@ function Login() {
     return (
         <div>
             <NavBarHome/>
-            <Form className="login page">
-                <Form.Group controlId="formBasicEmail" onSubmit={handleLogin}>
+            <Form className="login page"  onSubmit={handleLogin}>
+                <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
                     <Form.Text className="text-muted">
