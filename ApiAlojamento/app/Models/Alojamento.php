@@ -21,7 +21,7 @@ class Alojamento extends Model implements AuthenticatableContract, AuthorizableC
 
     protected $table = "alojamento";
     protected $fillable = [
-        'name', 'descricao', 'preco', 'coordenadas',
+        'name', 'descricao', 'preco', 'streetName','city','country','latitude','longitude'
     ];
 
 
@@ -33,4 +33,8 @@ class Alojamento extends Model implements AuthenticatableContract, AuthorizableC
      public function caracteristicas(){
          return $this->belongsToMany(Caracteristica::class);
      }
+
+     public function alugueres(){
+        return $this->hasMany(Aluguer::class);
+    }
 }
