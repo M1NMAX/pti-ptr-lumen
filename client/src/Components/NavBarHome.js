@@ -18,6 +18,7 @@ function NavBarHome() {
                                 <Nav.Link href="/register">Registo</Nav.Link>
                                 <Nav.Link href="/chat"> Chat</Nav.Link>
                                 <Nav.Link href="/profileUser"> Perfil</Nav.Link>
+                                <Nav.Link href="/registerAlojamento">Registo Alojamento</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
