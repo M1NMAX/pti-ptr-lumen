@@ -58,6 +58,7 @@ function NavBarHome() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
+
                                  {/* show auth user data  */}
                                 {auth?<>
                                         <Nav.Link href="/chat"> Chat</Nav.Link>
@@ -67,7 +68,6 @@ function NavBarHome() {
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
                                         </> }
-
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
