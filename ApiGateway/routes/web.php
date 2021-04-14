@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\UsersController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,19 +18,22 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// $router->get('/key', function() {
-//     return \Illuminate\Support\Str::random(32);
-// });
+//$router->get('/key', function () {
+//  return \Illuminate\Support\Str::random(32);
+//});
 
 $router->get('/', function () {
     return "APIGATEWAY";
 });
 
-$router->get('/email', function (Request $request) {
-    return auth()->user(); //"APIGATEWAY";
-});
 
 $router->group(['prefix' => 'api'], function () use ($router) {
+
+    $router->get('/me', function () {
+        return auth()->user();
+    });
+
+
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
     $router->post('/register', 'UsersController@register'); //Create

@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Card,Row,Col} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
@@ -7,8 +8,9 @@ import Search from '../../Components/Search'
 import './index.css'
 import alojamento from '../../img/basicRoom.png'
 import { AnimationWrapper } from 'react-hover-animation'
+
 function Homepage() {
-    const n = 8; // Or something else
+ const n = 4; // Or something else
     const content = [...Array(n)].map((e, i) => 
     <Row>
         <Col>
