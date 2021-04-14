@@ -4,8 +4,17 @@ import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
 import DefaultRoomPic from "../../img/basicRoom.png"
 import NavBarHome from '../../Components/NavBarHome'
 //const axios = require('axios');
+import ImageUploading from 'react-images-uploading';
 
-class ProfileAlojamento extends React.Component {
+function ProfileAlojamento () {
+    const [images, setImages] = React.useState([]);
+  const maxNumber = 69;
+ 
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
     /**constructor(props){
         super(props);
         this.state={
@@ -31,7 +40,7 @@ class ProfileAlojamento extends React.Component {
         })
         .catch(err=>console.log(err))
     }
-    */
+    
     changeProfileImage=(event)=>{
        
         this.setState({uploadedFile:event.target.files[0]});
@@ -54,15 +63,14 @@ class ProfileAlojamento extends React.Component {
            this.setState({msg:res.data.message});
            this.setState({profileImage:res.data.results.profileImage});
         })
-        .catch(err=>console.log(err))*/
-    }
+        .catch(err=>console.log(err))
+    }*/
 
   /** 
     componentDidMount(){
      this.fetchUserDetails(this.state.user_id);
     }
     **/
-     render(){
 {/**
        if(this.state.profileImage){
             var imagestr=this.state.profileImage;
@@ -80,9 +88,48 @@ class ProfileAlojamento extends React.Component {
                     <Col>
                             <img src={profilePic} alt="profils pic" />
                             <button class="interesse w3-center">Estou interessado!</button> <button class="interesse w3-center"> <i class="fa fa-envelope"></i></button>
+                            <ImageUploading
+        multiple
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps,
+        }) => (
+          // write your building UI
+          <div className="upload__image-wrapper">
+            <button
+              style={isDragging ? { color: 'red' } : undefined}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              Click or Drop here
+            </button>
+            &nbsp;
+            <button onClick={onImageRemoveAll}>Remove all images</button>
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <img src={image['data_url']} alt="" width="100%" />
+                <div className="image-item__btn-wrapper">
+                  <button onClick={() => onImageUpdate(index)}>Update</button>
+                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ImageUploading>
                     </Col>
                     <Col>
-                        <h3> {titulo} </h3>
+                        <h2> {titulo} </h2>
                         <Form className="form">     
                             <Form.Group controlId="formCategory1">
                                 <Form.Label>Morada:</Form.Label>
@@ -313,10 +360,10 @@ class ProfileAlojamento extends React.Component {
                                 <Form.Control type="text" defaultValue=""/>
                             </Form.Group>
                             
-                            <Form.Group controlId="formCategory15">
+                           {/* <Form.Group controlId="formCategory15">
                                     <Form.Control type="file" name="profileImage" onChange={this.changeProfileImage}/>
                             </Form.Group>
-                            <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>
+                            <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>*/}
                         </Form>
                     </Col>
 
@@ -324,7 +371,6 @@ class ProfileAlojamento extends React.Component {
                 </Container>
             </div>
         )
-    }
 }
 
     /**const mapStatetoProps=(state)=>{
