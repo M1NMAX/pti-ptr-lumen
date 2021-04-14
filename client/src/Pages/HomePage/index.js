@@ -10,11 +10,7 @@ import alojamento from '../../img/basicRoom.png'
 import { AnimationWrapper } from 'react-hover-animation'
 
 function Homepage() {
-
-   
-
-
-    const n = 4; // Or something else
+ const n = 4; // Or something else
     const content = [...Array(n)].map((e, i) => 
     <Row>
         <Col>

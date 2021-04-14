@@ -28,7 +28,7 @@ function ProfileUser(){
         }).then(response => {
           if(response.data.status && response.data.status === (401 || 498)){
             localStorage.clear();
-            history.push('/');
+            history.push('/login');
           }else{
             setUsername(response.data.username);
             setName(response.data.name);

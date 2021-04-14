@@ -8,30 +8,32 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
-    const [auth, setAuth] = useState(false)
+    console.log(token)
+    const [auth, setAuth] = useState(true)
     //const [userdata, setUserdata] = useState([]);
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
 
     const history = useHistory();
-
-  
-    // if(token === null || token ===''){
-    //     setAuth(false);
-    // }
     useEffect(() => {
-        api.get('api/me', {
+          api.get('api/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }
         }).then(response => {
-          if(response.data.status && response.data.status === (401 || 498)){
-            localStorage.clear();
-            history.push('/');
-          }else{
-            setAuth(true);
-            setUsername(response.data.name);
-            setUserid(response.data.id)
+            if(response.data.status && response.data.status === (401 || 498)){
+                console.log("erro")
+                localStorage.clear();
+                history.push('/');
+            }else{
+                if(token === null || token ===''){
+                    setAuth(false);
+                }
+                else{
+                    setUsername(response.data.name);
+                    setUserid(response.data.id)
+                }
+                console.log(auth)
             // console.log(username);
             // console.log(response.data);
             // setUserdata(response.data);
@@ -40,11 +42,13 @@ function NavBarHome() {
           alert(err)
         })
       }, [token]);
-      if(token === null || token ===''){
-          setAuth(false);
+
+      function handleLogout() {
+        localStorage.clear();
+        history.push('/');
+        window.location.reload();
       }
 
-   
     return (
         <div className="header">
           <Switch>
@@ -58,7 +62,7 @@ function NavBarHome() {
                                 {auth?<>
                                         <Nav.Link href="/chat"> Chat</Nav.Link>
                                         <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
-                                        <Nav.Link >Logout</Nav.Link>
+                                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                                     </>: <>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>

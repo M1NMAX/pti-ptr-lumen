@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\UsersController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// $router->get('/key', function() {
-//     return \Illuminate\Support\Str::random(32);
-// });
+//$router->get('/key', function () {
+//  return \Illuminate\Support\Str::random(32);
+//});
 
 $router->get('/', function () {
     return "APIGATEWAY";
