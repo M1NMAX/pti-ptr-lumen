@@ -3,8 +3,61 @@ import {Navbar, Nav, NavDropdown, Button, Form, FormControl} from 'react-bootstr
 import React from "react";
 import ReactDOM from "react-dom";
 import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
-
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../services/api';
 function NavBarHome() {
+    const [token] = useState(localStorage.getItem('token'));
+    const [auth, setAuth] = useState(false)
+    //const [userdata, setUserdata] = useState([]);
+    const [username, setUsername] = useState('');
+    const [userid, setUserid] = useState();
+
+    const history = useHistory();
+
+    function UserGreeting({name }) {
+        return (
+            <>
+                <Nav.Link href="/chat"> Chat</Nav.Link>
+                <Nav.Link href="/profileUser">{name} </Nav.Link>
+                <Nav.Link href="/profileUser">Logout</Nav.Link>
+            </>);
+      }
+      
+      function GuestGreeting(props) {
+        return (
+            <>
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/register">Registo</Nav.Link>
+            </>);
+      }
+
+    
+    // if(token === null || token ===''){
+    //     setAuth(false);
+    // }
+    useEffect(() => {
+        api.get('api/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }).then(response => {
+          if(response.data.status && response.data.status === (401 || 498)){
+            localStorage.clear();
+            history.push('/');
+          }else{
+            setAuth(true);
+            setUsername(response.data.name);
+            setUserid(response.data.id)
+            // console.log(username);
+            // console.log(response.data);
+            // setUserdata(response.data);
+          }
+        }).catch(err => {
+          alert(err)
+        })
+      }, [token]);
+
     return (
         <div className="header">
           <Switch>
@@ -14,10 +67,9 @@ function NavBarHome() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
-                                <Nav.Link href="/login">Login</Nav.Link>
-                                <Nav.Link href="/register">Registo</Nav.Link>
-                                <Nav.Link href="/chat"> Chat</Nav.Link>
-                                <Nav.Link href="/profileUser"> Perfil</Nav.Link>
+                                 {/* show auth user data  */}
+                                {auth?<UserGreeting name={username} id={userid}/>:<GuestGreeting/> }
+
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -49,6 +101,9 @@ function NavBarHome() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
+                                {/* show auth user data  */}
+                                {/* {auth?<UserGreeting name={username} id={userid}/>:<GuestGreeting/> } */}
+
                                 <Nav.Link href="/login">Login</Nav.Link>
                                 <Nav.Link href="/register">Registo</Nav.Link>
                                 <Nav.Link href="/chat"> Chat</Nav.Link>

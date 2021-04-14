@@ -25,11 +25,14 @@ $router->get('/', function () {
     return "APIGATEWAY";
 });
 
-$router->get('/email', function (Request $request) {
-    return auth()->user(); //"APIGATEWAY";
-});
 
 $router->group(['prefix' => 'api'], function () use ($router) {
+
+    $router->get('/me', function (Request $request) {
+        return auth()->user();
+    });
+
+
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
     $router->post('/register', 'UsersController@register'); //Create
