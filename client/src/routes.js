@@ -17,7 +17,7 @@ function Routes() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/chat" exact component={Chat} />
-            <Route path="/profileUser" exact component={ProfileUser} />
+            <Route path="/profileUser/:id" exact component={ProfileUser} />
             <Route path="/profileAlojamento" exact component={ProfileAlojamento} />
           </Switch>
         </BrowserRouter>

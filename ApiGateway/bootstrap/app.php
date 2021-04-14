@@ -82,6 +82,7 @@ $app->configure('auth');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
+//Cors
 $app->middleware([
 	'Nord\Lumen\Cors\CorsMiddleware',
 ]);

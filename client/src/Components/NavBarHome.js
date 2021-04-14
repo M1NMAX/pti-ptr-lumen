@@ -15,24 +15,7 @@ function NavBarHome() {
 
     const history = useHistory();
 
-    function UserGreeting({name }) {
-        return (
-            <>
-                <Nav.Link href="/chat"> Chat</Nav.Link>
-                <Nav.Link href="/profileUser">{name} </Nav.Link>
-                <Nav.Link href="/profileUser">Logout</Nav.Link>
-            </>);
-      }
-      
-      function GuestGreeting(props) {
-        return (
-            <>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/register">Registo</Nav.Link>
-            </>);
-      }
-
-    
+  
     // if(token === null || token ===''){
     //     setAuth(false);
     // }
@@ -57,7 +40,11 @@ function NavBarHome() {
           alert(err)
         })
       }, [token]);
+      if(token === null || token ===''){
+          setAuth(false);
+      }
 
+   
     return (
         <div className="header">
           <Switch>
@@ -68,7 +55,14 @@ function NavBarHome() {
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
                                  {/* show auth user data  */}
-                                {auth?<UserGreeting name={username} id={userid}/>:<GuestGreeting/> }
+                                {auth?<>
+                                        <Nav.Link href="/chat"> Chat</Nav.Link>
+                                        <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
+                                        <Nav.Link >Logout</Nav.Link>
+                                    </>: <>
+                                            <Nav.Link href="/login">Login</Nav.Link>
+                                            <Nav.Link href="/register">Registo</Nav.Link>
+                                        </> }
 
                             </Nav>
                         </Navbar.Collapse>

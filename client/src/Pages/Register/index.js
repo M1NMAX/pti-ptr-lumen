@@ -6,11 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
 import {Container, Card, Form, Button} from 'react-bootstrap'
 function Register() {
-    const [fullName, setName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordConf, setPasswordConf] = useState('');
+    const [password_confirmation, setPasswordConf] = useState('');
     const [type, setType] = useState('');
     const [uni, setUni] = useState('');
     const history = useHistory();
@@ -19,29 +19,33 @@ function Register() {
         e.preventDefault();
 
         try {
-        const response = await api.post('api/register', {fullName, email, username, password, type, uni}).then(async (res) =>{
+        const response = await api.post('api/register', {name, email, username, password, password_confirmation}).then(async (res) =>{
+            console.log(res.data);
             if(res.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
-                history.push('/lists');
+                history.push('/');
             }
         });
         } catch (err) {
+            // console.log(password);
+            // console.log(password_confirmation);
+            // console.log(err.response.data);
         alert('Falha no Registo, tente novamente.');
         }
     }
     return (
         <div>
             <NavBarHome/>
-            <Form className="login page">
-                <Form.Group controlId="formBasicName" onSubmit={handleRegister}>
+            <Form className="login page" onSubmit={handleRegister}>
+                <Form.Group controlId="formBasicName" >
                     <Form.Label>Nome Completo</Form.Label>
-                    <Form.Control width="sm" type="textarea" value={fullName} onChange={e => setName(e.target.value)}/>
+                    <Form.Control width="sm" name="name" type="textarea" value={name} onChange={e => setName(e.target.value)}/>
                 </Form.Group>
                 
                 <Form.Group controlId="formBasicEmail" onSubmit={handleRegister}>
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control width="sm" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <Form.Control width="sm" name="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
                     <Form.Text className="text-muted">
                     O seu e-mail não será partilhado com nenhuma entidade interna ou externa
                     </Form.Text>
@@ -49,14 +53,14 @@ function Register() {
 
                 <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                     <Form.Label>Username</Form.Label>
-                    <Form.Control width="sm" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
+                    <Form.Control width="sm" name="username" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                     <Form.Label>Confirmar Password</Form.Label>
-                    <Form.Control type="password" placeholder="PasswordConf" value={password} onChange={e => setPasswordConf(e.target.value)} />
+                    <Form.Control type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicType">
