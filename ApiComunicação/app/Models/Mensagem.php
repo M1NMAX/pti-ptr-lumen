@@ -19,11 +19,14 @@ class Mensagem extends Model implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     
-    
-
+    public $timestamps = false;
+    protected $table = "mensagem";
     protected $fillable = [
-        'user_id', 'content'
+        'chat_id','user_id', 'content'
     ];
 
-   
+    public function chat()
+    {
+        return $this->belongsTo(Chat::class);
+    }
 }

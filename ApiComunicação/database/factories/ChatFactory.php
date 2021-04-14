@@ -20,6 +20,7 @@ class ChatFactory extends Factory
      *
      * @return array
      */
+    public $timestamps = false;
     public function definition()
     {
         return [      

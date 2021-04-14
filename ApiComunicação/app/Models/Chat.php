@@ -18,9 +18,15 @@ class Chat extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = [
+    protected $table = "chat";
+     protected $fillable = [
         'senhorio_id', 'hospede_id',
     ];
 
+    public $timestamps = false;
 
+    public function mensagens()
+    {
+        return $this->hasMany(Mensagem::class);
+    }
 }

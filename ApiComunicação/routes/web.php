@@ -30,7 +30,8 @@ $router->group(['prefix' => 'mensagem'], function () use($router){
 $router->group(['prefix' => 'chat'], function () use($router){
     $router->get('/','ChatController@index');
     $router->get('/{id}', 'ChatController@show');
-
+    $router->get('senhorioChats/{id}', 'ChatController@showSenhorioId');
+    $router->get('/{id}/mensagens', 'ChatController@showMsn');
 
     $router->post('/','ChatController@store');
 

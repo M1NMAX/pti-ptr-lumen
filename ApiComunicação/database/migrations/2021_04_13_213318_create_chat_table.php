@@ -19,7 +19,7 @@ class CreateChatTable extends Migration
             $table->integer('hospede_id');
         });
     }
-
+    public $timestamps = false;
     /**
      * Reverse the migrations.
      *

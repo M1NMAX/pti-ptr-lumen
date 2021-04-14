@@ -15,6 +15,7 @@ class CreateMensagemTable extends Migration
     {
         Schema::create('mensagem', function (Blueprint $table) {
             $table->id();
+            $table->integer('chat_id');
             $table->integer('user_id');
             $table->string('content');
             $table->dateTime('created_at');
@@ -22,7 +23,7 @@ class CreateMensagemTable extends Migration
     }
 
     public $timestamps = false;
-
+    
     /**
      * Reverse the migrations.
      *

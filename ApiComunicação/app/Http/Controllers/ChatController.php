@@ -13,7 +13,7 @@ class ChatController extends Controller
      * @return void
      */
     public function __construct(Chat $chat){
-        $this->chat = $chats;
+        $this->chat = $chat;
     }
 
     public function index(){
@@ -24,11 +24,17 @@ class ChatController extends Controller
         return $this->chat->find($id);
     }
 
+    public function showMsn($id){
+        $this->chat->find($id);
+        return $this->chat->mensagens;
+
+    }
+
     public function store(Request $request){
         $this->chat->create($request->all());
         return response()->json(['data' => [
-                                        'message' => 'Chat criado com sucesso!!']
-                                    ]);
+            'message' => 'Chat criado com sucesso!!']
+        ]);
     }
 
 }
