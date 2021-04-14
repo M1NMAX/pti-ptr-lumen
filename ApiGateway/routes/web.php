@@ -28,7 +28,7 @@ $router->get('/', function () {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-    $router->get('/me', function (Request $request) {
+    $router->get('/me', function () {
         return auth()->user();
     });
 
