@@ -47,7 +47,7 @@ class UsersController extends Controller
         // $token = $user->createToken('access_token')->accessToken;
         // $response = ['message' => 'your data have been successfully updated'];
         //return response(['user'=>$user, 'token'=>$token], 200);
-        return response(['message' => 'your data have been successfully updated', 'status' =>true],200);
+        return response(['message' => 'New user has been created successguly', 'status' =>true],200);
 
     }
 
@@ -78,7 +78,6 @@ class UsersController extends Controller
     public function logout (Request $request) {
         $token = $request->user()->token();
         $token->revoke();
-        // $response = ['message' => 'You have been successfully logged out!'];
         return response( ['message' => 'You have been successfully logged out!', 'status'=>true], 200);
     }
 
