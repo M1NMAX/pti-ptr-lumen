@@ -3,6 +3,9 @@ import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
 //import {connect} from 'react-redux';
 import DefaultRoomPic from "../../img/basicRoom.png"
 import NavBarHome from '../../Components/NavBarHome'
+import './index.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
@@ -15,6 +18,15 @@ function ProfileAlojamento () {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
+
+  const interesse = () => {
+    /**return (<div className="date-range">
+        <p>O senhorio foi informado do seu interesse e irá contactá-lo em breve</p>
+    </div>);*/
+
+    alert("O senhorio foi informado do seu interesse e irá contactá-lo em breve");
+  };
+
     /**constructor(props){
         super(props);
         this.state={
@@ -78,16 +90,17 @@ function ProfileAlojamento () {
             var profilePic="http://localhost:5000/"+imagestr;
         }else{*/ }
             var profilePic=DefaultRoomPic;
-        {/*}*/ }
+        {/*}*/ } 
         var titulo = "Quarto num apartamento T2 só para rapazes";
         return (
             <div>
                 <NavBarHome/>
                 <Container>
                 <Row>
-                    <Col>
-                            <img src={profilePic} alt="profils pic" />
-                            <button class="interesse w3-center">Estou interessado!</button> <button class="interesse w3-center"> <i class="fa fa-envelope"></i></button>
+                    <Col >
+                            <img src={profilePic} alt="profils pic" className="imagem" />
+                            <Button variant="info" onClick={interesse} className="interesse" >Estou interessado!</Button>
+                            <Button variant="info" href= "/chat"><FontAwesomeIcon icon={faEnvelope} /></Button>
                             <ImageUploading
         multiple
         value={images}
@@ -114,12 +127,12 @@ function ProfileAlojamento () {
               Click or Drop here
             </button>
             &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
+            {/*<button onClick={onImageRemoveAll}>Remove all images</button>*/}
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img src={image['data_url']} alt="" width="100%" />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
+                  {/*<button onClick={() => onImageUpdate(index)}>Update</button>*/}
                   <button onClick={() => onImageRemove(index)}>Remove</button>
                 </div>
               </div>
