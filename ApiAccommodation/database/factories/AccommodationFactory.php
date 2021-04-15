@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Alojamento;
+use App\Models\Accommodation;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AlojamentoFactory extends Factory
+class AccommodationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Alojamento::class;
+    protected $model = Accommodation::class;
 
     /**
      * Define the model's default state.
@@ -25,8 +25,8 @@ class AlojamentoFactory extends Factory
         return [
 
             'name' => $this->faker->secondaryAddress,
-            'descricao' => $this->faker->realText($maxNbChars = 50, $indexSize = 2),
-            'preco' => $this->faker->randomNumber(3),
+            'description' => $this->faker->realText($maxNbChars = 50, $indexSize = 2),
+            'price' => $this->faker->randomNumber(3),
             'streetName' => $this->faker->streetName,
             'city' => $this->faker->city,
             'country' => $this->faker->country,

@@ -31,9 +31,4 @@ class CreateCaracteristicaTable extends Migration
     {
         Schema::dropIfExists('caracteristica');
     }
-
-    public function alojamentos()
-    {
-        return $this->belongsToMany(Alojamento::class);
-    }
 }

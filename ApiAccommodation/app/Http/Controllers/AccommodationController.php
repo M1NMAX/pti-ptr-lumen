@@ -3,36 +3,36 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Alojamento;
-use App\Models\Caracteristica;
-use App\Models\Aluguer;
+use App\Models\Accommodation;
+use App\Models\Feature;
+use App\Models\Rental;
 
-class AlojamentoController extends Controller
+class AccommodationController extends Controller
 {
-    private $alojamento;
+    private $accommodation;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Alojamento $alojamento)
+    public function __construct(Accommodation $accommodation)
     {
-        $this->alojamento = $alojamento; 
+        $this->accommodation = $accommodation; 
     }
 
     public function index()
     {
-        return $this->alojamento->paginate(10);
+        return $this->accommodation->paginate(10);
     }
 
     public function showId($id)
     {
-        return Alojamento::find($id); 
+        return Accommodation::find($id); 
     }
 
     public function store(Request $request)
     {
-        $this->alojamento->create($request->all());
+        $this->accommodation->create($request->all());
         return response()->json(['data' => ['message' => 'Alojamento foi criado com sucesso']]);
     }
 
@@ -50,64 +50,62 @@ class AlojamentoController extends Controller
     public function update($id, Request $request)
     {
         $data = $request->all();
-        $alojamento = $this->alojamento->find($id);
+        $accommodation = $this->accommodation->find($id);
 
         // Call fill on the gift and pass in the data
-        $alojamento->fill($data);
-        $alojamento->touch();
+        $accommodation->fill($date);
+        $accommodation->touch();
 
-        $alojamento->save();
+        $accommodation->save();
                 
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
     
     }
     
     
-    public function addCaracteristicas($id, Request $request)
+    /*public function addFeatures($id, Request $request)
     {
-        $alojamento = $this->alojamento->find($id);
-        $caracts = $request->input('caracteristicas');
-        //$cList.explode(",", $caracts);      
+        $accommodation = $this->accommodation->find($id);
+        $feat = $request->input('features');    
         for ($i = 0; $i < 1; $i++) {
-            $caracteristica = DB::table('caracteristica')->find($caracts);
-            $alojamento->caracteristicas()-attach($caracteristica);
+            $feature = DB::table('feature')->find($feat);
+            $accommodation->features()-attach($feature);
         }
         return response()->json(['data' => ['message' => 'Caracteristica(s) adicionada(s) com sucesso!']]);
     
 
     // return $alojamento = $this->alojamento->find($id);
-    }
+    }*/
     
     
-    public function addCaracteristica($id,Request $request)
+    public function addFeatures($id,Request $request)
     {
-        $alojamento = Alojamento::find($id);
-        //$caracteristicas = Caracteristica::whereIn('id', $request->input("caracteristicas"))->get();
-        $cIds = explode(',', $request->input("caracteristicas"));
-        $alojamento->caracteristicas()->attach($cIds);
+        $accommodation = Accommodation::find($id);
+        $cIds = explode(',', $request->input("features"));
+        $accommodation->features()->attach($cIds);
 
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
     
 
-    public function showCaracteristicas($id,Request $request)
+    public function showFeatures($id,Request $request)
     {
-        $alojamento = $this->alojamento->find($id);
-        return $alojamento->caracteristicas;
+        $accommodation = $this->accommodation->find($id);
+        return $accommodation->features;
     
     }
     
     public function rate($id, $value,  Request $request)
     {
         if(in_array($value, [1,2,3,4,5])){
-            $alojamento = $this->alojamento->find($id);
-            $rate = $alojamento->rating;
-            $numRates = $alojamento->nRates;
+            $accommodation = $this->accommodation->find($id);
+            $rate = $accommodation->rating;
+            $numRates = $accommodation->nRates;
             $finalRate = ($rate * $numRates + $value) / ($numRates +1);
             
-            $alojamento->rating = $finalRate;
-            $alojamento->nRates = $numRates +1;
-            $alojamento->save();
+            $accommodation->rating = $finalRate;
+            $accommodation->nRates = $numRates +1;
+            $accommodation->save();
             return response()->json(['data' => ['message' => 'Rating do alojamento foi atualizado com sucesso']]);
         }else{
             return response()->json(['data' => ['message' => 'Rating inválido.']]);
@@ -117,23 +115,23 @@ class AlojamentoController extends Controller
 
    
 
-    public function addCaract(Request $request)
+    public function addFeat(Request $request)
     {
-        $this->alojamento_caracteristica->create($request->all());
+        $this->accommodation_feature->create($request->all());
         return response()->json(['data' => ['message' => 'Caracteristica associada ao alojamento com sucesso.']]);
     }
 
-    public function destroy($alojamento)
+    public function destroy($accommodation)
     {
-        $alojamento = $this->alojamento->find($alojamento);
-        $alojamento->delete();
+        $accommodation = $this->accommodation->find($accommodation);
+        $accommodation->delete();
         return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso']]);
     }
 
     public function busyDates($id,Request $request)
     {
-        $alojamento = $this->alojamento->find($id);
-        return $alojamento->alugueres;
+        $accommodation = $this->accommodation->find($id);
+        return $accommodation->rentals;
     
     }
 }

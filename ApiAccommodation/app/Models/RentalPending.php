@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class AluguerPending extends Model implements AuthenticatableContract, AuthorizableContract
+class RentalPending extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -19,9 +19,9 @@ class AluguerPending extends Model implements AuthenticatableContract, Authoriza
      * @var array
      */
 
-    protected $table = "aluguer_pending";
+    protected $table = "rental_pending";
     protected $fillable = [
-        'senhorio_id','alojamento_id', 'user_id','preco','dataInicio', 'dataFim'
+        'landlord_id','accommodation_id', 'user_id','price','beginDate', 'endDate'
     ];   
 
 }

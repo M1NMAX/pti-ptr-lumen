@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\AC;
+use App\Models\AF;
 
-class AAController extends Controller
+class AFController extends Controller
 {
 
-    private $alojamento_caracteristica;
+    private $accommodation_feature;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(AC $alojamento_caracteristica)
+    public function __construct(AC $accommodation_feature)
     {
-        $this->alojamento_caracteristica = $alojamento_caracteristica ;
+        $this->accommodation_feature = $accommodation_feature ;
     }
 
     public function index()
     {
-        return $this->alojamento_caracteristica->paginate(10);
+        return $this->accommodation_feature->paginate(10);
     }
 
     public function showId($id)
     {
-        return AC::find($id); 
+        return AF::find($id); 
     }
 
     /*public function store(Request $request)
@@ -36,24 +36,24 @@ class AAController extends Controller
         return response()->json(['data' => ['message' => 'Associação AC foi criada com sucesso']]);
     }*/
 
-    public function update($alojamento_caracteristica, Request $request)
+    public function update($accommodation_feature, Request $request)
     {
-        $alojamento_caracteristica = $this->alojamento->find($alojamento_caracteristica);
-        $alojamento_caracteristica->update($request->all());
+        $accommodation_feature = $this->accommodation->find($accommodation_feature);
+        $accommodation_feature->update($request->all());
         return response()->json(['data' => ['message' => 'Associação AC foi atualizada com sucesso']]);
     }
 
 
     public function addCaract(Request $request)
     {
-        $this->alojamento_caracteristica->create($request->all());
+        $this->accommodation_feature->create($request->all());
         return response()->json(['data' => ['message' => 'Caracteristica associada ao alojamento com sucesso.']]);
     }
 
-    public function destroy($alojamento)
+    public function destroy($accommodation)
     {
-        $alojamento = $this->alojamento->find($alojamento);
-        $alojamento->delete();
+        $accommodation = $this->accommodation->find($accommodation);
+        $accommodation->delete();
         return response()->json(['data' => ['message' => 'Associação AC foi eliminada com sucesso']]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAluguerTable extends Migration
+class CreateFeatureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAluguerTable extends Migration
      */
     public function up()
     {
-        Schema::create('aluguer', function (Blueprint $table) {
+        Schema::create('feature', function (Blueprint $table) {
             $table->id();
-            $table->integer('alojamento_id');
-            $table->integer('user_id');
-            $table->integer('preco');
-            $table->date('dataInicio');
-            $table->date('dataFim');
+            $table->string('name');
+            //TODO
+            //VALORES
+            
         });
     }
 
@@ -30,6 +29,11 @@ class CreateAluguerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aluguer');
+        Schema::dropIfExists('feature');
+    }
+
+    public function accommodations()
+    {
+        return $this->belongsToMany(Accommodation::class);
     }
 }

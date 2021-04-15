@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCaracteristicaTable extends Migration
+class CreateAccommodationFeatureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCaracteristicaTable extends Migration
      */
     public function up()
     {
-        Schema::create('caracteristica', function (Blueprint $table) {
+        Schema::create('accommodation_feature', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            //TODO
-            //VALORES
-            
+            $table->integer('accommodation_id');
+            $table->integer('feature_id');
         });
     }
 
@@ -29,11 +27,8 @@ class CreateCaracteristicaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('caracteristica');
+        Schema::dropIfExists('accommodation_feature');
     }
 
-    public function alojamentos()
-    {
-        return $this->belongsToMany(Alojamento::class);
-    }
+    
 }

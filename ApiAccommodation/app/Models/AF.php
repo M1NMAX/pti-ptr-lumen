@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class AC extends Model implements AuthenticatableContract, AuthorizableContract
+class AF extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -19,9 +19,9 @@ class AC extends Model implements AuthenticatableContract, AuthorizableContract
      * @var array
      */
 
-    protected $table = "alojamento_caracteristica";
+    protected $table = "accommodation_feature";
     protected $fillable = [
-        'idAlojamento', 'idCaracteristica', 
+        'idAccommodation', 'idFeature', 
     ];
 
     public $timestamps = false;

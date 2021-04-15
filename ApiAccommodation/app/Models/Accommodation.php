@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Caracteristica extends Model implements AuthenticatableContract, AuthorizableContract
+class Accommodation extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -19,14 +19,22 @@ class Caracteristica extends Model implements AuthenticatableContract, Authoriza
      * @var array
      */
 
-    protected $table = "caracteristica";
+    protected $table = "accommodation";
     protected $fillable = [
-        'name',
+        'name', 'description', 'price', 'streetName','city','country','latitude','longitude'
     ];
 
-    public $timestamps = false;
 
-    public function alojamentos(){
-        return $this->belongsToMany(Alojamento::class);
+    protected $attributes = [
+        'rating' => 0.0,
+        'nRates' => 0,
+     ];
+
+     public function features(){
+         return $this->belongsToMany(Feature::class);
+     }
+
+     public function rentals(){
+        return $this->hasMany(Rental::class);
     }
 }

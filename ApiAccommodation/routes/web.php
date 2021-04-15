@@ -14,110 +14,110 @@
 */
 
 $router->get('/', function () use ($router) {
-    return 'Primeira API REST com o Lumen...' . $router->app->version();
+    return 'First API REST with Lumen...' . $router->app->version();
 });
 
 
 
  
 
-$router->group(['prefix' => 'alojamento'], function () use ($router) {
+$router->group(['prefix' => 'accommodation'], function () use ($router) {
     //-------------GETS----------------
 
     //BUSCAR TODOS OS ALOJAMENTOS
-    $router->get('/', 'AlojamentoController@index');
+    $router->get('/', 'AccommodationController@index');
     //MOSTRAR ALOJAMENTO COM O ID
-    $router->get('/{id}', 'AlojamentoController@showId');
+    $router->get('/{id}', 'AccommodationController@showId');
     //VER AS CARACTERISTICAS DO ALOJAMENTO
-    $router->get('/{id}/showCaracteristicas', 'AlojamentoController@showCaracteristicas');
+    $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
     //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)
-    $router->get('/busyDates/{id}', 'AlojamentoController@busyDates');
+    $router->get('/busyDates/{id}', 'AccommodationController@busyDates');
 
     //-------------POSTS----------------
 
     //ADICIONA O ALOJAMENTO
-    $router->post('/', 'AlojamentoController@store');
+    $router->post('/', 'AccommodationController@store');
 
     //-------------PUTS----------------
 
     //RATE ALOJAMENTO
-    $router->put('/{id}/rate/{value}', 'AlojamentoController@rate');
+    $router->put('/{id}/rate/{value}', 'AccommodationController@rate');
     //UPDATE ALOJAMENTO
-    $router->put('/{id}', 'AlojamentoController@update');
+    $router->put('/{id}', 'AccommodationController@update');
     //ADICIONAR CARACTERISTICA
-    $router->put('/{id}/addCaracteristica', 'AlojamentoController@addCaracteristica');
+    $router->put('/{id}/addFeatures', 'AccommodationController@addFeatures');
 
     //-------------DELETES----------------
 
     //ELIMINA O ALOJAMENTO
-    $router->delete('/{alojamento}', 'AlojamentoController@destroy');
+    $router->delete('/{accommodation}', 'AccommodationController@destroy');
     //$router->delete('/{caracteristica}', 'CaracteristicaController@deleteC');
 
 });
 
-$router->group(['prefix' => 'ac'], function () use ($router) {
+$router->group(['prefix' => 'af'], function () use ($router) {
     //AINDA NAO PRECISEI DE POR NADA AQUI
 });
 
-$router->group(['prefix' => 'caracteristica'], function () use ($router) {
+$router->group(['prefix' => 'feature'], function () use ($router) {
     //-------------GETS----------------
 
     //BUSCAR TODAS AS CARACTERISTICAS
-    $router->get('/', 'CaracteristicaController@index');
+    $router->get('/', 'FeatureController@index');
     //FILTRAR PELAS CARACTERISTICAS DADAS NO ROUTE (EX: 2,3)
-    $router->get('/filter/{ids}', 'CaracteristicaController@filter');
+    $router->get('/filter/{ids}', 'FeatureController@filter');
 
     //-------------POSTS----------------
 
     //ADICIONAR CARACTERISTICA
-    $router->post('/', 'CaracteristicaController@store');
+    $router->post('/', 'FeatureController@store');
 
     //-------------PUTS----------------
 
     //UPDATE A CARACTERISTICA
-    $router->put('/{caracteristica}', 'CaracteristicaController@update');
+    $router->put('/{feature}', 'FeatureController@update');
 
     //-------------DELETES----------------
 
     //ELIMINAR A CARACTERISTICA
-    $router->delete('/{caracteristica}', 'CaracteristicaController@destroy');
+    $router->delete('/{feature}', 'FeatureController@destroy');
 
 });
 
-$router->group(['prefix' => 'aluguer'], function () use ($router) {
+$router->group(['prefix' => 'rental'], function () use ($router) {
     //-------------GETS----------------
-    $router->get('/', 'AluguerController@index');
+    $router->get('/', 'RentalController@index');
 
     //-------------POSTS----------------
 
-    $router->post('/', 'AluguerController@store');
+    $router->post('/', 'RentalController@store');
 
     //-------------PUTS----------------
 
-    $router->put('/{aluguer}', 'AluguerController@update');
+    $router->put('/{rental}', 'RentalController@update');
     
     //-------------DELETES----------------
 
-    $router->delete('/{aluguer}', 'AluguerController@destroy');
+    $router->delete('/{rental}', 'RentalController@destroy');
 });
 
-$router->group(['prefix' => 'aluguerpending'], function () use ($router) {
+$router->group(['prefix' => 'rentalpending'], function () use ($router) {
     //-------------GETS----------------
 
-    $router->get('/', 'AluguerPendingController@index');
-    $router->get('/{idSenhorio}', 'AluguerPendingController@senhorioIdSearch');
+    $router->get('/', 'RentalPendingController@index');
+    $router->get('/{idLandlord}', 'RentalPendingController@landlordIdSearch');
     
     //-------------POSTS----------------
 
-    $router->post('/', 'AluguerPendingController@store');
-    $router->post('accept/{id}', 'AluguerPendingController@accept');
+    $router->post('/', 'RentalPendingController@store');
+    $router->post('accept/{id}', 'RentalPendingController@accept');
     
     //-------------PUTS----------------
 
-    $router->put('/{aluguer}', 'AluguerPendingController@update');
+    $router->put('/{rental}', 'RentalPendingController@update');
 
     //-------------DELETES----------------
     
-    $router->delete('/{aluguer}', 'AluguerPendingController@destroy');
+    $router->delete('/{rental}', 'RentalrPendingController@destroy');
     
 });

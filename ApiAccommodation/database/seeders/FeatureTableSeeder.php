@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\Models\AluguerPending;
+use App\Models\Feature;
 
-class AluguerPendingTableSeeder extends Seeder
+class FeatureTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class AluguerPendingTableSeeder extends Seeder
      */
     public function run()
     {
-        AluguerPending::factory(\App\AluguerPending::class)->create();
+        Feature::factory(\App\Feature::class)->create();
     }
 }

@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\Models\Caracteristica;
+use App\Models\Accommodation;
 
-class CaracteristicaTableSeeder extends Seeder
+class AccommodationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class CaracteristicaTableSeeder extends Seeder
      */
     public function run()
     {
-        Caracteristica::factory(\App\Caracteristica::class)->create();
+        Accommodation::factory(\App\Accommodation::class)->create();
     }
 }
