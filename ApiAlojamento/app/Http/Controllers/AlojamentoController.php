@@ -24,7 +24,7 @@ class AlojamentoController extends Controller
     public function index()
     {
         // return $this->alojamento->pagination(10);
-        return $this->alojamento->take(10)->get();
+        return $this->alojamento->take(9)->get();
     }
 
     public function showId($id)
