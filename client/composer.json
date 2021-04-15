@@ -1,0 +1,6 @@
+{
+    "require": {
+        "dusterio/lumen-passport": "^0.3.4",
+        "nordsoftware/lumen-cors": "^3.4"
+    }
+}

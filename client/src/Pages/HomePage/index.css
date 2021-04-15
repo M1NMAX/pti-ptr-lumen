@@ -19,3 +19,14 @@
 .buttonImgLink:hover {
   text-decoration: none;
 }
+
+.buttonImg {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}

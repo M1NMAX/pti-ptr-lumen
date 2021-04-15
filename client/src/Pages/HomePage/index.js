@@ -18,6 +18,7 @@ function Homepage() {
     useEffect(() => {
         api.get('api/accommodations').then(response => {
             setAcommodations(response.data);
+            console.log(response.data.length);
         }).catch(err => {
             alert(err)
         })
@@ -32,14 +33,14 @@ function Homepage() {
                 <h1 className="slogan">Your sweet home away from home</h1>
                 <div className="buttonImg" >
                     <a href='#down'> 
-                        <img src={scroll} className="buttonImg2"  width="10%"/> 
+                        <img src={scroll} className="buttonImg2"  width="70px"/> 
                         <a className="buttonImgLink" href='#down'>Ver mais</a>
                     </a>
                 </div>
              </Container>
             </div>
             <Search/>
-            {Accmmodations.map((accom)=> (<Accommodations accom={accom} />))}   
+            <Accommodations accom={Accmmodations} />   
         </div>
 
     )
