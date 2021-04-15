@@ -8,15 +8,14 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
-    console.log(token)
-    const [auth, setAuth] = useState(true)
-    //const [userdata, setUserdata] = useState([]);
+    const [auth, setAuth] = useState(true);
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
 
     const history = useHistory();
 
     useEffect(() => {
+        
         if(token === null || token ===''){
             setAuth(false);
         }else{
@@ -30,13 +29,8 @@ function NavBarHome() {
                 localStorage.clear();
                 history.push('/');
             }else{
-                setUsername(response.data.name);
+                setUsername(response.data.username);
                 setUserid(response.data.id)
-                
-                console.log(auth)
-            // console.log(username);
-            // console.log(response.data);
-            // setUserdata(response.data);
           }
         }).catch(err => {
           alert(err)

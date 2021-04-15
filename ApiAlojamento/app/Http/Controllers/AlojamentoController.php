@@ -17,17 +17,18 @@ class AlojamentoController extends Controller
      */
     public function __construct(Alojamento $alojamento)
     {
-        $this->alojamento = $alojamento; 
+        $this->alojamento = $alojamento;
     }
 
     public function index()
     {
-        return $this->alojamento->paginate(10);
+        // return $this->alojamento->pagination(10);
+        return $this->alojamento->take(5)->get();
     }
 
     public function showId($id)
     {
-        return Alojamento::find($id); 
+        return Alojamento::find($id);
     }
 
     public function store(Request $request)
@@ -43,9 +44,9 @@ class AlojamentoController extends Controller
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
     }*/
 
- 
-    
-    
+
+
+
 
     public function update($id, Request $request)
     {
@@ -57,28 +58,28 @@ class AlojamentoController extends Controller
         $alojamento->touch();
 
         $alojamento->save();
-                
+
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
-    
+
     }
-    
-    
+
+
     public function addCaracteristicas($id, Request $request)
     {
         $alojamento = $this->alojamento->find($id);
         $caracts = $request->input('caracteristicas');
-        //$cList.explode(",", $caracts);      
+        //$cList.explode(",", $caracts);
         for ($i = 0; $i < 1; $i++) {
             $caracteristica = DB::table('caracteristica')->find($caracts);
             $alojamento->caracteristicas()-attach($caracteristica);
         }
         return response()->json(['data' => ['message' => 'Caracteristica(s) adicionada(s) com sucesso!']]);
-    
+
 
     // return $alojamento = $this->alojamento->find($id);
     }
-    
-    
+
+
     public function addCaracteristica($id,Request $request)
     {
         $alojamento = Alojamento::find($id);
@@ -88,15 +89,15 @@ class AlojamentoController extends Controller
 
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
-    
+
 
     public function showCaracteristicas($id,Request $request)
     {
         $alojamento = $this->alojamento->find($id);
         return $alojamento->caracteristicas;
-    
+
     }
-    
+
     public function rate($id, $value,  Request $request)
     {
         if(in_array($value, [1,2,3,4,5])){
@@ -104,7 +105,7 @@ class AlojamentoController extends Controller
             $rate = $alojamento->rating;
             $numRates = $alojamento->nRates;
             $finalRate = ($rate * $numRates + $value) / ($numRates +1);
-            
+
             $alojamento->rating = $finalRate;
             $alojamento->nRates = $numRates +1;
             $alojamento->save();
@@ -112,10 +113,10 @@ class AlojamentoController extends Controller
         }else{
             return response()->json(['data' => ['message' => 'Rating inválido.']]);
         }
-        
+
     }
 
-   
+
 
     public function addCaract(Request $request)
     {
@@ -134,6 +135,6 @@ class AlojamentoController extends Controller
     {
         $alojamento = $this->alojamento->find($id);
         return $alojamento->alugueres;
-    
+
     }
 }

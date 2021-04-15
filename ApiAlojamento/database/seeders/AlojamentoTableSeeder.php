@@ -15,6 +15,6 @@ class AlojamentoTableSeeder extends Seeder
      */
     public function run()
     {
-        Alojamento::factory(\App\Alojamento::class)->create();
+        Alojamento::factory(\App\Alojamento::class)->count(10)->create();
     }
 }

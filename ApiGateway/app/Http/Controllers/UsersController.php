@@ -31,6 +31,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6',
+            'birthdate' => 'nullable|date'
         ]);
 
         if($validator->fails()){
