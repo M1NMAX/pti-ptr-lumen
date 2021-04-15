@@ -11,6 +11,9 @@ import {Container, Card, Form, Button} from 'react-bootstrap'
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [errors, setErrors] = useState([]);
+
     const history = useHistory();
 
     async function handleLogin(e) {
@@ -21,12 +24,17 @@ function Login() {
         localStorage.setItem('token', response.data.token);
         history.push('/');
         } catch (err) {
-        alert('Falha no login, tente novamente.');
+            setErrors(err.response.data.errors);
         }
     }
     return (
         <div>
             <NavBarHome/>
+
+            {/* @someone please handle the way errors are diplay  */}
+            {errors.map((error)=>(<span>{error}</span>))}
+            {/* @someone please handle the way errors are diplay  */}
+
             <Form className="login page"  onSubmit={handleLogin}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

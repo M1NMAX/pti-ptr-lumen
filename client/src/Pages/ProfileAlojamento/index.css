@@ -1,0 +1,18 @@
+.interesse{
+    text-align: center;
+    margin: 4%;
+    align-items: center;
+}
+
+.date-range{
+    width:50%;
+  height:50%;
+  position:fixed;
+  top:25%;
+  left:25%;
+  z-index:100;
+  background-color:#becbd2;
+  text-align:center;
+}
+
+

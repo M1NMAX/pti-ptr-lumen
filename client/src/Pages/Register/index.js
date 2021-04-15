@@ -9,34 +9,36 @@ function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [birtdate, setBirthdate] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPasswordConf] = useState('');
     const [type, setType] = useState('');
-    const [uni, setUni] = useState('');
+
+    const [errors, setErrors] = useState([]);
+
     const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
 
         try {
-        const response = await api.post('api/register', {name, email, username, password, password_confirmation}).then(async (res) =>{
-            console.log(res.data);
-            if(res.data.status){
+        await api.post('api/register', {name, email, username, birtdate, password, password_confirmation}).then(async (response) =>{
+            if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
                 history.push('/');
             }
         });
         } catch (err) {
-            // console.log(password);
-            // console.log(password_confirmation);
-            // console.log(err.response.data);
-        alert('Falha no Registo, tente novamente.');
+            setErrors(err.response.data.errors);
         }
     }
     return (
         <div>
             <NavBarHome/>
+            {/* @someone please handle the way errors are diplay  */}
+            {errors.map((error)=>(<span>{error}</span>))}
+            {/* @someone please handle the way errors are diplay  */}
             <Form className="login page" onSubmit={handleRegister}>
                 <Form.Group controlId="formBasicName" >
                     <Form.Label>Nome Completo</Form.Label>
@@ -56,6 +58,11 @@ function Register() {
                     <Form.Control width="sm" name="username" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
                 </Form.Group>
 
+                <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
+                    <Form.Label>Data de nascimento</Form.Label>
+                    <Form.Control width="sm" name="birthdate" type="date" value={birtdate} onChange={e => setBirthdate(e.target.value)}/>
+                </Form.Group>
+
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
@@ -64,17 +71,17 @@ function Register() {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicType">
-                    <Form.Label>Selecione uma</Form.Label>
+                    <Form.Label>Tenho como objetivo</Form.Label>
                     <Form.Control as="select" type="type" value={type} onChange={e => setType(e.target.value)}>
-                    <option>Estou interessado em alugar um alojamento</option>
-                    <option>Tenho alojamentos para alugar</option>
+                    <option value="logder" >alugar um alojamento</option>
+                    <option value="landlord" >colocar alojamentos para alugar</option>
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicUni" onSubmit={handleRegister}>
+                {/* <Form.Group controlId="formBasicUni" onSubmit={handleRegister}>
                     <Form.Label>Instituição</Form.Label>
                     <Form.Control width="sm" type="textarea" value={uni} onChange={e => setUni(e.target.value)}/>
-                </Form.Group>
+                </Form.Group> */}
 
                 <Button variant="primary" type="submit">
                     Submeter

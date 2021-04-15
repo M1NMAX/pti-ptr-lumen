@@ -8,14 +8,17 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
-    console.log(token)
-    const [auth, setAuth] = useState(true)
-    //const [userdata, setUserdata] = useState([]);
+    const [auth, setAuth] = useState(true);
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
 
     const history = useHistory();
+
     useEffect(() => {
+        
+        if(token === null || token ===''){
+            setAuth(false);
+        }else{
           api.get('api/me', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -26,27 +29,29 @@ function NavBarHome() {
                 localStorage.clear();
                 history.push('/');
             }else{
-                if(token === null || token ===''){
-                    setAuth(false);
-                }
-                else{
-                    setUsername(response.data.name);
-                    setUserid(response.data.id)
-                }
-                console.log(auth)
-            // console.log(username);
-            // console.log(response.data);
-            // setUserdata(response.data);
+                setUsername(response.data.username);
+                setUserid(response.data.id)
           }
         }).catch(err => {
           alert(err)
         })
-      }, [token]);
-
-      function handleLogout() {
-        localStorage.clear();
-        history.push('/');
-        window.location.reload();
+      }}, [token]);
+    
+      async function handleLogout(){
+        api.get('/api/logout', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }).then(response => {
+          if(response.data.status){
+            localStorage.clear();
+            history.push('/');
+            setAuth(false);
+            window.location.reload();
+          }
+        }).catch(err => {
+          alert(err)
+        })
       }
 
     return (
@@ -100,13 +105,16 @@ function NavBarHome() {
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
                                 {/* show auth user data  */}
-                                {/* {auth?<UserGreeting name={username} id={userid}/>:<GuestGreeting/> } */}
-
-                                <Nav.Link href="/login">Login</Nav.Link>
-                                <Nav.Link href="/register">Registo</Nav.Link>
-                                <Nav.Link href="/chat"> Chat</Nav.Link>
-                                <Nav.Link href="/profileUser"> Perfil</Nav.Link>
-                                <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link>
+                                {auth?<>
+                                        <Nav.Link href="/chat"> Chat</Nav.Link>
+                                        <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
+                                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                                    </>: <>
+                                            <Nav.Link href="/login">Login</Nav.Link>
+                                            <Nav.Link href="/register">Registo</Nav.Link>
+                                        </> }
+                                    {/* @carol when do you want Alojamento to been seen  */}
+                                {/* <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link> */}
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AccommodationController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('/me', function () {
         return auth()->user();
     });
+
+    $router->get('/accommodations', 'AccommodationController@index');
 
 
     $router->post('/login', 'UsersController@login');

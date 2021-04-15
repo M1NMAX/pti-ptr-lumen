@@ -1,54 +1,28 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import {Container, Card,Row,Col} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
 import capa from '../../img/capa.png'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
+import Accommodations from '../../Components/Accommodation'
 import './index.css'
-import alojamento from '../../img/basicRoom.png'
-import { AnimationWrapper } from 'react-hover-animation'
+import api from '../../services/api';
 
 function Homepage() {
- const n = 4; // Or something else
-    const content = [...Array(n)].map((e, i) => 
-    <Row>
-        <Col>
-            <Card className="mb-4 mt-4 ml-4 mr-4 center">
-                <AnimationWrapper>
-                    <a href="/profileAlojamento">
-                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
-                    </a>
-                </AnimationWrapper>
-                <Card.Title className="center">alojamento</Card.Title>
-            </Card> 
-        </Col>
-        <Col>
-           <Card className="mb-4 mt-4 ml-4 mr-4 center">
-                <AnimationWrapper>
-                    <a href="/profileAlojamento">
-                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
-                    </a>
-                </AnimationWrapper>
-               <Card.Title className="center">alojamento</Card.Title>
-            </Card> 
-        </Col>
-        <Col>
-           <Card className="mb-4 mt-4 ml-4 mr-4 center">
-                <AnimationWrapper>
-                    <a href="/profileAlojamento">
-                        <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
-                    </a>
-                </AnimationWrapper>
-               <Card.Title className="center">alojamento</Card.Title>
-            </Card> 
-        </Col>
+    const [Accmmodations, setAcommodations] = useState([]);
 
 
-    </Row>
-    
-    
-    )
+    useEffect(() => {
+        api.get('api/accommodations').then(response => {
+            setAcommodations(response.data);
+            console.log(response.data.length);
+        }).catch(err => {
+            alert(err)
+        })
+    }, []);
     return (
         <div className="App img">
             <div className="App img" style={{
@@ -59,14 +33,14 @@ function Homepage() {
                 <h1 className="slogan">Your sweet home away from home</h1>
                 <div className="buttonImg" >
                     <a href='#down'> 
-                        <img src={scroll} className="buttonImg2"  width="10%"/> 
+                        <img src={scroll} className="buttonImg2"  width="70px"/> 
                         <a className="buttonImgLink" href='#down'>Ver mais</a>
                     </a>
                 </div>
              </Container>
             </div>
             <Search/>
-            {content}
+            <Accommodations accom={Accmmodations} />   
         </div>
 
     )
