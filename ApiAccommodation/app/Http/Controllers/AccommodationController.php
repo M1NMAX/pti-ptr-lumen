@@ -62,27 +62,7 @@ class AccommodationController extends Controller
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
 
     }
-<<<<<<< HEAD
 
-
-    /*public function addFeatures($id, Request $request)
-    {
-        $accommodation = $this->accommodation->find($id);
-        $feat = $request->input('features');
-        for ($i = 0; $i < 1; $i++) {
-            $feature = DB::table('feature')->find($feat);
-            $accommodation->features()-attach($feature);
-        }
-        return response()->json(['data' => ['message' => 'Caracteristica(s) adicionada(s) com sucesso!']]);
-
-
-    // return $alojamento = $this->alojamento->find($id);
-    }*/
-
-
-=======
-    
->>>>>>> 029f3dbf74fc576365f44ae7e8c6bf3cedeee939
     public function addFeatures($id,Request $request)
     {
         $accommodation = Accommodation::find($id);
