@@ -26,7 +26,7 @@ function Register() {
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
-                history.push('/');
+                history.push('/dashboard');
             }
         });
         } catch (err) {

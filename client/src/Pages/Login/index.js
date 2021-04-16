@@ -22,7 +22,7 @@ function Login() {
         try {
         const response = await api.post('api/login', { email, password });
         localStorage.setItem('token', response.data.token);
-        history.push('/');
+        history.push('/dashboard');
         } catch (err) {
             setErrors(err.response.data.errors);
         }
@@ -32,7 +32,7 @@ function Login() {
             <NavBarHome/>
 
             {/* @someone please handle the way errors are diplay  */}
-            {errors.map((error)=>(<span>{error}</span>))}
+            {/* {errors.map((error)=>(<span>{error}</span>))} */}
             {/* @someone please handle the way errors are diplay  */}
 
             <Form className="login page"  onSubmit={handleLogin}>

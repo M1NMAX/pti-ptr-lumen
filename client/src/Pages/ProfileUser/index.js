@@ -12,9 +12,10 @@ import api from '../../services/api';
 function ProfileUser(){
     let { id } = useParams();
     const [token] = useState(localStorage.getItem('token'));
-    const [username, setUsername] = useState();
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
+    // const [username, setUsername] = useState();
+    // const [name, setName] = useState();
+    // const [email, setEmail] = useState();
+    const [user, setUser] = useState([]);
    
 
 
@@ -30,10 +31,11 @@ function ProfileUser(){
             localStorage.clear();
             history.push('/login');
           }else{
-            setUsername(response.data.username);
-            setName(response.data.name);
-            setEmail(response.data.email);
-            //console.log(response.data);
+            // setUsername(response.data.username);
+            // setName(response.data.name);
+            // setEmail(response.data.email);
+            // console.log(response.data);
+            setUser(response.data);
             
           }
         }).catch(err => {
@@ -45,34 +47,35 @@ function ProfileUser(){
             <div>
                 <NavBarHome/>
                 <Container>
+                <h1 className='text-center'>Meu dados</h1>
                 <Row>
                     <Col>
                             <img src={DefaultUserPic} alt="profils pic" />
                     </Col>
                     <Col>
-                        <h1>Meu dados</h1>
+                        
                         <Form className="form">     
-                        {   /* <p>{this.state.msg}</p> */}
+                        { /* <p>{this.state.msg}</p> */}
                             <Form.Group controlId="formCategory1">
                                 <Form.Label>Username:</Form.Label>
-                                <Form.Control type="text" value={username}/>
+                                <Form.Control type="text" value={user.username}/>
                             </Form.Group>
                             <Form.Group controlId="formCategory2">
                                 <Form.Label>Nome Completo:</Form.Label>
-                                <Form.Control type="email" value={name} />
+                                <Form.Control type="email" value={user.name} />
                             </Form.Group>
                             <Form.Group controlId="formCategory3">
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control type="text" value={email}/>
+                                <Form.Control type="text" value={user.email}/>
                             </Form.Group>
                             <Form.Group controlId="formCategory5">
                                 <Form.Label>Data de Nascimento:</Form.Label>
-                                <Form.Control type="text" defaultValue="21/01/2000" />
+                                <Form.Control type="text" defaultValue="N/A" value={user.birthdate}/>
                             </Form.Group>
-                            <Form.Group controlId="formCategory6">
+                            {/* <Form.Group controlId="formCategory6">
                                 <Form.Label>Nº de contribuinte:</Form.Label>
                                 <Form.Control type="text" defaultValue="123457789"/>
-                            </Form.Group>
+                            </Form.Group> */}
                             <Form.Group controlId="formCategory7">
                                 <Form.Label>Características Pessoais:</Form.Label>
                                 <Form.Control type="text" defaultValue="Organizado, vou para a cama cedo, gosto de limpar casas de banho" />
@@ -85,7 +88,7 @@ function ProfileUser(){
                                 <Form.Label>Estou interessado em:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"alugarAlojamento" === "alugarAlojamento"}
+                                    checked={"alugaAlojamento" === "alugarAlojamento"}
                                     type="radio"
                                     label="Alugar um alojamento"
                                     name="alugarAlojamento"
@@ -100,14 +103,15 @@ function ProfileUser(){
                                     />
                                 </Col>
                             </Form.Group>
-                            <Form.Group controlId="formCategory10">
+                            {/* <Form.Group controlId="formCategory10">
                                 <Form.Label>Instituição:</Form.Label>
                                 <Form.Control type="text" defaultValue="UL-FCUL"/>
-                            </Form.Group>
-                        <Form.Group controlId="formCategory4">
+                            </Form.Group> */}
+                            {/* Change profile picture  */}
+                        {/* <Form.Group controlId="formCategory4">
                                 <Form.Control type="file" name="profileImage"/>
-                            </Form.Group>
-                <Button variant="primary" >Update Profile</Button>
+                            </Form.Group> */}
+                <Button variant="primary" >Salva as alterações</Button>
                         </Form>
                     </Col>
 
