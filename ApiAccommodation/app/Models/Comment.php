@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Chat extends Model implements AuthenticatableContract, AuthorizableContract
+class Comment extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -18,14 +18,15 @@ class Chat extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $table = "chat";
-     protected $fillable = [
-        'user_id1', 'user_id2',
+
+    protected $table = "feature";
+    protected $fillable = [
+        'name',
     ];
 
     public $timestamps = false;
 
-    public function messages(){
-        return $this->hasMany(Message::class);
+    public function accommodations(){
+        return $this->belongsToMany(Accommodation::class);
     }
 }

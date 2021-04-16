@@ -17,17 +17,18 @@ class AccommodationController extends Controller
      */
     public function __construct(Accommodation $accommodation)
     {
-        $this->accommodation = $accommodation; 
+        $this->accommodation = $accommodation;
     }
 
     public function index()
     {
-        return $this->accommodation->paginate(10);
+        // return $this->accommodation->paginate(10);
+        return $this->accommodation->take(9)->get();
     }
 
     public function showId($id)
     {
-        return Accommodation::find($id); 
+        return Accommodation::find($id);
     }
 
     public function store(Request $request)
@@ -43,9 +44,9 @@ class AccommodationController extends Controller
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
     }*/
 
- 
-    
-    
+
+
+
 
     public function update($id, Request $request)
     {
@@ -57,27 +58,11 @@ class AccommodationController extends Controller
         $accommodation->touch();
 
         $accommodation->save();
-                
-        return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
-    
-    }
-    
-    
-    /*public function addFeatures($id, Request $request)
-    {
-        $accommodation = $this->accommodation->find($id);
-        $feat = $request->input('features');    
-        for ($i = 0; $i < 1; $i++) {
-            $feature = DB::table('feature')->find($feat);
-            $accommodation->features()-attach($feature);
-        }
-        return response()->json(['data' => ['message' => 'Caracteristica(s) adicionada(s) com sucesso!']]);
-    
 
-    // return $alojamento = $this->alojamento->find($id);
-    }*/
-    
-    
+        return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
+
+    }
+
     public function addFeatures($id,Request $request)
     {
         $accommodation = Accommodation::find($id);
@@ -86,15 +71,15 @@ class AccommodationController extends Controller
 
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
-    
+
 
     public function showFeatures($id,Request $request)
     {
         $accommodation = $this->accommodation->find($id);
         return $accommodation->features;
-    
+
     }
-    
+
     public function rate($id, $value,  Request $request)
     {
         if(in_array($value, [1,2,3,4,5])){
@@ -102,7 +87,7 @@ class AccommodationController extends Controller
             $rate = $accommodation->rating;
             $numRates = $accommodation->nRates;
             $finalRate = ($rate * $numRates + $value) / ($numRates +1);
-            
+
             $accommodation->rating = $finalRate;
             $accommodation->nRates = $numRates +1;
             $accommodation->save();
@@ -110,10 +95,10 @@ class AccommodationController extends Controller
         }else{
             return response()->json(['data' => ['message' => 'Rating inválido.']]);
         }
-        
+
     }
 
-   
+
 
     public function addFeat(Request $request)
     {
@@ -132,6 +117,6 @@ class AccommodationController extends Controller
     {
         $accommodation = $this->accommodation->find($id);
         return $accommodation->rentals;
-    
+
     }
 }

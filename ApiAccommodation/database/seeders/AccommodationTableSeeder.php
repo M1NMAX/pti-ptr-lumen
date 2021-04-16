@@ -15,6 +15,6 @@ class AccommodationTableSeeder extends Seeder
      */
     public function run()
     {
-        Accommodation::factory(\App\Accommodation::class)->create();
+        Accommodation::factory(\App\Accommodation::class)->count(10)->create();
     }
 }
