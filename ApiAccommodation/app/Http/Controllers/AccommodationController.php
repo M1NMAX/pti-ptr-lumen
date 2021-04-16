@@ -62,6 +62,7 @@ class AccommodationController extends Controller
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
 
     }
+<<<<<<< HEAD
 
 
     /*public function addFeatures($id, Request $request)
@@ -79,6 +80,9 @@ class AccommodationController extends Controller
     }*/
 
 
+=======
+    
+>>>>>>> 029f3dbf74fc576365f44ae7e8c6bf3cedeee939
     public function addFeatures($id,Request $request)
     {
         $accommodation = Accommodation::find($id);

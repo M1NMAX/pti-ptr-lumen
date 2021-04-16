@@ -25,8 +25,7 @@ class Message extends Model implements AuthenticatableContract, AuthorizableCont
         'chat_id','user_id', 'content'
     ];
 
-    public function chat()
-    {
+    public function chat(){
         return $this->belongsTo(Chat::class);
     }
 }

@@ -28,20 +28,36 @@ class MessageController extends Controller
     }
 
 
-    //NO JSON TEMOS QUE POR O RECETOR DA MENSAGEM E O EMISSOR, N SE METE O CHAT
+    //NO JSON TEMOS QUE POR O RECETOR DA MENSAGEM E O EMISSOR, MAIS O CHATID E O CONTENT
     public function addMessage(Request $request){
         $from = $request->input('from');
         $to  = $request->input('to');
-        //$chat_id =(new ChatController)->chatExsists($from,$to);
-        $chat_id = 0;
+        $chat_id = $request->input('chatId');;
+        
+        
+
+        $m = new Message; 
+        $m->chat_id = $chat_id;
+        $m->user_id = $from;
+        $m->content =  $request->input('content');
+        $m->created_at = date('Y-m-d H:i:s');
+        $m->save();
+        $c = Chat::find($chat_id);
+        //$c-messages()->attach($m);
+        return $chat_id;
+        
+       
+    }
+
+    public function chatExists($from, $to){
         $query = DB::table('chat')
-                    ->where('landlord_id', $from) 
-                    ->where('guest_id', $to)
+                    ->where('user_id1', $from) 
+                    ->where('user_id2', $to)
                     ->get();
         if(count($query) == 0){
             $query2 = DB::table('chat')
-                        ->where('landlord_id', $to) 
-                        ->where('guest_id', $from)
+                        ->where('user_id1', $to) 
+                        ->where('user_id2', $from)
                         ->get();
             if(count($query2) == 0){
                 $chat_id = 0;
@@ -54,16 +70,13 @@ class MessageController extends Controller
         
         
         if($chat_id == 0){
-
-
-
-
+            $chat = new Chat;
+            $chat->user_id1 = $to;
+            $chat->user_id2 = $from;
+            $chat->save();
+            $chat_id = $chat->id;
         }
-        
-        return $chat_id;
-        
-       
-    }
 
-    
+        return $chat_id;
+    }
 }

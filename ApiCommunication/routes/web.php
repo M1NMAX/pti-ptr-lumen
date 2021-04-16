@@ -23,7 +23,7 @@ $router->group(['prefix' => 'message'], function () use($router){
     $router->get('/{id}', 'MessageController@show');
 
 
-    $router->post('/','MessageController@addMessage');
+    $router->post('/addMessage','MessageController@addMessage');
 
 });
 
