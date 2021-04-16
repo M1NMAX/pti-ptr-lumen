@@ -5,6 +5,8 @@ import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
+import RangeSlider from 'react-bootstrap-range-slider';
+
 function RegisterAlojamento() {
     const [title, setTitle] = useState('');
     const [adress, setAdress] = useState('');
@@ -16,12 +18,17 @@ function RegisterAlojamento() {
     const [solar, setSolar] = useState('');
     const [wifi, setWifi] = useState('');
     const [cleaning, setClean] = useState('');
-    const [ageMin, setAgeMin] = useState('');
-    const [ageMax, setAgeMax] = useState('');
+    //const [ageMin, setAgeMin] = useState('');
+    //const [ageMax, setAgeMax] = useState('');
     const [gender, setGender] = useState('');
     const [smoker, setSmoker] = useState('');
     const [pet, setPet] = useState('');
     const history = useHistory();
+
+    const [ ageMin, setAgeMin ] = useState(18);
+    const [ ageMax, setAgeMax ] = useState(27);
+
+    
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
@@ -37,6 +44,7 @@ function RegisterAlojamento() {
         } catch (err) {
         alert('Falha no Registo, tente novamente.');
         }
+        
     }
     return (
         <div>
@@ -44,22 +52,22 @@ function RegisterAlojamento() {
             <Form className="login page">
                 <Form.Group controlId="formBasicTitle" onSubmit={handleRegisterAlojamento}>
                     <Form.Label>Título</Form.Label>
-                    <Form.Control width="sm" type="textarea" placeholder="Casa dos Mares " value={title} onChange={e => setTitle(e.target.value)}/>
+                    <Form.Control required width="sm" type="textarea" placeholder="Casa dos Mares " value={title} onChange={e => setTitle(e.target.value)}/>
                 </Form.Group>
                 
                 <Form.Group controlId="formBasicAdress" onSubmit={handleRegisterAlojamento}>
                     <Form.Label>Morada</Form.Label>
-                    <Form.Control width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
+                    <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPrice" onSubmit={handleRegisterAlojamento}>
-                    <Form.Label>Preço P/Noite</Form.Label>
-                    <Form.Control width="sm" type="textarea" value={price} onChange={e => setPrice(e.target.value)}/>
+                    <Form.Label>Preço P/Mês</Form.Label>
+                    <Form.Control required width="sm" type="textarea" value={price} onChange={e => setPrice(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicOccupation">
                     <Form.Label>Estado de ocupação:</Form.Label>
-                    <Form.Control as="select" type="occupationState" value={occupationState} onChange={e => setOccupation(e.target.value)}>
+                    <Form.Control required as="select" type="occupationState" value={occupationState} onChange={e => setOccupation(e.target.value)}>
                     <option>Ocupado</option>
                     <option>Desocupado</option>
                     <option>Reservado</option>
@@ -113,18 +121,42 @@ function RegisterAlojamento() {
 
                 <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
 
-                <Form.Group controlId="formBasicAge">
+                <Form.Group controlId="formBasicAge" >
                     <Form.Label>Faixa Etária:</Form.Label>
-                    <Form.Control width="sm" type="number" min="17" max="26" value={ageMin} onChange={e => setAgeMin(e.target.value)}/>
+                        <Row> 
+                        Dos
+                        <Col>
+                            
+                            <RangeSlider
+                                value={ageMin}
+                                onChange={e => setAgeMin(e.target.value)}
+                                min={17}
+                                max={64}
+                                variant='info'
+                            />
+                            </Col>
+                            aos
+                            <Col>
+                            <RangeSlider
+                                value={ageMax}
+                                onChange={e => setAgeMax(e.target.value)}
+                                min={18}
+                                max={65}
+                                variant='info'
+                            />
+                        </Col>
+                        anos
+                        </Row>
+                    {/*<Form.Control width="sm" type="number" min="17" max="26" value={ageMin} onChange={e => setAgeMin(e.target.value)}/>
                     <Form.Text className="text-muted">
                     aos
                     </Form.Text>
-                    <Form.Control width="sm" type="number" min="18" max="27" value={ageMax} onChange={e => setAgeMax(e.target.value)}/>
+    <Form.Control width="sm" type="number" min="18" max="27" value={ageMax} onChange={e => setAgeMax(e.target.value)}/> */}
                 </Form.Group>
                 
                 <Form.Group controlId="formBasicGender">
                     <Form.Label>Género:</Form.Label>
-                    <Form.Control as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                    <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
                     <option>Masculino</option>
                     <option>Feminino</option>
                     <option>Misto</option>
