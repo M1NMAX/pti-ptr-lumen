@@ -37,16 +37,16 @@ function Login() {
 
             <Form className="login page"  onSubmit={handleLogin}>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <Form.Label className="label">Email address</Form.Label>
+                    <Form.Control required width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
                     <Form.Text className="text-muted">
                     O seu e-mail não será partilhado com nenhuma entidade interna ou externa
                     </Form.Text>
                 </Form.Group>
     
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <Form.Label className="label">Password</Form.Label>
+                    <Form.Control required type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Entrar
