@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 
-class ChatController extends Controller
+class ChatController extends Controller 
 {
     private $chat;
 
@@ -25,8 +25,8 @@ class ChatController extends Controller
     }
 
     public function showMsn($id){
-        $this->chat->find($id);
-        return $this->chat->mensagens;
+        $chat = Chat::find($id);
+        return $chat->messages;
 
     }
 
@@ -39,12 +39,12 @@ class ChatController extends Controller
 
 
     public function chatExists($id1, $id2){
-        $res = Chat::where('landlord_id', $id1) 
-                    ->where('guest_id', $id2)
+        $res = Chat::where('user_id1', $id1) 
+                    ->where('user_id2', $id2)
                     ->get();
         if(count($res) == 0){
-            $res2 = Chat::where('landlord_id', $id2) 
-                    ->where('guest_id', $id1)
+            $res2 = Chat::where('user_id1', $id2) 
+                    ->where('user_id2', $id1)
                     ->get();
             if(count($res2) == 0){
                 return 0;

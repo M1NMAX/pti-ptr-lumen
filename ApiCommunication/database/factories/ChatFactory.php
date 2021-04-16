@@ -24,8 +24,8 @@ class ChatFactory extends Factory
     public function definition()
     {
         return [      
-            'landlord_id' => $this->faker->randomDigit,
-            'guest_id' => $this->faker->randomDigit,
+            'user_id1' => $this->faker->randomDigit,
+            'user_id2' => $this->faker->randomDigit,
         ];
     }
 }
