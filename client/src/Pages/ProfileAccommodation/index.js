@@ -5,7 +5,7 @@ import DefaultRoomPic from "../../img/basicRoom.png"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faStar } from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
@@ -97,52 +97,15 @@ function ProfileAlojamento () {
                 <NavBarHome/>
                 <Container>
                 <Row>
+                    <h2> {titulo} </h2>
                     <Col >
-                            <img src={profilePic} alt="profils pic" className="imagem" />
-                            <Button variant="info" onClick={interesse} className="interesse" >Estou interessado!</Button>
-                            <Button variant="info" href= "/chat"><FontAwesomeIcon icon={faEnvelope} /></Button>
-                            <ImageUploading
-        multiple
-        value={images}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          // write your building UI
-          <div className="upload__image-wrapper">
-            <button
-              style={isDragging ? { color: 'red' } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Click or Drop here
-            </button>
-            &nbsp;
-            {/*<button onClick={onImageRemoveAll}>Remove all images</button>*/}
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image['data_url']} alt="" width="100%" />
-                <div className="image-item__btn-wrapper">
-                  {/*<button onClick={() => onImageUpdate(index)}>Update</button>*/}
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </ImageUploading>
+                        <img src={profilePic} alt="profils pic" className="imagem" />
+                        <Button variant="info" onClick={interesse} className="interesse" >Estou interessado!</Button>
+                        <Button variant="info" href= "/chat" className="interesse"><FontAwesomeIcon icon={faEnvelope} /></Button>
+                        <Button variant="info" className="interesse" ><FontAwesomeIcon icon={faStar} />Adicionar aos favoritos</Button>
+                            
                     </Col>
                     <Col>
-                        <h2> {titulo} </h2>
                         <Form className="form">     
                             <Form.Group controlId="formCategory1">
                                 <Form.Label>Morada:</Form.Label>

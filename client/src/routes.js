@@ -6,8 +6,9 @@ import Header from './Components/Header'
 import Chat from "./Pages/Chat";
 import Homepage from './Pages/HomePage/'
 import ProfileUser from './Pages/ProfileUser'
-import ProfileAlojamento from './Pages/ProfileAlojamento'
-import RegisterAlojamento from './Pages/RegisterAlojamento'
+import ProfileAccom from './Pages/ProfileAccommodation'
+import ProfileAccomEdi from './Pages/ProfileAccommodationEditable'
+import RegisterAlojamento from './Pages/RegisterAccommodation'
 
 import capa from './img/capa.png'
 import './App.css'
@@ -20,7 +21,8 @@ function Routes() {
             <Route path="/register" exact component={Register} />
             <Route path="/chat" exact component={Chat} />
             <Route path="/profileUser/:id" exact component={ProfileUser} />
-            <Route path="/profileAlojamento/:id" exact component={ProfileAlojamento} />
+            <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />
+            <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />
             <Route path="/registerAlojamento" exact component={RegisterAlojamento} />
           </Switch>
         </BrowserRouter>
