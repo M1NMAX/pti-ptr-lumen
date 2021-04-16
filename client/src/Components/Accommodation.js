@@ -20,11 +20,11 @@ function Accommodation({accom}) {
             <Card.Title className="center">{accommodation.name}</Card.Title>
 
             <Card.Text>
-                <p>{accommodation.descricao}</p>
-                <p>Preco: {accommodation.preco}&euro;</p>
+                <p>{accommodation.description}</p>
+                <p>Preco: {accommodation.price}&euro;</p>
                 <p>Rating: {accommodation.rating}&#42;</p>
             </Card.Text>
-            <Button variant="primary"href={ "/profileAlojamento/"+accommodation.id}>Ir para o alojamento</Button>
+            <Button variant="primary"href={ "/profileAccommodation/"+accommodation.id}>Ir para o alojamento</Button>
         </Card> 
     )
     const amount = x.length
