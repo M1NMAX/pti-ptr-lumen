@@ -24,7 +24,7 @@ function Accommodation({accom}) {
                 <p>Preco: {accommodation.price}&euro;</p>
                 <p>Rating: {accommodation.rating}&#42;</p>
             </Card.Text>
-            <Button variant="primary"href={ "/profileAlojamento/"+accommodation.id}>Ir para o alojamento</Button>
+            <Button variant="primary"href={ "/profileAccommodation/"+accommodation.id}>Ir para o alojamento</Button>
         </Card> 
     )
     const amount = x.length
