@@ -20,7 +20,13 @@ class AccommodationController extends Controller
     public function index()
     {
         $response = Http::get(env('API_ACCOMMODATION_URL').'alojamento/');
+        return response($response);
+    }
 
+
+    public function show($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL').'alojamento/'.$id);
         return response($response);
     }
 }

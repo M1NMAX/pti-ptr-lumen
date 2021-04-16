@@ -30,22 +30,25 @@ $router->get('/', function () {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-    $router->get('/me', function () {
-        return auth()->user();
-    });
-
-    $router->get('/accommodations', 'AccommodationController@index');
 
 
+
+    // Auth and Users
+    $router->get('/me', function () {return auth()->user();});
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
     $router->post('/register', 'UsersController@register'); //Create
-
+    // Users
     $router->group(['prefix' => 'users'], function () use ($router) {
-
         $router->get('/', 'UsersController@index');
         $router->get('/{id}', 'UsersController@show');
         $router->put('/{id}', 'UsersController@update');
         $router->delete('/{id}', 'UsersController@destroy');
     });
+
+    $router->group(['prefix' => 'accommodations'], function () use ($router) {
+        $router->get('/', 'AccommodationController@index');
+        $router->get('/{id}', 'AccommodationController@show');
+    });
+
 });
