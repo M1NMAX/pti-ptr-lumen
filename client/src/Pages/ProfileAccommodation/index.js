@@ -1,25 +1,18 @@
 import React from 'react';
-import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
+import { Container,Row,Col,Form ,Button, Card, Carousel} from 'react-bootstrap'
 //import {connect} from 'react-redux';
-import DefaultRoomPic from "../../img/basicRoom.png"
+import DefaultRoomPic1 from "../../img/basicRoom.png"
+import DefaultRoomPic2 from "../../img/basicWC.png"
+import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
-function ProfileAlojamento () {
-    const [images, setImages] = React.useState([]);
-  const maxNumber = 69;
- 
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
-
-  const interesse = () => {
+function ProfileAccommodation() {
+   const interesse = () => {
     /**return (<div className="date-range">
         <p>O senhorio foi informado do seu interesse e irá contactá-lo em breve</p>
     </div>);*/
@@ -53,31 +46,6 @@ function ProfileAlojamento () {
         .catch(err=>console.log(err))
     }
     
-    changeProfileImage=(event)=>{
-       
-        this.setState({uploadedFile:event.target.files[0]});
-    }
-
-    UpdateProfileHandler=(e)=>{
-        e.preventDefault();
-        //create object of form data
-        const formData=new FormData();
-        formData.append("profileImage",this.state.uploadedFile);
-        formData.append("user_id","Test");
-/*
-        //update-profile
-        axios.post("http://localhost:3000/scr/profilePics/",formData,{
-            headers: {
-                "content-type": "application/json"
-              }
-        }).then(res=>{
-            console.log(res);
-           this.setState({msg:res.data.message});
-           this.setState({profileImage:res.data.results.profileImage});
-        })
-        .catch(err=>console.log(err))
-    }*/
-
   /** 
     componentDidMount(){
      this.fetchUserDetails(this.state.user_id);
@@ -89,258 +57,169 @@ function ProfileAlojamento () {
             imagestr = imagestr.replace("public/", "");
             var profilePic="http://localhost:5000/"+imagestr;
         }else{*/ }
-            var profilePic=DefaultRoomPic;
+            var profilePic1=DefaultRoomPic1;
+            var profilePic2=DefaultRoomPic2;
+            var profilePic3=DefaultRoomPic3;
         {/*}*/ } 
         var titulo = "Quarto num apartamento T2 só para rapazes";
         return (
             <div>
                 <NavBarHome/>
                 <Container>
-                <Row>
-                    <h2> {titulo} </h2>
-                    <Col >
-                        <img src={profilePic} alt="profils pic" className="imagem" />
-                        <Button variant="info" onClick={interesse} className="interesse" >Estou interessado!</Button>
-                        <Button variant="info" href= "/chat" className="interesse"><FontAwesomeIcon icon={faEnvelope} /></Button>
-                        <Button variant="info" className="interesse" ><FontAwesomeIcon icon={faStar} />Adicionar aos favoritos</Button>
-                            
-                    </Col>
-                    <Col>
-                        <Form className="form">     
-                            <Form.Group controlId="formCategory1">
-                                <Form.Label>Morada:</Form.Label>
-                                <Form.Control type="text" defaultValue="Rua do sol"/>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory2">
-                                <Form.Label>Preço:</Form.Label>
-                                <Form.Control type="text" defaultValue="100€" />
-                            </Form.Group>
-                            <Form.Group controlId="formCategory3">
-                                <Form.Label>Estado de ocupação:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"desocupado" === "ocupado"}
-                                    type="radio"
-                                    label="Ocupado"
-                                    name="ocupado"
-                                    id="ocupado"
-                                    />
-                                    <Form.Check
-                                    checked={"desocupado"=== "desocupado"}
-                                    type="radio"
-                                    label="Desocupado"
-                                    name="desocupado"
-                                    id="desocupado"
-                                    />
-                                    <Form.Check
-                                    checked={"desocupado"=== "tenhoAlojamento"}
-                                    type="radio"
-                                    label="Reservado"
-                                    name="reservado"
-                                    id="reservado"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
-                            <Form.Group controlId="formCategory4">
-                                <Form.Label>Número de quartos: :</Form.Label>
-                                <Form.Control type="number" defaultValue="2"/>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory5">
-                                <Form.Label>Número de casas de banho:</Form.Label>
-                                <Form.Control type="number" defaultValue="2" />
-                            </Form.Group>
-                            <Form.Group controlId="formCategory6">
-                                <Form.Label>Área: </Form.Label>
-                                <Form.Control type="text" defaultValue="100m<sup>2</sup>"/>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory7">
-                                <Form.Label>Orientação solar:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"n" === "n"}
-                                    type="radio"
-                                    label="Norte (N)"
-                                    name="n"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "ne"}
-                                    type="radio"
-                                    label="Nordeste (NE)"
-                                    name="ne"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "e"}
-                                    type="radio"
-                                    label="Este (E)"
-                                    name="e"
-                                    id="e"
-                                    />
-                                    <Form.Check
-                                    checked={"n" === "se"}
-                                    type="radio"
-                                    label="Sudeste (SE)"
-                                    name="se"
-                                    id="se"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "s"}
-                                    type="radio"
-                                    label="Sul (S)"
-                                    name="s"
-                                    id="s"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "so"}
-                                    type="radio"
-                                    label="Sudoeste (SO)"
-                                    name="so"
-                                    id="so"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "o"}
-                                    type="radio"
-                                    label="Oeste (O) "
-                                    name="o"
-                                    id="o"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "no"}
-                                    type="radio"
-                                    label="Noroeste (NO)"
-                                    name="no"
-                                    id="no"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory8">
-                                <Form.Label>Acesso à Internet:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"existe" === "existe"}
-                                    type="radio"
-                                    label="Existe"
-                                    name="existe"
-                                    id="existe"
-                                    />
-                                    <Form.Check
-                                    checked={"existe"=== "naoExiste"}
-                                    type="radio"
-                                    label="Não existe"
-                                    name="naoExiste"
-                                    id="naoExiste"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory9">
-                                <Form.Label>Limpeza:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"propria" === "propria"}
-                                    type="radio"
-                                    label="Cada um faz a sua própria"
-                                    name="propria"
-                                    id="propria"
-                                    />
-                                    <Form.Check
-                                    checked={"propria"=== "profissionais"}
-                                    type="radio"
-                                    label="É feita por profissionais"
-                                    name="profissionais"
-                                    id="profissionais"
-                                    />
-                                </Col>
-                            </Form.Group>
+                <h2> {titulo} </h2> 
+                <Row> 
+                    <Col xs="8">
+                        <Carousel >
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic1}  alt="First image" />
+                                <Carousel.Caption>
+                                <p>Quarto</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic2}  alt="Second image" />
+                                <Carousel.Caption>
+                                <p>Casa de banho</p> 
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic3}  alt="Thrid image" />
+                                <Carousel.Caption>
+                                <p>Cozinha</p> 
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
 
-                            <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
-                            <Form.Group controlId="formCategory10">
-                                <Form.Label>Faixa Etária:</Form.Label>
-                                <Form.Control type="number" min="17" max="26" defaultValue="18" />
-                                <Form.Control type="number" min="18" max="27" defaultValue="23" />
-                            </Form.Group>
-                            <Form.Group controlId="formCategory11">
-                                <Form.Label>Género preferecial:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"m" === "m"}
-                                    type="radio"
-                                    label="Masculino"
-                                    name="m"
-                                    id="m"
-                                    />
-                                    <Form.Check
-                                    checked={"m"=== "f"}
-                                    type="radio"
-                                    label="Feminino"
-                                    name="f"
-                                    id="f"
-                                    />
-                                    <Form.Check
-                                    checked={"m"=== "mix"}
-                                    type="radio"
-                                    label="Misto"
-                                    name="mix"
-                                    id="mix"
-                                    />
-                                    <Form.Check
-                                    checked={"ind" === "m"}
-                                    type="radio"
-                                    label="Indiferente"
-                                    name="ind"
-                                    id="ind"
-                                    />                                
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory12">
-                                <Form.Label>Permite fumadores?</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"simF" === "simF"}
-                                    type="radio"
-                                    label="Sim"
-                                    name="simF"
-                                    id="simF"
-                                    />
-                                    <Form.Check
-                                    checked={"simF"=== "naoF"}
-                                    type="radio"
-                                    label="Não"
-                                    name="naoF"
-                                    id="naoF"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory13">
-                                <Form.Label>Permite animais de estimação?</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"simA" === "simA"}
-                                    type="radio"
-                                    label="Sim"
-                                    name="simA"
-                                    id="simA"
-                                    />
-                                    <Form.Check
-                                    checked={"simA"=== "naoA"}
-                                    type="radio"
-                                    label="Não"
-                                    name="naoA"
-                                    id="naoA"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory14">
-                                <Form.Label>Outras informações complementares:</Form.Label>
-                                <Form.Control type="text" defaultValue=""/>
-                            </Form.Group>
-                            
-                           {/* <Form.Group controlId="formCategory15">
-                                    <Form.Control type="file" name="profileImage" onChange={this.changeProfileImage}/>
-                            </Form.Group>
-                            <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>*/}
-                        </Form>
+
+                        <Button variant="info" onClick={interesse} className="interesse" size="lg">Estou interessado!</Button>
+                        <Button variant="info" href= "/chat" className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
+                        <Button variant="info" className="interesse" size="lg"><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Header as="h3">Requisitos dos inquilinos</Card.Header>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faPeopleArrows} /> Faixa etária: </Card.Title>
+                                <Card.Text>
+                                    Dos 18 aos 23 anos
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title>Género preferecial: </Card.Title>
+                                <Card.Text>
+                                    <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>
+                                    <p className="fem"> <FontAwesomeIcon icon={faVenus} /> Feminino</p>
+                                    <p className="mix"><FontAwesomeIcon icon={faVenusMars} /> Misto</p>
+                                    <p className="indif"><FontAwesomeIcon icon={faNeuter} /> Indiferente</p>
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faSmoking} /> Permite fumadores? </Card.Title>
+                                <Card.Text>
+                                    Sim
+                                    Não
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faPaw} /> Permite animais de estimação? </Card.Title>
+                                <Card.Text>
+                                    Sim
+                                    Não
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras informações complementares: </Card.Title>
+                                <Card.Text>
+                                    Oi
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        
+                    </Col>
+                    <Col xs="4">
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
+                                <Card.Text>
+                                Rua do sol
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Card.Title>
+                                <Card.Text>
+                                    100€
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faStar} /> Rating:</Card.Title>
+                                <Card.Text>
+                                    4,5/5
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title> Estado de Ocupação: </Card.Title>
+                                <Card.Text>
+                                    <p className="ocupado"> Ocupado</p>
+                                    <p className="desocupado">Desocupado</p>
+                                    <p className="reservado">Reservado</p>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+
+                        <Card style={{ width: '100%' }}   style={{ marginTop: '2%' }} >
+                            <Card.Header as="h3">Informações sobre o Alojamento</Card.Header>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faBed} /> Nº de quartos: </Card.Title>
+                                <Card.Text>
+                                    2
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faBath} /> Nº de casas de banho: </Card.Title>
+                                <Card.Text>
+                                    2
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> Área do quarto: </Card.Title>
+                                <Card.Text>
+                                    20 m<sup>2</sup>
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar do quarto: </Card.Title>
+                                <Card.Text>
+                                    Norte (N)
+                                    Nordeste (NE)
+                                    Este (E)
+                                    Sudeste (SE)
+                                    Sul (S)
+                                    Sudoeste (SO)
+                                    Oeste (O)
+                                    Noroeste (NO)
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faWifi} /> Acesso à Internet: </Card.Title>
+                                <Card.Text>
+                                    Existe
+                                    Não existe
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faBroom} /> Limpeza: </Card.Title>
+                                <Card.Text>
+                                    Cada um faz a sua própria
+                                    É feita por profissionais
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+
+                        
                     </Col>
 
                 </Row>
@@ -362,4 +241,4 @@ function ProfileAlojamento () {
    
 
   // export default connect(mapStatetoProps)(ProfileAlojamento);
-  export default ProfileAlojamento;
+  export default ProfileAccommodation;
