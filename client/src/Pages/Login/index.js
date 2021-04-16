@@ -32,7 +32,7 @@ function Login() {
             <NavBarHome/>
 
             {/* @someone please handle the way errors are diplay  */}
-            {errors.map((error)=>(<span>{error}</span>))}
+            {/*{errors.map((error)=>(<span>{error}</span>))} */}
             {/* @someone please handle the way errors are diplay  */}
 
             <Form className="login page"  onSubmit={handleLogin}>

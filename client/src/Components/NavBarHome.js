@@ -6,6 +6,8 @@ import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
+
+
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
     const [auth, setAuth] = useState(true);
