@@ -21,7 +21,7 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
 
     protected $table = "accommodation";
     protected $fillable = [
-        'name', 'description', 'price', 'streetName','city','country','latitude','longitude'
+        'landlord_id','name', 'description', 'price', 'streetName','city','country','latitude','longitude'
     ];
 
 
@@ -30,11 +30,15 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
         'nRates' => 0,
      ];
 
-     public function features(){
+    public function features(){
          return $this->belongsToMany(Feature::class);
      }
 
-     public function rentals(){
+    public function rentals(){
         return $this->hasMany(Rental::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 }

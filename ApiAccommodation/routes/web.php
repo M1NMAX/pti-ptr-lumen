@@ -31,7 +31,10 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     //VER AS CARACTERISTICAS DO ALOJAMENTO
     $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
     //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)
-    $router->get('/busyDates/{id}', 'AccommodationController@busyDates');
+    $router->get('/{id}/busyDates/', 'AccommodationController@busyDates');
+    //VER OS COMENTARIOS DO ALOJAMENTO
+    $router->get('/{id}/comments', 'AccommodationController@comments');
+
 
     //-------------POSTS----------------
 

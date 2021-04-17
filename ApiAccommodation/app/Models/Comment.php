@@ -24,7 +24,6 @@ class Comment extends Model implements AuthenticatableContract, AuthorizableCont
         'user_id','accommodation_id','rate','content'
     ];
 
-    public $timestamps = false;
 
     public function accommodations(){
         return $this->belongsTo(Accommodation::class);

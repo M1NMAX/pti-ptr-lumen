@@ -119,4 +119,11 @@ class AccommodationController extends Controller
         return $accommodation->rentals;
 
     }
+
+    public function comments($id,Request $request)
+    {
+        $accommodation = $this->accommodation->find($id);
+        return $accommodation->comments;
+
+    }
 }
