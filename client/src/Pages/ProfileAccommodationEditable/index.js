@@ -48,72 +48,11 @@ function ProfileAccommodationEditable () {
     alert("O senhorio foi informado do seu interesse e irá contactá-lo em breve");
   };
 
-    /**constructor(props){
-        super(props);
-        this.state={
-            user_id:this.props.user_id,
-            username:this.props.username,
-            email:this.props.email,
-            profileImage:this.props.profileImage,
-            msg:this.props.msg,
-            uploadedFile:null
-        }
-    }
 
-    fetchUserDetails=(user_id)=>{
-        //console.log(user_id);
-        axios.get("http://localhost:5000/userapi/getUserDetails/"+user_id,{
-            headers: {
-                "content-type": "application/json"
-              }
-        }).then(res=>{
-            console.log(res);
-            this.setState({email:res.data.results[0].email});
-            this.setState({profileImage:res.data.results[0].profileImage})
-        })
-        .catch(err=>console.log(err))
-    }
-    
-    changeProfileImage=(event)=>{
-       
-        this.setState({uploadedFile:event.target.files[0]});
-    }
-
-    UpdateProfileHandler=(e)=>{
-        e.preventDefault();
-        //create object of form data
-        const formData=new FormData();
-        formData.append("profileImage",this.state.uploadedFile);
-        formData.append("user_id","Test");
-/*
-        //update-profile
-        axios.post("http://localhost:3000/scr/profilePics/",formData,{
-            headers: {
-                "content-type": "application/json"
-              }
-        }).then(res=>{
-            console.log(res);
-           this.setState({msg:res.data.message});
-           this.setState({profileImage:res.data.results.profileImage});
-        })
-        .catch(err=>console.log(err))
-    }*/
-
-  /** 
-    componentDidMount(){
-     this.fetchUserDetails(this.state.user_id);
-    }
-    **/
-{/**
-       if(this.state.profileImage){
-            var imagestr=this.state.profileImage;
-            imagestr = imagestr.replace("public/", "");
-            var profilePic="http://localhost:5000/"+imagestr;
-        }else{*/ }
             var profilePic1=DefaultRoomPic1;
             var profilePic2=DefaultRoomPic2;
             var profilePic3=DefaultRoomPic3;
-        {/*}*/ } 
+    
         var titulo = "Quarto num apartamento T2 só para rapazes";
         return (
             <div>
@@ -197,12 +136,12 @@ function ProfileAccommodationEditable () {
                             <h3 class="w3-border-top">Informações Importantes </h3>
                             <Form.Group controlId="formCategory1">
                                 <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
-                                <Form.Control type="text" defaultValue={{accommodation.streetName}, &nbsp; {accommodation.city}, &nbsp;
-                                {accommodation.country}}/>
+                                <Form.Control type="text" defaultValue={accommodation.streetName,accommodation.city,
+                                accommodation.country}/>
                             </Form.Group>
                             <Form.Group controlId="formCategory2">
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço:</Form.Label>
-                                <Form.Control type="text" defaultValue={{accommodation.price}&euro;} />
+                                <Form.Control type="text" defaultValue={accommodation.price} />
                             </Form.Group>
                             <Form.Group controlId="formCategory3">
                                 <Form.Label>Estado de ocupação:</Form.Label>
