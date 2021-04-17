@@ -14,8 +14,8 @@ class CreateGuestTable extends Migration
     public function up()
     {
         Schema::create('guest', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('faculdade');
+            $table->id();
+            $table->string('college');
             $table->timestamps();
         });
     }

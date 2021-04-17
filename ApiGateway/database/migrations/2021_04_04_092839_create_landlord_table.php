@@ -14,7 +14,7 @@ class CreateLandlordTable extends Migration
     public function up()
     {
         Schema::create('landlord', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->id();
             $table->timestamps();
         });
     }

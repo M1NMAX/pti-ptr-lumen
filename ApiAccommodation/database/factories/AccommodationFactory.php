@@ -24,6 +24,7 @@ class AccommodationFactory extends Factory
     {
         return [
 
+            'landlord_id' => $this->faker->randomDigit,
             'name' => $this->faker->secondaryAddress,
             'description' => $this->faker->realText($maxNbChars = 50, $indexSize = 2),
             'price' => $this->faker->randomNumber(3),

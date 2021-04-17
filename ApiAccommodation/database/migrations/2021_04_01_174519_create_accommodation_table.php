@@ -15,6 +15,7 @@ class CreateAccommodationTable extends Migration
     {
         Schema::create('accommodation', function (Blueprint $table) {
             $table->id();
+            $table->integer('landlord_id'); 
             $table->string('name');
             $table->string('description');
             $table->float('rating');

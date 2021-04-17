@@ -5,6 +5,7 @@ use App\Http\Controllers\AccommodationController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Landlord;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -32,6 +33,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 
 
+    $router->post('/landlord', function () {
+        Landlord::create();});
+    $router->post('/land', function () {
+            $landlord = Landlord::find(1);
+            $landlord->user()->create(['name'=>'M', 'username'=>'MA', 'email'=>'m@test', 'password'=>'password','birthdate'=>'2000-12-12' ]);
+            return "success";
+        });
 
     // Auth and Users
     $router->get('/me', function () {return auth()->user();});
