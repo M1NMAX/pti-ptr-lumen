@@ -9,6 +9,7 @@ import video from '../../img/intro.mp4'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import Accommodations from '../../Components/Accommodation'
+import Footer from '../../Components/Footer'
 import './index.css'
 import api from '../../services/api';
 function Homepage() {
@@ -44,6 +45,7 @@ function Homepage() {
             </div>
             <Search/>
             <Accommodations accom={Accmmodations} />   
+            <Footer/>
         </div>
 
     )

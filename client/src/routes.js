@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import Header from './Components/Header'
 import Chat from "./Pages/Chat";
 import Homepage from './Pages/HomePage/';
 import ProfileUser from './Pages/ProfileUser';
