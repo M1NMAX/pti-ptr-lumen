@@ -18,7 +18,7 @@ class CreateCommentTable extends Migration
             $table->integer('user_id');
             $table->integer('accommodation_id');
             $table->integer('rate');
-            
+            $table->string('content');
             $table->timestamps();
 
         });

@@ -19,14 +19,14 @@ class Comment extends Model implements AuthenticatableContract, AuthorizableCont
      * @var array
      */
 
-    protected $table = "feature";
+    protected $table = "comment";
     protected $fillable = [
-        'name',
+        'user_id','accommodation_id','rate','content'
     ];
 
     public $timestamps = false;
 
     public function accommodations(){
-        return $this->belongsToMany(Accommodation::class);
+        return $this->belongsTo(Accommodation::class);
     }
 }
