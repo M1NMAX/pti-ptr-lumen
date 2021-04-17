@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom';
 import {Container, Card,Row,Col} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
 import capa from '../../img/capa.png'
+import video from '../../img/intro.mp4'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import Accommodations from '../../Components/Accommodation'
 import './index.css'
 import api from '../../services/api';
-
 function Homepage() {
     const [Accmmodations, setAcommodations] = useState([]);
 
@@ -24,20 +24,23 @@ function Homepage() {
         })
     }, []);
     return (
-        <div className="App img">
-            <div className="App img" style={{
-            height:"100%"
-          }}>
+        <div className="App">
+            <div className="App img video-container">
+                <video id="videoBG" autoPlay muted loop id="videoBG">
+                    <source src={video} type="video/mp4"></source>
+                </video>
+            </div>
             <NavBarHome/>
-            <Container >
-                <h1 className="slogan">Your sweet home away from home</h1>
-                <div className="buttonImg" >
-                    <a href='#down'> 
-                        <img src={scroll} className="buttonImg2"  width="70px"/> 
-                        <a className="buttonImgLink" href='#down'>Ver mais</a>
-                    </a>
-                </div>
-             </Container>
+            <div className="App">
+                <Container >
+                        <h1 className="slogan">Your sweet home away from home</h1>
+                        <div className="buttonImg" >
+                            <a href='#down'> 
+                                <img src={scroll} className="buttonImg2"  width="70px"/> 
+                                <a className="buttonImgLink" href='#down'>Ver mais</a>
+                            </a>
+                        </div>
+                </Container>
             </div>
             <Search/>
             <Accommodations accom={Accmmodations} />   
@@ -45,5 +48,4 @@ function Homepage() {
 
     )
 }
-
 export default Homepage

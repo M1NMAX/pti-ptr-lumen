@@ -1,16 +1,37 @@
-import React from 'react';
-import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
+import {React, useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import api from '../../services/api';
+import { Container,Row,Col,Form ,Button, Carousel} from 'react-bootstrap'
 //import {connect} from 'react-redux';
-import DefaultRoomPic from "../../img/basicRoom.png"
+import DefaultRoomPic1 from "../../img/basicRoom.png"
+import DefaultRoomPic2 from "../../img/basicWC.png"
+import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
+import RangeSlider from 'react-bootstrap-range-slider';
 
-function ProfileAlojamento () {
-    const [images, setImages] = React.useState([]);
+function ProfileAccommodationEditable () {
+    let { id } = useParams();
+    const [accommodation, setaccommodation] = useState([]);
+
+    useEffect(() => {
+        api.get('api/accommodations/'+id).then(response => {
+            // you must define a default operation
+        setaccommodation(response.data);
+        
+        }).catch(err => {
+          alert(err)
+        })
+      }, []);
+
+    const [ ageMin, setAgeMin ] = useState(18);
+    const [ ageMax, setAgeMax ] = useState(27);
+
+    const [images, setImages] = useState([]);
   const maxNumber = 69;
  
   const onChange = (imageList, addUpdateIndex) => {
@@ -89,16 +110,42 @@ function ProfileAlojamento () {
             imagestr = imagestr.replace("public/", "");
             var profilePic="http://localhost:5000/"+imagestr;
         }else{*/ }
-            var profilePic=DefaultRoomPic;
+            var profilePic1=DefaultRoomPic1;
+            var profilePic2=DefaultRoomPic2;
+            var profilePic3=DefaultRoomPic3;
         {/*}*/ } 
         var titulo = "Quarto num apartamento T2 só para rapazes";
         return (
             <div>
                 <NavBarHome/>
                 <Container>
+                    <Form.Group controlId="formCategory1">
+                        <Form.Control size="lg" type="text" defaultValue={titulo}/>
+                    </Form.Group>
                 <Row>
-                    <Col >
-                        <img src={profilePic} alt="profils pic" className="imagem" />
+                    <Col xs="8" className="imagem">
+                        <Carousel >
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic1}  alt="First image" />
+                                <Carousel.Caption>
+                                <p>Quarto</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic2}  alt="Second image" />
+                                <Carousel.Caption>
+                                <p>Casa de banho</p> 
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img className="d-block w-100" src={profilePic3}  alt="Thrid image" />
+                                <Carousel.Caption>
+                                <p>Cozinha</p> 
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
+                    </Col>
+                    <Col xs="4" >
                         <ImageUploading
                             multiple
                             value={images}
@@ -117,13 +164,7 @@ function ProfileAlojamento () {
                             }) => (
                             // write your building UI
                             <div className="upload__image-wrapper">
-                                <button
-                                style={isDragging ? { color: 'red' } : undefined}
-                                onClick={onImageUpload}
-                                {...dragProps}
-                                >
-                                Click or Drop here
-                                </button>
+                                <Button variant="info"  onClick={onImageUpload}>Adicionar imagem</Button>
                                 &nbsp;
                                 {/*<button onClick={onImageRemoveAll}>Remove all images</button>*/}
                                 {imageList.map((image, index) => (
@@ -131,7 +172,16 @@ function ProfileAlojamento () {
                                     <img src={image['data_url']} alt="" width="100%" />
                                     <div className="image-item__btn-wrapper">
                                     {/*<button onClick={() => onImageUpdate(index)}>Update</button>*/}
-                                    <button onClick={() => onImageRemove(index)}>Remove</button>
+                                    <Form className="form"> 
+                                        <Form.Group controlId="formCategory1">
+                                            <Form.Label>Descrição da foto:</Form.Label>
+                                            <Form.Control type="text" defaultValue="Sala de Estar"/>
+                                        </Form.Group>
+                                        <Button variant="info" size="sm">Adicionar</Button> &nbsp;
+                                        <Button variant="info" size="sm" onClick={() => onImageRemove(index)}>Remover</Button>
+                                    </Form>
+                                        
+                                    
                                     </div>
                                 </div>
                                 ))}
@@ -139,18 +189,20 @@ function ProfileAlojamento () {
                             )}
                         </ImageUploading>
                     </Col>
-                    <Col>
-                        <Form.Group controlId="formCategory1">
-                            <Form.Control type="text" defaultValue={titulo}/>
-                        </Form.Group>
-                        <Form className="form">     
+                </Row>
+                        
+                    <Form className="form">   
+                        <Form.Row>
+                            <Col>
+                            <h3 class="w3-border-top">Informações Importantes </h3>
                             <Form.Group controlId="formCategory1">
-                                <Form.Label>Morada:</Form.Label>
-                                <Form.Control type="text" defaultValue="Rua do sol"/>
+                                <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
+                                <Form.Control type="text" defaultValue={{accommodation.streetName}, &nbsp; {accommodation.city}, &nbsp;
+                                {accommodation.country}}/>
                             </Form.Group>
                             <Form.Group controlId="formCategory2">
-                                <Form.Label>Preço:</Form.Label>
-                                <Form.Control type="text" defaultValue="100€" />
+                                <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço:</Form.Label>
+                                <Form.Control type="text" defaultValue={{accommodation.price}&euro;} />
                             </Form.Group>
                             <Form.Group controlId="formCategory3">
                                 <Form.Label>Estado de ocupação:</Form.Label>
@@ -178,125 +230,34 @@ function ProfileAlojamento () {
                                     />
                                 </Col>
                             </Form.Group>
-                            <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                             <Form.Group controlId="formCategory4">
-                                <Form.Label>Número de quartos: :</Form.Label>
-                                <Form.Control type="number" defaultValue="2"/>
+                                <Form.Label>Descrição:</Form.Label>
+                                <Form.Control type="number" defaultValue={accommodation.description}/>
                             </Form.Group>
-                            <Form.Group controlId="formCategory5">
-                                <Form.Label>Número de casas de banho:</Form.Label>
-                                <Form.Control type="number" defaultValue="2" />
-                            </Form.Group>
-                            <Form.Group controlId="formCategory6">
-                                <Form.Label>Área: </Form.Label>
-                                <Form.Control type="text" defaultValue="100m<sup>2</sup>"/>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory7">
-                                <Form.Label>Orientação solar:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"n" === "n"}
-                                    type="radio"
-                                    label="Norte (N)"
-                                    name="n"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "ne"}
-                                    type="radio"
-                                    label="Nordeste (NE)"
-                                    name="ne"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "e"}
-                                    type="radio"
-                                    label="Este (E)"
-                                    name="e"
-                                    id="e"
-                                    />
-                                    <Form.Check
-                                    checked={"n" === "se"}
-                                    type="radio"
-                                    label="Sudeste (SE)"
-                                    name="se"
-                                    id="se"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "s"}
-                                    type="radio"
-                                    label="Sul (S)"
-                                    name="s"
-                                    id="s"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "so"}
-                                    type="radio"
-                                    label="Sudoeste (SO)"
-                                    name="so"
-                                    id="so"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "o"}
-                                    type="radio"
-                                    label="Oeste (O) "
-                                    name="o"
-                                    id="o"
-                                    />
-                                    <Form.Check
-                                    checked={"n"=== "no"}
-                                    type="radio"
-                                    label="Noroeste (NO)"
-                                    name="no"
-                                    id="no"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory8">
-                                <Form.Label>Acesso à Internet:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"existe" === "existe"}
-                                    type="radio"
-                                    label="Existe"
-                                    name="existe"
-                                    id="existe"
-                                    />
-                                    <Form.Check
-                                    checked={"existe"=== "naoExiste"}
-                                    type="radio"
-                                    label="Não existe"
-                                    name="naoExiste"
-                                    id="naoExiste"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory9">
-                                <Form.Label>Limpeza:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={"propria" === "propria"}
-                                    type="radio"
-                                    label="Cada um faz a sua própria"
-                                    name="propria"
-                                    id="propria"
-                                    />
-                                    <Form.Check
-                                    checked={"propria"=== "profissionais"}
-                                    type="radio"
-                                    label="É feita por profissionais"
-                                    name="profissionais"
-                                    id="profissionais"
-                                    />
-                                </Col>
-                            </Form.Group>
-
                             <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
                             <Form.Group controlId="formCategory10">
                                 <Form.Label>Faixa Etária:</Form.Label>
-                                <Form.Control type="number" min="17" max="26" defaultValue="18" />
-                                <Form.Control type="number" min="18" max="27" defaultValue="23" />
-                            </Form.Group>
+                                <Row> 
+                                     &nbsp; &nbsp; Dos 	&nbsp;
+                                        <RangeSlider
+                                            value={ageMin}
+                                            onChange={e => setAgeMin(e.target.value)}
+                                            min={17}
+                                            max={64}
+                                            variant='info'
+                                        />
+                                    	&nbsp; aos 	&nbsp;
+                                        <RangeSlider
+                                            variant='info'
+                                            value={ageMax}
+                                            onChange={e => setAgeMax(e.target.value)}
+                                            min={18}
+                                            max={65}
+                                            
+                                        />
+                                   	&nbsp;  anos
+                                </Row>
+                        </Form.Group>
                             <Form.Group controlId="formCategory11">
                                 <Form.Label>Género preferecial:</Form.Label>
                                 <Col sm={10}>
@@ -373,14 +334,130 @@ function ProfileAlojamento () {
                                 <Form.Control type="text" defaultValue=""/>
                             </Form.Group>
                             
+                        </Col>
+                        <Col><h3 class="w3-border-top">Informações sobre o Alojamento</h3>
+                            <Form.Group controlId="formCategory4">
+                                <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
+                                <Form.Control type="number" defaultValue="2"/>
+                            </Form.Group>
+                            <Form.Group controlId="formCategory5">
+                                <Form.Label><FontAwesomeIcon icon={faBath} /> Nº de casas de banho:</Form.Label>
+                                <Form.Control type="number" defaultValue="2" />
+                            </Form.Group>
+                            <Form.Group controlId="formCategory6">
+                                <Form.Label>Área: </Form.Label>
+                                <Form.Control type="text" defaultValue="100m<sup>2</sup>"/>
+                            </Form.Group>
+                            <Form.Group controlId="formCategory7">
+                                <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar do quarto:</Form.Label>
+                                <Col sm={10}>
+                                    <Form.Check
+                                    checked={"n" === "n"}
+                                    type="radio"
+                                    label="Norte (N)"
+                                    name="n"
+                                    id="ne"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "ne"}
+                                    type="radio"
+                                    label="Nordeste (NE)"
+                                    name="ne"
+                                    id="ne"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "e"}
+                                    type="radio"
+                                    label="Este (E)"
+                                    name="e"
+                                    id="e"
+                                    />
+                                    <Form.Check
+                                    checked={"n" === "se"}
+                                    type="radio"
+                                    label="Sudeste (SE)"
+                                    name="se"
+                                    id="se"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "s"}
+                                    type="radio"
+                                    label="Sul (S)"
+                                    name="s"
+                                    id="s"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "so"}
+                                    type="radio"
+                                    label="Sudoeste (SO)"
+                                    name="so"
+                                    id="so"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "o"}
+                                    type="radio"
+                                    label="Oeste (O) "
+                                    name="o"
+                                    id="o"
+                                    />
+                                    <Form.Check
+                                    checked={"n"=== "no"}
+                                    type="radio"
+                                    label="Noroeste (NO)"
+                                    name="no"
+                                    id="no"
+                                    />
+                                </Col>
+                            </Form.Group>
+                            <Form.Group controlId="formCategory8">
+                                <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
+                                <Col sm={10}>
+                                    <Form.Check
+                                    checked={"existe" === "existe"}
+                                    type="radio"
+                                    label="Existe"
+                                    name="existe"
+                                    id="existe"
+                                    />
+                                    <Form.Check
+                                    checked={"existe"=== "naoExiste"}
+                                    type="radio"
+                                    label="Não existe"
+                                    name="naoExiste"
+                                    id="naoExiste"
+                                    />
+                                </Col>
+                            </Form.Group>
+                            <Form.Group controlId="formCategory9">
+                                <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
+                                <Col sm={10}>
+                                    <Form.Check
+                                    checked={"propria" === "propria"}
+                                    type="radio"
+                                    label="Cada um faz a sua própria"
+                                    name="propria"
+                                    id="propria"
+                                    />
+                                    <Form.Check
+                                    checked={"propria"=== "profissionais"}
+                                    type="radio"
+                                    label="É feita por profissionais"
+                                    name="profissionais"
+                                    id="profissionais"
+                                    />
+                                </Col>
+                            </Form.Group>
+                            
+                            
                            {/* <Form.Group controlId="formCategory15">
                                     <Form.Control type="file" name="profileImage" onChange={this.changeProfileImage}/>
                             </Form.Group>
-                            <Button variant="primary" onClick={this.UpdateProfileHandler}>Update Profile</Button>*/}
-                        </Form>
-                    </Col>
-
-                </Row>
+                           */}
+                           </Col>
+                         </Form.Row>
+                         <Button variant="info">Guardar alterações</Button>
+                    </Form>
+                    
                 </Container>
             </div>
         )
@@ -399,4 +476,4 @@ function ProfileAlojamento () {
    
 
   // export default connect(mapStatetoProps)(ProfileAlojamento);
-  export default ProfileAlojamento;
+  export default ProfileAccommodationEditable;

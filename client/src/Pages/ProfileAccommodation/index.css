@@ -47,7 +47,7 @@
 }
 
 .fem{
-  background-color: rgb(248, 152, 168);
+  background-color: rgb(247, 114, 136);
   font-weight: bold;
   text-align: center;
   padding: 7px;
@@ -56,10 +56,10 @@
 
 .mix{
   background: grey; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, rgb(108, 148, 236) 50% , rgb(248, 152, 168) 50%); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, rgb(108, 148, 236) 50%, rgb(248, 152, 168) 50%); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, rgb(108, 148, 236) 50%, rgb(248, 152, 168) 50%); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, rgb(108, 148, 236) 50% , rgb(248, 152, 168) 50%); /* Standard syntax */
+  background: -webkit-linear-gradient(left, rgb(108, 148, 236) 50% ,  rgb(247, 114, 136) 50%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, rgb(108, 148, 236) 50%,  rgb(247, 114, 136) 50%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, rgb(108, 148, 236) 50%,  rgb(247, 114, 136) 50%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, rgb(108, 148, 236) 50% ,  rgb(247, 114, 136) 50%); /* Standard syntax */
   font-weight: bold;
   text-align: center;
   padding: 7px;

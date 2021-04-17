@@ -26,7 +26,7 @@ function Register() {
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
-                history.push('/');
+                history.push('/dashboard');
             }
         });
         } catch (err) {
@@ -37,7 +37,7 @@ function Register() {
         <div>
             <NavBarHome/>
             {/* @someone please handle the way errors are diplay  */}
-            {errors.map((error)=>(<span>{error}</span>))}
+            {/*{errors.map((error)=>(<span>{error}</span>))} */}
             {/* @someone please handle the way errors are diplay  */}
             <Form className="login page" onSubmit={handleRegister}>
                 <Form.Group controlId="formBasicName" >
