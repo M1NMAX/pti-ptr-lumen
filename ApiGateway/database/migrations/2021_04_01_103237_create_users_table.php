@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->date('birthdate')->nullable();
             $table->string('fotoPerfil')->default('no');
+            $table->integer('userable_id');
+            $table->string('userable_type');
             $table->timestamps();
         });
     }

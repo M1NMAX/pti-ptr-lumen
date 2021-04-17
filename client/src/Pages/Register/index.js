@@ -9,10 +9,13 @@ function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const [birtdate, setBirthdate] = useState('');
+    const [birthdate, setBirthdate] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPasswordConf] = useState('');
     const [type, setType] = useState('');
+    const [college, setCollege] = useState('');
+
+    console.log(type);
 
     const [errors, setErrors] = useState([]);
 
@@ -22,7 +25,9 @@ function Register() {
         e.preventDefault();
 
         try {
-        await api.post('api/register', {name, email, username, birtdate, password, password_confirmation}).then(async (response) =>{
+        await api.post('api/register',
+         {name, email, username, birthdate, password, password_confirmation, type, college}
+         ).then(async (response) =>{
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
@@ -60,7 +65,7 @@ function Register() {
 
                 <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                     <Form.Label>Data de nascimento</Form.Label>
-                    <Form.Control width="sm" name="birthdate" type="date" value={birtdate} onChange={e => setBirthdate(e.target.value)}/>
+                    <Form.Control width="sm" name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
@@ -73,15 +78,17 @@ function Register() {
                 <Form.Group controlId="formBasicType">
                     <Form.Label>Tenho como objetivo</Form.Label>
                     <Form.Control required as="select" type="type" value={type} onChange={e => setType(e.target.value)}>
-                    <option value="logder" >alugar um alojamento</option>
+                    <option value="one" >selecione uma opção</option>
+                    <option value="guest" >alugar um alojamento</option>
                     <option value="landlord" >colocar alojamentos para alugar</option>
                     </Form.Control>
                 </Form.Group>
 
-                {/* <Form.Group controlId="formBasicUni" onSubmit={handleRegister}>
+                {type=='guest'&& <Form.Group controlId="formBasicCollege" onSubmit={handleRegister}>
                     <Form.Label>Instituição</Form.Label>
-                    <Form.Control width="sm" type="textarea" value={uni} onChange={e => setUni(e.target.value)}/>
-                </Form.Group> */}
+                    <Form.Control width="sm" type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
+                </Form.Group>}
+                
 
                 <Button variant="primary" type="submit">
                     Submeter

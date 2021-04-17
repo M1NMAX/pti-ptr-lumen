@@ -19,7 +19,7 @@ class AccommodationController extends Controller
     //
     public function index()
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'alojamento/');
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/');
         return response($response);
     }
 

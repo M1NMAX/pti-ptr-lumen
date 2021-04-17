@@ -31,4 +31,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+     /**
+     * Get the parent imageable model (user or post).
+     */
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 }
