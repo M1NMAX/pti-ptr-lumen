@@ -44,13 +44,12 @@ function Homepage() {
                         </Form>
                         <div className="buttonImg" >
                             <a href='#down'> 
-                                <img src={scroll} className="buttonImg2"  width="70px"/> 
+                                <img src={scroll} className="buttonImg2"  width="100px"/> 
                                 <a className="buttonImgLink" href='#down'>Ver mais</a>
                             </a>
                         </div>
                 </Container>
             </div>
-            <Search/>
             <Accommodations accom={Accmmodations} />   
             <Footer/>
         </div>
