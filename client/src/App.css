@@ -19,15 +19,6 @@
   filter: invert(1);
 }
 
-.slogan {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  z-index: 1;
-}
-
 html,
 body,
 .App {
