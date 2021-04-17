@@ -22,42 +22,42 @@ function Chat() {
         <div>
         <NavBarHome/>
             <Row>
-            <Col class="w-25"></Col>
-            <Col class="w-25"><h4>Conversas</h4></Col>
+            <Col className="w-25"></Col>
+            <Col className="w-25"><h4>Conversas</h4></Col>
             </Row>
             <Row>
-                <Col class="w-25"></Col>
+                <Col className="w-25"></Col>
                 
-                <Col class="sidebar bg-dark w-25 text-white"> {/*ChatList*/}
+                <Col className="sidebar bg-dark w-25 text-white"> {/*ChatList*/}
                 
-                <div class="border border-primary"> {/*Chat*/}
+                <div className="border border-primary"> {/*Chat*/}
                     <img src={DefaultUserPic} alt="Imagem de perfil" width="30px"></img>
-                    <h7 class="user d-inline-block">Pedro</h7>
-                    <p class="date d-inline-block">Just Now</p><br></br>
-                    <h9 class="lastMsg d-inline-block">Não posso agora... mas era nice</h9>
-                    {/*<button class="send d-inline-block"><FontAwesomeIcon icon={faComments} /></button>*/}
+                    <h7 classNamename="user d-inline-block">Pedro</h7>
+                    <p classNamename="date d-inline-block">Just Now</p>
+                    <h9 className="lastMsg d-inline-block">Não posso agora... mas era nice</h9>
+                    {/*<button className="send d-inline-block"><FontAwesomeIcon icon={faComments} /></button>*/}
                     
                 </div> {/*FIM Chat*/}
                 </Col>{/* FIM ChatList*/}
 
-                <Col class="container w-50 border border-primary"> {/*Chat Escrever*/}
+                <Col className="container w-50 border border-primary"> {/*Chat Escrever*/}
                 <div>{/*top*/}
                 <img src={DefaultUserPic} alt="Imagem de perfil" width="30px"></img>
-                <p class="d-inline-block">Pedro</p>
+                <p className="d-inline-block">Pedro</p>
                 </div>{/*fim top*/}
 
-                <div class="w3-container">{/*Msg Box*/}
-                    <p class="date" id="currentUser">heyyyyy</p>
+                <div className="w3-container">{/*Msg Box*/}
+                    <p className="date" id="currentUser">heyyyyy</p><br></br>
                     <p id="otherUser">Não posso agora... mas era nice</p>
                 </div>{/*fim Msg Box*/}
 
-                <div class="sendMsg">{/*textarea*/}
-                <Form className="msg"  onSubmit={handleMsg}>
+                <div className="sendMsg">{/*textarea*/}
+                <Form classNameName="msg"  onSubmit={handleMsg}>
                 <Form.Group controlId="formBasictext">
                     <Form.Control required width="sm" type="textarea" placeholder="Escreva uma mensagem..." value={msg} onChange={e => setMsg(e.target.value)}/>
                 </Form.Group>
 
-                <Button class="send" variant="primary" type="submit">
+                <Button className="send" variant="primary" type="submit">
                 <FontAwesomeIcon icon={faPaperPlane}/>
                 </Button>
             </Form>
