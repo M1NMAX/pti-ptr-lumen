@@ -28,11 +28,10 @@ class AccommodationFactory extends Factory
             'name' => $this->faker->secondaryAddress,
             'description' => $this->faker->realText($maxNbChars = 50, $indexSize = 2),
             'price' => $this->faker->randomNumber(3),
-            'streetName' => $this->faker->streetName,
-            'city' => $this->faker->city,
-            'country' => $this->faker->country,
+            'address' => $this->faker->address,
             'latitude' => $this->faker->latitude($min = -90, $max = 90),
             'longitude' => $this->faker->latitude($min = -180, $max = 180),
+            'available' => $this->faker->boolean,
         ];
     }
 }

@@ -126,4 +126,40 @@ class AccommodationController extends Controller
         return $accommodation->comments;
 
     }
+
+    public function localSearch($search,Request $request)
+    {
+        $accommodations = Accommodation::where('address', $search)
+        ->orWhere('address', 'like', '%' . $search . '%')->get();
+        return $accommodations;
+
+    }
+
+    public function landlordSearch($id,Request $request)
+    {
+        $accommodations = Accommodation::where('landlord_id', $id)->get();
+        return $accommodations;
+
+    }
+
+    public function status($id,Request $request)
+    {
+        $accommodation = $this->accommodation->find($id);
+        //$today = date("Y/m/d");
+        $today = date('2008-04-21');
+        $rentals = $accommodation->rentals;
+        foreach($rentals AS $rental){
+            $begin = $rental->beginDate;
+            $end = $rental->endDate;
+            if(($today >= $begin) && ($today <= $end)){
+                $accommodation->available = 0;
+                $accommodation->save();
+                return 0;
+            }
+        }
+        $accommodation->available = 1;
+        $accommodation->save();
+        return 1;
+    }
+
 }

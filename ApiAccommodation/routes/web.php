@@ -34,6 +34,14 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->get('/{id}/busyDates/', 'AccommodationController@busyDates');
     //VER OS COMENTARIOS DO ALOJAMENTO
     $router->get('/{id}/comments', 'AccommodationController@comments');
+   
+
+    //PESQUISAR PELA LOCALIZACAO DO ALOJAMENTO
+    $router->get('/localSearch/{search}', 'AccommodationController@localSearch');
+    //PESQUISAR PELOS ALOJAMENTOS DE UM LANDLORD
+    $router->get('/landlord/{id}', 'AccommodationController@landlordSearch');
+    //DISPONIBILIDADE DO ALOJAMENTO
+    $router->get('/status/{id}', 'AccommodationController@status');
 
 
     //-------------POSTS----------------
