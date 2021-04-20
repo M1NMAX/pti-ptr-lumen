@@ -23,7 +23,7 @@ function Chat() {
                 <Col className="w-25"></Col>
                 <Col className="w-25"><h4>Conversas</h4></Col>
             </Row>
-            <Row >
+            <Row className="height">
                 <Col xs="3" className="boxUsers sidebar w-25 border scrollbar scrollbar-info"> {/*ChatList*/}
                     <div className="boxUser border border-grey"> {/*Chat*/}
                         <img src={DefaultUserPic} alt="Imagem de perfil" width="30px"></img>
