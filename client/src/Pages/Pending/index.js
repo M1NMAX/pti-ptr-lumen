@@ -6,11 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
-import Accommodations from '../../Components/Accommodation'
+import PendingAc from '../../Components/PendingAc'
 import Footer from '../../Components/Footer'
 
 function Pending() {
-    
+    const accommodation = useState([
+        { "name":"John", "age":30, "city":"New York" },
+        { "name":"John", "age":30, "city":"New York" }
+    ]);
+
     return(
         <div>
         <NavBarHome/>
@@ -23,6 +27,7 @@ function Pending() {
         <Button variant="danger" size="sm">Rejeitar</Button>{' '}
         <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/> Conversar</Button>
         </div>
+        <PendingAc accom={accommodation}/>
         <Footer/>
        </div>
 
