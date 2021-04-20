@@ -126,9 +126,7 @@ function ProfileAccommodation() {
                                 <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
                                 <Card.Text>
                                 
-                                {accommodation.streetName}, &nbsp;
-                                {accommodation.city}, &nbsp;
-                                {accommodation.country}
+                                {accommodation.address}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -152,9 +150,12 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> Estado de Ocupação: </Card.Title>
                                 <Card.Text>
+                                    {accommodation.available? <p className="desocupado">Desocupado</p>:<p className="ocupado"> Ocupado</p>}
+
+{/*                                     
                                     <p className="ocupado"> Ocupado</p>
                                     <p className="desocupado">Desocupado</p>
-                                    <p className="reservado">Reservado</p>
+                                    <p className="reservado">Reservado</p> */}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
