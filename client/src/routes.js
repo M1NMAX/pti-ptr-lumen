@@ -9,6 +9,8 @@ import ProfileAccom from './Pages/ProfileAccommodation';
 import ProfileAccomEdi from './Pages/ProfileAccommodationEditable';
 import RegisterAlojamento from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
+import Favourites from './Pages/Favourites'
+import Pending from './Pages/Pending'
 
 import capa from './img/capa.png'
 import './App.css'
@@ -25,6 +27,8 @@ function Routes() {
             <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />
             <Route path="/registerAlojamento" exact component={RegisterAlojamento} />
             <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/favourites" exact component={Favourites} />
+            <Route path="/pending" exact component={Pending} />
           </Switch>
         </BrowserRouter>
       );
