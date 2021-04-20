@@ -6,6 +6,8 @@ import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 function NavBarHome() {
@@ -68,10 +70,11 @@ function NavBarHome() {
 
                                  {/* show auth user data  */}
                                 {auth?<>
-                                        <Nav.Link href="/chat"> Chat</Nav.Link>
                                         <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
+                                        <Nav.Link href="/favourites"><FontAwesomeIcon icon={faHeart} /></Nav.Link>
                                         <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                                     </>: <>
+                                            <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
                                         </> }
