@@ -32,9 +32,9 @@ $router->get('/', function () {
 $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->group(['prefix' => 'favourites'], function () use ($router) {
-        $router->post('/', 'FavouritessController@store');
-        $router->get('/', 'FavouritessController@index');
-        $router->delete('/{id}', 'FavouritessController@destroy');
+        $router->post('/', 'FavouritesController@store');
+        $router->get('/', 'FavouritesController@index');
+        $router->delete('/{id}', 'FavouritesController@destroy');
     });
 
     // Auth and Users
