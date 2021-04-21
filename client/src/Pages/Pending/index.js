@@ -19,14 +19,6 @@ function Pending() {
         <div>
         <NavBarHome/>
         <div class="center"><h3>Pendentes</h3></div>
-        <div>
-        <img src={DefaultUserPic} alt="Imagem de perfil" width="30px"></img>
-        <h7 className="d-inline-block">Pedro</h7>
-        <br></br>
-        <Button variant="success" size="sm">Aceitar</Button>{' '}
-        <Button variant="danger" size="sm">Rejeitar</Button>{' '}
-        <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/> Conversar</Button>
-        </div>
         <PendingAc accom={accommodation}/>
         <Footer/>
        </div>
