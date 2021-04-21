@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 function NavBarHome() {
@@ -68,11 +68,17 @@ function NavBarHome() {
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
 
-                                 {/* show auth user data  */}
+                                
+                            </Nav>
+                            <Nav>
+                                {/* show auth user data  */}
                                 {auth?<>
-                                        <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
-                                        <Nav.Link href="/favourites"><FontAwesomeIcon icon={faHeart} /></Nav.Link>
-                                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                                    <NavDropdown title={username} id="collasible-nav-dropdown">
+                                        <NavDropdown.Item href="#action/3.1"><FontAwesomeIcon icon={faHeart}/> Favourites</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                                    </NavDropdown> 
+                                    <Nav.Link href="/dashboard" >Dashboard</Nav.Link>          
                                     </>: <>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
@@ -87,6 +93,9 @@ function NavBarHome() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
+
+                            </Nav>
+                            <Nav>
                                 <Nav.Link href="/register">Registo</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
@@ -98,6 +107,8 @@ function NavBarHome() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="mr-auto">
+                            </Nav>
+                            <Nav>
                                 <Nav.Link href="/login">Login</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
