@@ -62,7 +62,7 @@ function ProfileAccommodationEditable () {
                         <Form.Control size="lg" type="text" defaultValue={titulo}/>
                     </Form.Group>
                 <Row>
-                    <Col xs="8" className="imagem">
+                    <Col xs={12} sm={8} className="imagem">
                         <Carousel >
                             <Carousel.Item>
                                 <img className="d-block w-100" src={profilePic1}  alt="First image" />
@@ -84,7 +84,7 @@ function ProfileAccommodationEditable () {
                             </Carousel.Item>
                         </Carousel>
                     </Col>
-                    <Col xs="4" >
+                    <Col xs={12} sm={4} >
                         <ImageUploading
                             multiple
                             value={images}
@@ -103,7 +103,7 @@ function ProfileAccommodationEditable () {
                             }) => (
                             // write your building UI
                             <div className="upload__image-wrapper">
-                                <Button variant="info"  onClick={onImageUpload}>Adicionar imagem</Button>
+                                <Button variant="info" stule={{margin: '2%'}} onClick={onImageUpload}>Adicionar imagem</Button>
                                 &nbsp;
                                 {/*<button onClick={onImageRemoveAll}>Remove all images</button>*/}
                                 {imageList.map((image, index) => (
@@ -132,7 +132,7 @@ function ProfileAccommodationEditable () {
                         
                     <Form className="form">   
                         <Form.Row>
-                            <Col>
+                            <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações Importantes </h3>
                             <Form.Group controlId="formCategory1">
                                 <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
@@ -171,7 +171,7 @@ function ProfileAccommodationEditable () {
                             </Form.Group>
                             <Form.Group controlId="formCategory4">
                                 <Form.Label>Descrição:</Form.Label>
-                                <Form.Control type="number" defaultValue={accommodation.description}/>
+                                <Form.Control as="textarea" rows={3} defaultValue={accommodation.description}/>
                             </Form.Group>
                             <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
                             <Form.Group controlId="formCategory10">
@@ -270,11 +270,12 @@ function ProfileAccommodationEditable () {
                             </Form.Group>
                             <Form.Group controlId="formCategory14">
                                 <Form.Label>Outras informações complementares:</Form.Label>
-                                <Form.Control type="text" defaultValue=""/>
+                                <Form.Control as="textarea" rows={2} defaultValue=""/>
                             </Form.Group>
                             
                         </Col>
-                        <Col><h3 class="w3-border-top">Informações sobre o Alojamento</h3>
+                        <Col xs={12} sm={6}>
+                            <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                             <Form.Group controlId="formCategory4">
                                 <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
                                 <Form.Control type="number" defaultValue="2"/>

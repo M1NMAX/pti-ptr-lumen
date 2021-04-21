@@ -7,7 +7,7 @@ import Homepage from './Pages/HomePage/';
 import ProfileUser from './Pages/ProfileUser';
 import ProfileAccom from './Pages/ProfileAccommodation';
 import ProfileAccomEdi from './Pages/ProfileAccommodationEditable';
-import RegisterAlojamento from './Pages/RegisterAccommodation';
+import RegisterAccom from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
 import Favourites from './Pages/Favourites'
 import Pending from './Pages/Pending'
@@ -25,7 +25,7 @@ function Routes() {
             <Route path="/profileUser/:id" exact component={ProfileUser} />
             <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />
             <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />
-            <Route path="/registerAlojamento" exact component={RegisterAlojamento} />
+            <Route path="/registerAccommodation" exact component={RegisterAccom} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/favourites" exact component={Favourites} />
             <Route path="/pending" exact component={Pending} />
