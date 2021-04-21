@@ -31,15 +31,11 @@ $router->get('/', function () {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-
-
-    $router->post('/landlord', function () {
-        Landlord::create();});
-    $router->post('/land', function () {
-            $landlord = Landlord::find(1);
-            $landlord->user()->create(['name'=>'M', 'username'=>'MA', 'email'=>'m@test', 'password'=>'password','birthdate'=>'2000-12-12' ]);
-            return "success";
-        });
+    $router->group(['prefix' => 'favourites'], function () use ($router) {
+        $router->post('/', 'FavouritessController@store');
+        $router->get('/', 'FavouritessController@index');
+        $router->delete('/{id}', 'FavouritessController@destroy');
+    });
 
     // Auth and Users
     $router->get('/me', function () {return auth()->user();});

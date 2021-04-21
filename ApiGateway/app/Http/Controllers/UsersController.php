@@ -80,25 +80,7 @@ class UsersController extends Controller
 
         }
 
-
-
-
-
-        // if($validator->fails()){
-        //     return response(['errors' =>  $validator->errors()->all()], 422);
-        // }
-
-        // $user = User::create([
-        //     'username' => $request->username,
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' =>Hash::make($request->password),
-        // ]);
-
-        // $token = $user->createToken('access_token')->accessToken;
-        // $response = ['message' => 'your data have been successfully updated'];
-        //return response(['user'=>$user, 'token'=>$token], 200);
-        return response(['message' => 'New user has been created successguly', 'status' =>true],200);
+        return response(['message' => 'New user has been created successfuly', 'status' =>true],200);
 
     }
 

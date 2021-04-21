@@ -39,4 +39,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->morphTo();
     }
+
+    public function favourites()
+    {
+        return $this->hasMany(Favourites::class);
+    }
 }
