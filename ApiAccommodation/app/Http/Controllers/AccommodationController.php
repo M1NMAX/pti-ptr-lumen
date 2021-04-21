@@ -23,12 +23,36 @@ class AccommodationController extends Controller
     public function index()
     {
         // return $this->accommodation->paginate(10);
-        return $this->accommodation->take(9)->get();
+
+        $accommodations = $this->accommodation->take(9)->get();
+        //$accommodations = $this->accommodation->get();
+        //--------updateRating--------//
+        //(O rate dos comentários quando se faz seed, n afeta o rate do alojamento)
+        foreach ($accommodations as $acc) {
+            $comments = $acc->comments;
+            $sum = 0;
+            $sumN = 0;
+            foreach ($comments as $comment) {
+                $sum += $comment->rate;
+                $sumN += 1;
+            }
+            if(!($sumN == 0)){
+                $acc->rating = $sum/$sumN;
+                $acc->nRates = $sumN;
+                $acc->save();
+            }
+            //----------------------------//    
+        }
+        return $accommodations;
     }
 
     public function showId($id)
-    {
-        return Accommodation::find($id);
+    {   
+        $acc = Accommodation::find($id);
+        $r = [];
+        array_push($r, $acc);
+        array_push($r, $acc->info);
+        return $r[0];
     }
 
     public function store(Request $request)
@@ -161,5 +185,7 @@ class AccommodationController extends Controller
         $accommodation->save();
         return 1;
     }
+
+
 
 }

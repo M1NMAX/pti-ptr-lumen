@@ -28,8 +28,8 @@ class RentalPendingFactory extends Factory
             'accommodation_id' => $this->faker->randomDigit,
             'user_id' => $this->faker->randomDigit,
             'price' => $this->faker-> randomNumber(3),
-            'beginDate' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'endDate' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'beginDate' => $this->faker->date($format = 'Y-m', $max = 'now'),
+            'endDate' => $this->faker->date($format = 'Y-m', $max = 'now'),
         ];
     }
 }

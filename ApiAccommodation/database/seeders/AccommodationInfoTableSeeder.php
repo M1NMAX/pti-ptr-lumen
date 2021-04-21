@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\Models\RentalPending;
+use App\Models\AccommodationInfo;
 
-class RentalPendingTableSeeder extends Seeder
+class AccommodationInfoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class RentalPendingTableSeeder extends Seeder
      */
     public function run()
     {
-        RentalPending::factory(\App\RentalPending::class)->count(10)->create();
+        AccommodationInfo::factory(\App\AccommodationInfo::class)->count(10)->create();
     }
 }
