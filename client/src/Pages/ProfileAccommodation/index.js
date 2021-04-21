@@ -1,15 +1,18 @@
-import React, {useEffect, useState}  from 'react';
+import React, {useEffect, useState, useRef}  from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
-import { Container,Row,Col,Form ,Button, Card, Carousel} from 'react-bootstrap'
+import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay} from 'react-bootstrap'
 //import {connect} from 'react-redux';
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
+import DatePicker from "react-datepicker";
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import "react-datepicker/dist/react-datepicker.css";
+
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
@@ -27,14 +30,27 @@ function ProfileAccommodation() {
         })
       }, []);
 
-   const interesse = () => {
-    /**return (<div className="date-range">
-        <p>O senhorio foi informado do seu interesse e irá contactá-lo em breve</p>
-    </div>);*/
+      const [startDate, setStartDate] = useState();
+      const [endDate, setEndDate] = useState( );
+      const [show, setShow] = useState(false);
+      const [target, setTarget] = useState(null);
+      const ref = useRef(null);
+    
+      const handleClick = (event) => {
+        setShow(!show);
+        setTarget(event.target);
+      };
+       
+      const  [showMessage, setshowMessage] = useState(false);
+      const changeShowMessage = (event) => {setshowMessage(!showMessage);}
 
-    alert("O senhorio foi informado do seu interesse e irá contactá-lo em breve");
-  };
+      const [isDisabled, setDisabled] = useState(true);
 
+      const datesFill = () => {
+          if (startDate != null && endDate != null){
+            setDisabled(!isDisabled);
+          }
+      }
    
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
@@ -46,7 +62,7 @@ function ProfileAccommodation() {
                 <Container>
                 <h2> {accommodation.name} </h2> 
                 <Row> 
-                    <Col xs="8">
+                    <Col xs={12} sm={8}>
                         <Carousel >
                             <Carousel.Item>
                                 <img className="d-block w-100" src={profilePic1}  alt="First image" />
@@ -69,9 +85,57 @@ function ProfileAccommodation() {
                         </Carousel>
 
 
-                        <Button variant="info" onClick={interesse} className="interesse" size="lg">Estou interessado!</Button>
+                        <Button variant="info" onClick={handleClick} className="interesse" size="lg">Estou interessado!</Button>
+                        <Overlay
+                            show={show}
+                            target={target}
+                            placement="bottom"
+                            container={ref.current}
+                            containerPadding={20}
+                        >
+                            <Popover id="popover-contained">
+                            <Popover.Title as="h3">Escolha os meses em que está interessado arrendar:</Popover.Title>
+                            <Popover.Content>
+                                <Form>
+                                    <DatePicker
+                                        placeholderText="Mês de entrada" 
+                                        selected={startDate}
+                                        onChange={date => setStartDate(date)}
+                                        selectsStart
+                                        minDate={new Date()}
+                                        startDate={startDate}
+                                        endDate={endDate}
+                                        excludeDates={[new Date("2021/10"), new Date("2021/11"), new Date("2021/12")]}
+                                        dateFormat="MM/yyyy"
+                                        showMonthYearPicker
+                                        isClearable
+                                    />
+                                    <DatePicker
+                                        placeholderText="Mês de saída"
+                                        selected={endDate}
+                                        onChange={date => setEndDate(date)}
+                                        selectsEnd
+                                        minDate={new Date()}
+                                        startDate={startDate}
+                                        endDate={endDate}
+                                        excludeDates={[new Date("2021/10"), new Date("2021/11"), new Date("2021/12")]}
+                                        dateFormat="MM/yyyy"
+                                        showMonthYearPicker
+                                        isClearable
+                                    />
+                                    <Button className="dateSend" size="sm" variant="info" type="submit" onClick={changeShowMessage} disabled={isDisabled}>
+                                        Enviar
+                                    </Button>
+                                </Form>
+                                {showMessage && <h6 >Ao enviar o senhorio será informado do seu interesse e irá contactá-lo em breve</h6>}
+                                
+                            </Popover.Content>
+                            </Popover>
+                        </Overlay>
                         <Button variant="info" href= "/chat" className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
                         <Button variant="info" className="interesse" size="lg"><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
+                        
+                        
                         <Card style={{ width: '100%' }}>
                             <Card.Header as="h3">Descrição</Card.Header>
                             <Card.Body>
@@ -120,7 +184,7 @@ function ProfileAccommodation() {
                         </Card>
                         
                     </Col>
-                    <Col xs="4">
+                    <Col xs={12} sm={4}>
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
@@ -163,6 +227,12 @@ function ProfileAccommodation() {
                         <Card style={{ width: '100%' }}   style={{ marginTop: '2%' }} >
                             <Card.Header as="h3">Informações sobre o Alojamento</Card.Header>
                             <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faHome} /> Tipo de Alojamento: </Card.Title>
+                                <Card.Text>
+                                    Apartamento Quarto Moradia
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faBed} /> Nº de quartos: </Card.Title>
                                 <Card.Text>
                                     2
@@ -175,13 +245,13 @@ function ProfileAccommodation() {
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
-                                <Card.Title> Área do quarto: </Card.Title>
+                                <Card.Title> Área: </Card.Title>
                                 <Card.Text>
                                     20 m<sup>2</sup>
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
-                                <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar do quarto: </Card.Title>
+                                <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar: </Card.Title>
                                 <Card.Text>
                                     Norte (N)
                                     Nordeste (NE)
