@@ -42,7 +42,7 @@ class AccommodationController extends Controller
                 $acc->nRates = $sumN;
                 $acc->save();
             }
-            //----------------------------//    
+
         }
         return $accommodations;
     }
@@ -62,8 +62,9 @@ class AccommodationController extends Controller
             $r = [];
         }
         return $res;
-        
     }
+
+   
 
     public function store(Request $request)
     {
