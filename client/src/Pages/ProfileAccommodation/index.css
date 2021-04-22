@@ -30,14 +30,6 @@
   width: 40%;
 }
 
-.reservado{
-  background-color: grey;
-  font-weight: bold;
-  text-align: center;
-  padding: 7px;
-  width: 40%;
-}
-
 .mas{
   background-color:rgb(108, 148, 236);
   font-weight: bold;
@@ -76,4 +68,17 @@
 
 .dateSend{
   margin: 2%;
+}
+
+.userPic{
+  height: 30px;
+}
+
+.comments{
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.time{
+  font-size: smaller;
 }

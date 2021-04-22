@@ -13,8 +13,8 @@ function Accommodation({accom}) {
     const x = accom.map((accommodation)=>
         <Card className="mb-4 mt-4 ml-4 mr-4 center">
             <AnimationWrapper>
-                <a href="/profileAlojamento">
-                    <Card.Img onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
+                <a href="/profileAccommodation">
+                    <Card.Img onclick="href='/profileAccommodation" className="img" src={alojamento}></Card.Img>
                 </a>
             </AnimationWrapper>
             <Card.Title className="center">{accommodation.name}</Card.Title>

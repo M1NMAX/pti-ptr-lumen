@@ -160,13 +160,6 @@ function ProfileAccommodationEditable () {
                                     name="desocupado"
                                     id="desocupado"
                                     />
-                                    <Form.Check
-                                    checked={"desocupado"=== "tenhoAlojamento"}
-                                    type="radio"
-                                    label="Reservado"
-                                    name="reservado"
-                                    id="reservado"
-                                    />
                                 </Col>
                             </Form.Group>
                             <Form.Group controlId="formCategory4">
