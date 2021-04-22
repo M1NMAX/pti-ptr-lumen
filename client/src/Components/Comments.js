@@ -4,7 +4,7 @@ import {Button, Card, Row, Col} from 'react-bootstrap';
 import { AnimationWrapper } from 'react-hover-animation';
 import alojamento from '../img/basicRoom.png';
 
-function Accommodation({accom}) {
+function Comment({comment}) {
     
     const x = accom.map((accommodation)=>
         <Card className="mb-4 mt-4 ml-4 mr-4 center">
@@ -56,4 +56,4 @@ function Accommodation({accom}) {
     )
 }
 
-export default Accommodation
+export default Comment

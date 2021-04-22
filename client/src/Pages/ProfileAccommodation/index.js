@@ -3,31 +3,49 @@ import {useParams} from 'react-router-dom';
 import api from '../../services/api';
 import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay} from 'react-bootstrap'
 //import {connect} from 'react-redux';
+import DefaultUserPic from "../../img/standartUser3.png";
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import DatePicker from "react-datepicker";
 import './index.css'
+import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
 function ProfileAccommodation() {
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
+    const [accommodationInfo, setaccommodationInfo] = useState([]);
+    const [accommodationComments, setaccommodationComments] = useState([]);
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
-        setaccommodation(response.data);
+        setaccommodation(response.data.accommodation);
+        //console.log(response.data.accommodation);
+        setaccommodationInfo(response.data.accommodationInfo)
+        //console.log(response.data.accommodationInfo);
         
         }).catch(err => {
           alert(err)
         })
+
+        api.get('api/accommodations/'+id+'/comments').then(response => {
+            // you must define a default operation
+        setaccommodationComments(response.data);
+        console.log(response.data);
+        
+        }).catch(err => {
+          alert(err)
+        })
+
+
       }, []);
 
       const [startDate, setStartDate] = useState();
@@ -44,7 +62,7 @@ function ProfileAccommodation() {
       const [isDisabled, setDisabled] = useState(true);
       const  [showMessage, setshowMessage] = useState(false);
       
-    
+    const [star, setStar] = useState(0);
     const buttonChange = (event) => {
         
         console.log(document.getElementsByClassName("monthStart")[0].value)
@@ -71,11 +89,10 @@ function ProfileAccommodation() {
         console.log(isDisabled)
     }
 
-      const datesFill = () => {
-          if (startDate != null && endDate != null){
-            setDisabled(!isDisabled);
-          }
-      }
+    const [com, setCom] = useState('');
+
+    async function handleCom(e) {
+        e.preventDefault();}
    
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
@@ -163,8 +180,49 @@ function ProfileAccommodation() {
                         </Overlay>
                         <Button variant="info" href= "/chat" className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
                         <Button variant="info" id="button" className="interesse" size="lg" onClick={toggleButton}><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
-                        
-                        
+                    </Col>
+                    <Col xs={12} sm={4}>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
+                                <Card.Text>
+                                
+                                {accommodation.address}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Card.Title>
+                                <Card.Text>
+                                    {accommodation.price}&euro;
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faStar} /> Rating:</Card.Title>
+                                <Card.Text>
+                                    {accommodation.rating}/5
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
+                                <Card.Title> Estado de Ocupação: </Card.Title>
+                                <Card.Text>
+                                    {accommodation.available? <p className="desocupado">Desocupado</p>:<p className="ocupado"> Ocupado</p>}
+
+{/*                                     
+                                    <p className="ocupado"> Ocupado</p>
+                                    <p className="desocupado">Desocupado</p>*/}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>   
+                </Row>
+                <Row> 
+                    <Col xs={12} sm={8}>   
                         <Card style={{ width: '100%' }}>
                             <Card.Header as="h3">Descrição</Card.Header>
                             <Card.Body>
@@ -214,103 +272,114 @@ function ProfileAccommodation() {
                         
                     </Col>
                     <Col xs={12} sm={4}>
-                        <Card style={{ width: '100%' }}>
-                            <Card.Body>
-                                <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
-                                <Card.Text>
-                                
-                                {accommodation.address}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '100%' }}>
-                            <Card.Body>
-                                <Card.Title><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Card.Title>
-                                <Card.Text>
-                                    {accommodation.price}&euro;
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '100%' }}>
-                            <Card.Body>
-                                <Card.Title><FontAwesomeIcon icon={faStar} /> Rating:</Card.Title>
-                                <Card.Text>
-                                    {accommodation.rating}/5
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '100%' }}>
-                            <Card.Body>
-                                <Card.Title> Estado de Ocupação: </Card.Title>
-                                <Card.Text>
-                                    {accommodation.available? <p className="desocupado">Desocupado</p>:<p className="ocupado"> Ocupado</p>}
-
-{/*                                     
-                                    <p className="ocupado"> Ocupado</p>
-                                    <p className="desocupado">Desocupado</p>
-                                    <p className="reservado">Reservado</p> */}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                        <Card style={{ width: '100%' }}   style={{ marginTop: '2%' }} >
+                        <Card style={{ width: '100%' }} >
                             <Card.Header as="h3">Informações sobre o Alojamento</Card.Header>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faHome} /> Tipo de Alojamento: </Card.Title>
                                 <Card.Text>
-                                    Apartamento Quarto Moradia
+                                {accommodationInfo.accommodationType}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faBed} /> Nº de quartos: </Card.Title>
                                 <Card.Text>
-                                    2
+                                {accommodationInfo.rooms}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faBath} /> Nº de casas de banho: </Card.Title>
                                 <Card.Text>
-                                    2
+                                {accommodationInfo.bathRooms}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> Área: </Card.Title>
                                 <Card.Text>
-                                    20 m<sup>2</sup>
+                                {accommodationInfo.area} m<sup>2</sup>
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar: </Card.Title>
                                 <Card.Text>
-                                    Norte (N)
+                                {accommodationInfo.solar}
+                                    {/* Norte (N)
                                     Nordeste (NE)
                                     Este (E)
                                     Sudeste (SE)
                                     Sul (S)
                                     Sudoeste (SO)
                                     Oeste (O)
-                                    Noroeste (NO)
+                                    Noroeste (NO) */}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faWifi} /> Acesso à Internet: </Card.Title>
                                 <Card.Text>
-                                    Existe
-                                    Não existe
+                                {accommodationInfo.wifi?'Tem Wifi': 'Não tem Wifi'}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faBroom} /> Limpeza: </Card.Title>
                                 <Card.Text>
-                                    Cada um faz a sua própria
-                                    É feita por profissionais
+                                {accommodationInfo.clean?'A limpeza é realizada pelo ocupante':'A limpeza é realizada por profissionais'}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-
-                        
                     </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                            <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
+                            <div className="comments">
+                                    
+                                    {accommodationComments.map((comment)=>(<Card.Body className="borderComment">
+                                        <Card.Title> <img src={DefaultUserPic} className="userPic" alt="profils pic" />  José <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> {comment.rate}/5</p> </Card.Title>
+                                        <Card.Text>
+                                            <p className="time text-muted">
+                                                Just Now</p>
+                                            &emsp;{comment.content}
+                                        </Card.Text>
+                                    </Card.Body>))}
 
+
+                                    
+                                    {/* <Card.Body>
+                                        <Card.Title> <img src={DefaultUserPic} className="userPic"alt="profils pic" />  Francisco  <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> 4.0/5</p></Card.Title>
+                                        <Card.Text>
+                                            <p className="time text-muted">15:45</p>
+                                            &emsp; Dos 18 aos 23 anos
+                                        </Card.Text>
+                                    </Card.Body> */}
+                            </div>
+                        </Card>
+                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                            <Card.Header as="h3">Comentar</Card.Header>
+                                <Form className="msg" onSubmit={handleCom}>
+                                    <Form.Row>
+                                    <Col xs={12} sm={9}>
+                                        <Form.Group controlId="formBasictext">
+                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col xs={8} sm={3}>
+                                        <div className = "star">
+                                        <BeautyStars
+                                            value={star}
+                                            inactiveColor="rgb(173, 173, 173)"
+                                            activeColor="rgb(243, 243, 78)"
+                                            size="90%"
+                                            onChange={value => {setStar(value)}}
+                                        />
+                                        </div>
+                                    </Col >
+                                    </Form.Row>
+                                    <Button className="send" variant="info" type="submit">
+                                        <FontAwesomeIcon icon={faComment}/> Comentar
+                                    </Button>
+                                </Form>
+                        </Card>
+                    </Col>
                 </Row>
                 </Container>
             </div>

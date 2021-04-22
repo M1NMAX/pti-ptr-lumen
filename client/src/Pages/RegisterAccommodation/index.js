@@ -93,7 +93,6 @@ function RegisterAlojamento() {
                             <Form.Control required as="select" type="occupationState" value={occupationState} onChange={e => setOccupation(e.target.value)}>
                             <option className="ocupado">Ocupado</option>
                             <option className="desocupado">Desocupado</option>
-                            <option className="reservado">Reservado</option>
                         </Form.Control>
                         </Form.Group>
                     </Col>
