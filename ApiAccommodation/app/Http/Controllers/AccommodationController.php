@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Accommodation;
 use App\Models\Feature;
 use App\Models\Rental;
+use App\Models\Comment;
 
 class AccommodationController extends Controller
 {
@@ -46,19 +47,28 @@ class AccommodationController extends Controller
         return $accommodations;
     }
 
-    public function showId($id)
+    public function showId($ids)
     {   
-        $acc = Accommodation::find($id);
+
+        $cIds = explode(',', $ids);
         $r = [];
-        array_push($r, $acc);
-        array_push($r, $acc->info);
-        return $r[0];
+        $res =[];
+
+        for($i = 0; $i< count($cIds); $i++){
+            $acc = Accommodation::find($cIds[$i]);
+            array_push($r, $acc);
+            array_push($r, $acc->info);
+            array_push($res,$r[0]);
+            $r = [];
+        }
+        return $res;
+        
     }
 
     public function store(Request $request)
     {
-        $this->accommodation->create($request->all());
-        return response()->json(['data' => ['message' => 'Alojamento foi criado com sucesso']]);
+        $a = $this->accommodation->create($request->all());
+        return $a->id;
     }
 
     /*public function update($alojamento, Request $request)
@@ -77,8 +87,7 @@ class AccommodationController extends Controller
         $data = $request->all();
         $accommodation = $this->accommodation->find($id);
 
-        // Call fill on the gift and pass in the data
-        $accommodation->fill($date);
+        $accommodation->fill($data);
         $accommodation->touch();
 
         $accommodation->save();
@@ -134,6 +143,13 @@ class AccommodationController extends Controller
     {
         $accommodation = $this->accommodation->find($accommodation);
         $accommodation->delete();
+        $aComments = $accommodation->comments;
+        if(!($aComments == null)){
+            foreach($aComments as $comment){
+                $c = Comment::find($comment->id);
+                $c->delete();
+            }
+        }
         return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso']]);
     }
 

@@ -28,6 +28,7 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
     protected $attributes = [
         'rating' => 0.0,
         'nRates' => 0,
+        'available' =>1,
      ];
 
     public function features(){

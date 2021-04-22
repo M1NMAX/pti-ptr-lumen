@@ -27,7 +27,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     //BUSCAR TODOS OS ALOJAMENTOS
     $router->get('/', 'AccommodationController@index');
     //MOSTRAR ALOJAMENTO COM O ID
-    $router->get('/{id}', 'AccommodationController@showId');
+    $router->get('/{ids}', 'AccommodationController@showId');
     //VER AS CARACTERISTICAS DO ALOJAMENTO
     $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
     //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)
@@ -130,5 +130,25 @@ $router->group(['prefix' => 'rentalpending'], function () use ($router) {
     //-------------DELETES----------------
     
     $router->delete('/{rental}', 'RentalrPendingController@destroy');
+    
+});
+
+$router->group(['prefix' => 'accommodationInfo'], function () use ($router) {
+    //-------------GETS----------------
+
+    $router->get('/{id}', 'AccommodationInfoController@show');
+    
+    
+    //-------------POSTS----------------
+
+    $router->post('/{id}', 'AccommodationInfoController@store');
+    
+    //-------------PUTS----------------
+
+    $router->put('/{rental}', 'AccommodationInfoController@update');
+
+    //-------------DELETES----------------
+    
+    $router->delete('/{rental}', 'AccommodationInfoController@destroy');
     
 });
