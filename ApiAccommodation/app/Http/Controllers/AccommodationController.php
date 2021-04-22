@@ -41,18 +41,19 @@ class AccommodationController extends Controller
                 $acc->nRates = $sumN;
                 $acc->save();
             }
-            //----------------------------//    
+            //----------------------------//
         }
         return $accommodations;
     }
 
     public function showId($id)
-    {   
+    {
         $acc = Accommodation::find($id);
-        $r = [];
-        array_push($r, $acc);
-        array_push($r, $acc->info);
-        return $r[0];
+        // $r = [];
+        // array_push($r, $acc);
+        // array_push($r, $acc->info);
+        $response = ['accommodation'=> $acc, 'accommodationInfo'=>$acc->info];
+        return response($response, 200);
     }
 
     public function store(Request $request)
