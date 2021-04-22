@@ -46,6 +46,8 @@ function Dashboard() {
                     <Card.Title>Bem-vindo, {user.username}</Card.Title>
                     <Card.Text>
                     Tens 3 Notificacoes | messagens
+                    landlord - criar, editar Alojamento, aceitar renda 
+                    guest -  pagar a renda, pesquisar 
                     </Card.Text>
                     <Search/>
                 </Card.Body>

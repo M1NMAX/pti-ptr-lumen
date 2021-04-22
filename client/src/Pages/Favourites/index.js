@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import SingleAccommodation from '../../Components/SingleAccommodation'
 import Footer from '../../Components/Footer'
 
@@ -12,6 +13,8 @@ import Footer from '../../Components/Footer'
 function Favourites() {
     const [Accommodations, setAccommodation] = useState([]);
     const [token] = useState(localStorage.getItem('token'));
+
+    const history = useHistory();
    
     useEffect(() => {
         api.get('api/favourites',  {
@@ -19,7 +22,13 @@ function Favourites() {
               Authorization: `Bearer ${token}`,
             }
           }).then(response => {
-            setAccommodation(response.data);
+            if(response.data.status){
+                setAccommodation(response.data.favourites);
+            }else{
+                history.push("/login")
+            }
+
+            
             
         }).catch(err => {
             alert(err)

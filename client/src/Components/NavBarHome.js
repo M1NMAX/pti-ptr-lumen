@@ -77,7 +77,7 @@ function NavBarHome() {
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
-                                    <Nav.Link href="/dashboard" >Dashboard</Nav.Link>          
+                                    <Nav.Link href="/dashboard" > Dashboard</Nav.Link>          
                                     </>: <>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>

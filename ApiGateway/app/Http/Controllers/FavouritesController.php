@@ -41,8 +41,8 @@ class FavouritesController extends Controller
     public function index()
     {
         $user = User::where('email', auth()->user()->email)->first();
-        $favourites = $user->favourites()->get();
-        return response($favourites, 200);
+        $response = ['favourites'=>$user->favourites()->get(), 'status'=>true];
+        return response($response, 200);
     }
 
     public function destroy($id)
