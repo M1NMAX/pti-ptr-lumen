@@ -18,11 +18,14 @@ class AccommodationInfo extends Model implements AuthenticatableContract, Author
      *
      * @var array
      */
-
+    public $timestamps = false;
     protected $table = "accommodation_info";
     protected $fillable = [
         'accommodationType','rooms', 'bathRooms', 'area', 'solar','wifi','clean'
     ];
 
-
+    public function accomodation()
+    {
+        return $this->hasOne(Accommodation::class);
+    }
 }

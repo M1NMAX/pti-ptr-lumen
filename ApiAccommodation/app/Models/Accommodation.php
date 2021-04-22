@@ -41,4 +41,9 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function info()
+    {
+        return $this->hasOne(AccommodationInfo::class);
+    }
 }

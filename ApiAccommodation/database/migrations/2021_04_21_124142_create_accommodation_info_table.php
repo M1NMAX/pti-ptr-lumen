@@ -14,12 +14,12 @@ class CreateAccommodationInfoTable extends Migration
     public function up()
     {
         Schema::create('accommodation_info', function (Blueprint $table) {
-            $table->id();
+            $table->id('accommodation_id');
             $table->string('accommodationType');
             $table->integer('rooms');
             $table->integer('bathRooms');
             $table->integer('area');
-            $table->char('solar',1);
+            $table->char('solar',2);
             $table->boolean('wifi');
             $table->boolean('clean');
 

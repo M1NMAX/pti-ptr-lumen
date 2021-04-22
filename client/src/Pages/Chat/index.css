@@ -1,14 +1,15 @@
-.date, .textMe {
+.date,
+.textMe {
   float: right;
 }
 
-.textMe{
+.textMe {
   background-color: rgb(144, 172, 224);
   max-width: 45%;
   padding: 1%;
 }
 
-.textOther{
+.textOther {
   background-color: rgb(192, 188, 188);
   max-width: 45%;
   padding: 1%;
@@ -22,38 +23,42 @@
 .msgBoxR {
   margin-bottom: 2%;
   margin-top: 2%;
-  margin-right: 2%;  
+  margin-right: 2%;
 }
 
-.boxUser{
+.boxUser {
   margin: 2%;
   padding: 2%;
 }
 
-.title{
+.title {
   margin: 2%;
 }
 
-.boxUsers{
+.boxUsers {
   min-height: 100%;
 }
 
-.msg{
+.msg {
   margin-bottom: 1%;
 }
 
-.textMsg{
+.textMsg {
   min-width: 100%;
 }
 
-.send{
+.send {
   text-align: left;
   margin-bottom: 2%;
 }
 
-.height{
+.height {
   position: absolute;
   top: 98px;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
+}
+
+.scrollbar {
+  overflow: scroll;
 }

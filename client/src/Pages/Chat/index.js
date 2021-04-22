@@ -7,11 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faComments} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState } from 'react';
+import "./index.css";
 
 
 function Chat() {
     const [msg, setMsg] = useState('');
-
+    const scrollContainerStyle = { width: "800px", maxHeight: "400px" };
 
     async function handleMsg(e) {
         e.preventDefault();}
@@ -48,7 +49,7 @@ function Chat() {
                         <h5 className="d-inline-block">Pedro</h5>
                     </div>{/*fim top*/}
 
-                    <div className="w3-container">{/*Msg Box*/}
+                    <div className="w3-container scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}>{/*Msg Box*/}
                         <div className="msgBoxR">
                             <p  className="textMe" id="currentUser">heyyyyy</p><br></br>
                         </div>

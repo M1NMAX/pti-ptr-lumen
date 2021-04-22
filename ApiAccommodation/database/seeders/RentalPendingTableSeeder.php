@@ -15,6 +15,6 @@ class RentalPendingTableSeeder extends Seeder
      */
     public function run()
     {
-        RentalPending::factory(\App\RentalPending::class)->create();
+        RentalPending::factory(\App\RentalPending::class)->count(10)->create();
     }
 }
