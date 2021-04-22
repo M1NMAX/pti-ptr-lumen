@@ -342,13 +342,13 @@ function ProfileAccommodation() {
                                             <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
                                         </Form.Group>
                                     </Col>
-                                    <Col xs={12} sm={3}>
+                                    <Col xs={8} sm={3}>
                                         <div className = "star">
                                         <BeautyStars
                                             value={star}
                                             inactiveColor="rgb(173, 173, 173)"
                                             activeColor="rgb(243, 243, 78)"
-                                            size="25px"
+                                            size="90%"
                                             onChange={value => {setStar(value)}}
                                         />
                                         </div>

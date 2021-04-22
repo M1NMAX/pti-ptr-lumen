@@ -15,6 +15,28 @@ import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 function ProfileAccommodationEditable () {
+        const  [showEdit, setshowEdit] = useState(false);
+        return (
+            <div>
+                <NavBarHome/>
+                <Container>
+                    {!showEdit && <ProfileAccom/>}
+                    {showEdit && <EditablePart/>}
+                    
+                </Container>
+            </div>
+        )
+}
+
+function ProfileAccom (){
+    return(
+        <div>
+
+        </div>
+    );
+}
+
+function EditablePart (){
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
 
@@ -54,11 +76,9 @@ function ProfileAccommodationEditable () {
             var profilePic3=DefaultRoomPic3;
     
         var titulo = "Quarto num apartamento T2 só para rapazes";
-        return (
-            <div>
-                <NavBarHome/>
-                <Container>
-                    <Form.Group controlId="formCategory1">
+    return(
+        <div>
+            <Form.Group controlId="formCategory1">
                         <Form.Control size="lg" type="text" defaultValue={titulo}/>
                     </Form.Group>
                 <Row>
@@ -390,23 +410,13 @@ function ProfileAccommodationEditable () {
                          </Form.Row>
                          <Button variant="info">Guardar alterações</Button>
                     </Form>
-                    
-                </Container>
-            </div>
-        )
-}
 
-    /**const mapStatetoProps=(state)=>{
-        return{
-            user_id:state.user.userDetails.userid,
-            username:state.user.userDetails.username,
-        email:state.user.email,
-        profileImage: state.user.profileImage,
-        msg:state.user.msg
-        }
-    }
-   */
-   
+        </div>
+    );
+}  
 
-  // export default connect(mapStatetoProps)(ProfileAlojamento);
+
+
+
+
   export default ProfileAccommodationEditable;

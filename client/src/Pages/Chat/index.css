@@ -62,3 +62,10 @@
 .scrollbar {
   overflow: scroll;
 }
+
+.sendMsg{
+  position: absolute;
+  bottom: 0;
+  right:2%;
+  left: 2%;
+}

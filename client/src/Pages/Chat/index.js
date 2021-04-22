@@ -8,7 +8,7 @@ import { faPaperPlane, faComments} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState } from 'react';
 import "./index.css";
-
+import "bootstrap/js/src/collapse.js";
 
 function Chat() {
     const [msg, setMsg] = useState('');
@@ -25,7 +25,7 @@ function Chat() {
                 <Col className="w-25"><h4>Conversas</h4></Col>
             </Row>
             <Row className="height">
-                <Col xs="3" className="boxUsers sidebar w-25 border scrollbar scrollbar-info"> {/*ChatList*/}
+                <Col xs={12} sm={3} className="boxUsers sidebar w-25 border scrollbar scrollbar-info"> {/*ChatList*/}
                     <div className="boxUser border border-grey"> {/*Chat*/}
                         <img src={DefaultUserPic} alt="Imagem de perfil" width="30px"></img>
                         <h7 className="d-inline-block">Pedro</h7>
@@ -43,7 +43,7 @@ function Chat() {
                     </div> {/*FIM Chat*/}
 
                 </Col>{/* FIM ChatList*/}
-                <Col xs="9" className="container w-50 border"> {/*Chat Escrever*/}
+                <Col xs={12} sm={9} className="container w-50 border"> {/*Chat Escrever*/}
                     <div className="title">{/*top*/}
                         <img src={DefaultUserPic} alt="Imagem de perfil" width="40px"></img>
                         <h5 className="d-inline-block">Pedro</h5>
@@ -51,7 +51,7 @@ function Chat() {
 
                     <div className="w3-container scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}>{/*Msg Box*/}
                         <div className="msgBoxR">
-                            <p  className="textMe" id="currentUser">heyyyyy</p><br></br>
+                            <p className="textMe" id="currentUser">heyyyyy</p><br></br>
                         </div>
                         <div className="msgBoxL">
                             <p className="textOther" id="otherUser">Não posso agora... mas era nice</p>
