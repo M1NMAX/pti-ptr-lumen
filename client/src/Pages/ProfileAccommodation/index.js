@@ -10,6 +10,7 @@ import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import DatePicker from "react-datepicker";
 import './index.css'
+import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -45,7 +46,7 @@ function ProfileAccommodation() {
       const [isDisabled, setDisabled] = useState(true);
       const  [showMessage, setshowMessage] = useState(false);
       
-    
+    const [star, setStar] = useState(0);
     const buttonChange = (event) => {
         
         console.log(document.getElementsByClassName("monthStart")[0].value)
@@ -317,14 +318,14 @@ function ProfileAccommodation() {
                             <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
                             <div className="comments">
                                     <Card.Body className="borderComment">
-                                        <Card.Title> <img src={DefaultUserPic} className="userPic" alt="profils pic" />  José <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'yellow'}}/> 2.0/5</p> </Card.Title>
+                                        <Card.Title> <img src={DefaultUserPic} className="userPic" alt="profils pic" />  José <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> 2.0/5</p> </Card.Title>
                                         <Card.Text>
                                             <p className="time text-muted">Just Now</p>
                                             &emsp; Dos 18 aos 23 anos
                                         </Card.Text>
                                     </Card.Body>
                                     <Card.Body>
-                                        <Card.Title> <img src={DefaultUserPic} className="userPic"alt="profils pic" />  Francisco  <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'yellow'}}/> 4.0/5</p></Card.Title>
+                                        <Card.Title> <img src={DefaultUserPic} className="userPic"alt="profils pic" />  Francisco  <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> 4.0/5</p></Card.Title>
                                         <Card.Text>
                                             <p className="time text-muted">15:45</p>
                                             &emsp; Dos 18 aos 23 anos
@@ -333,11 +334,26 @@ function ProfileAccommodation() {
                             </div>
                         </Card>
                         <Card style={{ width: '100%', marginTop: '2%' }}>
-                            <Card.Header as="h3">Comentar e Avaliar</Card.Header>
+                            <Card.Header as="h3">Comentar</Card.Header>
                                 <Form className="msg" onSubmit={handleCom}>
-                                    <Form.Group controlId="formBasictext">
-                                        <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
-                                    </Form.Group>
+                                    <Form.Row>
+                                    <Col xs={12} sm={9}>
+                                        <Form.Group controlId="formBasictext">
+                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col xs={12} sm={3}>
+                                        <div className = "star">
+                                        <BeautyStars
+                                            value={star}
+                                            inactiveColor="rgb(173, 173, 173)"
+                                            activeColor="rgb(243, 243, 78)"
+                                            size="25px"
+                                            onChange={value => {setStar(value)}}
+                                        />
+                                        </div>
+                                    </Col >
+                                    </Form.Row>
                                     <Button className="send" variant="info" type="submit">
                                         <FontAwesomeIcon icon={faComment}/> Comentar
                                     </Button>
