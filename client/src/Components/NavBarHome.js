@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faHeart, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 function NavBarHome() {
@@ -66,17 +66,16 @@ function NavBarHome() {
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
-                            <Nav className="mr-auto">
-
-                                
-                            </Nav>
-                            <Nav>
+                            
+                            <Nav className="text-center">
                                 {/* show auth user data  */}
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1"><FontAwesomeIcon icon={faHeart}/> Favourites</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/chat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
                                     <Nav.Link href="/dashboard" >Dashboard</Nav.Link>          
                                     </>: <>
@@ -118,12 +117,17 @@ function NavBarHome() {
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
-                            <Nav className="mr-auto">
+                            <Nav className="text-center">
                                 {/* show auth user data  */}
                                 {auth?<>
-                                        <Nav.Link href="/chat"> Chat</Nav.Link>
-                                        <Nav.Link href={ "/profileUser/"+userid}> {username} </Nav.Link>
-                                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                                    <NavDropdown title={username} id="collasible-nav-dropdown">
+                                        <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/chat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
+                                    </NavDropdown> 
+                                    <Nav.Link href="/dashboard" >Dashboard</Nav.Link>
                                     </>: <>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
