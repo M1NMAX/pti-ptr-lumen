@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from "react";
-import {Button, Card, Row, Col} from 'react-bootstrap'
+import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
@@ -48,33 +48,30 @@ function SingleAccommodation({accom}) {
     
    
     return (
-        <>
-            <Card style={{ width: '80rem' }} className="mb-2">
+        <Container fluid>
+            <Card className="mb-2">
                 <Card.Header>{accommodation.name}</Card.Header>
                 <Row> 
-                    <Col>
+                    <Col xm={12} sm={6}>
                     <AnimationWrapper>
-                        <a href="/profileAlojamento">
-                            <Card.Img   style={{ width: '20rem', margin:'1rem' }} onclick="href='/profileAlojamento" className="img" src={alojamento}></Card.Img>
+                        <a href={"/profileAccommodation/"+id}>
+                            <Card.Img   style={{ width: '50%'}} onclick={"/profileAccommodation/"+id} className="img" src={alojamento}></Card.Img>
                         </a>
                     </AnimationWrapper>
                     </Col>
-                    <Col>
-                
-                    <Card.Title className="center"></Card.Title>
-
-                    <Card.Text>
-                        <p>Morada: {accommodation.address} </p>
-                        <p>Preco: {accommodation.price}&euro;</p>
-                        <p>Rating: {accommodation.rating} &#42;</p>
+                    <Col xm={12} sm={6}>
+                    <Card.Text >
+                        <h5 style={{textAlign:"center"}}>Morada: {accommodation.address} </h5>
+                        <h5 style={{textAlign:"center"}}>Preco: {accommodation.price}&euro;</h5>
+                        <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
                     </Card.Text>
-                    <Button className="m-2" variant="primary"href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
-                    <Button className="m-2" variant="primary" onClick={handleRemove}>Remover dos favoritos</Button>
+                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="primary" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
+                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="primary" onClick={handleRemove}>Remover dos favoritos</Button>
 
                     </Col>
                 </Row>
             </Card> 
-        </>
+        </Container>
     )
 }
 

@@ -20,7 +20,7 @@
 
 .search {
   position: absolute;
-  top: 80%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -37,6 +37,7 @@
 
 .button {
   align-items: center;
+  margin-top: 2%;
 }
 
 .center {
@@ -84,6 +85,10 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.card {
+  border: none;
 }
 
 @media (max-width: 767px) {

@@ -5,11 +5,10 @@ import { AnimationWrapper } from 'react-hover-animation';
 import alojamento from '../img/basicRoom.png';
 
 function Accommodation({accom}) {
-    
     const x = accom.map((accommodation)=>
         <Card className="mb-4 mt-4 ml-4 mr-4 center">
             <AnimationWrapper>
-                <a href="/profileAccommodation">
+                <a href={"/profileAccommodation/"+accommodation.id}>
                     <Card.Img onclick="href='/profileAccommodation" className="img" src={alojamento}></Card.Img>
                 </a>
             </AnimationWrapper>
@@ -20,7 +19,6 @@ function Accommodation({accom}) {
                 <p>Preco: {accommodation.price}&euro;</p>
                 <p>Rating: {accommodation.rating}&#42;</p>
             </Card.Text>
-            <Button variant="primary"href={ "/profileAccommodation/"+accommodation.id}>Ir para o alojamento</Button>
         </Card> 
     )
     const amount = x.length
@@ -36,13 +34,13 @@ function Accommodation({accom}) {
     let y = 0
     for (let i=0; i < rows; i++){
         content.push(<Row>
-            <Col>
+            <Col xs={12} sm={4}>
                 {x[y]}
             </Col>
-            <Col>
+            <Col xs={12} sm={4}>
                 {x[y+1]}
             </Col>
-            <Col>
+            <Col xs={12} sm={4}>
                 {x[y+2]}
             </Col>
         </Row>)
