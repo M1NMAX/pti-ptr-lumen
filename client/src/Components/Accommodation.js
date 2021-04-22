@@ -1,12 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
-import ReactDOM from "react-dom";
-import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
-import {Navbar, Nav, NavDropdown, Button, Form, Card, Row, Col} from 'react-bootstrap'
-import { AnimationWrapper } from 'react-hover-animation'
-import alojamento from '../img/basicRoom.png'
-import api from '../services/api';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import {Button, Card, Row, Col} from 'react-bootstrap';
+import { AnimationWrapper } from 'react-hover-animation';
+import alojamento from '../img/basicRoom.png';
 
 function Accommodation({accom}) {
     
@@ -29,7 +25,7 @@ function Accommodation({accom}) {
     )
     const amount = x.length
     let rows = 0
-    if (amount%3 != 0) {
+    if (amount%3 !== 0) {
         rows = Math.floor(amount/3) + 1
     }
     else{

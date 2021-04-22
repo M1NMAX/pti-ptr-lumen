@@ -1,24 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Container,Row,Col,Form ,Button} from 'react-bootstrap';
-//import {connect} from 'react-redux';
 import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
 import {useParams, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 
-
-//const axios = require('axios');
 function ProfileUser(){
     let { id } = useParams();
     const [token] = useState(localStorage.getItem('token'));
-    // const [username, setUsername] = useState();
-    // const [name, setName] = useState();
-    // const [email, setEmail] = useState();
     const [user, setUser] = useState([]);
-   
-
-
+    
     const history = useHistory();
 
     useEffect(() => {
@@ -31,17 +23,14 @@ function ProfileUser(){
             localStorage.clear();
             history.push('/login');
           }else{
-            // setUsername(response.data.username);
-            // setName(response.data.name);
-            // setEmail(response.data.email);
-            // console.log(response.data);
             setUser(response.data);
-            
           }
         }).catch(err => {
           alert(err)
         })
       }, [token]);
+
+      
 
         return (
             <div>
@@ -72,10 +61,7 @@ function ProfileUser(){
                                 <Form.Label>Data de Nascimento:</Form.Label>
                                 <Form.Control type="text" defaultValue="N/A" value={user.birthdate}/>
                             </Form.Group>
-                            {/* <Form.Group controlId="formCategory6">
-                                <Form.Label>Nº de contribuinte:</Form.Label>
-                                <Form.Control type="text" defaultValue="123457789"/>
-                            </Form.Group> */}
+                           
                             <Form.Group controlId="formCategory7">
                                 <Form.Label>Características Pessoais:</Form.Label>
                                 <Form.Control type="text" defaultValue="Organizado, vou para a cama cedo, gosto de limpar casas de banho" />
