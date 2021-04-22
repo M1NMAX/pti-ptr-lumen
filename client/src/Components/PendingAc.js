@@ -14,8 +14,8 @@ function PendingAc({accom}) {
     const x = favorites.map((accommodation)=>
         <Card className="mb-4 mt-4 ml-4 mr-4 center" style={{ width: '100%', height: '10%' }}>
             <AnimationWrapper>
-            <a href={"/profileAlojamento/"+accommodation.id}>
-                   <Card.Img onclick="href='/profileAlojamento" className="img" style={{ width: '100%'}} src={alojamento}></Card.Img>
+            <a href={"/profileAlojamento/"+accommodation.id} >
+                   <Card.Img onclick="href='/profileAlojamento" className="img" style={{ width: '60%'}} src={alojamento}></Card.Img>
                 </a>
             </AnimationWrapper>
             
@@ -41,8 +41,8 @@ function PendingAc({accom}) {
     for (let i=0; i < favorites.length; i++){
         content.push(<Row className='border'>
             <Col className="mb-4 mt-4 ml-4 mr-4 center">
-            <img src={DefaultUserPic} alt="Imagem de perfil" width="300px"></img>
-            <h7>Pedro</h7>{' '}
+            <img src={DefaultUserPic} alt="Imagem de perfil" width="60%"></img>
+            <h4>Pedro</h4>{' '}
             <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/></Button>
             </Col>
             <Col className="center">

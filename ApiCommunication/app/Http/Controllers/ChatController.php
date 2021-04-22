@@ -46,15 +46,17 @@ class ChatController extends Controller
             $res2 = Chat::where('user_id1', $id2) 
                     ->where('user_id2', $id1)
                     ->get();
-            if(count($res2) == 0){
-                return 0;
-            }else{
+            if(!(count($res2) == 0)){
                 return $res2[0]->id;
             }
             
         }
         if(count($res) == 0){
-            return 0;
+            $c = new Chat;
+            $c->user_id1 = $id1;
+            $c->user_id2 = $id2;
+            $c->save();
+            return $c->id;
         }else{
             return $res[0]->id;
         }

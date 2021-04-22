@@ -29,4 +29,12 @@ class AccommodationController extends Controller
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id);
         return response($response);
     }
+
+    public function comments($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+        return response($response);
+    }
+
+
 }
