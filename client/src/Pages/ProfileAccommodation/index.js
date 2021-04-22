@@ -37,14 +37,39 @@ function ProfileAccommodation() {
       const ref = useRef(null);
     
       const handleClick = (event) => {
+        console.log(event.target)
         setShow(!show);
         setTarget(event.target);
       };
-       
-      const  [showMessage, setshowMessage] = useState(false);
-      const changeShowMessage = (event) => {setshowMessage(!showMessage);}
-
       const [isDisabled, setDisabled] = useState(true);
+      const  [showMessage, setshowMessage] = useState(false);
+      
+    
+    const buttonChange = (event) => {
+        
+        console.log(document.getElementsByClassName("monthStart")[0].value)
+        console.log(document.getElementsByClassName("monthEnd")[0].value)
+
+        if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
+            console.log("nao")
+            setDisabled(false)
+            console.log(isDisabled)
+        }
+        else{
+            console.log("sim")
+            setDisabled(true)
+            console.log(isDisabled)
+        }
+    }
+
+      const changeShowMessage = (event) => {
+        setshowMessage(!showMessage);
+        console.log(startDate)
+        console.log(document.getElementsByClassName("monthStart")[0].defaultValue)
+        console.log(document.getElementsByClassName("monthEnd")[0].defaultValue)
+        setDisabled(true)
+        console.log(isDisabled)
+    }
 
       const datesFill = () => {
           if (startDate != null && endDate != null){
@@ -98,9 +123,10 @@ function ProfileAccommodation() {
                             <Popover.Content>
                                 <Form>
                                     <DatePicker
+                                        className = "monthStart"
                                         placeholderText="Mês de entrada" 
                                         selected={startDate}
-                                        onChange={date => setStartDate(date)}
+                                        onChange={date => {setStartDate(date); buttonChange();}}
                                         selectsStart
                                         minDate={new Date()}
                                         startDate={startDate}
@@ -111,9 +137,12 @@ function ProfileAccommodation() {
                                         isClearable
                                     />
                                     <DatePicker
+                                        className = "monthEnd"
                                         placeholderText="Mês de saída"
                                         selected={endDate}
-                                        onChange={date => setEndDate(date)}
+                                        onChange={date => {setEndDate(date); buttonChange();}}
+                                        
+                                        
                                         selectsEnd
                                         minDate={new Date()}
                                         startDate={startDate}
@@ -123,7 +152,7 @@ function ProfileAccommodation() {
                                         showMonthYearPicker
                                         isClearable
                                     />
-                                    <Button className="dateSend" size="sm" variant="info" type="submit" onClick={changeShowMessage} disabled={isDisabled}>
+                                    <Button className="dateSend" size="sm" variant="info" onClick={changeShowMessage} disabled={isDisabled}>
                                         Enviar
                                     </Button>
                                 </Form>
@@ -133,7 +162,7 @@ function ProfileAccommodation() {
                             </Popover>
                         </Overlay>
                         <Button variant="info" href= "/chat" className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
-                        <Button variant="info" className="interesse" size="lg"><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
+                        <Button variant="info" id="button" className="interesse" size="lg" onClick={toggleButton}><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
                         
                         
                         <Card style={{ width: '100%' }}>
@@ -298,7 +327,22 @@ function ProfileAccommodation() {
         }
     }
    */
-   
+    
+    /*fazer pedido a base de dados e perguntar se alojamento se encontra nos favoritos e alterar toggle perante output*/
+    let toggle = 0
+
+    function toggleButton() {
+        if (toggle == 0){
+            console.log("oi");
+            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Remover dos Favoritos";
+            toggle += 1
+        }
+        else {
+            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Adicionar aos Favoritos";
+            toggle -= 1
+        }
+        
+    }
 
   // export default connect(mapStatetoProps)(ProfileAlojamento);
   export default ProfileAccommodation;

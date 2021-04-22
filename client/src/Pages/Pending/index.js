@@ -8,11 +8,10 @@ import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import PendingAc from '../../Components/PendingAc'
 import Footer from '../../Components/Footer'
-
 function Pending() {
     const accommodation = useState([
         { "name":"John", "age":30, "city":"New York" },
-        { "name":"John", "age":30, "city":"New York" }
+        { "name":"Wick", "age":30, "city":"New York" }
     ]);
 
     return(
