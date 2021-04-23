@@ -5,7 +5,40 @@ import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
 
-function SingleChat({accom}) {
+function SingleChat({chats}) { 
+    const [id] = useState(chats.id);
+    const [token] = useState(localStorage.getItem('token'));
+    const [chat, setChat] = useState();
+    const [userReceiver, setReceiverName] = useState();
+
+    useEffect(() => {
+          api.get( 'api/chat/'+id,{
+              headers:{
+                  Authentication:`Bearer ${token}`,
+              }
+          }).then(response => {
+            if(response.data.status && response.data.status === (401 || 498)){
+                console.log("erro")
+                localStorage.clear();
+               
+            }else{
+               setChat(response.data)
+                console.log(response.data);
+                const idUser1 = response.data.id_user1;
+                const idUser2 = response.data.id_user2;
+
+
+                api.get('api/users/'+ response.data.id).then(responseChat => {
+                    console.log(responseChat)
+                    setChat(responseChat.data);
+                }).catch(err => {
+                    alert(err)
+                })
+          }
+        }).catch(err => {
+          alert(err)
+        })
+      }, [token]);
     return (
         <div>
             <a href="/chat">

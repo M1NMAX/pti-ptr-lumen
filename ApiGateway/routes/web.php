@@ -58,9 +58,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 
     $router->group(['prefix' => 'chat'], function () use ($router) {
-        //$router->get('/', 'AccommodationController@index');
-        $router->get('/{id}', 'AccommodationController@show');
-        //$router->get('/{id}/comments', 'AccommodationController@comments');
+        //$router->get('/', 'ChatController@index');
+        $router->get('/user/{id}', 'ChatController@show');
+        $router->get('/{id}', 'ChatController@showId');
+        //$router->get('/{id}/comments', 'ChatController@comments');
     });
 
 });

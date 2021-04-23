@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chat;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller 
 {
@@ -23,15 +24,14 @@ class ChatController extends Controller
     public function show($id){
         return $this->chat->find($id);
     }
-~
+
 
     public function showUserId($id){
-        $chats = Chat::where('user_id1', $id) 
-                        ->where('user_id2', $id)
-                        ->get();
-
-
-        return $chats;
+        $query = DB::table('chat')
+                    ->where('user_id1', $id) 
+                    ->orWhere('user_id2', $id)
+                    ->get();
+        return $query;
     }
 
     public function showMsn($id){

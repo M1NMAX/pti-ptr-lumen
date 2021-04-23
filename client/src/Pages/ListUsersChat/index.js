@@ -8,43 +8,60 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import SingleChat from '../../Components/SingleChat'
 import Footer from '../../Components/Footer'
-
 function ListUsersChat() {
 
-    const [Accommodations, setAccommodation] = useState([]);
     const [token] = useState(localStorage.getItem('token'));
-
+    const [auth, setAuth] = useState(true);
+    const [username, setUsername] = useState('');
+    const [userid, setUserid] = useState();
+    const [userChats, setUserChats] = useState([]);
     const history = useHistory();
-   
+  
     useEffect(() => {
-        api.get('api/favourites',  {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }
-          }).then(response => {
-            if(response.data.status){
-                setAccommodation(response.data.favourites);
+        
+        if(token === null || token ===''){
+            setAuth(false);
+        }else{
+          api.get('api/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }).then(response => {
+            if(response.data.status && response.data.status === (401 || 498)){
+                console.log("erro")
+                localStorage.clear();
+                history.push('/');
             }else{
-                history.push("/login")
-            }
-
-            
-            
+                setUsername(response.data.username);
+                setUserid(response.data.id);
+                //console.log(response.data.id);
+                api.get('api/chat/user/'+ response.data.id).then(responseChat => {
+                  console.log(responseChat.data)
+                  setUserChats(responseChat.data);
+              }).catch(err => {
+                  alert(err)
+              })
+                
+                //console.log(response.data.id);
+          }
         }).catch(err => {
-            alert(err)
+          alert(err)
         })
-    }, [token]);
-
+      }}, [token]);
     return(
-        <div>
-        <NavBarHome/>
-        <div class="center"><h3>Lista de Chats</h3></div>
-        <SingleChat />
-        
-        
+      <div>
+      <NavBarHome/>
+      
 
-        <Footer/>
-       </div>
+      { userChats.length>0 ? 
+              userChats.map((chats)=>(<SingleChat chats={chats} />)): 
+              <div class="center">
+              <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem chats</h6>
+          </div>
+      }
+      
+      <Footer/>
+     </div>
 
     )
 }

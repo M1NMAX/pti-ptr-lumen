@@ -4,7 +4,7 @@ import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
-
+ 
 function SingleAccommodation({accom}) {
     const [id] = useState(accom.accommodation_id);
     const [token] = useState(localStorage.getItem('token'));
