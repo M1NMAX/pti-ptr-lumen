@@ -14,6 +14,7 @@ import Pending from './Pages/Pending'
 
 import capa from './img/capa.png'
 import './App.css'
+import ListUsersChat from './Pages/ListUsersChat';
 function Routes() {
     return (
         <BrowserRouter>
@@ -21,6 +22,7 @@ function Routes() {
             <Route path="/" exact component={Homepage} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            <Route path="/listChat" exact component={ListUsersChat} />
             <Route path="/chat" exact component={Chat} />
             <Route path="/profileUser/:id" exact component={ProfileUser} />
             <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />

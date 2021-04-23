@@ -73,7 +73,7 @@ function NavBarHome() {
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/chat"}><FontAwesomeIcon icon={faSms}/> Chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
@@ -123,7 +123,7 @@ function NavBarHome() {
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/chat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 

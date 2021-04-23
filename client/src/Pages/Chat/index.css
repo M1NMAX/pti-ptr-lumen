@@ -54,18 +54,36 @@
 
 .height {
   position: absolute;
-  top: 98px;
-  bottom: 0;
+  bottom: 1%;
   width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  word-break: break-word;
+  overflow: auto;
+}
+
+.text {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.text2 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  float: right;
 }
 
 .scrollbar {
   overflow: scroll;
 }
 
-.sendMsg{
+.sendMsg {
   position: absolute;
   bottom: 0;
-  right:2%;
+  right: 2%;
   left: 2%;
 }
