@@ -20,9 +20,9 @@ use App\Models\Landlord;
 |
 */
 
-//$router->get('/key', function () {
-//  return \Illuminate\Support\Str::random(32);
-//});
+/*$router->get('/key', function () {
+  return \Illuminate\Support\Str::random(32);
+});*/
 
 $router->get('/', function () {
     return "APIGATEWAY";
@@ -54,6 +54,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/', 'AccommodationController@index');
         $router->get('/{id}', 'AccommodationController@show');
         $router->get('/{id}/comments', 'AccommodationController@comments');
+    });
+
+
+    $router->group(['prefix' => 'chat'], function () use ($router) {
+        //$router->get('/', 'AccommodationController@index');
+        $router->get('/{id}', 'AccommodationController@show');
+        //$router->get('/{id}/comments', 'AccommodationController@comments');
     });
 
 });

@@ -27,9 +27,10 @@ function ProfileAccommodation() {
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
-        setaccommodation(response.data.accommodation);
+        //console.log(response.data.info)
+        setaccommodation(response.data/*.accommodation*/);
         //console.log(response.data.accommodation);
-        setaccommodationInfo(response.data.accommodationInfo)
+        setaccommodationInfo(response.data.info)
         //console.log(response.data.accommodationInfo);
         
         }).catch(err => {
@@ -175,10 +176,10 @@ function ProfileAccommodation() {
                                 </Form>
                                 {showMessage && <h6 >Ao enviar o senhorio será informado do seu interesse e irá contactá-lo em breve</h6>}
                                 
-                            </Popover.Content>
+                            </Popover.Content> 
                             </Popover>
                         </Overlay>
-                        <Button variant="info" href= "/chat" className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
+                        <Button variant="info" href= {"/chat/" + accommodation.landlord_id + "/" + id} className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
                         <Button variant="info" id="button" className="interesse" size="lg" onClick={toggleButton}><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
                     </Col>
                     <Col xs={12} sm={4}>
