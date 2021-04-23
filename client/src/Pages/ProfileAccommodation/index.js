@@ -7,7 +7,8 @@ import DefaultUserPic from "../../img/standartUser3.png";
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
-import NavBarHome from '../../Components/NavBarHome'
+import NavBarHome from '../../Components/NavBarHome';
+import Comment from '../../Components/Comments';
 import DatePicker from "react-datepicker";
 import './index.css'
 import BeautyStars from 'beauty-stars';
@@ -334,14 +335,8 @@ function ProfileAccommodation() {
                             <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
                             <div className="comments">
                                     
-                                    {accommodationComments.map((comment)=>(<Card.Body className="borderComment">
-                                        <Card.Title> <img src={DefaultUserPic} className="userPic" alt="profils pic" />  José <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> {comment.rate}/5</p> </Card.Title>
-                                        <Card.Text>
-                                            <p className="time text-muted">
-                                                Just Now</p>
-                                            &emsp;{comment.content}
-                                        </Card.Text>
-                                    </Card.Body>))}
+                                    {accommodationComments.map((comment)=>(<Comment comment={comment}/>))}
+
 
 
                                     

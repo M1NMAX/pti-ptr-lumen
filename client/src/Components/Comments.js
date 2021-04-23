@@ -1,58 +1,38 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
-import {Button, Card, Row, Col} from 'react-bootstrap';
-import { AnimationWrapper } from 'react-hover-animation';
-import alojamento from '../img/basicRoom.png';
+import React, {useEffect, useState}  from 'react';
+import {Card} from 'react-bootstrap';
+import api from '../services/api';
+import DefaultUserPic from "../img/standartUser3.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+
+
 
 function Comment({comment}) {
-    
-    const x = accom.map((accommodation)=>
-        <Card className="mb-4 mt-4 ml-4 mr-4 center">
-            <AnimationWrapper>
-                <a href="/profileAccommodation">
-                    <Card.Img onclick="href='/profileAccommodation" className="img" src={alojamento}></Card.Img>
-                </a>
-            </AnimationWrapper>
-            <Card.Title className="center">{accommodation.name}</Card.Title>
 
-            <Card.Text>
-                <p>{accommodation.description}</p>
-                <p>Preco: {accommodation.price}&euro;</p>
-                <p>Rating: {accommodation.rating}&#42;</p>
-            </Card.Text>
-            <Button variant="primary"href={ "/profileAccommodation/"+accommodation.id}>Ir para o alojamento</Button>
-        </Card> 
-    )
-    const amount = x.length
-    let rows = 0
-    if (amount%3 !== 0) {
-        rows = Math.floor(amount/3) + 1
-    }
-    else{
-        rows = Math.floor(amount/3)
-    }
-    console.log(rows)
-    let content = []
-    let y = 0
-    for (let i=0; i < rows; i++){
-        content.push(<Row>
-            <Col>
-                {x[y]}
-            </Col>
-            <Col>
-                {x[y+1]}
-            </Col>
-            <Col>
-                {x[y+2]}
-            </Col>
-        </Row>)
-        y += 3
-    }
+    const [userInfo, setuserInfo] = useState([]);
+    console.log(comment.user_id);
+
+    useEffect(() => {
+        api.get('api/users/'+comment.user_id).then(response => {
+            setuserInfo(response.data);
+        }).catch(err => {
+          alert(err)
+        })
+    }, []);
     
+   
     return (
-        <div>
-            {content}
-        </div>
+        <Card.Body className="borderComment">
+            <Card.Title> 
+                <img src={DefaultUserPic} className="userPic" alt="profils pic" />{userInfo.username}<p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> {comment.rate}/5</p> 
+                </Card.Title>
+            <Card.Text>
+                <p className="time text-muted">
+                    Just Now</p>
+                &emsp;{comment.content}
+            </Card.Text>
+        </Card.Body>
     )
 }
 
