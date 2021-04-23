@@ -10,6 +10,7 @@ function ProfileUser(){
     let { id } = useParams();
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState([]);
+    const [userType, setUserType] = useState('');
     
     const history = useHistory();
 
@@ -24,6 +25,7 @@ function ProfileUser(){
             history.push('/login');
           }else{
             setUser(response.data);
+            setUserType(response.data.userable_type);
           }
         }).catch(err => {
           alert(err)
@@ -74,14 +76,14 @@ function ProfileUser(){
                                 <Form.Label>Estou interessado em:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"alugaAlojamento" === "alugarAlojamento"}
+                                    checked={userType.includes("Guest")}
                                     type="radio"
                                     label="Alugar um alojamento"
                                     name="alugarAlojamento"
                                     id="alugarAlojamento"
                                     />
                                     <Form.Check
-                                    checked={"alugarAlojamento"=== "tenhoAlojamento"}
+                                    checked={!userType.includes("Guest")}
                                     type="radio"
                                     label="Tenho um alojamento para alugar"
                                     name="tenhoAlojamento"
