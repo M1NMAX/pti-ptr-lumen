@@ -23,6 +23,16 @@ class ChatController extends Controller
     public function show($id){
         return $this->chat->find($id);
     }
+~
+
+    public function showUserId($id){
+        $chats = Chat::where('user_id1', $id) 
+                        ->where('user_id2', $id)
+                        ->get();
+
+
+        return $chats;
+    }
 
     public function showMsn($id){
         $chat = Chat::find($id);
@@ -36,7 +46,7 @@ class ChatController extends Controller
             'message' => 'Chat criado com sucesso!!']
         ]);
     }
-
+    
 
     public function chatExists($id1, $id2){
         $res = Chat::where('user_id1', $id1) 

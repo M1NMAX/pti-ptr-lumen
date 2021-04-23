@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 
-class AccommodationController extends Controller
+class ChatController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,22 +19,22 @@ class AccommodationController extends Controller
     //
     public function index()
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/');
+        $response = Http::get(env('API_CHAT_URL') . 'chat/');
         return response($response);
     }
 
 
     public function show($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id);
+        $response = Http::get(env('API_CHAT_URL') . 'chat/user' . $id);
         return response($response);
     }
 
-    public function comments($id)
+    /*public function comments($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id. '/comments');
         return response($response);
-    }
+    }*/
 
 
 }

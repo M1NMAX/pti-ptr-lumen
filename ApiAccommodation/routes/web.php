@@ -27,7 +27,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     //BUSCAR TODOS OS ALOJAMENTOS
     $router->get('/', 'AccommodationController@index');
     //MOSTRAR ALOJAMENTO COM O ID
-    $router->get('/{ids}', 'AccommodationController@showId');
+    $router->get('/{id}', 'AccommodationController@showId');
     //VER AS CARACTERISTICAS DO ALOJAMENTO
     $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
     //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)

@@ -47,9 +47,20 @@ class AccommodationController extends Controller
         return $accommodations;
     }
 
-    public function showId($ids)
+    public function showId($id)
     {   
+        
+        $r = [];
+        $acc = Accommodation::find($id);   
+        array_push($r, $acc);
+        array_push($r, $acc->info);
+        return $r[0];
+    }
 
+    
+    public function showIds($ids)
+    {   
+        
         $cIds = explode(',', $ids);
         $r = [];
         $res =[];
