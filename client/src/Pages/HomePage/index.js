@@ -36,7 +36,7 @@ function Homepage() {
             </div>
             <NavBarHome/>
             <div className="App">
-                <Container className="no-border">
+                <Container>
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
                             <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
