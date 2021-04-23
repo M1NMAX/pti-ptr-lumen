@@ -215,9 +215,6 @@ function ProfileAccommodation() {
                                 <Card.Text>
                                     {accommodation.available? <p className="desocupado">Desocupado</p>:<p className="ocupado"> Ocupado</p>}
 
-{/*                                     
-                                    <p className="ocupado"> Ocupado</p>
-                                    <p className="desocupado">Desocupado</p>*/}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -334,19 +331,9 @@ function ProfileAccommodation() {
                         <Card style={{ width: '100%', marginTop: '2%' }}>
                             <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
                             <div className="comments">
-                                    
-                                    {accommodationComments.map((comment)=>(<Comment comment={comment}/>))}
-
-
-
-                                    
-                                    {/* <Card.Body>
-                                        <Card.Title> <img src={DefaultUserPic} className="userPic"alt="profils pic" />  Francisco  <p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> 4.0/5</p></Card.Title>
-                                        <Card.Text>
-                                            <p className="time text-muted">15:45</p>
-                                            &emsp; Dos 18 aos 23 anos
-                                        </Card.Text>
-                                    </Card.Body> */}
+                                {accommodationComments.length>0? 
+                                    accommodationComments.map((comment)=>(<Comment comment={comment}/>)):
+                                    <p>Ainda não existem comentários associados a este alojamento</p> }
                             </div>
                         </Card>
                         <Card style={{ width: '100%', marginTop: '2%' }}>
