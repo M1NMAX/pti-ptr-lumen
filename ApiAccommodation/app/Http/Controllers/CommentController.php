@@ -21,15 +21,16 @@ class CommentController extends Controller
 
     public function index()
     {
-        return $this->comment->paginate(10);
+        // return $this->comment->paginate(10);
+        return $this->comment->take(5)->get();
     }
 
     public function showId($id)
     {
-        return Comment::find($id); 
+        return Comment::find($id);
     }
 
-    
+
 
     public function update($comment, Request $request)
     {
@@ -42,7 +43,7 @@ class CommentController extends Controller
     public function addComment(Request $request)
     {
         $this->comment->create($request->all());
-        return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.']]);
+        return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'status'=>true]);
     }
 
     public function destroy($comment)

@@ -22,6 +22,7 @@ function Login() {
         try {
         const response = await api.post('api/login', { email, password });
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userID', response.data.user.id);
         history.push('/dashboard');
         } catch (err) {
             setErrors(err.response.data.errors);

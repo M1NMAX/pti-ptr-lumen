@@ -2,8 +2,6 @@ import React, {useEffect, useState, useRef}  from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
 import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay} from 'react-bootstrap'
-//import {connect} from 'react-redux';
-import DefaultUserPic from "../../img/standartUser3.png";
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
@@ -15,18 +13,30 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment, faHeart} from '@fortawesome/free-solid-svg-icons'
-//const axios = require('axios');
-import ImageUploading from 'react-images-uploading';
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 
 function ProfileAccommodation() {
     let { id } = useParams();
-    const [token] =useState(localStorage.getItem('token'));
+    const [userId] = useState(localStorage.getItem('userID'))
+    const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
 
+    const [content, setContent] = useState('');
+    const [star, setStar] = useState(0);
+
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState( );
+    const [show, setShow] = useState(false);
+    const [target, setTarget] = useState(null);
+   
+    const [isDisabled, setDisabled] = useState(true);
+    const [showMessage, setshowMessage] = useState(false);
+
+    const ref = useRef(null);
+ 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
@@ -73,34 +83,86 @@ function ProfileAccommodation() {
 
       async function handleFavourite(){
 
-        if(isFavourite){
-            api.delete('/api/favourites/'+id, {
-                headers: {
-                Authorization: `Bearer ${token}`,
-                }
-            }).then(response => {
-                if(response.data.status){
-                    setIsFavourite(false);
-                }else{
-                    alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
-                }
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            if(isFavourite){
+                api.delete('/api/favourites/'+id, {
+                    headers: {
+                    Authorization: `Bearer ${token}`,
+                    }
+                }).then(response => {
+                    if(response.data.status){
+                        setIsFavourite(false);
+                    }else{
+                        alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
+                    }
 
-            }).catch(err => {
-            alert(err)
-            })
+                }).catch(err => {
+                alert(err)
+                })
+            }
+            else if(!isFavourite){
+            var data = {
+                "accommodation_id":parseInt(id)
+            };
+                
+                api.post('/api/favourites/', data, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                }).then(response => { 
+                    if(response.data.status){
+                        setIsFavourite(true);
+                    }else{
+                        alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                    }
+                }).catch(err => {
+                alert(err)
+                })
+            }
         }
-        else if(!isFavourite){
-           var data = {
-               "accommodation_id":parseInt(id)
-           };
-            
-            api.post('/api/favourites/', data, {
+        
+      }
+
+
+    const handleClick = (event) => {
+        setShow(!show);
+        setTarget(event.target);
+    };
+     
+
+    const buttonChange = () => {
+        if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
+            setDisabled(false)
+            setshowMessage(!showMessage);
+        }else{
+            setDisabled(true)
+        }
+    }
+
+    
+    const changeShowMessage = () => {
+        
+        let data = {
+            'user_id': userId,
+            'landlord_id': accommodation.landlord_id,
+            'accommodation_id': accommodation.id,
+            'price': accommodation.price,
+            'beginDate':document.getElementsByClassName("monthStart")[0].value,
+            'endDate':document.getElementsByClassName("monthEnd")[0].value,
+        };
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            api.post('/api/accommodations/rentalpending/', data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
             }).then(response => { 
                 if(response.data.status){
-                    setIsFavourite(true);
+                    alert('done');
+        
                 }else{
                     alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
                 }
@@ -108,45 +170,41 @@ function ProfileAccommodation() {
             alert(err)
             })
         }
-        
-      }
 
+    }
 
+   
 
-      const [startDate, setStartDate] = useState();
-      const [endDate, setEndDate] = useState( );
-      const [show, setShow] = useState(false);
-      const [target, setTarget] = useState(null);
-      const ref = useRef(null);
+    async function handleComment(e) {
+        e.preventDefault();
+
+        var data = {
+            "user_id": parseInt(userId),
+            "accommodation_id":parseInt(id),
+            "rate": star,
+            "content":content,
+        };
+         
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            api.post('/api/accommodations/comment/', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                if(response.data.status){
+                    setContent('');
+                    setStar(0);
+                }else{
+                    alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                }
+            }).catch(err => {
+            alert(err)
+            })
+        }
     
-      const handleClick = (event) => {
-        setShow(!show);
-        setTarget(event.target);
-      };
-      const [isDisabled, setDisabled] = useState(true);
-      const  [showMessage, setshowMessage] = useState(false);
-      
-    const [star, setStar] = useState(0);
-    const buttonChange = (event) => {
-        
-        if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
-            setDisabled(false)
-        }
-        else{
-            console.log("sim")
-            setDisabled(true)
-        }
     }
-
-      const changeShowMessage = (event) => {
-        setshowMessage(!showMessage);
-        setDisabled(true)
-    }
-
-    const [com, setCom] = useState('');
-
-    async function handleCom(e) {
-        e.preventDefault();}
    
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
@@ -211,9 +269,7 @@ function ProfileAccommodation() {
                                         className = "monthEnd"
                                         placeholderText="Mês de saída"
                                         selected={endDate}
-                                        onChange={date => {setEndDate(date); buttonChange();}}
-                                        
-                                        
+                                        onChange={date => {setEndDate(date); buttonChange();}}  
                                         selectsEnd
                                         minDate={new Date()}
                                         startDate={startDate}
@@ -382,21 +438,13 @@ function ProfileAccommodation() {
                 </Row>
                 <Row>
                     <Col>
-                        <Card style={{ width: '100%', marginTop: '2%' }}>
-                            <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
-                            <div className="comments">
-                                {accommodationComments.length>0? 
-                                    accommodationComments.map((comment)=>(<Comment comment={comment}/>)):
-                                    <p>Ainda não existem comentários associados a este alojamento</p> }
-                            </div>
-                        </Card>
-                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                    <Card style={{ width: '100%', marginTop: '2%' }}>
                             <Card.Header as="h3">Comentar</Card.Header>
-                                <Form className="msg" onSubmit={handleCom}>
+                                <Form className="msg" onSubmit={handleComment}>
                                     <Form.Row>
                                     <Col xs={12} sm={9}>
                                         <Form.Group controlId="formBasictext">
-                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
+                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={content} onChange={e => setContent(e.target.value)}/>
                                         </Form.Group>
                                     </Col>
                                     <Col xs={8} sm={3}>
@@ -416,6 +464,15 @@ function ProfileAccommodation() {
                                     </Button>
                                 </Form>
                         </Card>
+                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                            <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
+                            <div className="comments">
+                                {accommodationComments.length>0? 
+                                    accommodationComments.map((comment)=>(<Comment comment={comment}/>)):
+                                    <p>Ainda não existem comentários associados a este alojamento</p> }
+                            </div>
+                        </Card>
+                        
                     </Col>
                 </Row>
                 </Container>
@@ -423,32 +480,4 @@ function ProfileAccommodation() {
         )
 }
 
-    /**const mapStatetoProps=(state)=>{
-        return{
-            user_id:state.user.userDetails.userid,
-            username:state.user.userDetails.username,
-        email:state.user.email,
-        profileImage: state.user.profileImage,
-        msg:state.user.msg
-        }
-    }
-   */
-    
-    /*fazer pedido a base de dados e perguntar se alojamento se encontra nos favoritos e alterar toggle perante output*/
-    let toggle = 0
-
-    function toggleButton() {
-        if (toggle == 0){
-            console.log("oi");
-            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Remover dos Favoritos";
-            toggle += 1
-        }
-        else {
-            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Adicionar aos Favoritos";
-            toggle -= 1
-        }
-        
-    }
-
-  // export default connect(mapStatetoProps)(ProfileAlojamento);
-  export default ProfileAccommodation;
+export default ProfileAccommodation;
