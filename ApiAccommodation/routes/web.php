@@ -66,6 +66,11 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
 
 });
 
+$router->group(['prefix' => 'comment'], function () use ($router) {
+    //ADICIONA O COMENTÁRIO
+    $router->post('/', 'CommentController@addComment');
+});
+
 $router->group(['prefix' => 'af'], function () use ($router) {
     //AINDA NAO PRECISEI DE POR NADA AQUI
 });

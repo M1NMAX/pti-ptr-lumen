@@ -23,7 +23,7 @@ function Routes() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/listChat" exact component={ListUsersChat} />
-            <Route path="/chat" exact component={Chat} />
+            <Route path="/chat/:id" exact component={Chat} />
             <Route path="/profileUser/:id" exact component={ProfileUser} />
             <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />
             <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />

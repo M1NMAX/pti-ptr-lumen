@@ -36,11 +36,15 @@ class ChatController extends Controller
         return response($response);
     }
 
-    /*public function comments($id)
+    public function messages($id)
     {
-        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id. '/comments');
+        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id. '/messages');
         return response($response);
-    }*/
+    }
 
-
+    public function storeMessage(Request $request)
+    {
+        $response = Http::post(env('API_CHAT_URL') . 'message/addMessage');
+        return response($response);
+    }
 }
