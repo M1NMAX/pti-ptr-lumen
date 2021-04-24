@@ -15,25 +15,23 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment, faHeart} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
 function ProfileAccommodation() {
     let { id } = useParams();
+    const [token] =useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
+    const [isFavourite, setIsFavourite]= useState(false);
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
-        //console.log(response.data.info)
-        setaccommodation(response.data/*.accommodation*/);
-        //console.log(response.data.accommodation);
-        setaccommodationInfo(response.data.info)
-        //console.log(response.data.accommodationInfo);
-        
+            setaccommodation(response.data);
+            setaccommodationInfo(response.data.info)
         }).catch(err => {
           alert(err)
         })
@@ -41,14 +39,79 @@ function ProfileAccommodation() {
         api.get('api/accommodations/'+id+'/comments').then(response => {
             // you must define a default operation
         setaccommodationComments(response.data);
-        console.log(response.data);
         
         }).catch(err => {
           alert(err)
         })
 
+        if(token ===null || token ===''){
+           setIsFavourite(false);
+        }else{
+            api.get('api/favourites',  {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                }
+              }).then(response => {
+                if(response.data.status){
+                    for (let i = 0; i < response.data.favourites.length; i++) {
+                        if(id ==response.data.favourites[i].accommodation_id){
+                            setIsFavourite(true);
+                            break;
+                        }      
+                    }
+                }else{
+                    localStorage.clear();
+                }
+            
+            
+            }).catch(err => {
+            alert(err)
+            })
+        }
 
-      }, []);
+      }, [token]);
+
+      async function handleFavourite(){
+
+        if(isFavourite){
+            api.delete('/api/favourites/'+id, {
+                headers: {
+                Authorization: `Bearer ${token}`,
+                }
+            }).then(response => {
+                if(response.data.status){
+                    setIsFavourite(false);
+                }else{
+                    alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
+                }
+
+            }).catch(err => {
+            alert(err)
+            })
+        }
+        else if(!isFavourite){
+           var data = {
+               "accommodation_id":parseInt(id)
+           };
+            
+            api.post('/api/favourites/', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                if(response.data.status){
+                    setIsFavourite(true);
+                }else{
+                    alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                }
+            }).catch(err => {
+            alert(err)
+            })
+        }
+        
+      }
+
+
 
       const [startDate, setStartDate] = useState();
       const [endDate, setEndDate] = useState( );
@@ -181,7 +244,9 @@ function ProfileAccommodation() {
                             </Popover>
                         </Overlay>
                         <Button variant="info" href= {"/chat/" + accommodation.landlord_id + "/" + id} className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
-                        <Button variant="info" id="button" className="interesse" size="lg" onClick={toggleButton}><FontAwesomeIcon icon={faStar} /> Adicionar aos favoritos</Button>
+                        <Button variant="info" id="button" className="interesse" size="lg" onClick={handleFavourite}>
+                            {isFavourite? 'Remover dos favoritos' : 'Adicionar aos favoritos' }
+                        </Button>
                     </Col>
                     <Col xs={12} sm={4}>
                         <Card style={{ width: '100%' }}>
