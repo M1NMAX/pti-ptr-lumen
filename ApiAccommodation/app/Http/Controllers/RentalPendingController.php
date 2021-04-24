@@ -28,18 +28,18 @@ class RentalPendingController extends Controller
 
     public function showId($id)
     {
-        return RentalPending::find($id); 
+        return RentalPending::find($id);
     }
 
     public function landlordIdSearch($idLandlord)
     {
-        return RentalPending::where('landlord_id', $idLandlord)->get(); 
+        return RentalPending::where('landlord_id', $idLandlord)->get();
     }
 
     public function store(Request $request)
     {
         $rental_pending = RentalPending::create($request->all());
-        return response()->json(['data' => ['message' => 'Aluguer pending']]);
+        return response()->json(['data' => ['message' => 'Aluguer pending'], 'status'=>true]);
     }
 
     public function update($rental_pending, Request $request)
@@ -58,14 +58,14 @@ class RentalPendingController extends Controller
 
     public function accept($id)
     {
-        $rentalAccepted = RentalPending::find($id); 
+        $rentalAccepted = RentalPending::find($id);
         //Aluguer::create($aluguerAccepted);
 
         DB::table('rental')->insert([
-            'accommodation_id' => $rentalAccepted->accommodation_id, 
+            'accommodation_id' => $rentalAccepted->accommodation_id,
             'user_id' => $rentalAccepted->user_id,
             'price' => $rentalAccepted->price,
-            'beginDate' => $rentalAccepted->beginDate, 
+            'beginDate' => $rentalAccepted->beginDate,
             'endDate' => $rentalAccepted->endDate
         ]);
         $rentalAccepted->delete();

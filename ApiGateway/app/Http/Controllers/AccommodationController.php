@@ -44,5 +44,11 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function storeRentalPending(Request $request)
+    {
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'rentalpending/', $request->all());
+        return response($response);
+    }
+
 
 }

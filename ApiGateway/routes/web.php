@@ -51,10 +51,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     });
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
+
         $router->get('/', 'AccommodationController@index');
         $router->get('/{id}', 'AccommodationController@show');
+
         $router->get('/{id}/comments', 'AccommodationController@showComments');
         $router->post('/comment', 'AccommodationController@storeComment');
+
+        $router->post('/rentalpending', 'AccommodationController@storeRentalPending');
+
     });
 
 

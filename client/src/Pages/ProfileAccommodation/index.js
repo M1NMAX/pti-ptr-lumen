@@ -2,8 +2,6 @@ import React, {useEffect, useState, useRef}  from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
 import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay} from 'react-bootstrap'
-//import {connect} from 'react-redux';
-import DefaultUserPic from "../../img/standartUser3.png";
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
@@ -16,13 +14,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
 import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
-//const axios = require('axios');
-import ImageUploading from 'react-images-uploading';
 
 function ProfileAccommodation() {
     let { id } = useParams();
-    const[userId] = useState(localStorage.getItem('userID'))
-    const [token] =useState(localStorage.getItem('token'));
+    const [userId] = useState(localStorage.getItem('userID'))
+    const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
@@ -87,34 +83,86 @@ function ProfileAccommodation() {
 
       async function handleFavourite(){
 
-        if(isFavourite){
-            api.delete('/api/favourites/'+id, {
-                headers: {
-                Authorization: `Bearer ${token}`,
-                }
-            }).then(response => {
-                if(response.data.status){
-                    setIsFavourite(false);
-                }else{
-                    alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
-                }
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            if(isFavourite){
+                api.delete('/api/favourites/'+id, {
+                    headers: {
+                    Authorization: `Bearer ${token}`,
+                    }
+                }).then(response => {
+                    if(response.data.status){
+                        setIsFavourite(false);
+                    }else{
+                        alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
+                    }
 
-            }).catch(err => {
-            alert(err)
-            })
+                }).catch(err => {
+                alert(err)
+                })
+            }
+            else if(!isFavourite){
+            var data = {
+                "accommodation_id":parseInt(id)
+            };
+                
+                api.post('/api/favourites/', data, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                }).then(response => { 
+                    if(response.data.status){
+                        setIsFavourite(true);
+                    }else{
+                        alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                    }
+                }).catch(err => {
+                alert(err)
+                })
+            }
         }
-        else if(!isFavourite){
-           var data = {
-               "accommodation_id":parseInt(id)
-           };
-            
-            api.post('/api/favourites/', data, {
+        
+      }
+
+
+    const handleClick = (event) => {
+        setShow(!show);
+        setTarget(event.target);
+    };
+     
+
+    const buttonChange = () => {
+        if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
+            setDisabled(false)
+            setshowMessage(!showMessage);
+        }else{
+            setDisabled(true)
+        }
+    }
+
+    
+    const changeShowMessage = () => {
+        
+        let data = {
+            'user_id': userId,
+            'landlord_id': accommodation.landlord_id,
+            'accommodation_id': accommodation.id,
+            'price': accommodation.price,
+            'beginDate':document.getElementsByClassName("monthStart")[0].value,
+            'endDate':document.getElementsByClassName("monthEnd")[0].value,
+        };
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            api.post('/api/accommodations/rentalpending/', data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
             }).then(response => { 
                 if(response.data.status){
-                    setIsFavourite(true);
+                    alert('done');
+        
                 }else{
                     alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
                 }
@@ -122,28 +170,7 @@ function ProfileAccommodation() {
             alert(err)
             })
         }
-        
-      }
 
-
-      const handleClick = (event) => {
-        setShow(!show);
-        setTarget(event.target);
-      };
-     
-
-    const buttonChange = (event) => {
-        
-        if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
-            setDisabled(false)
-        }else{
-            setDisabled(true)
-        }
-    }
-
-      const changeShowMessage = (event) => {
-        setshowMessage(!showMessage);
-        setDisabled(true)
     }
 
    
@@ -158,20 +185,24 @@ function ProfileAccommodation() {
             "content":content,
         };
          
-         api.post('/api/accommodations/comment/', data, {
-             headers: {
-                 Authorization: `Bearer ${token}`,
-             }
-         }).then(response => { 
-             if(response.data.status){
-                 setContent('');
-                 setStar(0);
-             }else{
-                 alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
-             }
-         }).catch(err => {
-         alert(err)
-         })
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            api.post('/api/accommodations/comment/', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                if(response.data.status){
+                    setContent('');
+                    setStar(0);
+                }else{
+                    alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                }
+            }).catch(err => {
+            alert(err)
+            })
+        }
     
     }
    
@@ -238,9 +269,7 @@ function ProfileAccommodation() {
                                         className = "monthEnd"
                                         placeholderText="Mês de saída"
                                         selected={endDate}
-                                        onChange={date => {setEndDate(date); buttonChange();}}
-                                        
-                                        
+                                        onChange={date => {setEndDate(date); buttonChange();}}  
                                         selectsEnd
                                         minDate={new Date()}
                                         startDate={startDate}
