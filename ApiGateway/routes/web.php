@@ -62,6 +62,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/user/{id}', 'ChatController@show');
         $router->get('/{id}', 'ChatController@showId');
         $router->get('/{id}/messages', 'ChatController@messages');
+
+
+        $router->post('/addMessage', 'ChatController@storeMessage');
     });
 
 });

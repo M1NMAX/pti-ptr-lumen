@@ -42,5 +42,9 @@ class ChatController extends Controller
         return response($response);
     }
 
-
+    public function storeMessage(Request $request)
+    {
+        $response = Http::post(env('API_CHAT_URL') . 'message/addMessage');
+        return response($response);
+    }
 }
