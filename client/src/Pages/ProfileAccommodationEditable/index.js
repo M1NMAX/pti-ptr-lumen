@@ -15,28 +15,6 @@ import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 function ProfileAccommodationEditable () {
-        const  [showEdit, setshowEdit] = useState(false);
-        return (
-            <div>
-                <NavBarHome/>
-                <Container>
-                    {!showEdit && <ProfileAccom/>}
-                    {showEdit && <EditablePart/>}
-                    
-                </Container>
-            </div>
-        )
-}
-
-function ProfileAccom (){
-    return(
-        <div>
-
-        </div>
-    );
-}
-
-function EditablePart (){
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
 
@@ -54,30 +32,24 @@ function EditablePart (){
     const [ ageMax, setAgeMax ] = useState(27);
 
     const [images, setImages] = useState([]);
-  const maxNumber = 69;
+    const maxNumber = 69;
  
-  const onChange = (imageList, addUpdateIndex) => {
+    const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
 
-  const interesse = () => {
-    /**return (<div className="date-range">
-        <p>O senhorio foi informado do seu interesse e irá contactá-lo em breve</p>
-    </div>);*/
 
-    alert("O senhorio foi informado do seu interesse e irá contactá-lo em breve");
-  };
-
-
-            var profilePic1=DefaultRoomPic1;
-            var profilePic2=DefaultRoomPic2;
-            var profilePic3=DefaultRoomPic3;
+        var profilePic1=DefaultRoomPic1;
+        var profilePic2=DefaultRoomPic2;
+        var profilePic3=DefaultRoomPic3;
     
         var titulo = "Quarto num apartamento T2 só para rapazes";
-    return(
-        <div>
+        return (
+            <div>
+                <NavBarHome/>
+                <Container>
             <Form.Group controlId="formCategory1">
                         <Form.Control size="lg" type="text" defaultValue={titulo}/>
                     </Form.Group>
@@ -411,12 +383,10 @@ function EditablePart (){
                          <Button variant="info">Guardar alterações</Button>
                     </Form>
 
-        </div>
-    );
-}  
-
-
-
-
+                    
+                </Container>
+            </div>
+        )
+}
 
   export default ProfileAccommodationEditable;
