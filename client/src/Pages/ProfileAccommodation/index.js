@@ -120,7 +120,6 @@ function ProfileAccommodation() {
       const ref = useRef(null);
     
       const handleClick = (event) => {
-        console.log(event.target)
         setShow(!show);
         setTarget(event.target);
       };
@@ -130,28 +129,18 @@ function ProfileAccommodation() {
     const [star, setStar] = useState(0);
     const buttonChange = (event) => {
         
-        console.log(document.getElementsByClassName("monthStart")[0].value)
-        console.log(document.getElementsByClassName("monthEnd")[0].value)
-
         if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
-            console.log("nao")
             setDisabled(false)
-            console.log(isDisabled)
         }
         else{
             console.log("sim")
             setDisabled(true)
-            console.log(isDisabled)
         }
     }
 
       const changeShowMessage = (event) => {
         setshowMessage(!showMessage);
-        console.log(startDate)
-        console.log(document.getElementsByClassName("monthStart")[0].defaultValue)
-        console.log(document.getElementsByClassName("monthEnd")[0].defaultValue)
         setDisabled(true)
-        console.log(isDisabled)
     }
 
     const [com, setCom] = useState('');

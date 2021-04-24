@@ -34,7 +34,6 @@ function ListUsersChat() {
             }else{
                 setUsername(response.data.username);
                 setUserid(response.data.id);
-                //console.log(response.data.id);
                 api.get('api/chat/user/'+ response.data.id).then(responseChat => {
                   console.log(responseChat.data)
                   setUserChats(responseChat.data);
@@ -42,7 +41,6 @@ function ListUsersChat() {
                   alert(err)
               })
                 
-                //console.log(response.data.id);
           }
         }).catch(err => {
           alert(err)
@@ -54,7 +52,7 @@ function ListUsersChat() {
       
 
       { userChats.length>0 ? 
-              userChats.map((chats)=>(<SingleChat chats={chats} />)): 
+              userChats.map((chats)=>(<a href={'/chat/' + chats.id}><SingleChat chats={chats} /></a>)): 
               <div class="center">
               <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem chats</h6>
           </div>
