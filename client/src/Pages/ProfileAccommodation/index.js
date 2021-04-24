@@ -15,18 +15,32 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment, faHeart} from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 
 function ProfileAccommodation() {
     let { id } = useParams();
+    const[userId] = useState(localStorage.getItem('userID'))
     const [token] =useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
 
+    const [content, setContent] = useState('');
+    const [star, setStar] = useState(0);
+
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState( );
+    const [show, setShow] = useState(false);
+    const [target, setTarget] = useState(null);
+   
+    const [isDisabled, setDisabled] = useState(true);
+    const [showMessage, setshowMessage] = useState(false);
+
+    const ref = useRef(null);
+ 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
@@ -112,28 +126,17 @@ function ProfileAccommodation() {
       }
 
 
-
-      const [startDate, setStartDate] = useState();
-      const [endDate, setEndDate] = useState( );
-      const [show, setShow] = useState(false);
-      const [target, setTarget] = useState(null);
-      const ref = useRef(null);
-    
       const handleClick = (event) => {
         setShow(!show);
         setTarget(event.target);
       };
-      const [isDisabled, setDisabled] = useState(true);
-      const  [showMessage, setshowMessage] = useState(false);
-      
-    const [star, setStar] = useState(0);
+     
+
     const buttonChange = (event) => {
         
         if (document.getElementsByClassName("monthStart")[0].value || document.getElementsByClassName("monthEnd")[0].value) {
             setDisabled(false)
-        }
-        else{
-            console.log("sim")
+        }else{
             setDisabled(true)
         }
     }
@@ -143,10 +146,34 @@ function ProfileAccommodation() {
         setDisabled(true)
     }
 
-    const [com, setCom] = useState('');
+   
 
-    async function handleCom(e) {
-        e.preventDefault();}
+    async function handleComment(e) {
+        e.preventDefault();
+
+        var data = {
+            "user_id": parseInt(userId),
+            "accommodation_id":parseInt(id),
+            "rate": star,
+            "content":content,
+        };
+         
+         api.post('/api/accommodations/comment/', data, {
+             headers: {
+                 Authorization: `Bearer ${token}`,
+             }
+         }).then(response => { 
+             if(response.data.status){
+                 setContent('');
+                 setStar(0);
+             }else{
+                 alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+             }
+         }).catch(err => {
+         alert(err)
+         })
+    
+    }
    
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
@@ -382,21 +409,13 @@ function ProfileAccommodation() {
                 </Row>
                 <Row>
                     <Col>
-                        <Card style={{ width: '100%', marginTop: '2%' }}>
-                            <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
-                            <div className="comments">
-                                {accommodationComments.length>0? 
-                                    accommodationComments.map((comment)=>(<Comment comment={comment}/>)):
-                                    <p>Ainda não existem comentários associados a este alojamento</p> }
-                            </div>
-                        </Card>
-                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                    <Card style={{ width: '100%', marginTop: '2%' }}>
                             <Card.Header as="h3">Comentar</Card.Header>
-                                <Form className="msg" onSubmit={handleCom}>
+                                <Form className="msg" onSubmit={handleComment}>
                                     <Form.Row>
                                     <Col xs={12} sm={9}>
                                         <Form.Group controlId="formBasictext">
-                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={com} onChange={e => setCom(e.target.value)}/>
+                                            <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva o seu comentário..." value={content} onChange={e => setContent(e.target.value)}/>
                                         </Form.Group>
                                     </Col>
                                     <Col xs={8} sm={3}>
@@ -416,6 +435,15 @@ function ProfileAccommodation() {
                                     </Button>
                                 </Form>
                         </Card>
+                        <Card style={{ width: '100%', marginTop: '2%' }}>
+                            <Card.Header as="h3"><FontAwesomeIcon icon={faComments} /> Comentários:</Card.Header>
+                            <div className="comments">
+                                {accommodationComments.length>0? 
+                                    accommodationComments.map((comment)=>(<Comment comment={comment}/>)):
+                                    <p>Ainda não existem comentários associados a este alojamento</p> }
+                            </div>
+                        </Card>
+                        
                     </Col>
                 </Row>
                 </Container>
@@ -423,32 +451,4 @@ function ProfileAccommodation() {
         )
 }
 
-    /**const mapStatetoProps=(state)=>{
-        return{
-            user_id:state.user.userDetails.userid,
-            username:state.user.userDetails.username,
-        email:state.user.email,
-        profileImage: state.user.profileImage,
-        msg:state.user.msg
-        }
-    }
-   */
-    
-    /*fazer pedido a base de dados e perguntar se alojamento se encontra nos favoritos e alterar toggle perante output*/
-    let toggle = 0
-
-    function toggleButton() {
-        if (toggle == 0){
-            console.log("oi");
-            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Remover dos Favoritos";
-            toggle += 1
-        }
-        else {
-            document.getElementById("button").innerHTML = "<FontAwesomeIcon icon={faStar} />Adicionar aos Favoritos";
-            toggle -= 1
-        }
-        
-    }
-
-  // export default connect(mapStatetoProps)(ProfileAlojamento);
-  export default ProfileAccommodation;
+export default ProfileAccommodation;

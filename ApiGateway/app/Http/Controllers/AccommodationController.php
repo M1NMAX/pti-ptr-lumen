@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers; 
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
+
 
 class AccommodationController extends Controller
 {
@@ -30,9 +32,15 @@ class AccommodationController extends Controller
         return response($response);
     }
 
-    public function comments($id)
+    public function showComments($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+        return response($response);
+    }
+
+    public function storeComment(Request $request)
+    {
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'comment/', $request->all());
         return response($response);
     }
 
