@@ -33,7 +33,9 @@ class RentalPendingController extends Controller
 
     public function landlordIdSearch($idLandlord)
     {
-        return RentalPending::where('landlord_id', $idLandlord)->get();
+        $landLordPending= RentalPending::where('landlord_id', $idLandlord)->get();
+        $response =['pending'=>$landLordPending, 'status'=>true];
+        return response($response, 200);
     }
 
     public function store(Request $request)

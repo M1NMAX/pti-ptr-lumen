@@ -61,6 +61,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/comment', 'AccommodationController@storeComment');
 
         $router->post('/rentalpending', 'AccommodationController@storeRentalPending');
+        $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
+
 
     });
 

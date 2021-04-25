@@ -41,8 +41,6 @@ class AccommodationController extends Controller
 
             $accommodation_id= $responseAccommodation->collect()->get('accommodation_id');
 
-
-
             $finalResponse =Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
                 'accommodation_id'=>$accommodation_id,
                 'accommodationType'=>$request->accommodationType,
@@ -53,7 +51,6 @@ class AccommodationController extends Controller
                 'wifi'=>$request->wifi,
                 'clean'=>$request->clean,
             ]);
-
             return response($finalResponse, 200);
 
         }
@@ -78,6 +75,12 @@ class AccommodationController extends Controller
     public function storeRentalPending(Request $request)
     {
         $response = Http::post(env('API_ACCOMMODATION_URL') . 'rentalpending/', $request->all());
+        return response($response);
+    }
+
+    public function showLandlordRentalPending($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
         return response($response);
     }
 
