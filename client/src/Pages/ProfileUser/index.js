@@ -6,11 +6,15 @@ import {useParams, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 
+
+
 function ProfileUser(){
     let { id } = useParams();
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState([]);
-    const [userType, setUserType] = useState('');
+    const [userType, setUserType] = useState(null);
+    const [userExtra, setUserExtra] = useState([]);
+
     
     const history = useHistory();
 
@@ -24,8 +28,10 @@ function ProfileUser(){
             localStorage.clear();
             history.push('/login');
           }else{
-            setUser(response.data);
-            setUserType(response.data.userable_type);
+            setUser(response.data.user);
+            setUserType(response.data.user.userable_type.includes('Guest'));
+            setUserExtra(response.data.extra)
+            console.log(response.data.extra.college);
           }
         }).catch(err => {
           alert(err)
@@ -76,14 +82,14 @@ function ProfileUser(){
                                 <Form.Label>Estou interessado em:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={userType.includes("Guest")}
+                                    checked={userType}
                                     type="radio"
                                     label="Alugar um alojamento"
                                     name="alugarAlojamento"
                                     id="alugarAlojamento"
                                     />
                                     <Form.Check
-                                    checked={!userType.includes("Guest")}
+                                    checked={!userType}
                                     type="radio"
                                     label="Tenho um alojamento para alugar"
                                     name="tenhoAlojamento"
@@ -91,6 +97,12 @@ function ProfileUser(){
                                     />
                                 </Col>
                             </Form.Group>
+                            {userType &&
+                                <Form.Group controlId="formCategory10">
+                                    <Form.Label>Instituição:</Form.Label>
+                                    <Form.Control type="text" defaultValue="UL-FCUL" value={userExtra.college}/>
+                                </Form.Group>
+                        }
                             {/* <Form.Group controlId="formCategory10">
                                 <Form.Label>Instituição:</Form.Label>
                                 <Form.Control type="text" defaultValue="UL-FCUL"/>

@@ -124,7 +124,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return response($user, 200);
+
+        $response = ['user'=>$user, 'extra'=>$user->userable()->first(), 'status'=>true];
+        return response($response, 200);
     }
     public function update($id, Request $request)
     {
