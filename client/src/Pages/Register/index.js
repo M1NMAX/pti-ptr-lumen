@@ -20,6 +20,7 @@ function Register() {
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
+    console.log(birthdate)
 
     async function handleRegister(e) {
         e.preventDefault();
