@@ -183,10 +183,10 @@ function ProfileAccommodation() {
                     Authorization: `Bearer ${token}`,
                 }
             }).then(response => { 
-                //console.log(response.status)
-                if(response.status){
-                    //console.log(response.data.status)
-                    window.location.assign('/chat/' + response.data)
+                //console.log(response.data)
+                if(response.data.status){
+                    //console.log(response.data.data)
+                    window.location.assign('/chat/' + response.data.data.id)
                 }else{
                     alert('Ocorreu um erro, não foi possivel criar chat, tente novamente');
                 }
