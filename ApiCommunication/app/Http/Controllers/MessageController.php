@@ -37,9 +37,7 @@ class MessageController extends Controller
         $m->created_at = date('Y-m-d H:i:s');
         $m->save();
 
-        return response()->json(['data' => [
-            'message' => 'Mensagem enviada com sucesso!!']
-        ]);
+        return response()->json(['data' => ['message' => 'Mensagem enviada com sucesso.'], 'status'=>true]);
         
     }
 

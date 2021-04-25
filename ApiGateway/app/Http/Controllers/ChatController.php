@@ -3,7 +3,7 @@
 namespace App\Http\Controllers; 
 
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Http\Request;
 class ChatController extends Controller
 {
     /**
@@ -44,7 +44,7 @@ class ChatController extends Controller
 
     public function storeMessage(Request $request)
     {
-        $response = Http::post(env('API_CHAT_URL') . 'message/addMessage');
+        $response = Http::post(env('API_CHAT_URL') . 'message/addMessage', $request->all());
         return response($response);
     }
 }

@@ -18,7 +18,6 @@ var idTarget;
 function Chat() {
     const [messages, setMessages] = useState();
     const [userName, setUserName] = useState();
-    const [userId, setUserId] = useState();
     const [meId, setMeId] = useState();
     const [chat, setChat] = useState();
     const scrollContainerStyle = { width: "800px", maxHeight: "400px" };
@@ -27,24 +26,33 @@ function Chat() {
     const history = useHistory();
     const [auth, setAuth] = useState(true);
     const [content, setContent] = useState([]);
-    //const [allMessages, setAllMessages] = useState([]);
 
 
     async function sendMessage(messages){
         var data = {
-            'content':messages,
-            'user_id': 9,
-            'chat_id' : 11
+            "content": messages,
+            "user_id": parseInt(meId),
+            "chat_id" : parseInt(id),
         };
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            api.post('/api/chat/addMessage/', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                if(response.data.status){
+                    setMessages('');
+                }else{
+                    alert('Ocorreu um erro, não foi possivel enviar a mensagem, tente novamente');
+                }
+            }).catch(err => {
+            alert(err)
+            })
+        }
 
-        console.log(messages)
-        /*api.post('/api/chat/addMessage', data, {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            }
-        }).catch(err => {
-        alert(err)
-        })*/
+        
     }
 
     
@@ -76,6 +84,7 @@ function Chat() {
                     localStorage.clear();
                      
                   }else{
+                      setMeId(response.data.id);
                         setChat(responseChat.data)
                         if(responseChat.data.user_id1 == response.data.id){
                             idTarget = responseChat.data.user_id2;
@@ -84,29 +93,26 @@ function Chat() {
                         }
       
                       api.get('api/users/'+ idTarget).then(responseUser => {
-                          console.log(responseUser.data.name)
                           setUserName(responseUser.data.name);
                           
                           api.get('api/chat/'+ id + '/messages').then(responseMessages => {
-                            setMessages(responseMessages.data);
+                            //setAllMessages(responseMessages.data);
                             
                             var nMessages =  Object.keys(responseMessages.data).length;;
                             var allMessages = [];
-                            if(nMessages == 0){      
-                                console.log('Yaa')                          
+                            if(nMessages == 0){                                
                                 setContent([<h1>Ainda sem mensagens</h1>]);
                             }else{
                                 for(let i=0;i < nMessages;i++){
                                     if(response.data.id == responseMessages.data[i].user_id ){
-                                        console.log(responseMessages.data[i].user_id)
                                         allMessages.push(<Row className="text">
-                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>Eu:</h4></Col>
+                                        <Col xs={4} sm={2} lg={1} className="w-25 w3-right"><h4>Eu:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
                                     }else{
     
                                         allMessages.push(<Row className="text">
-                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.name}</h4></Col>
+                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.name}:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
                                     }
@@ -140,12 +146,6 @@ function Chat() {
     async function handleMsg(e) {
         e.preventDefault();}
 
-
-    
-    //console.log(allMessages)
-    //setAllMessages(allMessages);
-
-
     return(
         <div>
         <NavBarHome/>
@@ -161,9 +161,9 @@ function Chat() {
                     <div className="sendMsg">{/*textarea*/}
                         <Form className="msg" onSubmit={handleMsg}>
                             <Form.Group controlId="formBasictext">
-                                <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva uma mensagem..." /*value={messages}*/ onChange={e => setMessages(e.target.value)}/>
+                                <Form.Control as="textarea" rows={3} required className="textMsg" placeholder="Escreva uma mensagem..." value={messages} onChange={e => setMessages(e.target.value)}/>
                             </Form.Group>
-                            <Button className="send" variant="info" type="submit" onClick={sendMessage(messages)}>
+                            <Button className="send" variant="info" type="submit" onClick={() => sendMessage(messages)}>
                                 <FontAwesomeIcon icon={faPaperPlane}/> Enviar
                             </Button>
                         </Form>
