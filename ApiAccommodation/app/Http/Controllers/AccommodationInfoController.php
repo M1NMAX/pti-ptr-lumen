@@ -24,10 +24,10 @@ class AccommodationInfoController extends Controller
         return AccommodationInfo::firstOrFail()->where('accommodation_id', $id)->get();
     }
 
-    public function store($id, Request $request)
+    public function store(Request $request)
     {
         $this->accommodation_info->create($request->all());
-        return response()->json(['data' => ['message' => 'User foi criado com sucesso']]);
+        return response()->json(['data' => ['message' => 'User foi criado com sucesso'], 'status'=>true]);
     }
 
     public function update($accommodation_info, Request $request)

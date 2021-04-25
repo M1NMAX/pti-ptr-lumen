@@ -14,7 +14,8 @@ class CreateAccommodationInfoTable extends Migration
     public function up()
     {
         Schema::create('accommodation_info', function (Blueprint $table) {
-            $table->id('accommodation_id');
+            $table->id();
+            $table->integer('accommodation_id');
             $table->string('accommodationType');
             $table->integer('rooms');
             $table->integer('bathRooms');

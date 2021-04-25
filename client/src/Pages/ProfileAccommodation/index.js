@@ -161,7 +161,7 @@ function ProfileAccommodation() {
                 }
             }).then(response => { 
                 if(response.data.status){
-                    alert('done');
+                    console.log('done');
         
                 }else{
                     alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');

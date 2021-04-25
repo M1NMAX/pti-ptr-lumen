@@ -45,7 +45,7 @@ class UsersController extends Controller
                 'name' => 'required',
                 'email' => 'required|email',
                 'password' => 'required|confirmed|min:6',
-                'birthdate' => 'date'
+                'birthdate' => 'required'
             ]);
 
             if($validator->fails()){
@@ -58,6 +58,7 @@ class UsersController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' =>Hash::make($request->password),
+                'birthdate'=>$request->birthdate,
             ]);
 
         //GUEST SECTION
@@ -76,6 +77,7 @@ class UsersController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' =>Hash::make($request->password),
+                'birthdate'=>$request->birthdate,
             ]);
 
         }
@@ -122,7 +124,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return response($user, 200);
+
+        $response = ['user'=>$user, 'extra'=>$user->userable()->first(), 'status'=>true];
+        return response($response, 200);
     }
     public function update($id, Request $request)
     {

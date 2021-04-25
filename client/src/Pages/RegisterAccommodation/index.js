@@ -11,7 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 
 function RegisterAlojamento() {
+    const [userId] = useState(localStorage.getItem('userID'));
+    const [token] = useState(localStorage.getItem('token'));
     const [title, setTitle] = useState('');
+    const [content, setContent] =  useState('');
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
     const [occupationState, setOccupation] = useState('');
@@ -26,7 +29,7 @@ function RegisterAlojamento() {
     const [gender, setGender] = useState('');
     const [smoker, setSmoker] = useState('');
     const [pet, setPet] = useState('');
-    const history = useHistory();
+    
 
     const [ ageMin, setAgeMin ] = useState(18);
     const [ ageMax, setAgeMax ] = useState(27);
@@ -35,27 +38,54 @@ function RegisterAlojamento() {
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
+        // api.post('api/registerAlojamento', {title, adress, price, occupationState, nRooms, nWC, area, solar, wifi, cleaning, ageMin, ageMax, gender, smoker, pet})
 
-        try {
-        const response = await api.post('api/registerAlojamento', {title, adress, price, occupationState, nRooms, nWC, area, solar, wifi, cleaning, ageMin, ageMax, gender, smoker, pet}).then(async (res) =>{
-            if(res.data.status){
-                const responseLogin = await api.post('api/registerAlojamento', {title, adress, price, occupationState, nRooms, nWC, area, solar, wifi, cleaning, ageMin, ageMax, gender, smoker, pet});
-                localStorage.setItem('token', responseLogin.data.token);
-                history.push('/lists');
-            }
-        });
-        } catch (err) {
-        alert('Falha no Registo, tente novamente.');
+
+        var data = {
+            "landlord_id": userId,
+            "name": title,
+            "description" :content, 
+            "price": price,
+            "address": adress,
+            "latitude": "100",
+            "logitude": "100",
+            "rooms": nRooms,
+            "bathRooms" : nWC,
+            "accommodationType": "Apartamento",
+            "area":area,
+            "solar":solar, 
+            "wifi": wifi,
+            "clean":cleaning,
+        };
+
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            
+            api.post('api/accommodations/', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                if(response.data.status){
+                    console.log(true);
+                }else{
+                    console.log(response.data);    
+                }
+            }).catch(err => {
+            alert(err)
+            })
         }
-        
     }
+
+    
     return (
         <div>
             <NavBarHome/>
             <Container>
                 <h1>Novo Alojamento</h1>
-            <Form >
-                <Form.Row>
+            <Form  >
+                <Form.Row onSubmit={handleRegisterAlojamento}>
                     <Col className="cols" xs={12} sm={6}>
                         <Row>
                             <img className="image" src={DefaultHome}  alt="Standart image" />
@@ -65,25 +95,25 @@ function RegisterAlojamento() {
                         </Row>
                     </Col>
                     <Col className="cols" xs={12} sm={6}>
-                        <Form.Group controlId="formBasicTitle" onSubmit={handleRegisterAlojamento}>
+                        <Form.Group controlId="formBasicTitle" >
                             <Form.Label as="h4" >Título</Form.Label>
                             <Form.Control size="lg" required width="sm" type="textarea" placeholder="Casa dos Mares " value={title} onChange={e => setTitle(e.target.value)}/>
                         </Form.Group>
                         
                         <Form.Group controlId="formCategory4">
                             <Form.Label>Descrição:</Form.Label>
-                            <Form.Control required as="textarea" rows={3} />
+                            <Form.Control required as="textarea" rows={3} value={content} onChange={e => setContent(e.target.value)} />
                             <Form.Text className="text-muted">
                                 Informe se as pessoas vão partilhar o alojamento com alguém
                             </Form.Text>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicAdress" onSubmit={handleRegisterAlojamento}>
+                        <Form.Group controlId="formBasicAdress" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada</Form.Label>
                             <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPrice" onSubmit={handleRegisterAlojamento}>
+                        <Form.Group controlId="formBasicPrice" >
                             <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês</Form.Label>
                             <Form.Control required width="sm" type="textarea" value={price} onChange={e => setPrice(e.target.value)}/>
                         </Form.Group>
@@ -102,6 +132,7 @@ function RegisterAlojamento() {
                         <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                         <Form.Group controlId="formBasicHouse">
                             <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
+
                             <Col sm={10}>
                                             <Form.Check
                                             type="radio"
@@ -134,14 +165,15 @@ function RegisterAlojamento() {
                             <Form.Control width="sm" type="number" value={nRooms} onChange={e => setNrooms(e.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicArea" onSubmit={handleRegisterAlojamento}>
+                        <Form.Group controlId="formBasicArea" >
                             <Form.Label>Área:</Form.Label>
                             <Form.Control width="sm" type="textarea" value={area} onChange={e => setArea(e.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicSolar" onSubmit={handleRegisterAlojamento}>
+                        <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar:</Form.Label>
                             <Form.Control as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
+                            <option>Selecione um opção</option>
                             <option>Norte (N)</option>
                             <option>Nordeste (NE)</option>
                             <option>Este (E)</option>
@@ -156,6 +188,7 @@ function RegisterAlojamento() {
                         <Form.Group controlId="formBasicWifi">
                             <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
                             <Form.Control as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
+                            <option>Selecione um opção</option>
                             <option>Existe</option>
                             <option>Não existe</option>
                         </Form.Control>
@@ -164,6 +197,7 @@ function RegisterAlojamento() {
                         <Form.Group controlId="formBasicClean">
                             <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
                             <Form.Control as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
+                            <option>Selecione um opção</option>
                             <option>Cada um faz a sua própria</option>
                             <option>É feita por profissionais</option>
                             </Form.Control>
