@@ -16,6 +16,7 @@ import { Content } from 'rsuite';
 var idTarget;
 
 function Chat() {
+    const [change, setChange] = useState(0);
     const [messages, setMessages] = useState();
     const [userName, setUserName] = useState();
     const [meId, setMeId] = useState();
@@ -44,6 +45,9 @@ function Chat() {
             }).then(response => { 
                 if(response.data.status){
                     setMessages('');
+                    console.log(change);
+                    setChange(change + 1);
+
                 }else{
                     alert('Ocorreu um erro, não foi possivel enviar a mensagem, tente novamente');
                 }
@@ -51,55 +55,47 @@ function Chat() {
             alert(err)
             })
         }
-
-        
     }
 
-    
-
-
-
-
-    useEffect(() => {
-        if(token === null || token ===''){
-            setAuth(false);
-        }else{
-          api.get('api/me', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        }).then(response => {
-            if(response.data.status && response.data.status === (401 || 498)){
-                console.log("erro")
-                localStorage.clear();
-                history.push('/');
+    useEffect( () => {
+        const interval = setInterval(() => {
+            if(token === null || token ===''){
+                setAuth(false);
             }else{
-                api.get( 'api/chat/'+id,{
-                    headers:{
-                        Authentication:`Bearer ${token}`,
-                    }
-                }).then(responseChat => {
-                  if(responseChat.data.status && responseChat.data.status === (401 || 498)){
+              api.get('api/me', {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              }
+            }).then(response => {
+                if(response.data.status && response.data.status === (401 || 498)){
                     console.log("erro")
                     localStorage.clear();
-                     
-                  }else{
-                    console.log(response.data)
-                      setMeId(response.data.id);
-                      
+                    history.push('/');
+                }else{
+                    api.get('api/chat/'+id,{
+                        headers:{
+                            Authentication:`Bearer ${token}`,
+                        }
+                    }).then(responseChat => {
+                      if(responseChat.data.status && responseChat.data.status === (401 || 498)){
+                        console.log("erro")
+                        localStorage.clear();
+                         
+                      }else{
+                        console.log(response.data)
+                        setMeId(response.data.id);
+                          
                         setChat(responseChat.data)
                         if(responseChat.data.user_id1 == response.data.id){
                             idTarget = responseChat.data.user_id2;
                         }else{
                             idTarget = responseChat.data.user_id1;
                         }
-      
-                      api.get('api/users/'+ idTarget).then(responseUser => {
-                          setUserName(responseUser.data.user.name);
-                          
-                          api.get('api/chat/'+ id + '/messages').then(responseMessages => {
-                            //setAllMessages(responseMessages.data);
-                            
+          
+                        api.get('api/users/'+ idTarget).then(responseUser => {
+                            setUserName(responseUser.data.user.name);
+                            api.get('api/chat/'+ id + '/messages').then(responseMessages => {
+                            //setAllMessages(responseMessages.data);    
                             var nMessages =  Object.keys(responseMessages.data).length;;
                             var allMessages = [];
                             if(nMessages == 0){                                
@@ -117,33 +113,30 @@ function Chat() {
                                         <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.user.name}:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
-                                    }
-                                    
+                                    }     
                                 }
                                 setContent(allMessages);
                             }
-                            
-                            
-                            
-                            
-                            
-                           
+                            }).catch(err => {
+                                alert(err)
+                            })
+    
                         }).catch(err => {
                             alert(err)
                         })
-                         
-                      }).catch(err => {
-                          alert(err)
-                      })
-                }
-              }).catch(err => {
-                alert(err)
-              })
+                    }
+                  }).catch(err => {
+                    alert(err)
+                  })
+              }
+            }).catch(err => {
+              alert(err)
+            })
           }
-        }).catch(err => {
-          alert(err)
-        })
-      }}, [token]);
+        }, 5000);
+        return () => clearInterval(interval);
+        }, [token]);
+    
 
     async function handleMsg(e) {
         e.preventDefault();}
