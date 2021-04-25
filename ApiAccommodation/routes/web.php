@@ -157,3 +157,24 @@ $router->group(['prefix' => 'accommodationInfo'], function () use ($router) {
     $router->delete('/{rental}', 'AccommodationInfoController@destroy');
 
 });
+
+
+$router->group(['prefix' => 'accommodationRequirements'], function () use ($router) {
+    //-------------GETS----------------
+
+    $router->get('/{id}', 'AccommodationRequirementsController@show');
+
+
+    //-------------POSTS----------------
+
+    $router->post('/', 'AccommodationRequirementsController@store');
+
+    //-------------PUTS----------------
+
+    $router->put('/{rental}', 'AccommodationRequirementsController@update');
+
+    //-------------DELETES----------------
+
+    $router->delete('/{rental}', 'AccommodationRequirementsController@destroy');
+
+});
