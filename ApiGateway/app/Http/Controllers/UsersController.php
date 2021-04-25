@@ -142,4 +142,6 @@ class UsersController extends Controller
         $response = ['message' => 'your data have been successfully deleted'];
         return response($response, 200);
     }
+
+    
 }

@@ -53,7 +53,7 @@ function SingleChat({chats}) {
       
                       api.get('api/users/'+ idTarget).then(responseUser => {
                           console.log(responseUser.data)
-                          setUserName(responseUser.data.name);
+                          setUserName(responseUser.data.user.name);
                          
                       }).catch(err => {
                           alert(err)

@@ -20,9 +20,9 @@ use App\Models\Landlord;
 |
 */
 
-/*$router->get('/key', function () {
+$router->get('/key', function () {
   return \Illuminate\Support\Str::random(32);
-});*/
+});
 
 $router->get('/', function () {
     return "APIGATEWAY";
@@ -70,7 +70,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/user/{id}', 'ChatController@show');
         $router->get('/{id}', 'ChatController@showId');
         $router->get('/{id}/messages', 'ChatController@messages');
-
+        $router->get('/{id1}/{id2}', 'ChatController@chatExists');
 
         $router->post('/addMessage', 'ChatController@storeMessage');
     });

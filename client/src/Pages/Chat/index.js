@@ -84,7 +84,9 @@ function Chat() {
                     localStorage.clear();
                      
                   }else{
+                    console.log(response.data)
                       setMeId(response.data.id);
+                      
                         setChat(responseChat.data)
                         if(responseChat.data.user_id1 == response.data.id){
                             idTarget = responseChat.data.user_id2;
@@ -93,7 +95,7 @@ function Chat() {
                         }
       
                       api.get('api/users/'+ idTarget).then(responseUser => {
-                          setUserName(responseUser.data.name);
+                          setUserName(responseUser.data.user.name);
                           
                           api.get('api/chat/'+ id + '/messages').then(responseMessages => {
                             //setAllMessages(responseMessages.data);
@@ -112,7 +114,7 @@ function Chat() {
                                     }else{
     
                                         allMessages.push(<Row className="text">
-                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.name}:</h4></Col>
+                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.user.name}:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
                                     }

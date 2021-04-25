@@ -125,7 +125,6 @@ function ProfileAccommodation() {
         
       }
 
-
     const handleClick = (event) => {
         setShow(!show);
         setTarget(event.target);
@@ -173,7 +172,31 @@ function ProfileAccommodation() {
 
     }
 
-   
+    async function chatCheck(id1,id2){
+        if(token ==null || token ===''){
+            alert('Não estas autenticado');
+        }else{
+            console.log(id1,id2)
+
+            api.get('/api/chat/' + id1.toString() + '/' + id2.toString(), {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                //console.log(response.status)
+                if(response.status){
+                    //console.log(response.data.status)
+                    window.location.assign('/chat/' + response.data)
+                }else{
+                    alert('Ocorreu um erro, não foi possivel criar chat, tente novamente');
+                }
+            }).catch(err => {
+            alert(err)
+            })
+        }
+
+        
+    }
 
     async function handleComment(e) {
         e.preventDefault();
@@ -288,7 +311,7 @@ function ProfileAccommodation() {
                             </Popover.Content> 
                             </Popover>
                         </Overlay>
-                        <Button variant="info" href= {"/chat/" + accommodation.landlord_id + "/" + id} className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
+                        <Button variant="info" /*href= {"/chat/" + accommodation.landlord_id + "/" + id}*/ onClick={() => chatCheck(accommodation.landlord_id, userId)} className="interesse" size="lg"><FontAwesomeIcon icon={faEnvelope} /></Button>
                         <Button variant="info" id="button" className="interesse" size="lg" onClick={handleFavourite}>
                             {isFavourite? 'Remover dos favoritos' : 'Adicionar aos favoritos' }
                         </Button>

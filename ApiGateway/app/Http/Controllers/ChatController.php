@@ -47,4 +47,10 @@ class ChatController extends Controller
         $response = Http::post(env('API_CHAT_URL') . 'message/addMessage', $request->all());
         return response($response);
     }
+
+    public function chatExists($id1, $id2)
+    {
+        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id1 . '/' . $id2);
+        return response($response);
+    }
 }

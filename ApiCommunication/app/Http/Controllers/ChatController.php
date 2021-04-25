@@ -57,7 +57,8 @@ class ChatController extends Controller
                     ->where('user_id2', $id1)
                     ->get();
             if(!(count($res2) == 0)){
-                return $res2[0]->id;
+                return response()->json(['data' => ['id' => $res2[0]->id], 'status'=>true]);
+
             }
             
         }
@@ -68,7 +69,7 @@ class ChatController extends Controller
             $c->save();
             return $c->id;
         }else{
-            return $res[0]->id;
+            return response()->json(['data' => ['id' => $res[0]->id], 'status'=>true]);
         }
     }
 
