@@ -19,7 +19,7 @@ $router->get('/', function () use ($router) {
 
 
 
- 
+
 
 $router->group(['prefix' => 'accommodation'], function () use ($router) {
     //-------------GETS----------------
@@ -34,7 +34,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->get('/{id}/busyDates/', 'AccommodationController@busyDates');
     //VER OS COMENTARIOS DO ALOJAMENTO
     $router->get('/{id}/comments', 'AccommodationController@comments');
-   
+
 
     //PESQUISAR PELA LOCALIZACAO DO ALOJAMENTO
     $router->get('/localSearch/{search}', 'AccommodationController@localSearch');
@@ -111,7 +111,7 @@ $router->group(['prefix' => 'rental'], function () use ($router) {
     //-------------PUTS----------------
 
     $router->put('/{rental}', 'RentalController@update');
-    
+
     //-------------DELETES----------------
 
     $router->delete('/{rental}', 'RentalController@destroy');
@@ -122,38 +122,38 @@ $router->group(['prefix' => 'rentalpending'], function () use ($router) {
 
     $router->get('/', 'RentalPendingController@index');
     $router->get('/{idLandlord}', 'RentalPendingController@landlordIdSearch');
-    
+
     //-------------POSTS----------------
 
     $router->post('/', 'RentalPendingController@store');
     $router->post('accept/{id}', 'RentalPendingController@accept');
-    
+
     //-------------PUTS----------------
 
     $router->put('/{rental}', 'RentalPendingController@update');
 
     //-------------DELETES----------------
-    
+
     $router->delete('/{rental}', 'RentalrPendingController@destroy');
-    
+
 });
 
 $router->group(['prefix' => 'accommodationInfo'], function () use ($router) {
     //-------------GETS----------------
 
     $router->get('/{id}', 'AccommodationInfoController@show');
-    
-    
+
+
     //-------------POSTS----------------
 
-    $router->post('/{id}', 'AccommodationInfoController@store');
-    
+    $router->post('/', 'AccommodationInfoController@store');
+
     //-------------PUTS----------------
 
     $router->put('/{rental}', 'AccommodationInfoController@update');
 
     //-------------DELETES----------------
-    
+
     $router->delete('/{rental}', 'AccommodationInfoController@destroy');
-    
+
 });

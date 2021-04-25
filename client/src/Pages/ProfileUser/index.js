@@ -31,7 +31,6 @@ function ProfileUser(){
             setUser(response.data.user);
             setUserType(response.data.user.userable_type.includes('Guest'));
             setUserExtra(response.data.extra)
-            console.log(response.data.extra.college);
           }
         }).catch(err => {
           alert(err)
@@ -102,11 +101,8 @@ function ProfileUser(){
                                     <Form.Label>Instituição:</Form.Label>
                                     <Form.Control type="text" defaultValue="UL-FCUL" value={userExtra.college}/>
                                 </Form.Group>
-                        }
-                            {/* <Form.Group controlId="formCategory10">
-                                <Form.Label>Instituição:</Form.Label>
-                                <Form.Control type="text" defaultValue="UL-FCUL"/>
-                            </Form.Group> */}
+                            }
+                            
                             {/* Change profile picture  */}
                         {/* <Form.Group controlId="formCategory4">
                                 <Form.Control type="file" name="profileImage"/>

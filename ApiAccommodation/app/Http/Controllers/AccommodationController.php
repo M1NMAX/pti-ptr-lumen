@@ -48,19 +48,19 @@ class AccommodationController extends Controller
     }
 
     public function showId($id)
-    {   
-        
+    {
+
         $r = [];
-        $acc = Accommodation::find($id);   
+        $acc = Accommodation::find($id);
         array_push($r, $acc);
         array_push($r, $acc->info);
         return $r[0];
     }
 
-    
+
     public function showIds($ids)
-    {   
-        
+    {
+
         $cIds = explode(',', $ids);
         $r = [];
         $res =[];
@@ -75,12 +75,14 @@ class AccommodationController extends Controller
         return $res;
     }
 
-   
+
 
     public function store(Request $request)
     {
         $a = $this->accommodation->create($request->all());
-        return $a->id;
+
+        $response =['accommodation_id'=>$a->id, 'status'=>true] ;
+        return response($response, 200);
     }
 
     /*public function update($alojamento, Request $request)

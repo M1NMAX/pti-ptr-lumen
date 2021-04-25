@@ -21,7 +21,7 @@ class AccommodationInfo extends Model implements AuthenticatableContract, Author
     public $timestamps = false;
     protected $table = "accommodation_info";
     protected $fillable = [
-        'accommodationType','rooms', 'bathRooms', 'area', 'solar','wifi','clean'
+        'accommodation_id','accommodationType','rooms', 'bathRooms', 'area', 'solar','wifi','clean'
     ];
 
     public function accomodation()

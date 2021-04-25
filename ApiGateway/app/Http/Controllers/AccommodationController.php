@@ -32,6 +32,37 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function store(Request $request)
+    {
+        $responseAccommodation = Http::post(env('API_ACCOMMODATION_URL') . 'accommodation/',
+        $request->only('landlord_id', 'name', 'description', 'address', 'price', 'latitude', 'longitude'));
+
+        if($responseAccommodation->status()){
+
+            $accommodation_id= $responseAccommodation->collect()->get('accommodation_id');
+
+
+
+            $finalResponse =Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
+                'accommodation_id'=>$accommodation_id,
+                'accommodationType'=>$request->accommodationType,
+                'rooms'=>$request->rooms,
+                'bathRooms'=>$request->bathRooms,
+                'area'=>$request->area,
+                'solar'=>$request->solar,
+                'wifi'=>$request->wifi,
+                'clean'=>$request->clean,
+            ]);
+
+            return response($finalResponse, 200);
+
+        }
+
+        return response($responseAccommodation);
+    }
+
+
+
     public function showComments($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');

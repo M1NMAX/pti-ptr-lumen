@@ -54,6 +54,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         $router->get('/', 'AccommodationController@index');
         $router->get('/{id}', 'AccommodationController@show');
+        $router->post('/', 'AccommodationController@store');
+
 
         $router->get('/{id}/comments', 'AccommodationController@showComments');
         $router->post('/comment', 'AccommodationController@storeComment');
