@@ -18,7 +18,7 @@ function RegisterAlojamento() {
     const [content, setContent] =  useState('');
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
-    const [occupationState, setOccupation] = useState('');
+    //const [occupationState, setOccupation] = useState('');
     const [nRooms, setNrooms] = useState('');
     const [nWC, setNWC] = useState('');
     const [area, setArea] = useState('');
@@ -35,6 +35,8 @@ function RegisterAlojamento() {
     const [ ageMin, setAgeMin ] = useState(18);
     const [ ageMax, setAgeMax ] = useState(27);
 
+    const  history = useHistory();
+
     
 
     async function handleRegisterAlojamento(e) {
@@ -49,7 +51,7 @@ function RegisterAlojamento() {
             "price": price,
             "address": adress,
             "latitude": "100",
-            "logitude": "100",
+            "longitude": "100",
             "rooms": nRooms,
             "bathRooms" : nWC,
             "accommodationType": typeAccom,  //DÁ???????
@@ -58,7 +60,9 @@ function RegisterAlojamento() {
             "wifi": wifi,
             "clean":cleaning,
         };
+        console.log('ola');
 
+        console.log(data);
         if(token ==null || token ===''){
             alert('Não estas autenticado');
         }else{
@@ -69,9 +73,10 @@ function RegisterAlojamento() {
                 }
             }).then(response => { 
                 if(response.data.status){
-                    console.log(true);
+                    alert(true);
+                    history.push('/dashboard');
                 }else{
-                    console.log(response.data);    
+                    alert(response.data);    
                 }
             }).catch(err => {
             alert(err)
@@ -85,8 +90,8 @@ function RegisterAlojamento() {
             <NavBarHome/>
             <Container>
                 <h1>Novo Alojamento</h1>
-            <Form onSubmit={handleRegisterAlojamento}>
-                <Form.Row >
+            <Form   onSubmit={handleRegisterAlojamento} >
+                <Form.Row>
                     <Col className="cols" xs={12} sm={6}>
                         <Row>
                             <img className="image" src={DefaultHome}  alt="Standart image" />
@@ -119,13 +124,13 @@ function RegisterAlojamento() {
                             <Form.Control required width="sm" type="textarea" value={price} onChange={e => setPrice(e.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicOccupation">
+                        {/* <Form.Group controlId="formBasicOccupation">
                             <Form.Label>Estado de ocupação:</Form.Label>
                             <Form.Control required as="select" type="occupationState" value={occupationState} onChange={e => setOccupation(e.target.value)}>
                             <option className="ocupado">Ocupado</option>
                             <option className="desocupado">Desocupado</option>
                         </Form.Control>
-                        </Form.Group>
+                        </Form.Group> */}
                     </Col>
                 </Form.Row>
                 <Form.Row className="bottonRow">
@@ -134,6 +139,7 @@ function RegisterAlojamento() {
                         <Form.Group controlId="formBasicHouse">
                             <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
                             <Col sm={10}>
+
                                             <Form.Check
                                             type="radio"
                                             label="Apartamento"
@@ -155,7 +161,10 @@ function RegisterAlojamento() {
                                             id="moradia"
                                             onChange={e => settypeAccom(e.target.value)}
                                             />
-                                        </Col>
+                                {/*<Form.Check type="radio" label="Apartamento" name="apartamento" id="apartamento" />
+                                <Form.Check type="radio" label="Quarto" name="quarto" id="quarto"/>
+                    <Form.Check type="radio" label="Moradia" name="moradia" id="moradia" /> */}
+                            </Col>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicRoom">
@@ -177,14 +186,14 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar:</Form.Label>
                             <Form.Control as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
                             <option>Selecione um opção</option>
-                            <option>Norte (N)</option>
-                            <option>Nordeste (NE)</option>
-                            <option>Este (E)</option>
-                            <option>Sudeste (SE)</option>
-                            <option>Sul (S)</option>
-                            <option>Sudoeste (SO)</option>
-                            <option>Oeste (O)</option>
-                            <option>Noroeste (NO)</option>
+                            <option value="N" >Norte (N)</option>
+                            <option value="NE">Nordeste (NE)</option>
+                            <option value="E">Este (E)</option>
+                            <option value="SE">Sudeste (SE)</option>
+                            <option value="S">Sul (S)</option>
+                            <option value="SO">Sudoeste (SO)</option>
+                            <option value="O">Oeste (O)</option>
+                            <option value="NO">Noroeste (NO)</option>
                             </Form.Control>
                         </Form.Group>  
 
@@ -192,8 +201,8 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
                             <Form.Control as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
                             <option>Selecione um opção</option>
-                            <option>Existe</option>
-                            <option>Não existe</option>
+                            <option value="1">Existe</option>
+                            <option value="0">Não existe</option>
                         </Form.Control>
                         </Form.Group>
 
@@ -201,8 +210,8 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
                             <Form.Control as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
                             <option>Selecione um opção</option>
-                            <option>Cada um faz a sua própria</option>
-                            <option>É feita por profissionais</option>
+                            <option value="1">Cada um faz a sua própria</option>
+                            <option value="0">É feita por profissionais</option>
                             </Form.Control>
                         </Form.Group>
                     </Col>
@@ -213,21 +222,9 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faPeopleArrows} />  Faixa Etária:</Form.Label>
                                 <Row> 
                                 &nbsp; &nbsp; Dos 	&nbsp;
-                                    <RangeSlider
-                                        value={ageMin}
-                                        onChange={e => setAgeMin(e.target.value)}
-                                        min={17}
-                                        max={64}
-                                        variant='info'
-                                    />
+                                    <RangeSlider value={ageMin} onChange={e => setAgeMin(e.target.value)} min={17} max={64} variant='info'/>
                                     &nbsp; aos 	&nbsp;
-                                    <RangeSlider
-                                        value={ageMax}
-                                        onChange={e => setAgeMax(e.target.value)}
-                                        min={18}
-                                        max={65}
-                                        variant='info'
-                                    />
+                                    <RangeSlider value={ageMax} onChange={e => setAgeMax(e.target.value)} min={18} max={65} variant='info'/>
                                 	&nbsp;  anos
                                 </Row>
                             {/*<Form.Control width="sm" type="number" min="17" max="26" value={ageMin} onChange={e => setAgeMin(e.target.value)}/>

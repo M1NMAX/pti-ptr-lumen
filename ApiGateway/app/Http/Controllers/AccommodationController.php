@@ -41,6 +41,7 @@ class AccommodationController extends Controller
 
             $accommodation_id= $responseAccommodation->collect()->get('accommodation_id');
 
+
             $finalResponse =Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
                 'accommodation_id'=>$accommodation_id,
                 'accommodationType'=>$request->accommodationType,
@@ -52,10 +53,11 @@ class AccommodationController extends Controller
                 'clean'=>$request->clean,
             ]);
             return response($finalResponse, 200);
+            //return response($accommodation_id, 200);
 
         }
 
-        return response($responseAccommodation);
+        return response($responseAccommodation, 200);
     }
 
 

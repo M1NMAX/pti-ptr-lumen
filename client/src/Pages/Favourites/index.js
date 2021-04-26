@@ -27,8 +27,6 @@ function Favourites() {
             }else{
                 history.push("/login")
             }
-
-            
             
         }).catch(err => {
             alert(err)
