@@ -6,6 +6,7 @@ import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
 import {Container, Card, Form, Button} from 'react-bootstrap'
+import Footer from '../../Components/Footer'
 
 
 function Login() {
@@ -35,28 +36,31 @@ function Login() {
             {/* @someone please handle the way errors are diplay  */}
             {/*{errors.map((error)=>(<span>{error}</span>))} */}
             {/* @someone please handle the way errors are diplay  */}
-
-            <Form className="login page"  onSubmit={handleLogin}>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label className="label">Email address</Form.Label>
-                    <Form.Control required width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
-                    <Form.Text className="text-muted">
-                    O seu e-mail não será partilhado com nenhuma entidade interna ou externa
-                    </Form.Text>
-                </Form.Group>
-    
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label className="label">Password</Form.Label>
-                    <Form.Control required type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Entrar
-                </Button>
-                <Link className="back-link" to="/register">
-                    <p size={16} color="#3498db" />
-                    Não tenho Conta!
-                </Link>
-            </Form>
+            <Container>
+                <h1 className="h1">Login</h1>
+                <Form className="login"  onSubmit={handleLogin}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label className="label" as="h6">Email address</Form.Label>
+                        <Form.Control required width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
+                        <Form.Text className="text-muted">
+                        O seu e-mail não será partilhado com nenhuma entidade interna ou externa
+                        </Form.Text>
+                    </Form.Group>
+        
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label className="label" as="h6">Password</Form.Label>
+                        <Form.Control required type="password"  placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Entrar
+                    </Button>
+                    <Link className="back-link" to="/register">
+                        <p size={16} color="#3498db" />
+                        Não tenho Conta!
+                    </Link>
+                </Form>
+            </Container>
+            <Footer/>
         </div>
     )
 }
