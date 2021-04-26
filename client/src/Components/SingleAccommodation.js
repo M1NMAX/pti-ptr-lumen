@@ -49,7 +49,7 @@ function SingleAccommodation({accom}) {
    
     return (
         <Container fluid>
-            <Card className="mb-2">
+            <Card className="mb-2" style={{padding: '2%'}}>
                 <Card.Header>{accommodation.name}</Card.Header>
                 <Row> 
                     <Col xm={12} sm={6}>
@@ -65,8 +65,8 @@ function SingleAccommodation({accom}) {
                         <h5 style={{textAlign:"center"}}>Preco: {accommodation.price}&euro;</h5>
                         <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
                     </Card.Text>
-                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="primary" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
-                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="primary" onClick={handleRemove}>Remover dos favoritos</Button>
+                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
+                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" onClick={handleRemove}>Remover dos favoritos</Button>
 
                     </Col>
                 </Row>

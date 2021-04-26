@@ -9,6 +9,7 @@ import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import Footer from '../../Components/Footer'
 
 function RegisterAlojamento() {
     const [userId] = useState(localStorage.getItem('userID'));
@@ -249,6 +250,7 @@ function RegisterAlojamento() {
                 </Button>
             </Form>
             </Container>
+            <Footer/>
         </div>
     )
 }

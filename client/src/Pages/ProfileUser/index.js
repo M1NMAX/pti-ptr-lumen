@@ -4,7 +4,7 @@ import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
 import {useParams, useHistory} from 'react-router-dom';
 import api from '../../services/api';
-
+import Footer from '../../Components/Footer'
 
 
 
@@ -43,12 +43,13 @@ function ProfileUser(){
             <div>
                 <NavBarHome/>
                 <Container>
-                <h1 className='text-center'>Meu dados</h1>
+                <h1 className='text-center'>Os meus dados</h1>
                 <Row>
-                    <Col>
-                            <img src={DefaultUserPic} alt="profils pic" />
+                    <Col sm={12} md={6}>
+                            <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
+                            <Button className="changeImage" variant="info" style={{margin: '4%'}}>Alterar imagem</Button>
                     </Col>
-                    <Col>
+                    <Col sm={12} md={6}>
                         
                         <Form className="form">     
                         { /* <p>{this.state.msg}</p> */}
@@ -107,12 +108,12 @@ function ProfileUser(){
                         {/* <Form.Group controlId="formCategory4">
                                 <Form.Control type="file" name="profileImage"/>
                             </Form.Group> */}
-                <Button variant="primary" >Salva as alterações</Button>
+                             <Button variant="info" style={{margin: '4%'}}>Guardar as alterações</Button>
                         </Form>
                     </Col>
-
                 </Row>
                 </Container>
+                <Footer/>
             </div>
         )
     }

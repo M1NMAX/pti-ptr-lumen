@@ -16,6 +16,7 @@ function Login() {
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
+    const [wrongPass, setWrongPass] = useState(false);
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -27,6 +28,7 @@ function Login() {
         history.push('/dashboard');
         } catch (err) {
             setErrors(err.response.data.errors);
+            setWrongPass(!wrongPass);
         }
     }
     return (
@@ -51,6 +53,7 @@ function Login() {
                         <Form.Label className="label" as="h6">Password</Form.Label>
                         <Form.Control required type="password"  placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                     </Form.Group>
+                    {wrongPass && <p style={{color: 'red'}}>E-mail ou password incorretos</p>}
                     <Button variant="primary" type="submit">
                         Entrar
                     </Button>
@@ -59,6 +62,7 @@ function Login() {
                         Não tenho Conta!
                     </Link>
                 </Form>
+                
             </Container>
             <Footer/>
         </div>
