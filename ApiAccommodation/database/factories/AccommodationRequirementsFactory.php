@@ -27,8 +27,8 @@ class AccommodationInfoFactory extends Factory
             'ageRangeBot' => $this->faker->randomElement(['Quarto', 'Apartamento', 'Moradia']),
             'ageRangeTop' => $this->faker->randomNumber(1),
             'gender' => $this->faker->randomElement(['Masculino', 'Feminino', 'Misto', 'Indiferente']),
-            'wifi' => $this->faker->boolean,
-            'clean' => $this->faker->boolean,
+            'smoker' => $this->faker->boolean,
+            'pets' => $this->faker->boolean,
         ];
     }
 }

@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Accommodation;
+use App\Models\AccommodationInfo;
 use App\Models\Feature;
 use App\Models\Rental;
 use App\Models\Comment;
+
 
 class AccommodationController extends Controller
 {
@@ -169,8 +172,29 @@ class AccommodationController extends Controller
 
     public function busyDates($id,Request $request)
     {
+        $busyDates = [];
+        //array_push($busyDates, $date);
         $accommodation = $this->accommodation->find($id);
-        return $accommodation->rentals;
+        $rentals = $accommodation->rentals;
+        foreach ($rentals as $rental) {
+            $period = CarbonPeriod::create($rental->beginDate, $rental->endDate);
+            $rental_dates = [];
+            // Iterate over the period
+            foreach ($period as $date) {
+                if(!(in_array($date->format('Y-m'), $rental_dates))){
+                    array_push($rental_dates,$date->format('Y-m'));
+                }
+            }
+            /*for($i=0; $i<count($rental_dates);$i++){
+                array_push($busyDates,$rental_dates[$i]);
+            }*/
+            array_push($busyDates,$rental_dates);
+        }
+        // Convert the period to an array of dates
+        //$dates = $period->toArray();
+
+
+        return $busyDates;
 
     }
 
@@ -200,7 +224,7 @@ class AccommodationController extends Controller
     {
         $accommodation = $this->accommodation->find($id);
         //$today = date("Y/m/d");
-        $today = date('2008-04-21');
+        $today = date('2021-12-01');
         $rentals = $accommodation->rentals;
         foreach($rentals AS $rental){
             $begin = $rental->beginDate;
@@ -214,6 +238,15 @@ class AccommodationController extends Controller
         $accommodation->available = 1;
         $accommodation->save();
         return 1;
+    }
+
+
+    public function typeSearch($accommodationType, Request $request)
+    {
+        $accommodations = Accommodation::where('address', $search)
+        ->orWhere('address', 'like', '%' . $search . '%')->get();
+        return $accommodations;
+
     }
 
 
