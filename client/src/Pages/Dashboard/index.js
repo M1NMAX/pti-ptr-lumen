@@ -55,7 +55,7 @@ function Dashboard() {
               <Card.Body>
                   <Card.Title>Bem-vindo, {user.username}</Card.Title>
                   <Card.Text>
-                  Tens 3 Notificacoes | messagens
+                  Tens 3 Notificações | menssagens
                   landlord - criar, editar Alojamento, aceitar renda 
                   guest -  pagar a renda, pesquisar 
                   </Card.Text>
@@ -63,8 +63,8 @@ function Dashboard() {
               </Card.Body>
           </Card>
               <Container fluid>
-                <Row className="mb-5 mt-5">
-                  <Col>
+                <Row className="mb-5 mt-5" xs={6} sm={4}>
+                  <Col xs={6} sm={4}>
                     <a href="/listChat">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={chatImg}></Card.Img>
@@ -75,7 +75,7 @@ function Dashboard() {
                     </a>
                   </Col>
                   
-                  <Col>
+                  <Col xs={6} sm={4}>
                     <a href="/registerAccommodation">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={create}></Card.Img>
@@ -86,7 +86,7 @@ function Dashboard() {
                     </a>
                   </Col>
                   
-                  <Col>
+                  <Col xs={6} sm={4}>
                     <a href="/pending">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={pending}></Card.Img>
@@ -96,10 +96,8 @@ function Dashboard() {
                       </Card>
                     </a>
                   </Col>
-                </Row>
 
-                <Row className="mb-5 mt-5">
-                  <Col>
+                  <Col xs={6} sm={4}>
                     <a href="/profile">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={profile}></Card.Img>
@@ -110,7 +108,7 @@ function Dashboard() {
                     </a>
                   </Col>
                   
-                  <Col>
+                  <Col xs={6} sm={4}>
                     <a href="/registerAccommodation">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={edit}></Card.Img>
@@ -121,7 +119,7 @@ function Dashboard() {
                     </a>
                   </Col>
                   
-                  <Col>
+                  <Col xs={6} sm={4}>
                     <a href="/">
                       <Card className="text-center">
                         <Card.Img className="imgDashboard" src={home}></Card.Img>
@@ -135,8 +133,7 @@ function Dashboard() {
               </Container>  
         </div>
       )
-  }
-  else {
+  } else {
     return (
       <div>
       <NavBarHome/>
@@ -145,7 +142,7 @@ function Dashboard() {
           <Card.Body>
               <Card.Title>Bem-vindo, {user.username}</Card.Title>
               <Card.Text>
-              Tens 3 Notificacoes | messagens
+              Tens 3 Notificações | menssagens
               landlord - criar, editar Alojamento, aceitar renda 
               guest -  pagar a renda, pesquisar 
               </Card.Text>
@@ -153,8 +150,8 @@ function Dashboard() {
           </Card.Body>
       </Card>
           <Container fluid>
-            <Row className="mb-5 mt-5">
-              <Col>
+            <Row className="mb-5 mt-5" xs={6} sm={4}>
+              <Col xs={6} sm={4}>
                 <a href="/listChat">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={chatImg}></Card.Img>
@@ -165,7 +162,7 @@ function Dashboard() {
                 </a>
               </Col>
               
-              <Col>
+              <Col xs={6} sm={4}>
                 <a href="/registerAccommodation">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={search}></Card.Img>
@@ -176,7 +173,7 @@ function Dashboard() {
                 </a>
               </Col>
               
-              <Col>
+              <Col xs={6} sm={4}>
                 <a href="/favourites">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={favourite}></Card.Img>
@@ -186,10 +183,8 @@ function Dashboard() {
                   </Card>
                 </a>
               </Col>
-            </Row>
 
-            <Row className="mb-5 mt-5">
-              <Col>
+              <Col xs={6} sm={4}>
                 <a href="/profile">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={profile}></Card.Img>
@@ -200,7 +195,7 @@ function Dashboard() {
                 </a>
               </Col>
               
-              <Col>
+              <Col xs={6} sm={4}>
                 <a href="/registerAccommodation">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={manage}></Card.Img>
@@ -211,7 +206,7 @@ function Dashboard() {
                 </a>
               </Col>
               
-              <Col>
+              <Col xs={6} sm={4}>
                 <a href="/">
                   <Card className="text-center">
                     <Card.Img className="imgDashboard" src={home}></Card.Img>
