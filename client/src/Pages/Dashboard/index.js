@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card,Row,Col,Container} from 'react-bootstrap'
+import {Button, Card,Row,Col,Container,Form} from 'react-bootstrap'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import chatImg from '../../img/chatImg.png'
@@ -14,8 +14,11 @@ import manage from '../../img/manage.png'
 import create from '../../img/add.png'
 import edit from '../../img/create.png'
 import home from '../../img/home.png'
+import Footer from '../../Components/Footer'
 import './index.css'
 import api from '../../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
@@ -54,12 +57,10 @@ function Dashboard() {
               <Card.Header>Dashboard</Card.Header>
               <Card.Body>
                   <Card.Title>Bem-vindo, {user.username}</Card.Title>
-                  <Card.Text>
-                  Tens 3 Notificações | menssagens
-                  landlord - criar, editar Alojamento, aceitar renda 
-                  guest -  pagar a renda, pesquisar 
-                  </Card.Text>
-                  <Search/>
+                  <Form inline className="searchDashboard">
+                    <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
+                    <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                  </Form>
               </Card.Body>
           </Card>
               <Container fluid>
@@ -130,7 +131,8 @@ function Dashboard() {
                     </a>
                   </Col>
                 </Row>
-              </Container>  
+              </Container>
+              <Footer></Footer>
         </div>
       )
   } else {
@@ -141,12 +143,10 @@ function Dashboard() {
           <Card.Header>Dashboard</Card.Header>
           <Card.Body>
               <Card.Title>Bem-vindo, {user.username}</Card.Title>
-              <Card.Text>
-              Tens 3 Notificações | menssagens
-              landlord - criar, editar Alojamento, aceitar renda 
-              guest -  pagar a renda, pesquisar 
-              </Card.Text>
-              <Search/>
+              <Form inline className="searchDashboard">
+                <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
+                <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+              </Form>
           </Card.Body>
       </Card>
           <Container fluid>
@@ -217,7 +217,8 @@ function Dashboard() {
                 </a>
               </Col>
             </Row>
-          </Container>  
+          </Container>
+          <Footer></Footer>
     </div>
     )
   }
