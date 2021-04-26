@@ -12,11 +12,9 @@ import Footer from '../../Components/Footer'
 function Pending() {
     const[token] = useState(localStorage.getItem('token'));
     const[userId]= useState(localStorage.getItem('userID'));
-    const[pending, setPending] = useState([]);
-
+    const[allPending, setAllPending] = useState([]);
 
     const history = useHistory();
-
 
     const accommodation = useState([
         { "name":"John", "age":30, "city":"New York" },
@@ -34,7 +32,8 @@ function Pending() {
             }
             }).then(response => {
                 if(response.data.status){
-                    setPending(response.data.pending);
+                    setAllPending(response.data.pending);
+                    console.log(response.data.pending);
                 }else{
                     localStorage.clear();
                     history.push('/login')
@@ -49,7 +48,9 @@ function Pending() {
         <div>
         <NavBarHome/>
         <div class="center"><h3>Pendentes</h3></div>
-        <PendingAc accom={accommodation}/>
+        
+        {allPending.map((singlePending)=>(<PendingAc pending={singlePending}/>))}
+        
         <Footer/>
        </div>
 

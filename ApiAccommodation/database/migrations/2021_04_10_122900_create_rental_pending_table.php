@@ -17,7 +17,9 @@ class CreateRentalPendingTable extends Migration
             $table->id();
             $table->integer('landlord_id');
             $table->integer('accommodation_id');
+            $table->string('accommodation_name');
             $table->integer('user_id');
+            $table->string('user_name');
             $table->integer('price');
             $table->string('beginDate');
             $table->string('endDate');

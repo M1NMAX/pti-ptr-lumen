@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RentalPendingTableSeeder::class);
         $this->call(CommentTableSeeder::class);
         $this->call(AccommodationInfoTableSeeder::class);
-        
+
     }
 }
