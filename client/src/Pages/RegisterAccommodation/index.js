@@ -9,6 +9,7 @@ import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import Footer from '../../Components/Footer'
 
 function RegisterAlojamento() {
     const [userId] = useState(localStorage.getItem('userID'));
@@ -84,8 +85,8 @@ function RegisterAlojamento() {
             <NavBarHome/>
             <Container>
                 <h1>Novo Alojamento</h1>
-            <Form  >
-                <Form.Row onSubmit={handleRegisterAlojamento}>
+            <Form onSubmit={handleRegisterAlojamento}>
+                <Form.Row >
                     <Col className="cols" xs={12} sm={6}>
                         <Row>
                             <img className="image" src={DefaultHome}  alt="Standart image" />
@@ -272,6 +273,7 @@ function RegisterAlojamento() {
                 </Button>
             </Form>
             </Container>
+            <Footer/>
         </div>
     )
 }
