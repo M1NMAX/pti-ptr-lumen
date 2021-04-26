@@ -81,8 +81,18 @@ class AccommodationController extends Controller
     public function showLandlordRentalPending($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
+        return response($response);
+    }
 
+    public function landlordAcceptRentalPending($id)
+    {
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'rentalpending/accept/'.$id);
+        return response($response);
+    }
 
+    public function landlordRejectRentalPending($id)
+    {
+        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
         return response($response);
     }
 

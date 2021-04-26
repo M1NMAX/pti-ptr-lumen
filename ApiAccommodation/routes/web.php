@@ -134,7 +134,7 @@ $router->group(['prefix' => 'rentalpending'], function () use ($router) {
 
     //-------------DELETES----------------
 
-    $router->delete('/{rental}', 'RentalrPendingController@destroy');
+    $router->delete('/{id}', 'RentalPendingController@destroy');
 
 });
 
