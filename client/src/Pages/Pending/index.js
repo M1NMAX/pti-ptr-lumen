@@ -1,25 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBarHome from '../../Components/NavBarHome';
-import { Container,Row,Col,Form ,Button, Card, Carousel} from 'react-bootstrap'
-import DefaultUserPic from "../../img/standartUser3.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
-import {useParams, useHistory} from 'react-router-dom';
-import PendingAc from '../../Components/PendingAc'
-import Footer from '../../Components/Footer'
+import {useHistory} from 'react-router-dom';
+import PendingAc from '../../Components/PendingAc';
+import Footer from '../../Components/Footer';
+
+
 function Pending() {
     const[token] = useState(localStorage.getItem('token'));
     const[userId]= useState(localStorage.getItem('userID'));
     const[allPending, setAllPending] = useState([]);
-
+    
     const history = useHistory();
-
-    const accommodation = useState([
-        { "name":"John", "age":30, "city":"New York" },
-        { "name":"Wick", "age":30, "city":"New York" }
-    ]);
 
     useEffect(() => {
         console.log(userId);
@@ -44,12 +37,53 @@ function Pending() {
         }
     }, [token]);
 
+    async function acceptPending(pendingId){
+        await api.post('api/accommodations/rentalpending/accept/'+pendingId,{
+            headers: {
+                Authorization : `Bearer ${token}`,
+            }
+        }).then(response => {
+            console.log(response);
+            if(response.data.status){
+                window.location.reload();
+            }else{
+                localStorage.clear();
+                history.push('/login');
+            }
+        }).catch(err => {
+            alert(err);
+        });
+
+    }
+
+    async function rejectPending(pendingId){
+        await api.delete('api/accommodations/rentalpending/'+pendingId,{
+            headers: {
+                Authorization : `Bearer ${token}`,
+            }
+        }).then(response => {
+            console.log(response);
+            if(response.data.status){
+                window.location.reload();
+            }else{
+                localStorage.clear();
+                history.push('/login');
+            }
+        }).catch(err => {
+            alert(err);
+        })
+
+    } 
+
     return(
         <div>
         <NavBarHome/>
         <div class="center"><h3>Pendentes</h3></div>
         
-        {allPending.map((singlePending)=>(<PendingAc pending={singlePending}/>))}
+        {allPending.length>0?
+        allPending.map((singlePending)=>(
+        <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
+        <p>Não tens assuntos pendentes</p>}
         
         <Footer/>
        </div>

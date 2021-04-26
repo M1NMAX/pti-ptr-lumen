@@ -51,11 +51,11 @@ class RentalPendingController extends Controller
         return response()->json(['data' => ['message' => 'Associação AC foi atualizada com sucesso']]);
     }
 
-    public function destroy($rental_pending)
+    public function destroy($id)
     {
-        $rental_pending = $this->rental_pending->find($rental_pending);
+        $rental_pending = $this->rental_pending->find($id);
         $rental_pending->delete();
-        return response()->json(['data' => ['message' => 'Associação AC foi eliminada com sucesso']]);
+        return response()->json(['data' => ['message' => 'Associação AC foi eliminada com sucesso'], 'status'=>true]);
     }
 
     public function accept($id)
@@ -72,7 +72,7 @@ class RentalPendingController extends Controller
         ]);
         $rentalAccepted->delete();
 
-        return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso']]);
+        return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
     }
 
 
