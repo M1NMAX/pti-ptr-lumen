@@ -11,47 +11,28 @@ import DefaultUserPic from "../img/standartUser3.png";
 
 function PendingAc({pending}) {
 
-    const [userData, setuserData] = useState([]);
-    const [accommodationData, setaccommodationData] = useState([])
+    console.log(pending);
 
-
-    // api.get('api/accommodations/'+pending.accommodation_id).then(response => {
-    //     setaccommodationData(response.data);
-    // }).catch(err => {
-    //   alert(err)
-    // })
-
-    // api.get('api/users/'+pending.user_id).then(response => {
-        
-    // setuserData(response.data.user);
-    
-    // }).catch(err => {
-    //   alert(err)
-    // })
-
-   
-
-    
-    
     return (
         <>
        <Row className='border'>
             <Col className="mb-4 mt-4 ml-4 mr-4 center">
-            <img src={DefaultUserPic} alt="Imagem de perfil" width="60%"></img>
-            <h4>Pedro</h4>{' '}
-            <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/></Button>
+            <img src={DefaultUserPic} alt="Imagem de perfil" width="30%"></img>
+            <p>{pending.user_name} <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/></Button></p>
+            
             </Col>
             <Col className="center">
             <Card className="mb-4 mt-4 ml-4 mr-4 center" style={{ width: '100%', height: '10%' }}>
             <AnimationWrapper>
-            <a href={"/profileAlojamento/"} >
-                   <Card.Img onclick="href='/profileAlojamento" className="img" style={{ width: '60%'}} src={alojamento}></Card.Img>
+            <a href={ "/profileAccommodation/"+pending.accommodation_id} >
+                   <Card.Img onclick="href='/profileAlojamento" className="img" style={{ width: '50%'}} src={alojamento}></Card.Img>
                 </a>
             </AnimationWrapper>
             
             <Card.Text>
-                <p style={{ fontSize: '100%' }}></p>
-                { /*<Button style={{ fontSize: '50%' }}  variant="primary"href={ "/profileAccommodation/"+accommodation.id}>Ver alojamento</Button>*/}
+                <p style={{ fontSize: '100%' }}>{pending.accommodation_name} </p>
+
+                {/* <Button style={{ fontSize: '60%' }}  variant="primary"href={ "/profileAccommodation/"+pending.accommodation_id}>Ver alojamento</Button> */}
             </Card.Text>
             
         </Card> 

@@ -42,6 +42,7 @@ function ProfileAccommodation() {
             // you must define a default operation
             setaccommodation(response.data);
             setaccommodationInfo(response.data.info)
+            console.log(response.data.info);
         }).catch(err => {
           alert(err)
         })
