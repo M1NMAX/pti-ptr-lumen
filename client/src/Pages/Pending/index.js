@@ -77,15 +77,15 @@ function Pending() {
 
     return(
         <div>
-        <NavBarHome/>
-        <div class="center"><h3>Pendentes</h3></div>
-        
-        {allPending.length>0?
-        allPending.map((singlePending)=>(
-        <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
-        <p>Não tens assuntos pendentes</p>}
-        
-        <Footer/>
+            <NavBarHome/>
+            <div class="center"><h3>Pedidos pendentes</h3></div>
+            
+                {allPending.length>0?
+                allPending.map((singlePending)=>(
+                <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
+                <p>Não tens assuntos pendentes</p>}
+                
+            <Footer/>
        </div>
 
     )

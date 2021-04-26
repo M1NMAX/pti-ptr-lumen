@@ -1,16 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
-import {Button, Card, Row, Col} from 'react-bootstrap'
+import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope, faTimesCircle, faCheckCircle} from '@fortawesome/free-solid-svg-icons'
 import DefaultUserPic from "../img/standartUser3.png";
 
 function PendingAc({pending, acceptPending, rejectPending}) {
 
     console.log(pending);
-
     const handleAcceptPending = async (event) =>{
         event.preventDefault();
         await acceptPending(pending.id);
@@ -23,36 +22,39 @@ function PendingAc({pending, acceptPending, rejectPending}) {
     }
 
     return (
-        <>
-       <Row className='border'>
-            <Col className="mb-4 mt-4 ml-4 mr-4 center">
-            <img src={DefaultUserPic} alt="Imagem de perfil" width="30%"></img>
-            <p>{pending.user_name} <Button size="sm"><FontAwesomeIcon icon={faEnvelope}/></Button></p>
-            
-            </Col>
-            <Col className="center">
-            <Card className="mb-4 mt-4 ml-4 mr-4 center" style={{ width: '100%', height: '10%' }}>
-            <AnimationWrapper>
-            <a href={ "/profileAccommodation/"+pending.accommodation_id} >
-                   <Card.Img onclick="href='/profileAlojamento" className="img" style={{ width: '50%'}} src={alojamento}></Card.Img>
-                </a>
-            </AnimationWrapper>
-            
-            <Card.Text>
-                <p style={{ fontSize: '100%' }}>{pending.accommodation_name} </p>
-
-                {/* <Button style={{ fontSize: '60%' }}  variant="primary"href={ "/profileAccommodation/"+pending.accommodation_id}>Ver alojamento</Button> */}
-            </Card.Text>
-            
+        <Container>
+        <Card className="mb-2 border" style={{padding: '2%'}}>
+            <Card.Header><b>{pending.user_name}</b> está interessado(a) em arrendar <b>{pending.accommodation_name}</b>, aceita?</Card.Header>
+            <Row >
+                <Col className="pb-2 pt-2 pl-2 pr-2 center" xm={6} sm={2}>
+                    <img src={DefaultUserPic} alt="Imagem de perfil" width="100%"></img>
+                </Col>
+                <Col className="pb-4 pt-4 pr-4 center" xm={6} sm={4}>
+                    <Button ize="sm" variant="info">{pending.user_name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>
+                    <div className="pt-2" style={{textAlign: 'left'}}>
+                        <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Género</p>
+                        <p><FontAwesomeIcon color="red" icon={faTimesCircle}/>  Tem animais de estimação</p>
+                    </div>
+                </Col>
+                <Col className="center" xm={4} sm={3}>
+                    <AnimationWrapper>
+                        <a href={ "/profileAccommodation/"+pending.accommodation_id} >
+                            <Card.Img onclick="href='/profileAlojamento" className="pb-4 pt-4 pl-2 pr-2 center" style={{ width: '70%'}} src={alojamento}></Card.Img>
+                        
+                            <Card.Text>
+                                <p style={{ fontSize: '100%', color:'black', textDecoration:'none' }}>{pending.accommodation_name} </p>
+                                {/* <Button style={{ fontSize: '60%' }}  variant="primary"href={ "/profileAccommodation/"+pending.accommodation_id}>Ver alojamento</Button> */}
+                            </Card.Text>
+                        </a>
+                    </AnimationWrapper>
+                </Col>
+                <Col className="pb-4 pt-4 pl-4 pr-4 center border-left inline" xm={8} sm={3}>
+                    <Button variant="success"  className="m-1 mt-5" onClick={handleAcceptPending} size="m" >Aceitar</Button>
+                    <Button variant="danger" className="m-1 mt-5" onClick={handleRejectPending}  size="m"  >Rejeitar</Button>                    
+                </Col>
+            </Row>
         </Card> 
-            </Col>
-            <Col className="mb-4 mt-4 ml-4 mr-4 center">
-            <Button variant="danger" onClick={handleRejectPending} size="m" style={{top: '40%',left: '50%',position: 'absolute'}}>Rejeitar</Button>{' '}
-            <Button variant="success" onClick={handleAcceptPending} size="m" style={{top: '40%',left: '30%',position: 'absolute'}}>Aceitar</Button>{' '}
-            
-            </Col>
-        </Row>
-        </>
+        </Container>
     )
 }
 

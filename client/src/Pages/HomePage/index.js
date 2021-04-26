@@ -16,6 +16,15 @@ import './index.css'
 import api from '../../services/api';
 function Homepage() {
     const [Accmmodations, setAcommodations] = useState([]);
+    const history = useHistory();
+    const [local, setLocal]=useState();
+
+    async function routeChange(local){
+        console.log(local)
+        let path = "/Search/" + local;
+        history.push(path);
+    }
+
 
     console.log(Accmmodations)
     useEffect(() => {
@@ -39,8 +48,8 @@ function Homepage() {
                 <Container>
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
-                            <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                            <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                            <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)}/>
+                            <Button variant="primary" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                         </Form>
                         <div className="buttonImg" >
                             <a href='#down'> 

@@ -11,7 +11,7 @@ import RegisterAccom from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
 import Favourites from './Pages/Favourites'
 import Pending from './Pages/Pending'
-
+import Search from './Pages/Search'
 import capa from './img/capa.png'
 import './App.css'
 import ListUsersChat from './Pages/ListUsersChat';
@@ -27,6 +27,8 @@ function Routes() {
             <Route path="/profileUser/:id" exact component={ProfileUser} />
             <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />
             <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />
+            <Route path="/search/:location" exact component={Search} />
+            <Route path="/search/" exact component={Search} />
             <Route path="/registerAccommodation" exact component={RegisterAccom} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/favourites" exact component={Favourites} />
