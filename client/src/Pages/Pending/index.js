@@ -44,15 +44,15 @@ function Pending() {
             }
         }).then(response => {
             console.log(response);
-            if(response.data.status){
-                window.location.reload();
-            }else{
+            if(!response.data.status){
                 localStorage.clear();
                 history.push('/login');
             }
         }).catch(err => {
             alert(err);
         });
+
+        setAllPending(allPending.filter((pending)=> pending.id != pendingId))
 
     }
 
@@ -63,15 +63,15 @@ function Pending() {
             }
         }).then(response => {
             console.log(response);
-            if(response.data.status){
-                window.location.reload();
-            }else{
+            if(!response.data.status){
                 localStorage.clear();
                 history.push('/login');
             }
         }).catch(err => {
             alert(err);
         })
+
+        setAllPending(allPending.filter((pending)=> pending.id != pendingId))
 
     } 
 

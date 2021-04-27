@@ -18,16 +18,16 @@ function NavBarHome() {
 
     const history = useHistory();
 
-    useEffect(() => {
+    useEffect(async () => {
         
         if(token === null || token ===''){
             setAuth(false);
         }else{
-          api.get('api/me', {
+         await api.get('api/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }
-        }).then(response => {
+        }).then( async response => {
             if(response.data.status && response.data.status === (401 || 498)){
                 console.log("erro")
                 localStorage.clear();

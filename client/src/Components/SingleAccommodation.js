@@ -5,7 +5,7 @@ import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
  
-function SingleAccommodation({accom}) {
+function SingleAccommodation({accom, removeFavourite}) {
     const [id] = useState(accom.accommodation_id);
     const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setAccommodation] = useState([]);
@@ -29,21 +29,10 @@ function SingleAccommodation({accom}) {
         })
       }, [token]);
 
-      async function handleRemove(){
-        api.delete('/api/favourites/'+id, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }
-          }).then(response => {
-          if(response.data.status){
-            window.location.reload();
-          }else{
-              alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
-          }
-
-        }).catch(err => {
-          alert(err)
-        })
+      async function handleRemove(event){
+        event.preventDefault();
+        await removeFavourite(id);
+       
       }
     
    
