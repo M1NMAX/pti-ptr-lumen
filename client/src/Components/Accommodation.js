@@ -6,7 +6,7 @@ import alojamento from '../img/basicRoom.png';
 
 function Accommodation({accom}) {
     const x = accom.map((accommodation)=>
-        <Card className="mb-4 mt-4 ml-4 mr-4 center">
+        <Card className="mb-4 mt-4 ml-4 mr-4 border border-10 center">
             <AnimationWrapper>
                 <a href={"/profileAccommodation/"+accommodation.id}>
                     <Card.Img onclick="href='/profileAccommodation" className="img" src={alojamento}></Card.Img>

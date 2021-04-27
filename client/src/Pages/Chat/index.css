@@ -59,11 +59,11 @@
 }
 
 .bottom {
-  position: absolute;
   bottom: 25%;
   width: 100%;
   word-break: break-word;
   overflow: auto;
+  float: inline-end;
 }
 
 .text {
@@ -86,4 +86,14 @@
   bottom: 0;
   right: 2%;
   left: 2%;
+}
+
+.me {
+  background-color: rgb(51, 204, 140);
+  border-radius: 20px;
+}
+
+.you {
+  background-color: deepskyblue;
+  border-radius: 20px;
 }

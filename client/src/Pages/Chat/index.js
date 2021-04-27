@@ -103,13 +103,13 @@ function Chat() {
                             }else{
                                 for(let i=0;i < nMessages;i++){
                                     if(response.data.id == responseMessages.data[i].user_id ){
-                                        allMessages.push(<Row className="text">
-                                        <Col xs={4} sm={2} lg={1} className="w-25 w3-right"><h4>Eu:</h4></Col>
+                                        allMessages.push(<Row className="text me">
+                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>Eu:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
                                     }else{
     
-                                        allMessages.push(<Row className="text">
+                                        allMessages.push(<Row className="text you">
                                         <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.user.name}:</h4></Col>
                                         <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
                                         </Row>)
