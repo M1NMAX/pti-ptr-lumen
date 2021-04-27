@@ -4,14 +4,13 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import {Container, Card,Row,Col, Form, Button, FormControl} from 'react-bootstrap'
 import scroll from '../../img/scroll.png'
-import capa from '../../img/capa.png'
 import video from '../../img/intro.mp4'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import Accommodations from '../../Components/Accommodation'
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faSearch, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 import api from '../../services/api';
 function Homepage() {

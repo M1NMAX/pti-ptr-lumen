@@ -11,6 +11,7 @@ import RegisterAccom from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
 import Favourites from './Pages/Favourites'
 import Pending from './Pages/Pending'
+import AdminPage from './Pages/Admin'
 import Search from './Pages/Search'
 import capa from './img/capa.png'
 import './App.css'
@@ -33,6 +34,7 @@ function Routes() {
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/favourites" exact component={Favourites} />
             <Route path="/pending" exact component={Pending} />
+            <Route path="/admin" exact component={AdminPage} />
           </Switch>
         </BrowserRouter>
       );
