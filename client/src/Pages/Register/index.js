@@ -4,7 +4,7 @@ import './index.css'
 import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
-import {Container, Card,Row,Col, Form, Button} from 'react-bootstrap'
+import {Container, Row,Col, Form, Button} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 import DefaultUserPic from "../../img/standartUser3.png";
 
@@ -17,6 +17,11 @@ function Register() {
     const [password_confirmation, setPasswordConf] = useState('');
     const [type, setType] = useState('');
     const [college, setCollege] = useState('');
+    const [gender, setGender] = useState('');
+    const [smoker, setSmoker] = useState('');
+    const [age, setAge] = useState('');
+    const [pet, setPet] = useState('');
+    
 
     console.log(type);
 
@@ -28,9 +33,23 @@ function Register() {
     async function handleRegister(e) {
         e.preventDefault();
 
+        let data = {
+            'username': username,
+            'name': name,
+            'email': email,
+            'birthdate':  birthdate,
+            'password': password,
+            'password_confirmation': password_confirmation,
+            'type': type,
+            'college': college,
+            'gender': gender, 
+            'smokers': smoker, 
+            'pets': pet,
+            'age': age,
+        };
+
         try {
-        await api.post('api/register',
-         {name, email, username, birthdate, password, password_confirmation, type, college}
+        await api.post('api/register', data
          ).then(async (response) =>{
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
@@ -96,10 +115,46 @@ function Register() {
                                 </Form.Control>
                             </Form.Group>
 
-                            {type=='guest'&& <Form.Group controlId="formBasicCollege" onSubmit={handleRegister}>
-                                <Form.Label>Instituição</Form.Label>
-                                <Form.Control width="sm" type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
-                            </Form.Group>}
+                            {type=='guest'&& <>
+                                <Form.Group controlId="formBasicCollege" onSubmit={handleRegister}>
+                                    <Form.Label> Nome da Instituição</Form.Label>
+                                    <Form.Control width="sm" type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
+                                </Form.Group>
+
+                                <Form.Group controlId="formBasicRoom">
+                                    <Form.Label> Idade:</Form.Label>
+                                    <Form.Control width="sm" type="number" value={age} onChange={e => setAge(e.target.value)}/>
+                                </Form.Group>
+
+                                <Form.Group controlId="formBasicGender">
+                                    <Form.Label>Género:</Form.Label>
+                                    <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                                    <option  value="one"> Selecione uma opção</option>
+                                    <option  value="Masculino"> Masculino </option>
+                                    <option  value="Feminino"> Feminino </option>
+                                    <option  value="Outro"> Outro </option>
+                                    </Form.Control>
+                                </Form.Group>
+
+                                <Form.Group controlId="formBasicSmoker">
+                                    <Form.Label> É fumador/a?</Form.Label>
+                                    <Form.Control as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
+                                    <option  value="one"> Selecione uma opção</option>  
+                                    <option  value="1">Sim</option>
+                                    <option  value="0">Não</option>
+                                    </Form.Control>
+                                </Form.Group>
+
+                                <Form.Group controlId="formBasicPet">
+                                    <Form.Label>Tem animais de estimações</Form.Label>
+                                    <Form.Control as="select" type="type" value={pet} onChange={e => setPet(e.target.value)}>
+                                    <option  value="one"> Selecione uma opção</option>
+                                    <option  value="1">Sim</option>
+                                    <option  value="0">Não</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                </>
+                            }
                             
 
                             <Button variant="info" type="submit">

@@ -29,28 +29,22 @@ class UsersController extends Controller
     public function register(Request $request)
     {
         //VALIDATE THE USER TYPE
-        $validatorType = Validator::make($request->only('type'), [
-            'type' => 'required'
+        //VALIDATE THE USER DATA
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'username'=>'required|max:30',
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+            'birthdate' => 'required'
         ]);
 
-        if($validatorType->fails()){
-            return response(['errors' =>  $validatorType->errors()->all()], 422);
+        if($validator->fails()){
+            return response(['errors' =>  $validator->errors()->all()], 422);
         }
 
         //LANDLORD SECTION
         if($request->type == 'landlord'){
-            //VALIDATE THE USER DATA
-            $validator = Validator::make($request->all(), [
-                'username'=>'required|max:30',
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required|confirmed|min:6',
-                'birthdate' => 'required'
-            ]);
-
-            if($validator->fails()){
-                return response(['errors' =>  $validator->errors()->all()], 422);
-            }
 
             $landLord = Landlord::create();
             $landLord->user()->create([
@@ -63,15 +57,26 @@ class UsersController extends Controller
 
         //GUEST SECTION
         }elseif($request->type =='guest'){
-            $validatorCollege = Validator::make($request->only('college'), [
-                'college' => 'required'
+            $validatorCollege = Validator::make($request->only('college', 'age', 'gender', 'pets', 'smokers'), [
+                'college' => 'required',
+                'age' => 'required|integer',
+                'gender' => 'required|alpha',
+                'pets' => 'required|boolean',
+                'smokers'=> 'required|boolean'
             ]);
 
             if($validatorCollege->fails()){
                 return response(['errors' =>  $validatorCollege->errors()->all()], 422);
             }
 
-            $guest = Guest::create(['college'=> $request->college]);
+            $guest = Guest::create([
+                'college' => $request->college,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'pets' => $request->pets,
+                'smokers' => $request->smokers,
+                ]);
+
             $guest->user()->create([
                 'username' => $request->username,
                 'name' => $request->name,
@@ -143,5 +148,5 @@ class UsersController extends Controller
         return response($response, 200);
     }
 
-    
+
 }

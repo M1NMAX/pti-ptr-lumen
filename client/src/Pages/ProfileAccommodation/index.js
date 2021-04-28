@@ -373,7 +373,7 @@ function ProfileAccommodation() {
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
-                                <Card.Title>Género preferecial: </Card.Title>
+                                <Card.Title>Género preferencial: </Card.Title>
                                 <Card.Text>
                                     <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>
                                     <p className="fem"> <FontAwesomeIcon icon={faVenus} /> Feminino</p>

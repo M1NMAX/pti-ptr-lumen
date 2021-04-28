@@ -12,10 +12,9 @@ function ProfileUser(){
     let { id } = useParams();
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState([]);
-    const [userType, setUserType] = useState(null);
+    const [userType, setUserType] = useState('');
     const [userExtra, setUserExtra] = useState([]);
 
-    
     const history = useHistory();
 
     useEffect(() => {
@@ -29,7 +28,7 @@ function ProfileUser(){
             history.push('/login');
           }else{
             setUser(response.data.user);
-            setUserType(response.data.user.userable_type.includes('Guest'));
+            setUserType(response.data.user.userable_type.substring(11).toLowerCase());
             setUserExtra(response.data.extra)
           }
         }).catch(err => {
@@ -78,30 +77,37 @@ function ProfileUser(){
                                 <Form.Label>Preferências:</Form.Label>
                                 <Form.Control type="text" defaultValue="Gostava de viver só com rapazes, de preferência da faculdade onde ando"/>
                             </Form.Group>
-                            <Form.Group controlId="formCategory9">
-                                <Form.Label>Estou interessado em:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={userType}
-                                    type="radio"
-                                    label="Alugar um alojamento"
-                                    name="alugarAlojamento"
-                                    id="alugarAlojamento"
-                                    />
-                                    <Form.Check
-                                    checked={!userType}
-                                    type="radio"
-                                    label="Tenho um alojamento para alugar"
-                                    name="tenhoAlojamento"
-                                    id="tenhoAlojamento"
-                                    />
-                                </Col>
+
+                            <Form.Group controlId="formBasicType">
+                                <Form.Label>Tenho como objetivo</Form.Label>
+                                <Form.Control required as="select" type="type" value={userType} onChange={e => setUserType(e.target.value)} >
+                                <option value="one" >selecione uma opção</option>
+                                <option value="guest" >Alugar um alojamento</option>
+                                <option value="landlord" >Colocar alojamentos para alugar</option>
+                                </Form.Control>
                             </Form.Group>
-                            {userType &&
+                            
+                            {userType === 'guest' && <>
                                 <Form.Group controlId="formCategory10">
                                     <Form.Label>Instituição:</Form.Label>
                                     <Form.Control type="text" defaultValue="UL-FCUL" value={userExtra.college}/>
                                 </Form.Group>
+
+                                <Form.Group controlId="formCategory11" >
+                                    <Form.Label>Genero</Form.Label>
+                                    <Form.Control width="sm" name="gender" type="text" value={userExtra.gender} />
+                                </Form.Group>
+
+                                <Form.Group controlId="formCategory12" >
+                                    <Form.Label>É fumador/a</Form.Label>
+                                    <Form.Control width="sm" name="smokers" type="text" value={userExtra.smokers?'sim':'não'} />
+                                </Form.Group>
+
+                                <Form.Group controlId="formCategory13" >
+                                    <Form.Label>Tem animais de estimação?</Form.Label>
+                                    <Form.Control width="sm" name="pets" type="text" value={userExtra.pets?'sim':'não'} />
+                                </Form.Group> 
+                            </>
                             }
                             
                             {/* Change profile picture  */}
