@@ -8,12 +8,9 @@ function Footer() {
             <Card className="text-center" bg="white" text="black">
                 <Card.Header>2021 copyright &copy;</Card.Header>
                 <Card.Body>
-                Ferramentas utilizadas
-                    <ListGroup >
-                        <ListGroup.Item variant="dark">React</ListGroup.Item>
-                        <ListGroup.Item variant="dark">Bootstrap</ListGroup.Item>
-                        <ListGroup.Item variant="dark">Laravel/Lumen</ListGroup.Item>
-                    </ListGroup>
+                    <p> Ferramentas utilizadas </p>
+                    <p> Ficha técnica </p>
+                    <p> Contactos </p>
                 </Card.Body>
             </Card>
         </footer>

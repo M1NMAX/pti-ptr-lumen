@@ -15,7 +15,6 @@ function Pending() {
     const history = useHistory();
 
     useEffect(() => {
-        console.log(userId);
         if(token === null || token === ''){
             history.push('/login');    
         }else{
@@ -26,7 +25,6 @@ function Pending() {
             }).then(response => {
                 if(response.data.status){
                     setAllPending(response.data.pending);
-                    console.log(response.data.pending);
                 }else{
                     localStorage.clear();
                     history.push('/login')
