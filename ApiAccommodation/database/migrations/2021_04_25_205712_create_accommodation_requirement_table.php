@@ -19,7 +19,7 @@ class CreateAccommodationRequirementTable extends Migration
             $table->integer('ageRangeBot');
             $table->integer('ageRangeTop');
             $table->string('gender');
-            $table->boolean('smokers');
+            $table->boolean('smoker');
             $table->boolean('pets');
         });
     }

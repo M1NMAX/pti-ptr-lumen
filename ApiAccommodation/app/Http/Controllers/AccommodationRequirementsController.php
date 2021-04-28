@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AccommodationRequirements;
-
+use App\Models\Accommodation;
 class AccommodationRequirementsController extends Controller
 {
     private $accommodation_requirements;
@@ -18,6 +18,12 @@ class AccommodationRequirementsController extends Controller
         $this->accommodation_requirements = $accommodation_requirements;
     }
 
+    public function showId($id)
+    {
+
+        $acc = Accommodation::find($id);
+        return $acc->requirements;
+    }
 
     public function show($id)
     {
