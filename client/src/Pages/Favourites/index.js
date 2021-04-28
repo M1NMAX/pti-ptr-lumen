@@ -60,9 +60,9 @@ function Favourites() {
 
         { Accommodations.length>0 ? 
                 Accommodations.map((accommodation)=>(<SingleAccommodation accom={accommodation} removeFavourite={removeFavourite} />)): 
-                <div class="center">
+                <div className="center">
                 <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
-                <a class="center" href="/">Procurar Alojamentos</a>
+                <a className="center" href="/">Procurar Alojamentos</a>
             </div>
         }
         

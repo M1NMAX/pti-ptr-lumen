@@ -12,10 +12,11 @@ import './index.css'
 import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
-
-import { faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router-dom';
+import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 
 function ProfileAccommodation() {
+    const history = useHistory(); //para o botão de voltar atrás
     let { id } = useParams();
     const [userId] = useState(localStorage.getItem('userID'))
     const [token] = useState(localStorage.getItem('token'));
@@ -238,7 +239,13 @@ function ProfileAccommodation() {
             <div>
                 <NavBarHome/>
                 <Container>
-                <h2> {accommodation.name} </h2> 
+                <Row  className= "mt-3 mb-3">
+                    <Col xs={6} md={4}>
+                        <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={6} md={4} className='text-center'><h2> {accommodation.name} </h2> </Col>                 
+                </Row>
+                
                 <Row> 
                     <Col xs={12} sm={8}>
                         <Carousel >
