@@ -18,6 +18,7 @@ function RegisterAlojamento() {
     const [content, setContent] =  useState('');
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
+    const [accommodationType, setAccommodationType] = useState('');
     //const [occupationState, setOccupation] = useState('');
     const [nRooms, setNrooms] = useState('');
     const [nWC, setNWC] = useState('');
@@ -30,19 +31,15 @@ function RegisterAlojamento() {
     const [gender, setGender] = useState('');
     const [smoker, setSmoker] = useState('');
     const [pet, setPet] = useState('');
-    const [typeAccom, settypeAccom] = useState('');
-
+   
     const [ ageMin, setAgeMin ] = useState(18);
     const [ ageMax, setAgeMax ] = useState(27);
 
     const  history = useHistory();
 
-    
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
-        // api.post('api/registerAlojamento', {title, adress, price, occupationState, nRooms, nWC, area, solar, wifi, cleaning, ageMin, ageMax, gender, smoker, pet})
-
 
         var data = {
             "landlord_id": userId,
@@ -54,15 +51,13 @@ function RegisterAlojamento() {
             "longitude": "100",
             "rooms": nRooms,
             "bathRooms" : nWC,
-            "accommodationType": typeAccom,  //DÁ???????
+            "accommodationType": accommodationType,  //DÁ???????
             "area":area,
             "solar":solar, 
             "wifi": wifi,
             "clean":cleaning,
         };
-        console.log('ola');
-
-        console.log(data);
+        
         if(token ==null || token ===''){
             alert('Não estas autenticado');
         }else{
@@ -136,7 +131,18 @@ function RegisterAlojamento() {
                 <Form.Row className="bottonRow">
                     <Col className="cols" xs={12} sm={6}>
                         <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
-                        <Form.Group controlId="formBasicHouse">
+
+                        <Form.Group controlId="formBasicSolar" >
+                            <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
+                            <Form.Control as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)}>
+                            <option>Selecione um opção</option>
+                            <option value="Apartamento" >Apartamento </option>
+                            <option value="Quarto">Quarto </option>
+                            <option value="Moradia">Moradia </option>
+                            </Form.Control>
+                        </Form.Group>
+
+                        {/* <Form.Group controlId="formBasicHouse">
                             <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
                             <Col sm={10}>
 
@@ -163,9 +169,9 @@ function RegisterAlojamento() {
                                             />
                                 {/*<Form.Check type="radio" label="Apartamento" name="apartamento" id="apartamento" />
                                 <Form.Check type="radio" label="Quarto" name="quarto" id="quarto"/>
-                    <Form.Check type="radio" label="Moradia" name="moradia" id="moradia" /> */}
+                    <Form.Check type="radio" label="Moradia" name="moradia" id="moradia" /> 
                             </Col>
-                        </Form.Group>
+                        </Form.Group> */}
 
                         <Form.Group controlId="formBasicRoom">
                             <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
@@ -237,10 +243,10 @@ function RegisterAlojamento() {
                         <Form.Group controlId="formBasicGender">
                             <Form.Label>Género:</Form.Label>
                             <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
-                            <option><FontAwesomeIcon icon={faMars} /> Masculino</option>
-                            <option><FontAwesomeIcon icon={faVenus} /> Feminino</option>
-                            <option> <FontAwesomeIcon icon={faVenusMars} /> Misto</option>
-                            <option><FontAwesomeIcon icon={faNeuter} /> Indiferente</option>
+                            <option> Masculino </option>
+                            <option> Feminino </option>
+                            <option> Misto </option>
+                            <option> Indiferente </option>
                             </Form.Control>
                         </Form.Group>
 
