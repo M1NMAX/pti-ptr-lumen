@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Accommodation;
 use App\Models\AccommodationInfo;
+use App\Models\AccommodationRequirements;
 use App\Models\Feature;
 use App\Models\Rental;
 use App\Models\Comment;
@@ -57,6 +58,7 @@ class AccommodationController extends Controller
         $acc = Accommodation::find($id);
         array_push($r, $acc);
         array_push($r, $acc->info);
+        array_push($r, $acc->requirements);
         return $r[0];
     }
 
@@ -184,16 +186,11 @@ class AccommodationController extends Controller
                 if(!(in_array($date->format('Y-m'), $rental_dates))){
                     array_push($rental_dates,$date->format('Y-m'));
                 }
+            }        
+            foreach ($rental_dates as $date) {
+                array_push($busyDates,$date);
             }
-            /*for($i=0; $i<count($rental_dates);$i++){
-                array_push($busyDates,$rental_dates[$i]);
-            }*/
-            array_push($busyDates,$rental_dates);
         }
-        // Convert the period to an array of dates
-        //$dates = $period->toArray();
-
-
         return $busyDates;
 
     }

@@ -21,7 +21,7 @@ class AccommodationRequirements extends Model implements AuthenticatableContract
     public $timestamps = false;
     protected $table = "accommodation_requirements";
     protected $fillable = [
-        'accommodation_id','ageRangeBot','ageRangeTop', 'gender', 'smoker', 'pets'
+        'accommodation_id','ageRangeBot','ageRangeTop', 'gender', 'smoker', 'pets',
     ];
 
     public function accomodation()
