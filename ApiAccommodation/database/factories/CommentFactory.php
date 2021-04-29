@@ -24,11 +24,11 @@ class CommentFactory extends Factory
     {
         return [
 
-            'user_id' => $this->faker->randomNumber(2),
-            'accommodation_id' => $this->faker->randomNumber(2),
+            'user_id' => $this->faker->randomNumber(1),
+            'accommodation_id' => $this->faker->randomNumber(1),
             'rate' => $this->faker->numberBetween(1, 5),
             'content' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
-            
+
         ];
     }
 }

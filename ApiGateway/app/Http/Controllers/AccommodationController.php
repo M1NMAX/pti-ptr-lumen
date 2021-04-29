@@ -28,7 +28,13 @@ class AccommodationController extends Controller
 
     public function show($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id);
+        $aboutAccommodation = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id);
+        $commentsAboutAccommodation = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+
+        $response = [
+            'aboutAccommodation'=>$aboutAccommodation->json(),
+            'commentsAboutAccommodation'=>$commentsAboutAccommodation->json(),
+        ];
         return response($response);
     }
 

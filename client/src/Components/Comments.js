@@ -14,7 +14,7 @@ function Comment({comment}) {
     
     useEffect(() => {
         api.get('api/users/'+comment.user_id).then(response => {
-            setuserInfo(response.data);
+            setuserInfo(response.data.user);
         }).catch(err => {
           alert(err)
         })
