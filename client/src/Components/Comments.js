@@ -5,8 +5,7 @@ import api from '../services/api';
 import DefaultUserPic from "../img/standartUser3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar} from '@fortawesome/free-solid-svg-icons'
-
-
+import Moment from 'react-moment';
 
 function Comment({comment}) {
 
@@ -21,16 +20,14 @@ function Comment({comment}) {
     }, []);
     
    
+    
     return (
         <Card.Body className="borderComment">
             <Card.Title> 
-                <img src={DefaultUserPic} className="userPic" alt="profils pic" />{userInfo.username}<p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> {comment.rate}/5</p> 
+                <img src={DefaultUserPic} className="userPic" alt="profils pic" />{userInfo.username}<p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(107, 112, 114)'}}/> {comment.rate}/5</p> 
                 </Card.Title>
             <Card.Text>
-                <p className="time text-muted">
-                    {/* Change the date format  */}
-                    {comment.created_at}</p>
-                    {/* Change the date format  */}
+                <p className="time text-muted"><Moment format="D MMM YYYY, hh:mm">{comment.created_at}</Moment></p>
                 &emsp;{comment.content}
             </Card.Text>
         </Card.Body>
