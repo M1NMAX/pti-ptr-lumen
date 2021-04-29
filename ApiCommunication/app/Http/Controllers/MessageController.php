@@ -30,6 +30,7 @@ class MessageController extends Controller
 
     //NO JSON TEMOS QUE POR O RECETOR DA MENSAGEM E O EMISSOR, MAIS O CHATID E O CONTENT
     public function addMessage(Request $request){
+        
         $m = new Message; 
         $m->chat_id = $request->input('chat_id');
         $m->user_id = $request->input('user_id');
@@ -37,8 +38,7 @@ class MessageController extends Controller
         $m->created_at = date('Y-m-d H:i:s');
         $m->save();
         return response()->json(['data' => ['message' => 'Mensagem enviada com sucesso.'], 'status'=>true]);
-
-        $userToNotify;
+        /*$userToNotify;
         $query = DB::table('chat')
                     ->where([
                         ['user_id1', '=', $request->input('user_id')],
@@ -58,10 +58,18 @@ class MessageController extends Controller
             $userToNotify =  $query2[0]->user_id1;
         }
 
-        $queryNotification = DB::insert('insert into chat_notification (user_id, chat_id) values (?, ?)', [$userToNotify, $request->input('chat_id')]);
-
+        $queryNotifyCheck = DB::table('chat_notification')
+                            ->where([
+                                ['user_id', '=', $userToNotify],
+                                ['chat_id', '=', $request->input('chat_id')]
+                                ])
+                            ->get();
+        if(count($queryNotifyCheck) == 0){
+            $queryNotification = DB::insert('insert into chat_notification (user_id, chat_id) values (?, ?)', [$userToNotify, $request->input('chat_id')]);
+        }
         
-        return 'YAY';
+        return response()->json(['data' => ['message' => 'Mensagem enviada com sucesso.'], 'status'=>true]);
+        */
         
         
     }
