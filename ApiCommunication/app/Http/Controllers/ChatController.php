@@ -58,7 +58,9 @@ class ChatController extends Controller
                     ->get();
             if(!(count($res2) == 0)){
                 
-                return response()->json(['data' => ['id' => $res2[0]->id], 'status'=>true]);
+                return response()->json(['data' => ['id' => $res2[0]->id], 
+                'status'=>true
+                ]);
 
             }
             
@@ -72,6 +74,17 @@ class ChatController extends Controller
         }else{
             return response()->json(['data' => ['id' => $res[0]->id], 'status'=>true]);
         }
+        
+    }
+
+    public function notificationCheck($user_id, Request $request){
+        $query = DB::table('chat_notification')
+                    ->where('user_id', $user_id) 
+                    ->get();
+
+
+
+        return response();
     }
 
 }

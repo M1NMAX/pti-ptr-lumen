@@ -30,13 +30,30 @@ class MessageController extends Controller
 
     //NO JSON TEMOS QUE POR O RECETOR DA MENSAGEM E O EMISSOR, MAIS O CHATID E O CONTENT
     public function addMessage(Request $request){
-       $m = new Message; 
+        /*$m = new Message; 
         $m->chat_id = $request->input('chat_id');
         $m->user_id = $request->input('user_id');
         $m->content =  $request->input('content');
         $m->created_at = date('Y-m-d H:i:s');
-        $m->save();
+        $m->save();*/
 
+        $query = DB::table('chat')
+                    ->where([
+                        ['user_id1', '=', $request->input('user_id')],
+                        ['chat_id', '=', $request->input('chat_id')]
+                        ])
+                    ->get();
+        $query = DB::table('chat')
+        ->where([
+            ['user_id2', '=', $request->input('user_id')],
+            ['chat_id', '=', $request->input('chat_id')]
+            ])
+        ->get();
+        
+        
+        
+        
+        return $query;
         return response()->json(['data' => ['message' => 'Mensagem enviada com sucesso.'], 'status'=>true]);
         
     }
