@@ -103,15 +103,15 @@ function Chat() {
                             }else{
                                 for(let i=0;i < nMessages;i++){
                                     if(response.data.id == responseMessages.data[i].user_id ){
-                                        allMessages.push(<Row className="text me">
-                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>Eu:</h4></Col>
-                                        <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
+                                        allMessages.push(<Row className="text">
+                                        <Col xs={10} sm={9} lg={8} className="w-25"></Col>                                    
+                                        <Col xs={1} sm={2} lg={3} className="w-25 me"><h5>Eu: {responseMessages.data[i].content}</h5></Col>
+                                        <Col xs={1} sm={1} lg={1} className="w-25"></Col>
                                         </Row>)
                                     }else{
     
-                                        allMessages.push(<Row className="text you">
-                                        <Col xs={4} sm={2} lg={1} className="w-25"><h4>{responseUser.data.user.name}:</h4></Col>
-                                        <Col xs={8} sm={10} lg={11} className="w-25"><h5>{responseMessages.data[i].content}</h5></Col>
+                                        allMessages.push(<Row className="text">                                        
+                                        <Col xs={1} sm={2} lg={3} className="w-25 you"><h5>{responseUser.data.user.name}: {responseMessages.data[i].content}</h5></Col>
                                         </Row>)
                                     }     
                                 }
@@ -152,8 +152,9 @@ function Chat() {
                     </Col>
                     <Col xs={6} md={4} className='text-center'><h2> {userName} </h2> </Col>                 
                 </Row>
+            <div className="messageBox" >
             {content}
-                
+            </div>
 
             </Container>
             
