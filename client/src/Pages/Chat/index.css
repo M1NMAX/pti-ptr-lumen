@@ -48,8 +48,8 @@
 }
 
 .send {
-  text-align: left;
   margin-bottom: 2%;
+  display: inline-block;
 }
 
 .height {
@@ -77,8 +77,11 @@
   float: right;
 }
 
-.scrollbar {
+.messageBox {
   overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 300px;
 }
 
 .sendMsg {
@@ -86,14 +89,17 @@
   bottom: 0;
   right: 2%;
   left: 2%;
+  width: 80%;
 }
 
 .me {
-  background-color: rgb(51, 204, 140);
-  border-radius: 20px;
+  background-color: #17a2b8;
+  border-radius: 30px;
+  text-align: right;
 }
 
 .you {
-  background-color: deepskyblue;
-  border-radius: 20px;
+  background-color: rgb(202, 214, 218);
+  border-radius: 30px;
+  margin-left: 30px;
 }
