@@ -2,12 +2,13 @@ import NavBarHome from '../../Components/NavBarHome'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DefaultUserPic from "../../img/standartUser3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons'
+import {faHeartBroken, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import SingleChat from '../../Components/SingleChat'
 import Footer from '../../Components/Footer'
+import {Form, Button, Row, Col, Container} from 'react-bootstrap'
 function ListUsersChat() {
 
     const [token] = useState(localStorage.getItem('token'));
@@ -49,15 +50,21 @@ function ListUsersChat() {
     return(
       <div>
       <NavBarHome/>
-      
+      <Container>
+        <Row  className= "mt-3 mb-3">
+          <Col xs={6} md={4}>
+              <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+          </Col>
+          <Col xs={6} md={4} className='text-center'><h2> Chat </h2> </Col>                 
+        </Row>
 
-      { userChats.length>0 ? 
-              userChats.map((chats)=>(<a href={'/chat/' + chats.id}><SingleChat chats={chats} /></a>)): 
-              <div class="center">
-              <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem chats</h6>
-          </div>
-      }
-      
+        { userChats.length>0 ? 
+                userChats.map((chats)=>(<a href={'/chat/' + chats.id}><SingleChat chats={chats} /></a>)): 
+                <div class="center">
+                <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem chats</h6>
+            </div>
+        }
+      </Container>
       <Footer/>
      </div>
 

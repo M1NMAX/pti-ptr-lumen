@@ -4,7 +4,7 @@ import './index.css'
 import {Container, Card, Form, Button, Row, Col} from 'react-bootstrap'
 import DefaultUserPic from "../../img/standartUser3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faComments} from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faComments, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import "./index.css";
@@ -137,16 +137,21 @@ function Chat() {
         return () => clearInterval(interval);
         }, [token]);
     
-
+   
     async function handleMsg(e) {
         e.preventDefault();}
 
     return(
         <div>
         <NavBarHome/>
-            <h2 style={{textAlign:"center"}}>{userName}</h2>
+            
             <Container fluid className="bottom">
-                
+                <Row  className= "mt-3 mb-3">
+                    <Col xs={6} md={4}>
+                        <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={6} md={4} className='text-center'><h2> {userName} </h2> </Col>                 
+                </Row>
             {content}
                 
 
