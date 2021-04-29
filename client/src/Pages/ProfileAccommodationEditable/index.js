@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
+import {useHistory} from 'react-router-dom';
 import { Container,Row,Col,Form ,Button, Carousel} from 'react-bootstrap'
 //import {connect} from 'react-redux';
 import DefaultRoomPic1 from "../../img/basicRoom.png"
@@ -9,12 +10,13 @@ import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 function ProfileAccommodationEditable () {
+    const  history = useHistory();
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
 
@@ -50,9 +52,17 @@ function ProfileAccommodationEditable () {
             <div>
                 <NavBarHome/>
                 <Container>
-            <Form.Group controlId="formCategory1">
-                        <Form.Control size="lg" type="text" defaultValue={titulo}/>
-                    </Form.Group>
+                <Row  className= "mt-3 mb-3">
+                    <Col xs={6} md={2}>
+                        <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}}> <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={6} md={10} >
+                        <Form.Group controlId="formCategory1">
+                            <Form.Control size="lg" type="text" defaultValue={titulo}/>
+                        </Form.Group>
+                    </Col>                 
+                </Row> 
+                
                 <Row>
                     <Col xs={12} sm={8} className="imagem">
                         <Carousel >

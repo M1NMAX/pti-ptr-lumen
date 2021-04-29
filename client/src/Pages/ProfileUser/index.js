@@ -5,7 +5,8 @@ import NavBarHome from '../../Components/NavBarHome';
 import {useParams, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import Footer from '../../Components/Footer'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 
 function ProfileUser(){
@@ -42,7 +43,13 @@ function ProfileUser(){
             <div>
                 <NavBarHome/>
                 <Container>
-                <h1 className='text-center'>Os meus dados</h1>
+                <Row  className= "mt-3 mb-3">
+                    <Col xs={6} md={4}>
+                        <Button  size="sm" className= "ml-3 mr-3" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={6} md={4} className='text-center'><h2>Os meus dados</h2></Col>                 
+                </Row>
+                
                 <Row>
                     <Col sm={12} md={6}>
                             <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>

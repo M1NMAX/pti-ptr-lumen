@@ -52,10 +52,10 @@ function ListUsersChat() {
       <NavBarHome/>
       <Container>
         <Row  className= "mt-3 mb-3">
-          <Col xs={6} md={4}>
+          <Col xs={4} md={4}>
               <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
           </Col>
-          <Col xs={6} md={4} className='text-center'><h2> Chat </h2> </Col>                 
+          <Col xs={8} md={4} className='text-center'><h2> Chat </h2> </Col>                 
         </Row>
 
         { userChats.length>0 ? 

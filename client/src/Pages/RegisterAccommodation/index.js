@@ -8,7 +8,7 @@ import NavBarHome from '../../Components/NavBarHome'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import Footer from '../../Components/Footer'
 
 function RegisterAlojamento() {
@@ -84,7 +84,12 @@ function RegisterAlojamento() {
         <div>
             <NavBarHome/>
             <Container>
-                <h1>Novo Alojamento</h1>
+            <Row  className= "mt-3 mb-3">
+                <Col xs={6} md={4}>
+                    <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                </Col>
+                <Col xs={6} md={4} className='text-center'><h1>Novo Alojamento</h1> </Col>                 
+            </Row>   
             <Form   onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
                     <Col className="cols" xs={12} sm={6}>

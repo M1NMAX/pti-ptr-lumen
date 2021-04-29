@@ -5,7 +5,9 @@ import React, { useState, useEffect } from "react";
 import {useHistory} from 'react-router-dom';
 import PendingAc from '../../Components/PendingAc';
 import Footer from '../../Components/Footer';
-
+import { Container,Row,Col, Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 function Pending() {
     const[token] = useState(localStorage.getItem('token'));
@@ -76,13 +78,19 @@ function Pending() {
     return(
         <div>
             <NavBarHome/>
-            <div class="center"><h3>Pedidos pendentes</h3></div>
+            <Container>
+                <Row  className= "mt-3 mb-3">
+                    <Col xs={6} md={4}>
+                        <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={6} md={4} className='text-center'><h2>Pedidos pendentes</h2> </Col>                 
+                </Row> 
             
                 {allPending.length>0?
                 allPending.map((singlePending)=>(
                 <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
                 <p>Não tens assuntos pendentes</p>}
-                
+            </Container>   
             <Footer/>
        </div>
 
