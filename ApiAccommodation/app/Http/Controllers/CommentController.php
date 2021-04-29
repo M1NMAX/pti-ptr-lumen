@@ -42,8 +42,8 @@ class CommentController extends Controller
 
     public function addComment(Request $request)
     {
-        $this->comment->create($request->all());
-        return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'status'=>true]);
+        $comment = $this->comment->create($request->all());
+        return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'comment'=>$comment ,'status'=>true]);
     }
 
     public function destroy($comment)

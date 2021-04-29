@@ -156,6 +156,8 @@ function ProfileAccommodation() {
             'beginDate':document.getElementsByClassName("monthStart")[0].value,
             'endDate':document.getElementsByClassName("monthEnd")[0].value,
         };
+
+        console.log(data);
         if(token ==null || token ===''){
             alert('Não estas autenticado');
         }else{
@@ -168,7 +170,7 @@ function ProfileAccommodation() {
                     console.log('done');
         
                 }else{
-                    alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                    alert('Ocorreu um erro, não foi possivel enviar o seu pedido, tente mais tarde');
                 }
             }).catch(err => {
             alert(err)
@@ -206,13 +208,14 @@ function ProfileAccommodation() {
     async function handleComment(e) {
         e.preventDefault();
 
-        var data = {
+        let data = {
             "user_id": parseInt(userId),
             "accommodation_id":parseInt(id),
             "rate": star,
             "content":content,
         };
          
+        console.log(data)
         if(token ==null || token ===''){
             alert('Não estas autenticado');
         }else{
@@ -222,10 +225,12 @@ function ProfileAccommodation() {
                 }
             }).then(response => { 
                 if(response.data.status){
+                    console.log(response.data.comment);
+                    setaccommodationComments([...accommodationComments, response.data.comment]);
                     setContent('');
                     setStar(0);
                 }else{
-                    alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                    alert('Ocorreu um erro, não foi possivel avaliar o alojamento, tente mais tarde');
                 }
             }).catch(err => {
             alert(err)

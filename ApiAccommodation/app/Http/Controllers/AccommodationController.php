@@ -186,7 +186,7 @@ class AccommodationController extends Controller
                 if(!(in_array($date->format('Y-m'), $rental_dates))){
                     array_push($rental_dates,$date->format('Y-m'));
                 }
-            }        
+            }
             foreach ($rental_dates as $date) {
                 array_push($busyDates,$date);
             }
