@@ -22,6 +22,8 @@ function ProfileAccommodation() {
     const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
+    const [accommodationRequirements, setaccommodationRequirements] = useState([]);
+
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
 
@@ -41,20 +43,21 @@ function ProfileAccommodation() {
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
-            setaccommodation(response.data);
-            setaccommodationInfo(response.data.info)
-            console.log(response.data.info);
+            setaccommodation(response.data.aboutAccommodation);
+            setaccommodationInfo(response.data.aboutAccommodation.info);
+            setaccommodationRequirements(response.data.aboutAccommodation.requirements);
+            setaccommodationComments(response.data.commentsAboutAccommodation);
         }).catch(err => {
           alert(err)
         })
 
-        api.get('api/accommodations/'+id+'/comments').then(response => {
-            // you must define a default operation
-        setaccommodationComments(response.data);
+        // api.get('api/accommodations/'+id+'/comments').then(response => {
+        //     // you must define a default operation
+        // setaccommodationComments(response.data);
         
-        }).catch(err => {
-          alert(err)
-        })
+        // }).catch(err => {
+        //   alert(err)
+        // })
 
         if(token ===null || token ===''){
            setIsFavourite(false);
@@ -376,38 +379,38 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPeopleArrows} /> Faixa etária: </Card.Title>
                                 <Card.Text>
-                                    Dos 18 aos 23 anos
+                                    Dos {accommodationRequirements.ageRangeBot} aos {accommodationRequirements.ageRangeTop} anos
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title>Género preferencial: </Card.Title>
                                 <Card.Text>
-                                    <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>
+                                    {accommodationRequirements.gender}
+                                    {/* <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>
                                     <p className="fem"> <FontAwesomeIcon icon={faVenus} /> Feminino</p>
                                     <p className="mix"><FontAwesomeIcon icon={faVenusMars} /> Misto</p>
-                                    <p className="indif"><FontAwesomeIcon icon={faNeuter} /> Indiferente</p>
+                                    <p className="indif"><FontAwesomeIcon icon={faNeuter} /> Indiferente</p> */}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faSmoking} /> Permite fumadores? </Card.Title>
                                 <Card.Text>
-                                    Sim
-                                    Não
+                                    {accommodationRequirements.smokers? 'Sim':'Não'}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPaw} /> Permite animais de estimação? </Card.Title>
                                 <Card.Text>
-                                    Sim
-                                    Não
+                                    {accommodationRequirements.pets? 'Sim':'Não'}
                                 </Card.Text>
                             </Card.Body>
-                            <Card.Body>
+                            
+                            {/* <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras informações complementares: </Card.Title>
                                 <Card.Text>
                                     Oi
                                 </Card.Text>
-                            </Card.Body>
+                            </Card.Body> */}
                         </Card>
                         
                     </Col>
