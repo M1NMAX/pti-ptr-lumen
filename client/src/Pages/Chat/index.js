@@ -28,7 +28,7 @@ function Chat() {
     const history = useHistory();
     const [auth, setAuth] = useState(true);
     const [content, setContent] = useState([]);
-
+    Moment.globalLocale = 'uk';
 
     async function sendMessage(messages){
         var data = {
@@ -106,13 +106,13 @@ function Chat() {
                                     if(response.data.id == responseMessages.data[i].user_id ){
                                         allMessages.push(<Row className="text">
                                         <Col xs={10} sm={9} lg={8} className="w-25"></Col>                                    
-                                        <Col xs={{span: 6, offset: 5}} sm={{ span: 4, offset: 7 }} lg={{ span: 4, offset: 7 }} className="w-25 me"><p className=" pb-0 mb-0"><b>Eu: </b> {responseMessages.data[i].content} </p> <p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment format="hh:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
+                                        <Col xs={{span: 6, offset: 5}} sm={{ span: 4, offset: 7 }} lg={{ span: 4, offset: 7 }} className="w-25 me"><p className=" pb-0 mb-0"><b>Eu: </b> {responseMessages.data[i].content} </p> <p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment add={{hours: 1}} format="eH:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
                                         <Col xs={1} sm={1} lg={1} className="w-25"></Col>
                                         </Row>)
                                     }else{
     
                                         allMessages.push(<Row className="text">                                        
-                                        <Col xs={{span: 6, offset: 1}} sm={{span: 4, offset: 1}} lg={{span: 4, offset: 1}} className="w-25 you"><p className=" pb-0 mb-0"><b>{responseUser.data.user.name}: </b> {responseMessages.data[i].content}</p><p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment format="hh:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
+                                        <Col xs={{span: 6, offset: 1}} sm={{span: 4, offset: 1}} lg={{span: 4, offset: 1}} className="w-25 you"><p className=" pb-0 mb-0"><b>{responseUser.data.user.name}: </b> {responseMessages.data[i].content}</p><p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment add={{hours: 1}} format="HH:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
                                         </Row>)
                                     }     
                                 }
@@ -148,10 +148,11 @@ function Chat() {
             
             <Container fluid className="bottom">
                 <Row  className= "mt-3 mb-3">
-                    <Col xs={{span: 4, offset: 1}} md={{span: 4, offset: 1}}>
+                    <Col xs={{span: 3}} md={{span: 3}}>
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
-                    <Col xs={5} md={4} className='text-center'><h2> {userName} </h2> </Col>                 
+                    <Col xs={6} md={6} className='text-center'><h2> {userName} </h2> </Col>
+                    <Col xs={3} md={3}></Col>               
                 </Row>
             <div className="messageBox mr-2" >
             {content}

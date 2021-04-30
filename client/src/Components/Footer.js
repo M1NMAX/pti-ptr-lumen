@@ -8,8 +8,9 @@ function Footer() {
     return (
         <footer className="border-top">
             <Card  text="black">
-                <Card.Header className="pl-5 mb-0 mt-0" style={{backgroundColor: "rgb(153, 150, 150)"}}><b>Ficha técnica</b>  </Card.Header>
-                <Card.Body className="pb-0 mb-0 mt-0" style={{backgroundColor: "rgb(179, 174, 174)", textAlign:"center"}}>
+                <Card.Header className="pl-5 mb-0 mt-0" style={{backgroundColor: "rgb(233, 232, 232)"}}><b>Ficha técnica</b>  </Card.Header>
+                <Card.Body className="pb-0 mb-0 mt-0" style={{backgroundColor: "rgb(241, 241, 241)", textAlign:"center"}}>
+                
                     <Row>
                         <Col xs={12} md={4}>
                         <p> <b>Ferramentas utilizadas:</b> <div  style={{wordSpacing: '20px'}}><FontAwesomeIcon icon={faReact}/>React; <FontAwesomeIcon icon={faBootstrap}/>Bootstrap; <FontAwesomeIcon icon={faLaravel}/>Laravel/Lumen </div></p>

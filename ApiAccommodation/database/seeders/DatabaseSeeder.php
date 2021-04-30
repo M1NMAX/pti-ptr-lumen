@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentTableSeeder::class);
         $this->call(AccommodationInfoTableSeeder::class);
         $this->call(AccommodationRequirementsTableSeeder::class);
-
     }
 }
