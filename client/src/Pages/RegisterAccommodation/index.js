@@ -19,21 +19,21 @@ function RegisterAlojamento() {
     const [adress, setAdress] = useState('');
     const [price, setPrice] = useState('');
     const [accommodationType, setAccommodationType] = useState('');
-    //const [occupationState, setOccupation] = useState('');
     const [nRooms, setNrooms] = useState('');
     const [nWC, setNWC] = useState('');
     const [area, setArea] = useState('');
     const [solar, setSolar] = useState('');
     const [wifi, setWifi] = useState('');
     const [cleaning, setClean] = useState('');
-    //const [ageMin, setAgeMin] = useState('');
-    //const [ageMax, setAgeMax] = useState('');
     const [gender, setGender] = useState('');
     const [smoker, setSmoker] = useState('');
     const [pet, setPet] = useState('');
-   
     const [ ageMin, setAgeMin ] = useState(18);
-    const [ ageMax, setAgeMax ] = useState(27);
+    const [ ageMax, setAgeMax ] = useState(ageMin);
+    // After the register is concluded
+    const [ showLink, setShowLink] = useState(false);
+    const [ newAccommodationId, setNewAccommodationId] = useState('');
+
 
     const  history = useHistory();
 
@@ -41,7 +41,7 @@ function RegisterAlojamento() {
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
 
-        var data = {
+        let data = {
             "landlord_id": userId,
             "name": title,
             "description" :content, 
@@ -56,7 +56,15 @@ function RegisterAlojamento() {
             "solar":solar, 
             "wifi": wifi,
             "clean":cleaning,
+            "ageRangeBot": ageMin,
+            "ageRangeTop": ageMax,
+            "gender": gender,
+            "smoker": smoker,
+            "pets":pet,
+
         };
+
+        console.log(data);
         
         if(token ==null || token ===''){
             alert('Não estas autenticado');
@@ -69,7 +77,10 @@ function RegisterAlojamento() {
             }).then(response => { 
                 if(response.data.status){
                     alert(true);
-                    history.push('/dashboard');
+                    setShowLink(true);
+                    window.scrollTo(0, 0);
+                    setNewAccommodationId(response.data.newAccommodationId);
+                    //history.push('/dashboard');
                 }else{
                     alert(response.data);    
                 }
@@ -89,7 +100,10 @@ function RegisterAlojamento() {
                     <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                 </Col>
                 <Col xs={6} md={4} className='text-center'><h1>Novo Alojamento</h1> </Col>                 
-            </Row>   
+            </Row> 
+            {showLink && <Row  className= "mt-3 mb-3">
+                <Button href={'/profileAccommodation/'+newAccommodationId}>VER PAGINA DO ALOJAMENTO</Button>                 
+            </Row> }    
             <Form   onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
                     <Col className="cols" xs={12} sm={6}>
@@ -121,7 +135,7 @@ function RegisterAlojamento() {
 
                         <Form.Group controlId="formBasicPrice" >
                             <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês</Form.Label>
-                            <Form.Control required width="sm" type="textarea" value={price} onChange={e => setPrice(e.target.value)}/>
+                            <Form.Control required width="sm" type="number" value={price} onChange={e => setPrice(e.target.value)}/>
                         </Form.Group>
 
                         {/* <Form.Group controlId="formBasicOccupation">
@@ -146,37 +160,6 @@ function RegisterAlojamento() {
                             <option value="Moradia">Moradia </option>
                             </Form.Control>
                         </Form.Group>
-
-                        {/* <Form.Group controlId="formBasicHouse">
-                            <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
-                            <Col sm={10}>
-
-                                            <Form.Check
-                                            type="radio"
-                                            label="Apartamento"
-                                            name="apartamento"
-                                            id="apartamento"
-                                            onChange={e => settypeAccom(e.target.value)}
-                                            />
-                                            <Form.Check
-                                            type="radio"
-                                            label="Quarto"
-                                            name="quarto"
-                                            id="quarto"
-                                            onChange={e => settypeAccom(e.target.value)}
-                                            />
-                                            <Form.Check
-                                            type="radio"
-                                            label="Moradia"
-                                            name="moradia"
-                                            id="moradia"
-                                            onChange={e => settypeAccom(e.target.value)}
-                                            />
-                                {/*<Form.Check type="radio" label="Apartamento" name="apartamento" id="apartamento" />
-                                <Form.Check type="radio" label="Quarto" name="quarto" id="quarto"/>
-                    <Form.Check type="radio" label="Moradia" name="moradia" id="moradia" /> 
-                            </Col>
-                        </Form.Group> */}
 
                         <Form.Group controlId="formBasicRoom">
                             <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
@@ -248,32 +231,35 @@ function RegisterAlojamento() {
                         <Form.Group controlId="formBasicGender">
                             <Form.Label>Género:</Form.Label>
                             <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
-                            <option> Masculino </option>
-                            <option> Feminino </option>
-                            <option> Misto </option>
-                            <option> Indiferente </option>
+                            <option>Selecione um opção</option>
+                            <option value="Masculino"> Masculino </option>
+                            <option value="Feminino"> Feminino </option>
+                            <option value="Misto"> Misto </option>
+                            <option value="Indiferente"> Indiferente </option>
                             </Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicSmoker">
                             <Form.Label><FontAwesomeIcon icon={faSmoking} /> Permite fumadores?</Form.Label>
                             <Form.Control as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
-                            <option>Sim</option>
-                            <option>Não</option>
+                            <option>Selecione um opção</option>
+                            <option value="1"> Sim </option>
+                            <option value="0"> Não </option>
                             </Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPet">
                             <Form.Label><FontAwesomeIcon icon={faPaw} /> Permite animais de estimação?</Form.Label>
                             <Form.Control as="select" type="type" value={pet} onChange={e => setPet(e.target.value)}>
-                            <option>Sim</option>
-                            <option>Não</option>
+                            <option>Selecione um opção</option>
+                            <option value="1"> Sim </option>
+                            <option value="0"> Não </option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group controlId="formCategory14">
+                        {/* <Form.Group controlId="formCategory14">
                             <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras informações complementares:</Form.Label>
                             <Form.Control as="textarea" rows={2}/>
-                        </Form.Group>
+                        </Form.Group> */}
                     </Col>
                     
                 </Form.Row>

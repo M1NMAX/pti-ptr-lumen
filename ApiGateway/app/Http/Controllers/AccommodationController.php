@@ -48,8 +48,7 @@ class AccommodationController extends Controller
 
             $accommodation_id= $responseAccommodation->collect()->get('accommodation_id');
 
-
-            $finalResponse =Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
+            $responseAccommodationInfo = Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
                 'accommodation_id'=>$accommodation_id,
                 'accommodationType'=>$request->accommodationType,
                 'rooms'=>$request->rooms,
@@ -59,7 +58,23 @@ class AccommodationController extends Controller
                 'wifi'=>$request->wifi,
                 'clean'=>$request->clean,
             ]);
-            return response($finalResponse, 200);
+
+            $responseAccommodationRequiriments = Http::post(env('API_ACCOMMODATION_URL') . 'accommodationRequirements/', [
+                'accommodation_id'=>$accommodation_id,
+                'ageRangeBot' => $request->ageRangeBot,
+                'ageRangeTop' => $request->ageRangeTop,
+                'gender' => $request->gender,
+                'smoker' => $request->smoker,
+                'pets' => $request->pets,
+
+            ]);
+
+            if($responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')){
+                $finalResponse = ['newAccommodationId'=>$accommodation_id ,'message' => 'alojamento registado com sucesso', 'status'=>true];
+                return response($finalResponse, 200);
+            }
+
+            return response($responseAccommodationInfo, 200);
             //return response($accommodation_id, 200);
 
         }

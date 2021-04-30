@@ -15,6 +15,7 @@ function ProfileUser(){
     const [user, setUser] = useState([]);
     const [userType, setUserType] = useState('');
     const [userExtra, setUserExtra] = useState([]);
+    const [email, setemail] = useState();
 
     const history = useHistory();
 
@@ -29,6 +30,7 @@ function ProfileUser(){
             history.push('/login');
           }else{
             setUser(response.data.user);
+            setemail(response.data.user.email);
             setUserType(response.data.user.userable_type.substring(11).toLowerCase());
             setUserExtra(response.data.extra)
           }
@@ -69,7 +71,7 @@ function ProfileUser(){
                             </Form.Group>
                             <Form.Group controlId="formCategory3">
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control type="text" value={user.email}/>
+                                <Form.Control type="text" value={email} onChange={e => setemail(e.target.value)}/>
                             </Form.Group>
                             <Form.Group controlId="formCategory5">
                                 <Form.Label>Data de Nascimento:</Form.Label>
@@ -112,7 +114,7 @@ function ProfileUser(){
 
                                 <Form.Group controlId="formCategory13" >
                                     <Form.Label>Tem animais de estimação?</Form.Label>
-                                    <Form.Control width="sm" name="pets" type="text" value={userExtra.pets?'sim':'não'} />
+                                    <Form.Control width="sm" name="pets" type="text" placeholder={userExtra.pets?'sim':'não'} />
                                 </Form.Group> 
                             </>
                             }
