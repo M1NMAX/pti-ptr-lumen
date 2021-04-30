@@ -12,6 +12,7 @@ import "bootstrap/js/src/collapse.js";
 import {useParams} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { Content } from 'rsuite';
+import Moment from 'react-moment';
 
 var idTarget;
 
@@ -105,13 +106,13 @@ function Chat() {
                                     if(response.data.id == responseMessages.data[i].user_id ){
                                         allMessages.push(<Row className="text">
                                         <Col xs={10} sm={9} lg={8} className="w-25"></Col>                                    
-                                        <Col xs={1} sm={2} lg={3} className="w-25 me"><h5>Eu: {responseMessages.data[i].content}</h5></Col>
+                                        <Col xs={{span: 6, offset: 5}} sm={{ span: 4, offset: 7 }} lg={{ span: 4, offset: 7 }} className="w-25 me"><p className=" pb-0 mb-0"><b>Eu: </b> {responseMessages.data[i].content} </p> <p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment format="hh:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
                                         <Col xs={1} sm={1} lg={1} className="w-25"></Col>
                                         </Row>)
                                     }else{
     
                                         allMessages.push(<Row className="text">                                        
-                                        <Col xs={1} sm={2} lg={3} className="w-25 you"><h5>{responseUser.data.user.name}: {responseMessages.data[i].content}</h5></Col>
+                                        <Col xs={{span: 6, offset: 1}} sm={{span: 4, offset: 1}} lg={{span: 4, offset: 1}} className="w-25 you"><p className=" pb-0 mb-0"><b>{responseUser.data.user.name}: </b> {responseMessages.data[i].content}</p><p className="time mt-0 pt-0 mb-2" style={{color: "rgb(74, 78, 80)", float: "right"}}><Moment format="hh:mm, D MMM YYYY">{responseMessages.data[i].created_at}</Moment></p></Col>
                                         </Row>)
                                     }     
                                 }
@@ -147,18 +148,19 @@ function Chat() {
             
             <Container fluid className="bottom">
                 <Row  className= "mt-3 mb-3">
-                    <Col xs={4} md={4}>
+                    <Col xs={{span: 4, offset: 1}} md={{span: 4, offset: 1}}>
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
-                    <Col xs={8} md={4} className='text-center'><h2> {userName} </h2> </Col>                 
+                    <Col xs={5} md={4} className='text-center'><h2> {userName} </h2> </Col>                 
                 </Row>
-            <div className="messageBox" >
+            <div className="messageBox mr-2" >
             {content}
             </div>
 
             </Container>
             
             <Row className="height">
+                <Col xs={{span: 10, offset: 1}}>
                     <div className="sendMsg">{/*textarea*/}
                         <Form className="msg" onSubmit={handleMsg}>
                             <Form.Group controlId="formBasictext">
@@ -169,6 +171,7 @@ function Chat() {
                             </Button>
                         </Form>
                     </div>{/*Fim textarea*/}
+                </Col>
            </Row>
        </div>
     )
