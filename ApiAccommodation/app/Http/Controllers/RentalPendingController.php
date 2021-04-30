@@ -42,6 +42,9 @@ class RentalPendingController extends Controller
     {
         $rental_pending = RentalPending::create($request->all());
         return response()->json(['data' => ['message' => 'Aluguer pending'], 'status'=>true]);
+
+        
+
     }
 
     public function update($rental_pending, Request $request)
@@ -73,6 +76,16 @@ class RentalPendingController extends Controller
         $rentalAccepted->delete();
 
         return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
+    }
+
+    public function checkNotification($id_user)
+    {
+        //POR FAZER
+        $query = DB::table('')
+        ->where('user_id1', $from) 
+        ->where('user_id2', $to)
+        ->get();
+        return response()->json(['data' => ['message' => 'Associação AC foi eliminada com sucesso'], 'status'=>true]);
     }
 
 

@@ -28,4 +28,5 @@ class Chat extends Model implements AuthenticatableContract, AuthorizableContrac
     public function messages(){
         return $this->hasMany(Message::class);
     }
+
 }
