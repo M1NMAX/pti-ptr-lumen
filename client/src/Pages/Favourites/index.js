@@ -24,6 +24,7 @@ function Favourites() {
             }
           }).then(response => {
             if(response.data.status){
+              console.log(response.data.favourites);
                 setAccommodations(response.data.favourites);
             }else{
                 history.push("/login")

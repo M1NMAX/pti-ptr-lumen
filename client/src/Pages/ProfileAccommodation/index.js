@@ -167,6 +167,8 @@ function ProfileAccommodation() {
                 }
             }).then(response => { 
                 if(response.data.status){
+                    setShow(!show);
+                    setshowMessage(!showMessage);
                     console.log('done');
         
                 }else{

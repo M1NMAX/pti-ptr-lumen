@@ -21,7 +21,7 @@ function SingleAccommodation({accom, removeFavourite}) {
                 localStorage.clear();
                
             }else{
-               setAccommodation(response.data)
+               setAccommodation(response.data.aboutAccommodation)
 
           }
         }).catch(err => {

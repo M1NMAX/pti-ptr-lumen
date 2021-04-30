@@ -54,6 +54,7 @@ function Register() {
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
                 localStorage.setItem('token', responseLogin.data.token);
+                localStorage.setItem('userID', response.data.user.id);
                 history.push('/dashboard');
             }
         });

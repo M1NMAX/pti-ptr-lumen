@@ -27,6 +27,7 @@ function Pending() {
             }).then(response => {
                 if(response.data.status){
                     setAllPending(response.data.pending);
+                    console.log(response.data);
                 }else{
                     localStorage.clear();
                     history.push('/login')

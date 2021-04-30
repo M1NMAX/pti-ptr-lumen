@@ -34,6 +34,7 @@ class AccommodationController extends Controller
         $response = [
             'aboutAccommodation'=>$aboutAccommodation->json(),
             'commentsAboutAccommodation'=>$commentsAboutAccommodation->json(),
+            'status' => true,
         ];
         return response($response);
     }
@@ -89,6 +90,7 @@ class AccommodationController extends Controller
     public function showLandlordRentalPending($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
+
         return response($response);
     }
 
