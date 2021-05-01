@@ -24,7 +24,7 @@ function Comment({comment}) {
     return (
         <Card.Body className="borderComment">
             <Card.Title> 
-                <img src={DefaultUserPic} className="userPic" alt="profils pic" />{userInfo.username}<p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(107, 112, 114)'}}/> {comment.rate}/5</p> 
+                <img src={DefaultUserPic} className="userPic" alt="profils pic" />{userInfo.username}<p className="date d-inline-block "><FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/> {comment.rate}/5</p> 
                 </Card.Title>
             <Card.Text>
                 <p className="time text-muted"><Moment add=":1" format="D MMM YYYY, HH:mm">{comment.created_at}</Moment></p>

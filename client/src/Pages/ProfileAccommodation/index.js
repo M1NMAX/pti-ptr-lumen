@@ -41,6 +41,33 @@ function ProfileAccommodation() {
     const [gender, setGender] = useState([]);
 
     const ref = useRef(null);
+
+    const renderSwitch = (param) => { //switch of gender and solar orientation
+        switch(param) {
+            case 'Masculino':
+                return <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>;
+            case 'Feminino':
+                return <p className="fem"> <FontAwesomeIcon icon={faVenus} /> Feminino</p>;
+            case 'Misto':
+                return  <p className="mix"><FontAwesomeIcon icon={faVenusMars} /> Misto</p>;
+            case 'Indiferente':
+                return <p className="indif"><FontAwesomeIcon icon={faNeuter} /> Indiferente</p>;
+            case 'N':
+                return <p>Norte (N) </p> ;
+            case 'NE':
+                return <p>Nordeste (NE) </p> ;
+            case 'E':
+                return <p>Este (E) </p> ;
+            case 'SE':
+                return <p>Sudeste (SE) </p> ;
+            case 'S':
+                return <p>Sul (S) </p> ;
+            case 'O':
+                return <p>Oeste (O) </p> ;
+            case 'NO':
+                return <p>Noroeste (NO) </p> ;
+        }
+      };
  
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
@@ -49,24 +76,6 @@ function ProfileAccommodation() {
             setaccommodationInfo(response.data.aboutAccommodation.info);
             setaccommodationRequirements(response.data.aboutAccommodation.requirements);
             setaccommodationComments(response.data.commentsAboutAccommodation);
-
-            var displayGender= []
-            console.log(accommodationRequirements.gender)
-            if(accommodationRequirements.gender =="Masculino"){
-                document.getElementById("gender").appendChild(document.createTextNode("Masculino"));
-                document.getElementById("gender").classList.add("mas");
-            }else if (accommodationRequirements.gender =="Feminino"){
-                displayGender.push(<p className="fem">Feminino</p>)
-                setGender(displayGender)
-                /*document.getElementById("gender").appendChild(document.createTextNode("Feminino"));
-                document.getElementById("gender").classList.add("fem");*/
-            }else if (accommodationRequirements.gender =="Misto"){
-                document.getElementById("gender").appendChild(document.createTextNode("Misto"));
-                document.getElementById("gender").classList.add("mix");
-            }else if (accommodationRequirements.gender =="Indiferente"){
-                document.getElementById("gender").appendChild(document.createTextNode("Indiferente"));
-                document.getElementById("gender").classList.add("indif");
-            };
 
         }).catch(err => {
           alert(err)
@@ -410,13 +419,13 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPeopleArrows} /> Faixa etária: </Card.Title>
                                 <Card.Text>
-                                    <b style={{fontSize:"25px"}}>{accommodationRequirements.ageRangeBot}</b> - <b style={{fontSize:"25px"}}>{accommodationRequirements.ageRangeTop}</b> anos
+                                    <b style={{fontSize:"22px"}}>{accommodationRequirements.ageRangeBot}</b> - <b style={{fontSize:"22px"}}>{accommodationRequirements.ageRangeTop}</b> anos
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title>Género preferencial: </Card.Title>
                                 <Card.Text>
-                                    {gender}
+                                    {renderSwitch(accommodationRequirements.gender)}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
@@ -471,15 +480,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar: </Card.Title>
                                 <Card.Text>
-                                    {accommodationInfo.solar}
-                                    {/* Norte (N)
-                                    Nordeste (NE)
-                                    Este (E)
-                                    Sudeste (SE)
-                                    Sul (S)
-                                    Sudoeste (SO)
-                                    Oeste (O)
-                                    Noroeste (NO) */}
+                                    {renderSwitch(accommodationInfo.solar)}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
