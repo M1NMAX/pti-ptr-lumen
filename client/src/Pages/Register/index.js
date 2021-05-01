@@ -71,11 +71,11 @@ function Register() {
             <Container>
                 <h1 className='text-center'>Registo</h1>
                 <Row>
-                    <Col sm={12} md={6}>
+                    <Col className="pt-3" sm={{ span: 7, offset: 1 }} md={{ span: 3, offset: 1 }}>
                         <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
                     </Col>
-                    <Col sm={12} md={6}>
+                    <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>
                         <Form  onSubmit={handleRegister}>
                             <Form.Group controlId="formBasicName" >
                                 <Form.Label>Nome Completo</Form.Label>

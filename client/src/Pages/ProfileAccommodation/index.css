@@ -19,7 +19,7 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 40%;
+  width: 120px;
 }
 
 .desocupado{
@@ -27,7 +27,7 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 40%;
+  width: 120px;
 }
 
 .mas{
@@ -35,7 +35,7 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 25%;
+  width: 30px;
 }
 
 .fem{
@@ -43,7 +43,7 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 25%;
+  width: 120px;
 }
 
 .mix{

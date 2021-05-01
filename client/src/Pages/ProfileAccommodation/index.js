@@ -38,6 +38,8 @@ function ProfileAccommodation() {
     const [isDisabled, setDisabled] = useState(true);
     const [showMessage, setshowMessage] = useState(false);
 
+    const [gender, setGender] = useState([]);
+
     const ref = useRef(null);
  
     useEffect(() => {
@@ -47,6 +49,25 @@ function ProfileAccommodation() {
             setaccommodationInfo(response.data.aboutAccommodation.info);
             setaccommodationRequirements(response.data.aboutAccommodation.requirements);
             setaccommodationComments(response.data.commentsAboutAccommodation);
+
+            var displayGender= []
+            console.log(accommodationRequirements.gender)
+            if(accommodationRequirements.gender =="Masculino"){
+                document.getElementById("gender").appendChild(document.createTextNode("Masculino"));
+                document.getElementById("gender").classList.add("mas");
+            }else if (accommodationRequirements.gender =="Feminino"){
+                displayGender.push(<p className="fem">Feminino</p>)
+                setGender(displayGender)
+                /*document.getElementById("gender").appendChild(document.createTextNode("Feminino"));
+                document.getElementById("gender").classList.add("fem");*/
+            }else if (accommodationRequirements.gender =="Misto"){
+                document.getElementById("gender").appendChild(document.createTextNode("Misto"));
+                document.getElementById("gender").classList.add("mix");
+            }else if (accommodationRequirements.gender =="Indiferente"){
+                document.getElementById("gender").appendChild(document.createTextNode("Indiferente"));
+                document.getElementById("gender").classList.add("indif");
+            };
+
         }).catch(err => {
           alert(err)
         })
@@ -83,6 +104,9 @@ function ProfileAccommodation() {
             alert(err)
             })
         }
+        
+
+       
 
       }, [token]);
 
@@ -386,17 +410,13 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPeopleArrows} /> Faixa etária: </Card.Title>
                                 <Card.Text>
-                                    Dos {accommodationRequirements.ageRangeBot} aos {accommodationRequirements.ageRangeTop} anos
+                                    <b style={{fontSize:"25px"}}>{accommodationRequirements.ageRangeBot}</b> - <b style={{fontSize:"25px"}}>{accommodationRequirements.ageRangeTop}</b> anos
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title>Género preferencial: </Card.Title>
                                 <Card.Text>
-                                    {accommodationRequirements.gender}
-                                    {/* <p className="mas"> <FontAwesomeIcon icon={faMars} /> Masculino</p>
-                                    <p className="fem"> <FontAwesomeIcon icon={faVenus} /> Feminino</p>
-                                    <p className="mix"><FontAwesomeIcon icon={faVenusMars} /> Misto</p>
-                                    <p className="indif"><FontAwesomeIcon icon={faNeuter} /> Indiferente</p> */}
+                                    {gender}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
@@ -451,7 +471,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faSun} /> Orientação solar: </Card.Title>
                                 <Card.Text>
-                                {accommodationInfo.solar}
+                                    {accommodationInfo.solar}
                                     {/* Norte (N)
                                     Nordeste (NE)
                                     Este (E)
