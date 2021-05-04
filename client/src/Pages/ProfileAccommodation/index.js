@@ -13,7 +13,7 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
-import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 
 function ProfileAccommodation() {
     const history = useHistory(); //para o botão de voltar atrás
@@ -23,7 +23,7 @@ function ProfileAccommodation() {
     const [accommodation, setaccommodation] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationRequirements, setaccommodationRequirements] = useState([]);
-
+    const [dates, setDates] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
 
@@ -81,13 +81,15 @@ function ProfileAccommodation() {
           alert(err)
         })
 
-        // api.get('api/accommodations/'+id+'/comments').then(response => {
-        //     // you must define a default operation
-        // setaccommodationComments(response.data);
-        
-        // }).catch(err => {
-        //   alert(err)
-        // })
+        api.get('api/accommodations/'+ id + '/dates').then(response => {
+            // you must define a default operation
+            console.log(response.data)
+            setDates(response.data);
+            
+
+        }).catch(err => {
+          alert(err)
+        })
 
         if(token ===null || token ===''){
            setIsFavourite(false);
@@ -334,8 +336,8 @@ function ProfileAccommodation() {
                                         minDate={new Date()}
                                         startDate={startDate}
                                         endDate={endDate}
-                                        excludeDates={[new Date("2021/10"), new Date("2021/11"), new Date("2021/12")]}
-                                        dateFormat="MM/yyyy"
+                                        excludeDates={dates.map((date)=>(new Date (date)))}
+                                        dateFormat="yyyy-MM"
                                         showMonthYearPicker
                                         isClearable
                                     />
@@ -348,8 +350,8 @@ function ProfileAccommodation() {
                                         minDate={new Date()}
                                         startDate={startDate}
                                         endDate={endDate}
-                                        excludeDates={[new Date("2021/10"), new Date("2021/11"), new Date("2021/12")]}
-                                        dateFormat="MM/yyyy"
+                                        excludeDates={dates.map((date)=>(new Date (date)))}
+                                        dateFormat="yyyy-MM"
                                         showMonthYearPicker
                                         isClearable
                                     />
