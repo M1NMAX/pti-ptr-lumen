@@ -25,7 +25,6 @@ function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
     
     const [user, setUser] = useState('');
-   
 
     const history = useHistory();
 
@@ -49,8 +48,9 @@ function Dashboard() {
           alert(err)
         })
       }, [token]);
-    
+
     if (user.userable_type == "App\\Models\\Landlord") {
+      
       return (
         <div>
           <NavBarHome/>
@@ -154,7 +154,7 @@ function Dashboard() {
             <Row className="mb-5 mt-5" xs={6} sm={4}>
               <Col xs={6} sm={4}>
                 <a href="/listChat">
-                  <Card className="text-center">
+                  <Card className="text-center">                   
                     <Card.Img className="imgDashboard" src={chatImg}></Card.Img>
                     <Card.Body>
                       <Card.Title>Veja as suas mensagens!</Card.Title>

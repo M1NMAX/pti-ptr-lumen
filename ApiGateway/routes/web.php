@@ -21,7 +21,7 @@ use App\Models\Landlord;
 */
 
 $router->get('/key', function () {
-  return \Illuminate\Support\Str::random(32);
+    return \Illuminate\Support\Str::random(32);
 });
 
 $router->get('/', function () {
@@ -38,7 +38,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     });
 
     // Auth and Users
-    $router->get('/me', function () {return auth()->user();});
+    $router->get('/me', function () {
+        return auth()->user();
+    });
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
     $router->post('/register', 'UsersController@register'); //Create
@@ -55,7 +57,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/', 'AccommodationController@index');
         $router->get('/{id}', 'AccommodationController@show');
         $router->post('/', 'AccommodationController@store');
-
+        $router->get('/{id}/dates', 'AccommodationController@showDates');
 
         $router->get('/{id}/comments', 'AccommodationController@showComments');
         $router->post('/comment', 'AccommodationController@storeComment');
@@ -64,9 +66,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/rentalpending/accept/{id}', 'AccommodationController@landlordAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
-
-
-
     });
 
 
@@ -76,11 +75,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'ChatController@showId');
         $router->get('/{id}/messages', 'ChatController@messages');
         $router->get('/{id1}/{id2}', 'ChatController@chatExists');
-
+        $router->get('/chatNotifications/{user}', 'ChatController@notification');
         $router->post('/addMessage', 'ChatController@storeMessage');
 
         
-
     });
-
 });
