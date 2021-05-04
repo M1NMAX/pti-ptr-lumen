@@ -43,4 +43,8 @@ class AccommodationInfoController extends Controller
         $accommodation_info->delete();
         return response()->json(['data' => ['message' => 'User foi eliminado com sucesso']]);
     }
+
+
+    
+
 }

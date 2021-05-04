@@ -246,6 +246,10 @@ class AccommodationController extends Controller
 
     }
 
+    public function filter($json) 
+    {
+        return $filters;
+    }
 
 
 }

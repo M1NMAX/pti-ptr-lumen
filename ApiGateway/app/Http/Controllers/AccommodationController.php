@@ -29,11 +29,11 @@ class AccommodationController extends Controller
     public function show($id)
     {
         $aboutAccommodation = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id);
-        $commentsAboutAccommodation = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+        $commentsAboutAccommodation = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/comments');
 
         $response = [
-            'aboutAccommodation'=>$aboutAccommodation->json(),
-            'commentsAboutAccommodation'=>$commentsAboutAccommodation->json(),
+            'aboutAccommodation' => $aboutAccommodation->json(),
+            'commentsAboutAccommodation' => $commentsAboutAccommodation->json(),
             'status' => true,
         ];
         return response($response);
@@ -41,26 +41,28 @@ class AccommodationController extends Controller
 
     public function store(Request $request)
     {
-        $responseAccommodation = Http::post(env('API_ACCOMMODATION_URL') . 'accommodation/',
-        $request->only('landlord_id', 'name', 'description', 'address', 'price', 'latitude', 'longitude'));
+        $responseAccommodation = Http::post(
+            env('API_ACCOMMODATION_URL') . 'accommodation/',
+            $request->only('landlord_id', 'name', 'description', 'address', 'price', 'latitude', 'longitude')
+        );
 
-        if($responseAccommodation->status()){
+        if ($responseAccommodation->status()) {
 
-            $accommodation_id= $responseAccommodation->collect()->get('accommodation_id');
+            $accommodation_id = $responseAccommodation->collect()->get('accommodation_id');
 
-            $responseAccommodationInfo = Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/',[
-                'accommodation_id'=>$accommodation_id,
-                'accommodationType'=>$request->accommodationType,
-                'rooms'=>$request->rooms,
-                'bathRooms'=>$request->bathRooms,
-                'area'=>$request->area,
-                'solar'=>$request->solar,
-                'wifi'=>$request->wifi,
-                'clean'=>$request->clean,
+            $responseAccommodationInfo = Http::post(env('API_ACCOMMODATION_URL') . 'accommodationInfo/', [
+                'accommodation_id' => $accommodation_id,
+                'accommodationType' => $request->accommodationType,
+                'rooms' => $request->rooms,
+                'bathRooms' => $request->bathRooms,
+                'area' => $request->area,
+                'solar' => $request->solar,
+                'wifi' => $request->wifi,
+                'clean' => $request->clean,
             ]);
 
             $responseAccommodationRequiriments = Http::post(env('API_ACCOMMODATION_URL') . 'accommodationRequirements/', [
-                'accommodation_id'=>$accommodation_id,
+                'accommodation_id' => $accommodation_id,
                 'ageRangeBot' => $request->ageRangeBot,
                 'ageRangeTop' => $request->ageRangeTop,
                 'gender' => $request->gender,
@@ -69,8 +71,8 @@ class AccommodationController extends Controller
 
             ]);
 
-            if($responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')){
-                $finalResponse = ['newAccommodationId'=>$accommodation_id ,'message' => 'alojamento registado com sucesso', 'status'=>true];
+            if ($responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
+                $finalResponse = ['newAccommodationId' => $accommodation_id, 'message' => 'alojamento registado com sucesso', 'status' => true];
                 return response($finalResponse, 200);
             }
 
@@ -81,12 +83,16 @@ class AccommodationController extends Controller
 
         return response($responseAccommodation, 200);
     }
-
+    public function showDates($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/busyDates');
+        return response($response);
+    }
 
 
     public function showComments($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id. '/comments');
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/comments');
         return response($response);
     }
 
@@ -104,22 +110,20 @@ class AccommodationController extends Controller
 
     public function showLandlordRentalPending($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/' . $id);
 
         return response($response);
     }
 
     public function landlordAcceptRentalPending($id)
     {
-        $response = Http::post(env('API_ACCOMMODATION_URL') . 'rentalpending/accept/'.$id);
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'rentalpending/accept/' . $id);
         return response($response);
     }
 
     public function landlordRejectRentalPending($id)
     {
-        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'rentalpending/'.$id);
+        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'rentalpending/' . $id);
         return response($response);
     }
-
-
 }
