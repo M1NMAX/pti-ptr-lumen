@@ -38,7 +38,7 @@ class MessageController extends Controller
         $m->created_at = date('Y-m-d H:i:s');
         $m->save();
         
-        /*$userToNotify;
+        $userToNotify;
         $query = DB::table('chat')
                     ->where([
                         ['user_id1', '=', $request->input('user_id')],
@@ -68,7 +68,7 @@ class MessageController extends Controller
             $queryNotification = DB::insert('insert into chat_notification (user_id, chat_id) values (?, ?)', [$userToNotify, $request->input('chat_id')]);
         }
         
-        */
+        
         return response()->json(['data' => ['message' => 'Mensagem enviada com sucesso.'], 'status'=>true]);
         
     }

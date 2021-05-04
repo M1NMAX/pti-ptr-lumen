@@ -10,6 +10,7 @@ use App\Models\AccommodationRequirements;
 use App\Models\Feature;
 use App\Models\Rental;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Validator;
 
 
 class AccommodationController extends Controller
@@ -84,21 +85,27 @@ class AccommodationController extends Controller
 
     public function store(Request $request)
     {
-        $a = $this->accommodation->create($request->all());
 
-        $response =['accommodation_id'=>$a->id, 'status'=>true] ;
+        $validator = Validator::make($request->all(), [
+            'landlord_id' => 'required',
+            'name'=>'required|max:30',
+            'description' => 'required',
+            'price' => 'required',
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response(['errors' =>  $validator->errors()->all()], 422);
+        }
+
+
+        $accommodationMake = $this->accommodation->create($request->all());
+
+        $response =['accommodation_id'=>$accommodationMake->id, 'status'=>true] ;
         return response($response, 200);
     }
-
-    /*public function update($alojamento, Request $request)
-    {
-        $alojamento = $this->alojamento->find($alojamento);
-        $alojamento->update($request->all());
-        return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
-    }*/
-
-
-
 
 
     public function update($id, Request $request)
@@ -246,6 +253,10 @@ class AccommodationController extends Controller
 
     }
 
+    public function filter($json) 
+    {
+        return $filters;
+    }
 
 
 }

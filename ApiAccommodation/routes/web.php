@@ -30,11 +30,12 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->get('/{id}', 'AccommodationController@showId');
     //VER AS CARACTERISTICAS DO ALOJAMENTO
     $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
-    //VER OS ALUGUERES DO ALOJAMENTO (FUTURAMENTE AS DATAS INDISPONIVEIS)
+    //VER FUTURAMENTE AS DATAS INDISPONIVEIS
     $router->get('/{id}/busyDates/', 'AccommodationController@busyDates');
     //VER OS COMENTARIOS DO ALOJAMENTO
     $router->get('/{id}/comments', 'AccommodationController@comments');
 
+    
 
     //PESQUISAR PELA LOCALIZACAO DO ALOJAMENTO
     $router->get('/localSearch/{search}', 'AccommodationController@localSearch');
@@ -43,6 +44,8 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     //DISPONIBILIDADE DO ALOJAMENTO
     $router->get('/status/{id}', 'AccommodationController@status');
 
+    //FILTRAR
+    $router->get('/filter/{json}', 'AccommodationController@filter');
 
     //-------------POSTS----------------
 
@@ -57,6 +60,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->put('/{id}', 'AccommodationController@update');
     //ADICIONAR CARACTERISTICA
     $router->put('/{id}/addFeatures', 'AccommodationController@addFeatures');
+
 
     //-------------DELETES----------------
 
@@ -103,6 +107,14 @@ $router->group(['prefix' => 'feature'], function () use ($router) {
 $router->group(['prefix' => 'rental'], function () use ($router) {
     //-------------GETS----------------
     $router->get('/', 'RentalController@index');
+
+    //VER OS ALOJAMENTOS ALUGADOS PELO USERID (INQUILINO)
+    $router->get('/rentedAccommodation/{user_id}', 'RentalController@accommodationRented');
+
+    //VER OS ALOJAMENTOS ALUGADOS (SENHORIO)
+    $router->get('/rentedOwnAccommodation/{user_id}', 'RentalController@ownAccommodationRented');
+
+
 
     //-------------POSTS----------------
 
