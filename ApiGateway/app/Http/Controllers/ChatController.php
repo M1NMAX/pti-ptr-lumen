@@ -53,4 +53,10 @@ class ChatController extends Controller
         $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id1 . '/' . $id2);
         return response($response);
     }
+
+    public function notification($userId)
+    {
+        $response = Http::get(env('API_CHAT_URL') . 'chat/notifications/' .$userId);
+        return response($response);
+    }
 }
