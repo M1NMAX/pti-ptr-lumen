@@ -78,6 +78,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id1}/{id2}', 'ChatController@chatExists');
 
         $router->post('/addMessage', 'ChatController@storeMessage');
+
+        
+
     });
 
 });
