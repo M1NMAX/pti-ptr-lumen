@@ -8,8 +8,12 @@ import NavBarHome from '../../Components/NavBarHome'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {faMapMarkerAlt, faSearchLocation, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import Footer from '../../Components/Footer'
+import { Typeahead } from 'react-bootstrap-typeahead';
+import concelhos from './concelhos.js';
+import distritos from './distritos.js';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 function RegisterAlojamento() {
     const [userId] = useState(localStorage.getItem('userID'));
@@ -36,7 +40,9 @@ function RegisterAlojamento() {
 
 
     const  history = useHistory();
-
+    const [concelho, setConcelho] = useState([]);
+    const [distrito, setDistrito] = useState([]);
+    const [caract, setCaract] = useState([]);
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
@@ -117,7 +123,7 @@ function RegisterAlojamento() {
                     <Col className="cols" xs={12} sm={6}>
                         <Form.Group controlId="formBasicTitle" >
                             <Form.Label as="h4" >Título</Form.Label>
-                            <Form.Control size="lg" required width="sm" type="textarea" placeholder="Casa dos Mares " value={title} onChange={e => setTitle(e.target.value)}/>
+                            <Form.Control size="lg" required width="sm" type="textarea" placeholder="Apartamento T3 em Lisboa " value={title} onChange={e => setTitle(e.target.value)}/>
                         </Form.Group>
                         
                         <Form.Group controlId="formCategory4">
@@ -132,6 +138,32 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada</Form.Label>
                             <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
                         </Form.Group>
+
+                        <Form.Group controlId="formBasicSolar" >
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Distrito</Form.Label>
+                            <Typeahead
+                                id="basic-typeahead-single"
+                                labelKey="name"
+                                onChange={setDistrito}
+                                options={distritos}
+                                placeholder="Escolha um distrito..."
+                                selected={distrito}
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicSolar" >
+                            <Form.Label><FontAwesomeIcon icon={faSearchLocation} /> Concelho</Form.Label>
+                            <Typeahead
+                                id="basic-typeahead-single"
+                                labelKey="name"
+                                onChange={setConcelho}
+                                options={concelhos}
+                                placeholder="Escolha um concelho..."
+                                selected={concelho}
+                            />
+                        </Form.Group>
+
+                        
 
                         <Form.Group controlId="formBasicPrice" >
                             <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês</Form.Label>
@@ -256,10 +288,18 @@ function RegisterAlojamento() {
                             <option value="0"> Não </option>
                             </Form.Control>
                         </Form.Group>
-                        {/* <Form.Group controlId="formCategory14">
-                            <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras informações complementares:</Form.Label>
-                            <Form.Control as="textarea" rows={2}/>
-                        </Form.Group> */}
+                        <Form.Group controlId="formCategory14">
+                            <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
+                            <Typeahead
+                                id="basic-typeahead-multiple"
+                                labelKey="name"
+                                multiple
+                                onChange={setCaract}
+                                options={concelhos}
+                                placeholder="Escolha características complementares..."
+                                selected={caract}
+                            />
+                        </Form.Group> 
                     </Col>
                     
                 </Form.Row>
