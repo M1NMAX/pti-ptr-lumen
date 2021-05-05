@@ -24,6 +24,7 @@
     "react-bootstrap-carousel": "^4.1.1",
     "react-bootstrap-month-selector": "^0.2.0",
     "react-bootstrap-range-slider": "^2.0.2",
+    "react-bootstrap-typeahead": "^5.1.4",
     "react-chat-elements": "^10.14.0",
     "react-datepicker": "^3.8.0",
     "react-datetime-bootstrap": "^1.4.7",

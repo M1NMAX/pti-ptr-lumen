@@ -14,7 +14,7 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
-import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 
 
 function ProfileAccommodation() {
@@ -389,6 +389,15 @@ function ProfileAccommodation() {
                         </Card>
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Concelho:</Card.Title>
+                                <Card.Text>
+                                
+                                concelho, distrito
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Card.Title>
                                 <Card.Text>
                                     {accommodation.price}&euro;
@@ -451,12 +460,12 @@ function ProfileAccommodation() {
                                 </Card.Text>
                             </Card.Body>
                             
-                            {/* <Card.Body>
-                                <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras informações complementares: </Card.Title>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras características complementares: </Card.Title>
                                 <Card.Text>
-                                    Oi
+                                    Cenas que vem da BD
                                 </Card.Text>
-                            </Card.Body> */}
+                            </Card.Body>
                         </Card>
                         
                     </Col>

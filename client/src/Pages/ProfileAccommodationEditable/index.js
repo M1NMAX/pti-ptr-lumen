@@ -10,15 +10,23 @@ import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft, faStar, faMapMarkerAlt, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faStar, faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import concelhos from '../RegisterAccommodation/concelhos.js';
+import distritos from '../RegisterAccommodation/distritos.js';
 
 function ProfileAccommodationEditable () {
     const  history = useHistory();
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
+
+    const [concelho, setConcelho] = useState([]);
+    const [distrito, setDistrito] = useState([]);
+    const [caract, setCaract] = useState([]);
+
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
@@ -136,10 +144,33 @@ function ProfileAccommodationEditable () {
                         <Form.Row>
                             <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações Importantes </h3>
-                            <Form.Group controlId="formCategory1">
+                            <Form.Group controlId="formCategory0">
                                 <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
                                 <Form.Control type="text" defaultValue={accommodation.streetName,accommodation.city,
                                 accommodation.country}/>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicSolar" >
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Distrito</Form.Label>
+                                <Typeahead
+                                    id="basic-typeahead-single"
+                                    labelKey="name"
+                                    onChange={setDistrito}
+                                    options={distritos}
+                                    placeholder="Meter da bd"
+                                    selected={distrito}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicSolar" >
+                                <Form.Label><FontAwesomeIcon icon={faSearchLocation} /> Concelho</Form.Label>
+                                <Typeahead
+                                    id="basic-typeahead-single"
+                                    labelKey="name"
+                                    onChange={setConcelho}
+                                    options={concelhos}
+                                    placeholder="Meter da bd"
+                                    selected={concelho}
+                                />
                             </Form.Group>
                             <Form.Group controlId="formCategory2">
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço:</Form.Label>
@@ -264,8 +295,16 @@ function ProfileAccommodationEditable () {
                                 </Col>
                             </Form.Group>
                             <Form.Group controlId="formCategory14">
-                                <Form.Label>Outras informações complementares:</Form.Label>
-                                <Form.Control as="textarea" rows={2} defaultValue=""/>
+                                <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
+                                <Typeahead
+                                    id="basic-typeahead-multiple"
+                                    labelKey="name"
+                                    multiple
+                                    onChange={setCaract}
+                                    options={concelhos}
+                                    placeholder="Escolha características complementares..."
+                                    selected={caract}
+                                />
                             </Form.Group>
                             
                         </Col>
