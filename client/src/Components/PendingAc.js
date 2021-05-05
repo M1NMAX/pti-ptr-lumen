@@ -13,7 +13,11 @@ import {useHistory} from 'react-router-dom';
 function PendingAc({pending, acceptPending, rejectPending}) {
     const[token] = useState(localStorage.getItem('token'));
     const[userData, setUserData] = useState([]);
+    const[userExtra, setUserExtra] = useState([]);
     const[accommodationData, setAccommodationData] = useState([]);
+    const[accommodationRequirements, setAccommodationRequirements] = useState([]);
+
+    
 
     
     const history = useHistory();
@@ -28,6 +32,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
             }).then(response => {
                 if(response.data.status){
                     setUserData(response.data.user)
+                    setUserExtra(response.data.extra);
                 }else{
                     localStorage.clear();
                     history.push('/login')
@@ -42,7 +47,8 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 }
                 }).then(response => {
                     if(response.data.status){
-                        setAccommodationData(response.data.aboutAccommodation)
+                        setAccommodationData(response.data.aboutAccommodation);
+                        setAccommodationRequirements(response.data.aboutAccommodation.requirements);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -73,12 +79,27 @@ function PendingAc({pending, acceptPending, rejectPending}) {
             <Row >
                 <Col className="pb-2 pt-2 pl-2 pr-2 center" xm={6} sm={2}>
                     <img src={DefaultUserPic} alt="Imagem de perfil" width="100%"></img>
+                    <Button ize="sm" variant="info" href={ "/profileUser/"+pending.user_id} > ver perfil do {userData.name}</Button>
                 </Col>
                 <Col className="pb-4 pt-4 pr-4 center" xm={6} sm={4}>
                     <Button ize="sm" variant="info">{userData.name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>
                     <div className="pt-2" style={{textAlign: 'left'}}>
-                        <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Género</p>
-                        <p><FontAwesomeIcon color="red" icon={faTimesCircle}/>  Tem animais de estimação</p>
+                        {accommodationRequirements.gender === userExtra.gender || accommodationRequirements.gender === "Misto" || accommodationRequirements.gender === "Indiferente" ?
+                        <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Género</p>:
+                        <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Género</p>}
+
+                        {accommodationRequirements.pets === userExtra.pets?
+                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Tem animais de estimação</p>:
+                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Tem animais de estimação</p>}
+
+                        {userExtra.age >= accommodationRequirements.ageRangeBot  && userExtra.age <= accommodationRequirements.ageRangeTop?
+                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Idade</p>:
+                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Idade</p>}
+
+                        {accommodationRequirements.smoker === userExtra.smoker?
+                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Fumador</p>:
+                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Fumador</p>}
+                    
                     </div>
                 </Col>
                 <Col className="center" xm={4} sm={3}>

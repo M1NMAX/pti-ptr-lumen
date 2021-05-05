@@ -71,7 +71,7 @@ function NavBarHome() {
                                 {/* show auth user data  */}
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat</NavDropdown.Item>
                                         <NavDropdown.Divider />
@@ -121,7 +121,7 @@ function NavBarHome() {
                                 {/* show auth user data  */}
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href={ "/profileUser/"+userid}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
                                         <NavDropdown.Divider />
@@ -132,7 +132,7 @@ function NavBarHome() {
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
                                         </> }
-                                    {/* @carol when do you want Alojamento to been seen  */}
+                                    {/* @carol when do you want Alojamento to been seen href={ "/profileUser/"+userid} */}
                                 {/* <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link> */}
                             </Nav>
                         </Navbar.Collapse>
