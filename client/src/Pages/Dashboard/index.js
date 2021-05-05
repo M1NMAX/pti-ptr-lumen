@@ -27,10 +27,11 @@ function Dashboard() {
     const [user, setUser] = useState('');
 
     const history = useHistory();
+    
+    const [imgC, setImgC] = useState();
 
     useEffect(() => {
         
-       
           api.get('api/me', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,7 +43,17 @@ function Dashboard() {
                 history.push('/login');
             }else{
                 setUser(response.data);
-                console.log(response.data)
+                console.log(response.data.id)
+
+                api.get('api/chat/notifications/' + response.data.id).then(responseChatNotification => {
+                  console.log(responseChatNotification.data);
+                  if(responseChatNotification.data.length == 0){
+                    setImgC(chatImg);
+                  }else{
+                    setImgC(chatImgNew);
+                  }
+                })
+
           }
         }).catch(err => {
           alert(err)
@@ -59,7 +70,7 @@ function Dashboard() {
               <Col sm={12} lg={2} className="sidebar">
                 <Row>
                   <a href="/listChat">
-                    <img className = "imgDashboard" src={chatImg}></img> Mensagens
+                    <img className = "imgDashboard" src={imgC}></img> Mensagens
                   </a>
                 </Row>
                 <Row>
@@ -125,7 +136,7 @@ function Dashboard() {
               <Col xs={6} sm={4}>
                 <a href="/listChat">
                   <Card className="text-center">                   
-                    <Card.Img className="imgDashboard" src={chatImg}></Card.Img>
+                    <Card.Img className="imgDashboard" src={imgC}></Card.Img>
                     <Card.Body>
                       <Card.Title>Veja as suas mensagens!</Card.Title>
                     </Card.Body>
