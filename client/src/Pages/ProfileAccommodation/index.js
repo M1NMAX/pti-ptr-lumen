@@ -383,7 +383,6 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Card.Title>
                                 <Card.Text>
-                                
                                 {accommodation.address}
                                 </Card.Text>
                             </Card.Body>
@@ -391,8 +390,7 @@ function ProfileAccommodation() {
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Concelho:</Card.Title>
-                                <Card.Text>
-                                
+                                <Card.Text>      
                                 concelho, distrito
                                 </Card.Text>
                             </Card.Body>
@@ -464,7 +462,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras características complementares: </Card.Title>
                                 <Card.Text>
-                                   {accommodationFeature.feature_id}
+                                   {/*{accommodationFeature.feature_id}*/}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
