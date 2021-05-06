@@ -29,6 +29,7 @@ function ProfileAccommodation() {
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
     const [content, setContent] = useState('');
+    const [map, setMap] = useState([]);
     const [star, setStar] = useState(0);
     const [lat, setaccommodationLat] = useState(0);
     const [lon, setaccommodationLon] = useState(0);
@@ -80,6 +81,7 @@ function ProfileAccommodation() {
             setaccommodationComments(response.data.commentsAboutAccommodation);
             setaccommodationLat(response.data.aboutAccommodation.latitude);
             setaccommodationLon(response.data.aboutAccommodation.longitude);
+            setMap([<Maps coordinates = {[response.data.aboutAccommodation.latitude,response.data.aboutAccommodation.longitude]}></Maps>])
         }).catch(err => {
           alert(err)
         })
@@ -518,8 +520,7 @@ function ProfileAccommodation() {
                     </Col>
                 </Row>
                 <Row style={{height:"400px", width:"100%"}}>
-                        <Maps coordinates = {[lat,lon]}></Maps>
-                        <div id="map"></div>
+                        {map}
                 </Row>
                 <Row>
                     <Col>
