@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\AccommodationRequirements;
-use Illuminate\Support\Str;
+use App\Models\Accommodation;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class AccommodationRequirementsFactory extends Factory
 {
@@ -23,7 +24,7 @@ class AccommodationRequirementsFactory extends Factory
     public function definition()
     {
         return [
-            'accommodation_id' => $this->faker->randomNumber(1),
+            'accommodation_id' => $this->faker->unique()->numberBetween(1, 10),
             'ageRangeBot' => $this->faker->randomNumber(2),
             'ageRangeTop' => $this->faker->randomNumber(2),
             'gender' => $this->faker->randomElement(['Masculino', 'Feminino', 'Misto', 'Indiferente']),

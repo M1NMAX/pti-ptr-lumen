@@ -59,12 +59,11 @@ class UsersController extends Controller
 
         //GUEST SECTION
         }elseif($request->type =='guest'){
-            $validatorCollege = Validator::make($request->only('college', 'age', 'gender', 'pets', 'smokers'), [
+            $validatorCollege = Validator::make($request->only('college', 'gender', 'pets', 'smoker'), [
                 'college' => 'required',
-                'age' => 'required|integer',
                 'gender' => 'required|alpha',
                 'pets' => 'required|boolean',
-                'smokers'=> 'required|boolean'
+                'smoker'=> 'required|boolean'
             ]);
 
             if($validatorCollege->fails()){
@@ -73,10 +72,9 @@ class UsersController extends Controller
 
             $guest = Guest::create([
                 'college' => $request->college,
-                'age' => $request->age,
                 'gender' => $request->gender,
                 'pets' => $request->pets,
-                'smokers' => $request->smokers,
+                'smoker' => $request->smoker,
                 ]);
 
             $guest->user()->create([
