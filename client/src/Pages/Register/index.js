@@ -43,24 +43,23 @@ function Register() {
             'type': type,
             'college': college,
             'gender': gender, 
-            'smokers': smoker, 
+            'smoker': smoker, 
             'pets': pet,
-            'age': age,
         };
 
-        try {
+        console.log(data);
         await api.post('api/register', data
          ).then(async (response) =>{
             if(response.data.status){
                 const responseLogin = await api.post('api/login', { email, password });
+                console.log(response.data);
                 localStorage.setItem('token', responseLogin.data.token);
-                localStorage.setItem('userID', response.data.user.id);
+                localStorage.setItem('userID', responseLogin.data.user.id);
                 history.push('/dashboard');
             }
-        });
-        } catch (err) {
-            setErrors(err.response.data.errors);
-        }
+        }).catch (err => {
+            console.log(err);
+        })
     }
     return (
         <div>

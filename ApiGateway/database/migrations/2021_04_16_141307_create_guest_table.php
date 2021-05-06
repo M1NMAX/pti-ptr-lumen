@@ -16,9 +16,8 @@ class CreateGuestTable extends Migration
         Schema::create('guest', function (Blueprint $table) {
             $table->id();
             $table->string('college');
-            $table->integer('age');
             $table->string('gender');
-            $table->boolean('smokers');
+            $table->boolean('smoker');
             $table->boolean('pets');
             $table->timestamps();
         });

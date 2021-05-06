@@ -23,6 +23,7 @@ function ProfileAccommodation() {
     const [userId] = useState(localStorage.getItem('userID'))
     const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setaccommodation] = useState([]);
+    const [accommodationFeature, setaccommodationFeature] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationRequirements, setaccommodationRequirements] = useState([]);
     const [dates, setDates] = useState([]);
@@ -76,6 +77,7 @@ function ProfileAccommodation() {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
             setaccommodation(response.data.aboutAccommodation);
+            setaccommodationFeature(response.data.aboutAccommodation.feature);
             setaccommodationInfo(response.data.aboutAccommodation.info);
             setaccommodationRequirements(response.data.aboutAccommodation.requirements);
             setaccommodationComments(response.data.commentsAboutAccommodation);
@@ -85,7 +87,7 @@ function ProfileAccommodation() {
         }).catch(err => {
           alert(err)
         })
-
+        
         api.get('api/accommodations/'+ id + '/dates').then(response => {
             // you must define a default operation
             console.log(response.data)
@@ -120,11 +122,8 @@ function ProfileAccommodation() {
             alert(err)
             })
         }
-        
 
-       
-
-      }, [token]);
+    }, [token]);
 
       async function handleFavourite(){
 
@@ -465,7 +464,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras características complementares: </Card.Title>
                                 <Card.Text>
-                                    Cenas que vem da BD
+                                   {accommodationFeature.feature_id}
                                 </Card.Text>
                             </Card.Body>
                         </Card>

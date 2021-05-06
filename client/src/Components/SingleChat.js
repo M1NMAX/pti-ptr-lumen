@@ -16,6 +16,8 @@ function SingleChat({chats}) {
     const [userid, setUserid] = useState();
     const [user,setUser] = useState();
     const[userName, setUserName] = useState();
+    const[text, setText] = useState();
+    const[bt, setBt] = useState();
     const history = useHistory();
 
     useEffect(() => {
@@ -58,6 +60,17 @@ function SingleChat({chats}) {
                       }).catch(err => {
                           alert(err)
                       })
+
+                      api.get('api/chat/notifications/' + response.data.id).then(responseChatNotification => {
+                        console.log(responseChatNotification.data);
+                        if(responseChatNotification.data.length == 0){
+                          setText("Conversar");
+                          setBt("info");
+                        }else{
+                          setText("Ver novas mensagens");
+                          setBt("success");
+                        }
+                      })
                 }
               }).catch(err => {
                 alert(err)
@@ -72,11 +85,15 @@ function SingleChat({chats}) {
     return (
         <div>
                 <Container>
-                    <Card className="mb-2">
-                            <Card.Img   style={{ width: '30%'}} onclick={"/profileAccommodation/"} className="img" src={alojamento}></Card.Img>
+                    <Card className="mb-4 mt-4 ml-4 mr-4 border border-10 center">
+                    <Card.Body>
+                            <Card.Img   style={{ width: '20%'}} onclick={"/profileAccommodation/"} className="img" src={alojamento}></Card.Img>
+                            <Card.Title className="">Casa dos Mares</Card.Title>
                             <Card.Text style={{textAlign:"center", verticalAlign:"middle"}}>
                                 <h6 style={{textAlign:"center", verticalAlign:"middle"}}>{userName}</h6>
                             </Card.Text>
+                            <Button variant={bt}>{text}</Button>
+                    </Card.Body>
                     </Card> 
                 </Container>
         </div>
