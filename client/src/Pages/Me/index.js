@@ -63,7 +63,6 @@ function ProfileUser(){
               'college': college,
               'smoker': smoker,
               'pets': pets,
-              'description': description,
           }
           
         await api.put('api/users/'+id, data
@@ -167,13 +166,6 @@ function ProfileUser(){
                                 </Form.Group>
                             </>
                             }
-                           <Form.Group controlId="formCategory4">
-                            <Form.Label>Descrição:</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={description} onChange={e => setdescription(e.target.value)} />
-                            <Form.Text className="text-muted">
-                               Um pouco sobre mim
-                            </Form.Text>
-                        </Form.Group>
                             
                             {/* Change profile picture  */}
                         {/* <Form.Group controlId="formCategory4">
