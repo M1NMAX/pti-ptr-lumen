@@ -66,6 +66,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/rentalpending/accept/{id}', 'AccommodationController@landlordAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
+
+        $router->get('/feature', 'AccommodationController@showFeature');
     });
 
 

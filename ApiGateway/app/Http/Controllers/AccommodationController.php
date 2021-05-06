@@ -126,4 +126,11 @@ class AccommodationController extends Controller
         $response = Http::delete(env('API_ACCOMMODATION_URL') . 'rentalpending/' . $id);
         return response($response);
     }
+
+    
+    public function showFeature()
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'feature/');
+        return response($response);
+    }
 }
