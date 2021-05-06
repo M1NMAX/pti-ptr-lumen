@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 
 class UsersController extends Controller
@@ -57,12 +59,11 @@ class UsersController extends Controller
 
         //GUEST SECTION
         }elseif($request->type =='guest'){
-            $validatorCollege = Validator::make($request->only('college', 'age', 'gender', 'pets', 'smokers'), [
+            $validatorCollege = Validator::make($request->only('college', 'gender', 'pets', 'smoker'), [
                 'college' => 'required',
-                'age' => 'required|integer',
                 'gender' => 'required|alpha',
                 'pets' => 'required|boolean',
-                'smokers'=> 'required|boolean'
+                'smoker'=> 'required|boolean'
             ]);
 
             if($validatorCollege->fails()){
@@ -71,10 +72,9 @@ class UsersController extends Controller
 
             $guest = Guest::create([
                 'college' => $request->college,
-                'age' => $request->age,
                 'gender' => $request->gender,
                 'pets' => $request->pets,
-                'smokers' => $request->smokers,
+                'smoker' => $request->smoker,
                 ]);
 
             $guest->user()->create([
@@ -133,13 +133,19 @@ class UsersController extends Controller
         $response = ['user'=>$user, 'extra'=>$user->userable()->first(), 'status'=>true];
         return response($response, 200);
     }
+
     public function update($id, Request $request)
     {
         $user = User::find($id);
-        $user->update($request->all());
-        $response = ['message' => 'your data have been successfully updated'];
+        $user->update($request->only('username', 'email', 'name', 'birthdate'));
+        if($request->type === 'guest')
+        {
+            $user->userable()->update($request->only('college', 'gender', 'age', 'pets', 'smoker'));
+        }
+        $response = ['message' => 'data have been updated successfuly', 'status'=> true];
         return response($response, 200);
     }
+
     public function destroy($id)
     {
         $user = User::find($id);

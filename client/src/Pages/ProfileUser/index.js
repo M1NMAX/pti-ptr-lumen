@@ -64,7 +64,6 @@ function Me(){
                             <ListGroup.Item>Instituição: {userExtra.college}</ListGroup.Item>
                             <ListGroup.Item>Tem animais de estimação: {userExtra.pets?'sim':'não'}</ListGroup.Item>
                             <ListGroup.Item>É fumador/a: {userExtra.smoker?'sim':'não'}</ListGroup.Item>
-                            <ListGroup.Item>Descrição pessoal: Uma pessoa normal </ListGroup.Item>
                         </ListGroup>
                         </Card>  
                     </Col>

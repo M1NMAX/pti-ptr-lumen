@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './index.css'
 import api from '../../services/api';
@@ -42,7 +42,17 @@ function RegisterAlojamento() {
     const  history = useHistory();
     const [concelho, setConcelho] = useState([]);
     const [distrito, setDistrito] = useState([]);
-    const [caract, setCaract] = useState([]);
+    const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
+    const [feature, setFeature] = useState([]);
+
+    useEffect(() => {
+        api.get('api/accommodations/feature').then(response => {
+            setFeature(response.data); 
+            console.log("AAAAAAA" + response.data);           
+        }).catch(err => {
+          alert(err)
+        })
+    });
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
@@ -67,7 +77,7 @@ function RegisterAlojamento() {
             "gender": gender,
             "smoker": smoker,
             "pets":pet,
-
+            "feature_id":caract,
         };
 
         console.log(data);
@@ -95,6 +105,7 @@ function RegisterAlojamento() {
             })
         }
     }
+
 
     
     return (
@@ -295,7 +306,7 @@ function RegisterAlojamento() {
                                 labelKey="name"
                                 multiple
                                 onChange={setCaract}
-                                options={concelhos}
+                                options={distritos}
                                 placeholder="Escolha características complementares..."
                                 selected={caract}
                             />

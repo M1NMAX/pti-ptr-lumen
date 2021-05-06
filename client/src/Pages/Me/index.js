@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Container,Row,Col,Form ,Button} from 'react-bootstrap';
 import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
-import {useParams, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft, faAudioDescription} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 
 function ProfileUser(){
@@ -22,6 +22,7 @@ function ProfileUser(){
     const [pets, setpets] = useState();
     const [userType, setUserType] = useState();
     const [description, setdescription] = useState();
+    const [feedback, setfeedback] = useState('');
     
     const history = useHistory();
 
@@ -62,9 +63,19 @@ function ProfileUser(){
               'college': college,
               'smoker': smoker,
               'pets': pets,
-              'description': description,
           }
-          console.log(data);
+          
+        await api.put('api/users/'+id, data
+            ).then(async (response) =>{
+            if(response.data.status){
+                setfeedback('Os seus perfil foi atualizado com sucesso');
+                window.scrollTo(0,0);
+            }
+            
+        }).catch (err => {
+            console.log(err);
+            setfeedback('Ocorreu durante a atualização do seu perfil, por favor tente mais tarde');
+        })
 
       }
 
@@ -74,6 +85,7 @@ function ProfileUser(){
             <div>
                 <NavBarHome/>
                 <Container>
+                    <p className="center">{feedback}</p>
                 <Row  className= "mt-3 mb-3">
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "ml-3 mr-3" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
@@ -106,15 +118,17 @@ function ProfileUser(){
                                 <Form.Label>Data de Nascimento:</Form.Label>
                                 <Form.Control type="date" value={birthdate} onChange={e => setbirthdate(e.target.value)}/>
                             </Form.Group>
-                           
-                            <Form.Group controlId="formBasicType">
-                                <Form.Label>Tenho como objetivo</Form.Label>
-                                <Form.Control required as="select" type="type" value={userType} onChange={e => setUserType(e.target.value)} >
-                                <option value="one" >selecione uma opção</option>
-                                <option value="guest" >Alugar um alojamento</option>
-                                <option value="landlord" >Colocar alojamentos para alugar</option>
-                                </Form.Control>
-                            </Form.Group>
+
+                            <fieldset disabled>
+                                <Form.Group controlId="formBasicType">
+                                    <Form.Label>Tenho como objetivo</Form.Label>
+                                    <Form.Control required as="select" type="type" value={userType} onChange={e => setUserType(e.target.value)} >
+                                    <option value="one" >selecione uma opção</option>
+                                    <option value="guest" >Alugar um alojamento</option>
+                                    <option value="landlord" >Colocar alojamentos para alugar</option>
+                                    </Form.Control>
+                                </Form.Group>
+                            </fieldset>
                             
                             {userType === 'guest' && <>
                                 <Form.Group controlId="formCategory10">
@@ -152,13 +166,6 @@ function ProfileUser(){
                                 </Form.Group>
                             </>
                             }
-                           <Form.Group controlId="formCategory4">
-                            <Form.Label>Descrição:</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={description} onChange={e => setdescription(e.target.value)} />
-                            <Form.Text className="text-muted">
-                                Fale um pouco da sua pessoa
-                            </Form.Text>
-                        </Form.Group>
                             
                             {/* Change profile picture  */}
                         {/* <Form.Group controlId="formCategory4">
