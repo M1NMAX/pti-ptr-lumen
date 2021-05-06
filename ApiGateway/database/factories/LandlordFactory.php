@@ -2,17 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Favourites;
+use App\Models\Guest;
+use App\Models\Landlord;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class FavouritesFactory extends Factory
+class LandlordFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Favourites::class;
+    protected $model = Landlord::class;
 
     /**
      * Define the model's default state.
@@ -21,10 +24,6 @@ class FavouritesFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'user_id' => $this->faker->randomNumber(1),
-            'accommodation_id' => $this->faker->numberBetween(1, 10),
-
-        ];
+        return [];
     }
 }

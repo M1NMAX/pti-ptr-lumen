@@ -16,6 +16,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::factory(\App\User::class)
-        ->has(Favourites::factory(\App\Favourites::class)->count(5))->count(10)->create();
+        ->has(Favourites::factory(\App\Favourites::class)->count(3))->count(10)->create();
     }
 }

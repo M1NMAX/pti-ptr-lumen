@@ -23,7 +23,7 @@ class AccommodationInfoFactory extends Factory
     public function definition()
     {
         return [
-            'accommodation_id' => $this->faker->randomNumber(1),
+            'accommodation_id' => $this->faker->numberBetween(1, 10),
             'accommodationType' => $this->faker->randomElement(['Quarto', 'Apartamento', 'Moradia']),
             'rooms' => $this->faker->randomNumber(1),
             'bathRooms' => $this->faker->randomNumber(1),
