@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
+
 
 class CommentController extends Controller
 {
@@ -42,8 +44,28 @@ class CommentController extends Controller
 
     public function addComment(Request $request)
     {
-        $comment = $this->comment->create($request->all());
+
+        $query = DB::table('comment')
+        ->where('user_id', $request->user_id) 
+        ->where('accommodation_id', $request->accommodation_id)
+        ->get();
+        if(count($query) == 0){
+            $comment = $this->comment->create($request->all());
+        }else{
+            return $query;
+            $queryDelete = DB::table('comment')
+            ->where('user_id', $request->user_id) 
+            ->where('accommodation_id', $request->accommodation_id)
+            ->delete();
+            $comment = $this->comment->create($request->all());
+        }
         return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'comment'=>$comment ,'status'=>true]);
+
+
+        return $query;
+
+        //$comment = $this->comment->create($request->all());
+        //return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'comment'=>$comment ,'status'=>true]);
     }
 
     public function destroy($comment)
