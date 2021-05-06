@@ -31,19 +31,32 @@ class RentalPendingController extends Controller
         return RentalPending::find($id);
     }
 
-    public function landlordIdSearch($idLandlord)
+    public function landlordIdSearch($landlord_id)
     {
-        $landLordPending= RentalPending::where('landlord_id', $idLandlord)->get();
+        $landLordPending= RentalPending::where('landlord_id', $landlord_id)->get();
         $response =['pending'=>$landLordPending, 'status'=>true];
+
+        $query = DB::table('rental_notification')
+                    ->where('user_id', $landlord_id)
+                    ->delete();
+
+
         return response($response, 200);
     }
 
     public function store(Request $request)
     {
         $rental_pending = RentalPending::create($request->all());
+        $query = DB::table('rental_notification')
+                    ->where('user_id', $request->landlord_id)
+                    ->get();
+        
+        if(count($query) == 0){
+            DB::table('rental_notification')
+            ->insert(['user_id' => $request->landlord_id]);
+        }
         return response()->json(['data' => ['message' => 'Aluguer pending'], 'status'=>true]);
 
-        
 
     }
 
@@ -78,14 +91,17 @@ class RentalPendingController extends Controller
         return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
     }
 
-    public function checkNotification($id_user)
+    public function checkNotification($landlord_id)
     {
         //POR FAZER
-        $query = DB::table('')
-        ->where('user_id1', $from) 
-        ->where('user_id2', $to)
+        $query = DB::table('rental_notification')
+        ->where('user_id', $landlord_id) 
         ->get();
-        return response()->json(['data' => ['message' => 'Associação AC foi eliminada com sucesso'], 'status'=>true]);
+        $boolean = true;
+        if(count($query) == 0){
+            $boolean = false;
+        }
+        return response()->json(['data' => ['notification' => $boolean], 'status'=>true]);
     }
 
 
