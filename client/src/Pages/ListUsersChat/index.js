@@ -62,6 +62,7 @@ function ListUsersChat() {
                 userChats.map((chats)=>(<a href={'/chat/' + chats.id}><SingleChat chats={chats} /></a>)): 
                 <div class="center">
                 <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem chats</h6>
+                
             </div>
         }
       </Container>
