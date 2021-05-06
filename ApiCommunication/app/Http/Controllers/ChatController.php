@@ -22,10 +22,6 @@ class ChatController extends Controller
     }
 
     public function show($id){
-        $notificationDelete = DB::table('chat_notification')
-                            ->where('chat_id', $id) 
-                            ->delete();
-
         return $this->chat->find($id);
     }
 
@@ -40,6 +36,9 @@ class ChatController extends Controller
 
     public function showMsn($id){
         $chat = Chat::find($id);
+        $notificationDelete = DB::table('chat_notification')
+                            ->where('chat_id', $id) 
+                            ->delete();
         return $chat->messages;
 
     }

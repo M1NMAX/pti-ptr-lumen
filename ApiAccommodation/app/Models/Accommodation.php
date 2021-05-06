@@ -32,7 +32,7 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
      ];
 
     public function features(){
-         return $this->hasMany(Feature::class);
+         return $this->belongsToMany(Feature::class);
     }
 
     public function rentals(){
