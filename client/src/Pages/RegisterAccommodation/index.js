@@ -44,6 +44,16 @@ function RegisterAlojamento() {
     const [distrito, setDistrito] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
+
+    useEffect(() => {
+        api.get('api/accommodations/feature').then(response => {
+            setFeature(response.data); 
+            console.log("AAAAAAA" + response.data);           
+        }).catch(err => {
+          alert(err)
+        })
+    });
+
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
 
@@ -96,15 +106,6 @@ function RegisterAlojamento() {
         }
     }
 
-    useEffect(() => {
-        api.get('api/feature').then(response => {
-            // you must define a default operation
-            setFeature(response.data); 
-            console.log("AAAAAAA" + response.data);           
-        }).catch(err => {
-          alert(err)
-        })
-    });
 
     
     return (
@@ -305,7 +306,7 @@ function RegisterAlojamento() {
                                 labelKey="name"
                                 multiple
                                 onChange={setCaract}
-                                options={feature}
+                                options={distritos}
                                 placeholder="Escolha características complementares..."
                                 selected={caract}
                             />
