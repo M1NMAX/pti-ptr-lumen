@@ -3,23 +3,36 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 
-const containerStyle = {
-    position: 'relative',  
-    width: '100%',
-    height: '100%'
-  }
+const style = {
+  position:"static",
+  maxWidth: "450px",
+  left:"20px",
+  height: "350px",
+  overflowX: "hidden",
+  overflowY: "hidden"
+ };
+ const containerStyle = {
+  position: "absolute",
+  maxWidth: "450px",
+  height: "350px"
+ };
   
   export class MapContainer extends Component {
-    render(lat,lon) {
+    
+    render() {
+      console.log(this.props.coordinates[0]);
+
+      console.log(this.props.coordinates[1]);
       return (
         <Map 
           google={this.props.google}
-          zoom={14}
-          style={containerStyle}
+          zoom={10}
+          style={style}
+          containerStyle={containerStyle}
           initialCenter={
             {
-              lat: -1.2884,
-              lng: 36.8233
+              lat: 38.97,
+              lng: -9.4
             }
           }
         />

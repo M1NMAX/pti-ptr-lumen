@@ -517,10 +517,9 @@ function ProfileAccommodation() {
                         </Card>
                     </Col>
                 </Row>
-                <Row>
-                    <Container>
-                        <Maps></Maps>
-                    </Container>
+                <Row style={{height:"400px", width:"100%"}}>
+                        <Maps coordinates = {[lat,lon]}></Maps>
+                        <div id="map"></div>
                 </Row>
                 <Row>
                     <Col>
