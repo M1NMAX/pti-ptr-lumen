@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Me from "./Pages/Me";
 import Chat from "./Pages/Chat";
 import Homepage from './Pages/HomePage/';
 import ProfileUser from './Pages/ProfileUser';
@@ -23,6 +24,7 @@ function Routes() {
             <Route path="/" exact component={Homepage} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            <Route path="/me" exact component={Me} />
             <Route path="/listChat" exact component={ListUsersChat} />
             <Route path="/chat/:id" exact component={Chat} />
             <Route path="/profileUser/:id" exact component={ProfileUser} />

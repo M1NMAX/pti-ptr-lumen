@@ -6,6 +6,7 @@ import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome';
+import Maps from '../../Components/Maps';
 import Comment from '../../Components/Comments';
 import DatePicker from "react-datepicker";
 import './index.css'
@@ -13,7 +14,8 @@ import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
-import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
+
 
 function ProfileAccommodation() {
     const history = useHistory(); //para o botão de voltar atrás
@@ -26,10 +28,10 @@ function ProfileAccommodation() {
     const [dates, setDates] = useState([]);
     const [accommodationComments, setaccommodationComments] = useState([]);
     const [isFavourite, setIsFavourite]= useState(false);
-
     const [content, setContent] = useState('');
     const [star, setStar] = useState(0);
-
+    const [lat, setaccommodationLat] = useState(0);
+    const [lon, setaccommodationLon] = useState(0);
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState( );
     const [show, setShow] = useState(false);
@@ -76,7 +78,8 @@ function ProfileAccommodation() {
             setaccommodationInfo(response.data.aboutAccommodation.info);
             setaccommodationRequirements(response.data.aboutAccommodation.requirements);
             setaccommodationComments(response.data.commentsAboutAccommodation);
-
+            setaccommodationLat(response.data.aboutAccommodation.latitude);
+            setaccommodationLon(response.data.aboutAccommodation.longitude);
         }).catch(err => {
           alert(err)
         })
@@ -279,6 +282,11 @@ function ProfileAccommodation() {
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
         var profilePic3=DefaultRoomPic3;
+
+        const mapStyles = {
+            width: '100%',
+            height: '100%'
+          };
     
         return (
             <div>
@@ -381,6 +389,15 @@ function ProfileAccommodation() {
                         </Card>
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
+                                <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Concelho:</Card.Title>
+                                <Card.Text>
+                                
+                                concelho, distrito
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '100%' }}>
+                            <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Card.Title>
                                 <Card.Text>
                                     {accommodation.price}&euro;
@@ -443,12 +460,12 @@ function ProfileAccommodation() {
                                 </Card.Text>
                             </Card.Body>
                             
-                            {/* <Card.Body>
-                                <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras informações complementares: </Card.Title>
+                            <Card.Body>
+                                <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras características complementares: </Card.Title>
                                 <Card.Text>
-                                    Oi
+                                    Cenas que vem da BD
                                 </Card.Text>
-                            </Card.Body> */}
+                            </Card.Body>
                         </Card>
                         
                     </Col>
@@ -500,6 +517,10 @@ function ProfileAccommodation() {
                         </Card>
                     </Col>
                 </Row>
+                <Row style={{height:"400px", width:"100%"}}>
+                        <Maps coordinates = {[lat,lon]}></Maps>
+                        <div id="map"></div>
+                </Row>
                 <Row>
                     <Col>
                     <Card style={{ width: '100%', marginTop: '2%' }}>
@@ -543,5 +564,4 @@ function ProfileAccommodation() {
             </div>
         )
 }
-
 export default ProfileAccommodation;
