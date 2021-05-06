@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 
 class UsersController extends Controller
@@ -133,13 +135,19 @@ class UsersController extends Controller
         $response = ['user'=>$user, 'extra'=>$user->userable()->first(), 'status'=>true];
         return response($response, 200);
     }
+
     public function update($id, Request $request)
     {
         $user = User::find($id);
-        $user->update($request->all());
-        $response = ['message' => 'your data have been successfully updated'];
+        $user->update($request->only('username', 'email', 'name', 'birthdate'));
+        if($request->type === 'guest')
+        {
+            $user->userable()->update($request->only('college', 'gender', 'age', 'pets', 'smoker'));
+        }
+        $response = ['message' => 'data have been updated successfuly', 'status'=> true];
         return response($response, 200);
     }
+
     public function destroy($id)
     {
         $user = User::find($id);
