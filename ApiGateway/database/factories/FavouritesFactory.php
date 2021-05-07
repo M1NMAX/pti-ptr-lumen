@@ -22,7 +22,7 @@ class FavouritesFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->randomNumber(1),
+            'user_id' => $this->faker->numberBetween(1, 10),
             'accommodation_id' => $this->faker->numberBetween(1, 10),
 
         ];

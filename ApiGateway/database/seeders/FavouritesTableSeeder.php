@@ -15,6 +15,6 @@ class FavouritesTableSeeder extends Seeder
      */
     public function run()
     {
-        Favourites::factory(\App\Favourites::class)->count(5)->create();
+        Favourites::factory(\App\Favourites::class)->count(25)->create();
     }
 }

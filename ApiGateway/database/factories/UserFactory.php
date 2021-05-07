@@ -25,16 +25,16 @@ class UserFactory extends Factory
     public function definition()
     {
 
-        $type = $this->faker->randomElement(['App\Models\Guest', 'App\Models\Landlord']);
+        // $type = $this->faker->randomElement(['App\Models\Guest', 'App\Models\Landlord']);
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'username' => $this->faker->userName,
             'password' => Hash::make('password'),
             'birthdate' => $this->faker->date(),
-            'userable_id' => $type === 'App\Models\Guest'?
-                            Guest::factory(\App\Models\Guest::class) : Landlord::factory(\App\Models\Landlord::class),
-            'userable_type' =>$type,
+            // 'userable_id' => $type === 'App\Models\Guest'?
+            //                 Guest::factory(\App\Models\Guest::class) : Landlord::factory(\App\Models\Landlord::class),
+            // 'userable_type' =>$type,
         ];
     }
 }

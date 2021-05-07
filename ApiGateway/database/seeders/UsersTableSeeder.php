@@ -5,7 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\User;
+use App\Models\Guest;
+use App\Models\Landlord;
 use App\Models\Favourites;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -15,7 +18,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(\App\User::class)
-        ->has(Favourites::factory(\App\Favourites::class)->count(3))->count(10)->create();
+        User::factory(\App\User::class)->count(20)->state(new Sequence(
+            ['userable_type' => 'App\Models\Guest', 'userable_id'=> Guest::factory(\App\Models\Guest::class)],
+            ['userable_type' => 'App\Models\Landlord', 'userable_id'=> Landlord::factory(\App\Models\Landlord::class)],
+        ))->create();
     }
 }
