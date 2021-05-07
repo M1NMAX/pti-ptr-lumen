@@ -16,6 +16,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
     const[userExtra, setUserExtra] = useState([]);
     const[accommodationData, setAccommodationData] = useState([]);
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
+    const[userAge, setUserAge]= useState(); 
 
     
 
@@ -33,6 +34,12 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 if(response.data.status){
                     setUserData(response.data.user)
                     setUserExtra(response.data.extra);
+                    //calculates user's age 
+                    let birth = new Date(response.data.user.birthdate);
+                    let ageDifMs = Date.now() - birth.getTime();
+                    let ageDate = new Date(ageDifMs); // miliseconds from epoch
+                    setUserAge(Math.abs(ageDate.getUTCFullYear() - 1970));
+
                 }else{
                     localStorage.clear();
                     history.push('/login')
@@ -92,7 +99,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                             <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Tem animais de estimação</p>:
                             <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Tem animais de estimação</p>}
 
-                        {userExtra.age >= accommodationRequirements.ageRangeBot  && userExtra.age <= accommodationRequirements.ageRangeTop?
+                        {userAge >= accommodationRequirements.ageRangeBot  && userAge <= accommodationRequirements.ageRangeTop?
                             <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Idade</p>:
                             <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Idade</p>}
 
