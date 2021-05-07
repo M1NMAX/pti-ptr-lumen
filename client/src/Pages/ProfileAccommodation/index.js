@@ -389,9 +389,9 @@ function ProfileAccommodation() {
                         </Card>
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
-                                <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Concelho:</Card.Title>
+                                <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Card.Title>
                                 <Card.Text>      
-                                concelho, distrito
+                                {accommodation.district}, {accommodation.county}
                                 </Card.Text>
                             </Card.Body>
                         </Card>

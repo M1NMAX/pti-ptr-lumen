@@ -45,7 +45,7 @@ function Dashboard() {
                 setUser(response.data);
                 console.log(response.data.id)
 
-                api.get('api/chat/notifications/' + response.data.id).then(responseChatNotification => {
+                api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
                   console.log(responseChatNotification.data);
                   if(responseChatNotification.data.length == 0){
                     setImgC(chatImg);
