@@ -68,7 +68,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
 
-        
+        $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
+        $router->get('/rentedOwnAccommodation/{id}', 'AccommodationController@showRentLandlord');
+
+
+
+
+
     });
 
 
@@ -81,6 +87,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/chatNotifications/{userId}', 'ChatController@notification');
         $router->post('/addMessage', 'ChatController@storeMessage');
 
-        
+
     });
 });

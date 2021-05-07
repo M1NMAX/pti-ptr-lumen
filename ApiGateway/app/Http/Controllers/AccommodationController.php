@@ -127,7 +127,19 @@ class AccommodationController extends Controller
         return response($response);
     }
 
-    
+    public function showRentGuest($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rental/rentedAccommodation/'. $id);
+        return response($response);
+    }
+
+    public function showRentLandlord($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rental/rentedOwnAccommodation/'.$id);
+        return response($response);
+    }
+
+
     public function showFeature()
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'feature/');

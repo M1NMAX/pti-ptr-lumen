@@ -121,7 +121,7 @@ function NavBarHome() {
                                 {/* show auth user data  */}
                                 <Form inline className="searchDashboard">
                                     <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                                    <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                    <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
