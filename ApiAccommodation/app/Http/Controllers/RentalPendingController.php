@@ -84,7 +84,8 @@ class RentalPendingController extends Controller
             'user_id' => $rentalAccepted->user_id,
             'price' => $rentalAccepted->price,
             'beginDate' => $rentalAccepted->beginDate,
-            'endDate' => $rentalAccepted->endDate
+            'endDate' => $rentalAccepted->endDate,
+            'paymentState' => false
         ]);
         $rentalAccepted->delete();
 
