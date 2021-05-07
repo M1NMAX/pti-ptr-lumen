@@ -8,7 +8,7 @@ import NavBarHome from '../../Components/NavBarHome'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faMapMarkerAlt, faSearchLocation, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {faMapMarkerAlt, faSearchLocation, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft, faTemperatureLow} from '@fortawesome/free-solid-svg-icons'
 import Footer from '../../Components/Footer'
 import { Typeahead } from 'react-bootstrap-typeahead';
 import concelhos from './concelhos.js';
@@ -47,18 +47,18 @@ function RegisterAlojamento() {
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
 
+    
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
-            setFeature(response.data); 
-            //console.log("AAAAAAA" + response.data);           
+            setFeature(response.data.data);            
         }).catch(err => {
           alert(err)
         })
-    });
+    }, []);
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
-
+        console.log(caract);
         let data = {
             "landlord_id": userId,
             "name": title,
@@ -106,9 +106,9 @@ function RegisterAlojamento() {
                 }
             }).catch(err => {
             alert(err)
-            })
+             })
         }
-    }
+    } 
 
 
     
@@ -307,10 +307,11 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
                             <Typeahead
                                 id="basic-typeahead-multiple"
-                                labelKey="name"
+                                labelKey={"id", "name"}
+                                
                                 multiple
                                 onChange={setCaract}
-                                options={distritos}
+                                options={feature}
                                 placeholder="Escolha características complementares..."
                                 selected={caract}
                             />
