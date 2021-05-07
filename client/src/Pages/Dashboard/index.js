@@ -19,7 +19,7 @@ import Footer from '../../Components/Footer'
 import './index.css'
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faCalendar, faCalendarMinus, faEdit, faHeart, faHome, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
@@ -70,43 +70,44 @@ function Dashboard() {
               <Col sm={12} lg={2} className="sidebar">
                 <Row>
                   <a href="/listChat">
-                    <img className = "imgDashboard" src={imgC}></img> Mensagens
+                    {/* <img className = "imgDashboard" src={imgC}></img> */}
+                    <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
                   </a>
                 </Row>
                 <Row>
                   <a href="/registerAccommodation">
-                    <img className = "imgDashboard" src={create}></img> Adicionar Alojamento
+                    {/* <img className = "imgDashboard" src={create}></img> */}
+                    <FontAwesomeIcon icon={faPlusCircle} size="2x"/> Adicionar Alojamento
                   </a>
                 </Row>
                 <Row>
                   <a href="/pending">
-                    <img className = "imgDashboard" src={pending}></img> Pendentes
+                    {/* <img className = "imgDashboard" src={pending}></img> */}
+                    <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pendentes
                   </a>
                 </Row>
                 <Row>
                   <a href="/profile">
-                    <img className = "imgDashboard" src={profile}></img> Perfil
+                    {/* <img className = "imgDashboard" src={profile}></img>  */}
+                    <FontAwesomeIcon icon={faUser} size="2x"/> Perfil
                   </a>
                 </Row>
                 <Row>
                   <a href="/pending">
-                    <img className = "imgDashboard" src={edit}></img> Editar Alojamento
+                    {/* <img className = "imgDashboard" src={edit}></img>  */}
+                    <FontAwesomeIcon icon={faEdit} size="2x"/> Editar Alojamento
                   </a>
                 </Row>
-                <Row>
-                  <a href="/">
-                    <img className = "imgDashboard" src={home}></img> Página Inicial
-                  </a>
-                </Row>
+                
               </Col>
               <Col sm={10} lg={10}>
                 <Card className="text-center content">
                     <Card.Body>
                         <Card.Title>Bem-vindo, {user.username}</Card.Title>
-                        <Form inline className="searchDashboard">
+                        {/* <Form inline className="searchDashboard">
                           <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                           <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                        </Form>
+                        </Form> */}
                     </Card.Body>
                 </Card>   
               </Col>
@@ -126,43 +127,39 @@ function Dashboard() {
           <Col sm={12} lg={2} className="sidebar">
             <Row>
               <a href="/listChat">
-                <img className = "imgDashboard" src={imgC}></img> Mensagens
+              <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
               </a>
             </Row>
             <Row>
               <a href="/registerAccommodation">
-                <img className = "imgDashboard" src={search}></img> Procurar Alojamento
+              <FontAwesomeIcon icon={faSearch} size="2x"/> Procurar Alojamento
               </a>
             </Row>
             <Row>
               <a href="/pending">
-                <img className = "imgDashboard" src={favourite}></img> Alojamentos Favoritos
+              <FontAwesomeIcon icon={faHeart} size="2x"/> Alojamentos Favoritos
               </a>
             </Row>
             <Row>
               <a href="/profile">
-                <img className = "imgDashboard" src={profile}></img> Perfil
+              <FontAwesomeIcon icon={faUser} size="2x"/> Perfil
               </a>
             </Row>
             <Row>
               <a href="/pending">
-                <img className = "imgDashboard" src={manage}></img> Gerir Alojamento/os
+              <FontAwesomeIcon icon={faTasks} size="2x"/> Gerir Alojamento/os
               </a>
             </Row>
-            <Row>
-              <a href="/">
-                <img className = "imgDashboard" src={home}></img> Página Inicial
-              </a>
-            </Row>
+            
           </Col>
           <Col sm={10} lg={10}>
             <Card className="text-center content">
                 <Card.Body>
                     <Card.Title>Bem-vindo, {user.username}</Card.Title>
-                    <Form inline className="searchDashboard">
+                    {/* <Form inline className="searchDashboard">
                       <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                       <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                    </Form>
+                    </Form> */}
                 </Card.Body>
             </Card>   
           </Col>

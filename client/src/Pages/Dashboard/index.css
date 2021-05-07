@@ -8,12 +8,13 @@
 }
 
 .sidebar {
+  background-color: #04aa6d;
   margin: 0;
   padding: 0;
-  width: 15%;
   position: fixed;
-  height: 100%;
-  overflow: auto;
+  /* height: 100%; */
+  width: 50%;
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -22,6 +23,7 @@
   color: black;
   padding: 16px;
   text-decoration: none;
+  width: 100%;
 }
 
 .sidebar a.active {

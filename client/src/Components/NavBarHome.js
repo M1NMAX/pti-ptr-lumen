@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faHeart, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 function NavBarHome() {
@@ -59,10 +59,10 @@ function NavBarHome() {
       }
 
     return (
-        <div className="header">
+        <div className="header" style={{margin: "60px"}}>
           <Switch>
                 <Route exact path="/" >
-                    <Navbar bg="white" expand="lg">
+                    <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
@@ -87,7 +87,7 @@ function NavBarHome() {
                     </Navbar>
                 </Route>
                 <Route exact path="/login">
-                    <Navbar bg="white" expand="lg">
+                    <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
@@ -101,7 +101,7 @@ function NavBarHome() {
                     </Navbar>
                 </Route>
                 <Route exact path="/register">
-                    <Navbar bg="white" expand="lg">
+                    <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
@@ -113,12 +113,16 @@ function NavBarHome() {
                         </Navbar.Collapse>
                     </Navbar>
                 </Route>
-                <Navbar bg="white" expand="lg">
+                <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
                             <Nav className="text-center">
                                 {/* show auth user data  */}
+                                <Form inline className="searchDashboard">
+                                    <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
+                                    <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
