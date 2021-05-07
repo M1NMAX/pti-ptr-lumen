@@ -13,6 +13,8 @@ import Footer from '../../Components/Footer'
 import { Typeahead } from 'react-bootstrap-typeahead';
 import concelhos from './concelhos.js';
 import distritos from './distritos.js';
+import AutoComplete from '../../Components/AutoComplete';
+import Maps from '../../Components/MapsRegister';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 function RegisterAlojamento() {
@@ -310,6 +312,10 @@ function RegisterAlojamento() {
                                 placeholder="Escolha características complementares..."
                                 selected={caract}
                             />
+                        </Form.Group>
+                        <Form.Group controlId="formCategory14" style={{height:"400px"}}>
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Assinale a localização:</Form.Label>
+                            <Maps></Maps>
                         </Form.Group> 
                     </Col>
                     
