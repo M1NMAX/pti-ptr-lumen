@@ -114,6 +114,7 @@ function RegisterAlojamento() {
     
     return (
         <div>
+
             <NavBarHome/>
             <Container>
             <Row  className= "mt-3 mb-3">
