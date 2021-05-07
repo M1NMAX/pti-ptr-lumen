@@ -76,8 +76,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         //$router->get('/', 'ChatController@index');
         $router->get('/user/{id}', 'ChatController@show');
         $router->get('/{id}', 'ChatController@showId');
-        $router->get('/{id}/messages', 'ChatController@messages');
-        $router->get('/{id1}/{id2}', 'ChatController@chatExists');
+        $router->get('/{id}/messages/{user_id}', 'ChatController@messages');
+        $router->get('/{id1}/{id2}/{accommodation_id}', 'ChatController@chatExists');
         $router->get('/chatNotifications/{userId}', 'ChatController@notification');
         $router->post('/addMessage', 'ChatController@storeMessage');
 

@@ -26,6 +26,7 @@ class ChatFactory extends Factory
         return [      
             'user_id1' => $this->faker->randomDigit,
             'user_id2' => $this->faker->randomDigit,
+            'accommodation_id' => $this->faker->randomDigit,
         ];
     }
 }

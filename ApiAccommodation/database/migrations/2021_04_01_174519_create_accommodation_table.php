@@ -16,15 +16,18 @@ class CreateAccommodationTable extends Migration
         Schema::create('accommodation', function (Blueprint $table) {
             $table->id();
             $table->integer('landlord_id'); 
-            $table->string('name');
+            $table->string('name', 50);
             $table->string('description');
             $table->float('rating');
             $table->integer('nRates');
             $table->integer('price');
-            $table->string('address');
+            $table->string('address', 120);
+            $table->string('district');
+            $table->string('county');
             $table->integer('latitude');  
             $table->integer('longitude');    
             $table->boolean('available');  
+            $table->string('profileImage');
             $table->timestamps();       
         });
     } 

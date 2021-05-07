@@ -36,9 +36,9 @@ class ChatController extends Controller
         return response($response);
     }
 
-    public function messages($id)
+    public function messages($id,$user_id)
     {
-        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id. '/messages');
+        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id. '/messages' . '/' . $user_id );
         return response($response);
     }
 
@@ -48,9 +48,9 @@ class ChatController extends Controller
         return response($response);
     }
 
-    public function chatExists($id1, $id2)
+    public function chatExists($id1, $id2, $accommodation_id)
     {
-        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id1 . '/' . $id2);
+        $response = Http::get(env('API_CHAT_URL') . 'chat/' . $id1 . '/' . $id2 . '/' . $accommodation_id);
         return response($response);
     }
 

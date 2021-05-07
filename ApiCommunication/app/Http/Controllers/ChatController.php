@@ -51,13 +51,15 @@ class ChatController extends Controller
     }
     
 
-    public function chatExists($id1, $id2){
+    public function chatExists($id1, $id2,$accommodation_id){
         $res = Chat::where('user_id1', $id1) 
                     ->where('user_id2', $id2)
+                    ->where('accommodation_id', $accommodation_id)
                     ->get();
         if(count($res) == 0){
             $res2 = Chat::where('user_id1', $id2) 
                     ->where('user_id2', $id1)
+                    ->where('accommodation_id', $accommodation_id)
                     ->get();
             if(!(count($res2) == 0)){
                 
@@ -72,6 +74,7 @@ class ChatController extends Controller
             $c = new Chat;
             $c->user_id1 = $id1;
             $c->user_id2 = $id2;
+            $c->accommodation_id = $accommodation_id;
             $c->save();
             return response()->json(['data' => ['id' => $c->id], 'status'=>true]);
         }else{

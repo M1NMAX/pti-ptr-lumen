@@ -21,6 +21,8 @@ class CreateRentalPendingTable extends Migration
             $table->integer('price');
             $table->string('beginDate');
             $table->string('endDate');
+            $table->boolean('landlordAccepted');
+            $table->boolean('guestAccepted');
             $table->timestamps();
         });
     }

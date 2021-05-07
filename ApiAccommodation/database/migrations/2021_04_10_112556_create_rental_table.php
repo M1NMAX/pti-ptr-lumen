@@ -20,6 +20,7 @@ class CreateRentalTable extends Migration
             $table->integer('price');
             $table->string('beginDate');
             $table->string('endDate');
+            $table->boolean('paymentState');
         });
     }
 

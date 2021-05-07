@@ -123,7 +123,10 @@ $router->group(['prefix' => 'rental'], function () use ($router) {
     //-------------PUTS----------------
 
     $router->put('/{rental}', 'RentalController@update');
-
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //PAY RENT
+    $router->put('/payRent/{id}', 'RentalController@payRent');
+    ///////////////////////////////////////////////////////////////////////////////////////////
     //-------------DELETES----------------
 
     $router->delete('/{rental}', 'RentalController@destroy');
@@ -140,6 +143,9 @@ $router->group(['prefix' => 'rentalpending'], function () use ($router) {
     $router->post('/', 'RentalPendingController@store');
     $router->post('accept/{id}', 'RentalPendingController@accept');
 
+
+    $router->post('landlordAccept/{id}', 'RentalPendingController@landlordAccept');
+    $router->post('guestAccept/{id}', 'RentalPendingController@guestAccept');
     //-------------PUTS----------------
 
     $router->put('/{rental}', 'RentalPendingController@update');

@@ -24,6 +24,9 @@ class Rental extends Model implements AuthenticatableContract, AuthorizableContr
         'accommodation_id', 'user_id','price','beginDate', 'endDate'
     ];   
 
+    protected $attributes = [
+        'paymentState' => false,
+     ];
     public $timestamps = false;
     
     public function accommodations(){

@@ -91,6 +91,35 @@ class RentalPendingController extends Controller
         return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
     }
 
+///////////////////////////////////////////////////////////////////////
+    public function landlordAccept($id)
+    {
+        $rentalAccepted = RentalPending::find($id);
+        $rentalAccepted->landlordAccepted = false;
+        $rentalAccepted->touch();
+        $rentalAccepted->save();
+        return response()->json(['data' => ['message' => 'Aluguer foi aceite pelo senhorio'], 'status'=>true]);
+    }
+
+
+    public function guestAccept($id)
+    {
+        $rentalAccepted = RentalPending::find($id);
+        DB::table('rental')->insert([
+            'accommodation_id' => $rentalAccepted->accommodation_id,
+            'user_id' => $rentalAccepted->user_id,
+            'price' => $rentalAccepted->price,
+            'beginDate' => $rentalAccepted->beginDate,
+            'endDate' => $rentalAccepted->endDate
+        ]);
+        $rentalAccepted->delete();
+        return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
+    }
+
+
+
+///////////////////////////////////////////////////////////////////////
+
     public function checkNotification($landlord_id)
     {
         //POR FAZER

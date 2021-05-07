@@ -85,4 +85,16 @@ class RentalController extends Controller
         //RETURNS IDS
         return $ownAccommodations;
     }
+    ///////////////////////////////////////////////////////////////////////
+
+    public function payRent($id, Request $request)
+    {
+        $rental = $this->rental->find($id);
+        $rental->paymentState = true;
+        $rental->save();
+        return response()->json(['data' => ['message' => 'Aluguer pago com sucesso']]);
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////
 }

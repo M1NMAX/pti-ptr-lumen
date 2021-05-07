@@ -31,13 +31,8 @@ $router->group(['prefix' => 'chat'], function () use($router){
     $router->get('/','ChatController@index');
     $router->get('/{id}', 'ChatController@show');
     $router->get('user/{id}', 'ChatController@showUserId');
-    $router->get('/{id}/messages', 'ChatController@showMsn');
-    $router->get('/notifications/{user_id}', 'ChatController@notificationCheck');
-    
-    $router->get('/{id1}/{id2}', 'ChatController@chatExists');
-
+    $router->get('/{id}/messages/{user_id}', 'ChatController@showMsn');
+    $router->get('/notifications/{user_id}', 'ChatController@notificationCheck'); 
+    $router->get('/{id1}/{id2}/{accommodation_id}', 'ChatController@chatExists');
     $router->post('/','ChatController@store');
-
-
-
 });

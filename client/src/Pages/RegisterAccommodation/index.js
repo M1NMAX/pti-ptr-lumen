@@ -50,7 +50,7 @@ function RegisterAlojamento() {
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
             setFeature(response.data); 
-            console.log("AAAAAAA" + response.data);           
+            //console.log("AAAAAAA" + response.data);           
         }).catch(err => {
           alert(err)
         })
@@ -65,6 +65,8 @@ function RegisterAlojamento() {
             "description" :content, 
             "price": price,
             "address": adress,
+            "district": distrito[0],
+            "county": concelho[0],
             "latitude": "100",
             "longitude": "100",
             "rooms": nRooms,

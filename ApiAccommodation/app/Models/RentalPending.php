@@ -24,4 +24,9 @@ class RentalPending extends Model implements AuthenticatableContract, Authorizab
         'landlord_id','accommodation_id', 'user_id','price','beginDate', 'endDate'
     ];   
 
+
+    protected $attributes = [
+        'landlordAccepted' => false,
+        'guestAccepted' => false,
+     ];
 }

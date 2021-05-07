@@ -224,9 +224,9 @@ function ProfileAccommodation() {
         if(token ==null || token ===''){
             alert('Não estas autenticado');
         }else{
-            console.log(id1,id2)
+            console.log(id1,id2,accommodation.id)
 
-            api.get('/api/chat/' + id1.toString() + '/' + id2.toString(), {
+            api.get('/api/chat/' + id1.toString() + '/' + id2.toString() + '/' + accommodation.id, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

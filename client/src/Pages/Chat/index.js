@@ -95,7 +95,7 @@ function Chat() {
           
                         api.get('api/users/'+ idTarget).then(responseUser => {
                             setUserName(responseUser.data.user.name);
-                            api.get('api/chat/'+ id + '/messages').then(responseMessages => {
+                            api.get('api/chat/'+ id + '/messages/' + response.data.id).then(responseMessages => {
                             //setAllMessages(responseMessages.data);    
                             var nMessages =  Object.keys(responseMessages.data).length;;
                             var allMessages = [];

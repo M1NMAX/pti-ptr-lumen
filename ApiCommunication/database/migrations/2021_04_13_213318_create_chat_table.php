@@ -17,6 +17,7 @@ class CreateChatTable extends Migration
             $table->id();
             $table->integer('user_id1');
             $table->integer('user_id2');
+            $table->integer('accommodation_id');
         });
     }
     public $timestamps = false;
