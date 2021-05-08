@@ -59,7 +59,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'AccommodationController@show');
         $router->post('/', 'AccommodationController@store');
         $router->get('/{id}/dates', 'AccommodationController@showDates');
-
+        $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
         $router->get('/{id}/comments', 'AccommodationController@showComments');
         $router->post('/comment', 'AccommodationController@storeComment');
 

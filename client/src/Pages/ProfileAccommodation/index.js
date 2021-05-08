@@ -38,6 +38,7 @@ function ProfileAccommodation() {
     const [endDate, setEndDate] = useState( );
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
+    const [features, setFeatures] = useState();
    
     const [isDisabled, setDisabled] = useState(true);
     const [showMessage, setshowMessage] = useState(false);
@@ -88,6 +89,25 @@ function ProfileAccommodation() {
           alert(err)
         })
         
+        api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
+            // you must define a default operation
+            console.log(responseFeatures.data.length)
+            let featuresArray = [];
+            if(responseFeatures.data.length == 0){
+                setFeatures("Sem características extra");
+            }else{
+                for(let i = 0; i < responseFeatures.data.length; i++ ){
+                    featuresArray.push(<p>{responseFeatures.data[i].name} </p>);
+                }
+                setFeatures(featuresArray);
+            }
+            
+            
+
+        }).catch(err => {
+          alert(err)
+        })
+
         api.get('api/accommodations/'+ id + '/dates').then(response => {
             // you must define a default operation
             console.log(response.data)
@@ -462,7 +482,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title> <FontAwesomeIcon icon={faPlus} /> Outras características complementares: </Card.Title>
                                 <Card.Text>
-                                   {/*{accommodationFeature.feature_id}*/}
+                                   {features}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
