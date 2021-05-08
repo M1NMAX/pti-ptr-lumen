@@ -411,7 +411,7 @@ function ProfileAccommodation() {
                             <Card.Body>
                                 <Card.Title><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Card.Title>
                                 <Card.Text>      
-                                {accommodation.district}, {accommodation.county}
+                                {accommodation.county}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
