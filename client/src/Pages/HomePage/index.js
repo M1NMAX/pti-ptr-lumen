@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 import api from '../../services/api';
+//import { Typeahead } from 'react-bootstrap-typeahead';
+//import localizacoes from '../RegisterAccommodation/localizacoes.js';
+
 function Homepage() {
     const [Accmmodations, setAcommodations] = useState([]);
     const history = useHistory();
@@ -48,7 +51,16 @@ function Homepage() {
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
                             <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)}/>
-                            <Button variant="primary" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                            {/*<Typeahead
+                                className="mr-sm-2 search-box" 
+                                id="basic-typeahead-single"
+                                labelKey="name"
+                                onChange={setLocal}
+                                options={localizacoes}
+                                placeholder="Onde?(Concelho/Freguesia/Morada)" 
+                                selected={local}
+                            />*/}
+                            <Button variant="info" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                         </Form>
                         <div className="buttonImg" >
                             <a href='#down'> 

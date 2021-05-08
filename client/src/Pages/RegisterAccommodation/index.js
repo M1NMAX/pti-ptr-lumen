@@ -11,8 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMapMarkerAlt, faSearchLocation, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft, faTemperatureLow} from '@fortawesome/free-solid-svg-icons'
 import Footer from '../../Components/Footer'
 import { Typeahead } from 'react-bootstrap-typeahead';
-import concelhos from './concelhos.js';
-import distritos from './distritos.js';
+import localizacoes from './localizacoes.js';
 import AutoComplete from '../../Components/AutoComplete';
 import Maps from '../../Components/MapsRegister';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
@@ -42,8 +41,7 @@ function RegisterAlojamento() {
 
 
     const  history = useHistory();
-    const [concelho, setConcelho] = useState([]);
-    const [distrito, setDistrito] = useState([]);
+    const [localizacao, setLocalizacao] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
 
@@ -65,13 +63,12 @@ function RegisterAlojamento() {
             "description" :content, 
             "price": price,
             "address": adress,
-            "district": distrito[0],
-            "county": concelho[0],
+            "county": localizacao[0],
             "latitude": "100",
             "longitude": "100",
             "rooms": nRooms,
             "bathRooms" : nWC,
-            "accommodationType": accommodationType,  //DÁ???????
+            "accommodationType": accommodationType, 
             "area":area,
             "solar":solar, 
             "wifi": wifi,
@@ -155,31 +152,18 @@ function RegisterAlojamento() {
                             <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
                         </Form.Group>
 
+
                         <Form.Group controlId="formBasicSolar" >
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Distrito</Form.Label>
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização</Form.Label>
                             <Typeahead
                                 id="basic-typeahead-single"
                                 labelKey="name"
-                                onChange={setDistrito}
-                                options={distritos}
-                                placeholder="Escolha um distrito..."
-                                selected={distrito}
+                                onChange={setLocalizacao}
+                                options={localizacoes}
+                                placeholder="Escolha uma localização..."
+                                selected={localizacao}
                             />
                         </Form.Group>
-
-                        <Form.Group controlId="formBasicSolar" >
-                            <Form.Label><FontAwesomeIcon icon={faSearchLocation} /> Concelho</Form.Label>
-                            <Typeahead
-                                id="basic-typeahead-single"
-                                labelKey="name"
-                                onChange={setConcelho}
-                                options={concelhos}
-                                placeholder="Escolha um concelho..."
-                                selected={concelho}
-                            />
-                        </Form.Group>
-
-                        
 
                         <Form.Group controlId="formBasicPrice" >
                             <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês</Form.Label>
@@ -308,7 +292,7 @@ function RegisterAlojamento() {
                             <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
                             <Typeahead
                                 id="basic-typeahead-multiple"
-                                labelKey={"id", "name"}
+                                labelKey={"name"}
                                 
                                 multiple
                                 onChange={setCaract}

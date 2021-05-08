@@ -15,24 +15,27 @@ import {faArrowLeft, faStar, faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, f
 import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Typeahead } from 'react-bootstrap-typeahead';
-import concelhos from '../RegisterAccommodation/concelhos.js';
-import distritos from '../RegisterAccommodation/distritos.js';
+import localizacoes from '../RegisterAccommodation/localizacoes.js';
 
 function ProfileAccommodationEditable () {
     const  history = useHistory();
     let { id } = useParams();
     const [accommodation, setaccommodation] = useState([]);
 
-    const [concelho, setConcelho] = useState([]);
-    const [distrito, setDistrito] = useState([]);
-    const [caract, setCaract] = useState([]);
-
+    const [localizacao, setLocalizacao] = useState([]);
+    const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
+    const [feature, setFeature] = useState([]);
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
             // you must define a default operation
-        setaccommodation(response.data);
+            setaccommodation(response.data);
         
+        }).catch(err => {
+          alert(err)
+        })
+        api.get('api/accommodations/feature').then(response => {
+            setFeature(response.data.data);            
         }).catch(err => {
           alert(err)
         })
@@ -150,28 +153,17 @@ function ProfileAccommodationEditable () {
                                 accommodation.country}/>
                             </Form.Group>
                             <Form.Group controlId="formBasicSolar" >
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Distrito</Form.Label>
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label>
                                 <Typeahead
                                     id="basic-typeahead-single"
                                     labelKey="name"
-                                    onChange={setDistrito}
-                                    options={distritos}
+                                    onChange={setLocalizacao}
+                                    options={localizacoes}
                                     placeholder="Meter da bd"
-                                    selected={distrito}
+                                    selected={localizacao}
                                 />
                             </Form.Group>
 
-                            <Form.Group controlId="formBasicSolar" >
-                                <Form.Label><FontAwesomeIcon icon={faSearchLocation} /> Concelho</Form.Label>
-                                <Typeahead
-                                    id="basic-typeahead-single"
-                                    labelKey="name"
-                                    onChange={setConcelho}
-                                    options={concelhos}
-                                    placeholder="Meter da bd"
-                                    selected={concelho}
-                                />
-                            </Form.Group>
                             <Form.Group controlId="formCategory2">
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço:</Form.Label>
                                 <Form.Control type="text" defaultValue={accommodation.price} />
@@ -301,7 +293,7 @@ function ProfileAccommodationEditable () {
                                     labelKey="name"
                                     multiple
                                     onChange={setCaract}
-                                    options={concelhos}
+                                    options={feature}
                                     placeholder="Escolha características complementares..."
                                     selected={caract}
                                 />
