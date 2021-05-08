@@ -56,7 +56,14 @@ function RegisterAlojamento() {
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
-        console.log(caract);
+        //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
+        console.log(caract)
+        let caractList = Object.keys(caract)
+        let caractIds = ""    
+        for(let i = 0; i < caractList.length;i++){
+            caractIds+= caract[caractList[i]].id + ","
+        }
+        //console.log(caractIds)
         let data = {
             "landlord_id": userId,
             "name": title,
@@ -64,6 +71,7 @@ function RegisterAlojamento() {
             "price": price,
             "address": adress,
             "county": localizacao[0],
+            "district": 'None',
             "latitude": "100",
             "longitude": "100",
             "rooms": nRooms,
@@ -78,7 +86,7 @@ function RegisterAlojamento() {
             "gender": gender,
             "smoker": smoker,
             "pets":pet,
-            "feature_id":caract,
+            "features":caractIds,
         };
 
         console.log(data);

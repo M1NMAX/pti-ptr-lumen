@@ -71,6 +71,10 @@ class AccommodationController extends Controller
 
             ]);
 
+            $responseAccommodationAddFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $accommodation_id . '/addFeatures', [
+                'features' => $request->features,
+            ]);
+            
             if ($responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
                 $finalResponse = ['newAccommodationId' => $accommodation_id, 'message' => 'alojamento registado com sucesso', 'status' => true];
                 return response($finalResponse, 200);

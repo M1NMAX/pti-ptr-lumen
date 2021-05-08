@@ -126,8 +126,8 @@ class AccommodationController extends Controller
     {
         $accommodation = Accommodation::find($id);
         $cIds = explode(',', $request->input("features"));
+        array_pop($cIds);
         $accommodation->features()->attach($cIds);
-
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
 
