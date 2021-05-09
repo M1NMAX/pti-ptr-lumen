@@ -1,0 +1,1155 @@
+[2021-04-27 07:42:08] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Target [Illuminate\Contracts\Http\Kernel] is not instantiable. in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1049
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(842): Illuminate\Container\Container->notInstantiable('Illuminate\\Cont...')
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\Cont...')
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\Cont...', Array)
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\Cont...')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Target [Illuminate\\Contracts\\Http\\Kernel] is not instantiable. in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1049
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(842): Illuminate\\Container\\Container->notInstantiable('Illuminate\\\\Cont...')
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\Cont...')
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\\\Cont...')
+#6 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1049)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Target [Illuminate\Contracts\Http\Kernel] is not instantiable. in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1049
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(842): Illuminate\Container\Container->notInstantiable('Illuminate\\Cont...')
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\Cont...')
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\Cont...', Array)
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\Cont...')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Target [Illuminate\\Contracts\\Http\\Kernel] is not instantiable. in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1049
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(842): Illuminate\\Container\\Container->notInstantiable('Illuminate\\\\Cont...')
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\Cont...')
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\\\Cont...')
+#6 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1049)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:42:08] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:43:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:43:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:44:00] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\Exception\\OAuthServerException.php:243)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(106): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied('Access token co...')
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#27 {main}
+"} 
+[2021-04-27 07:44:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:44:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:45:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:45:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:46:14] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:46:14] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:47:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:47:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:48:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:48:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:49:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:49:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:50:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:50:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:51:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:51:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:52:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:52:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:52:05] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:52:05] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:53:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:53:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:54:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:54:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:55:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:55:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:56:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:56:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:57:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:57:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:58:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:58:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:59:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 07:59:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:00:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:00:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:01:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:01:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:02:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:02:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:02:05] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:02:05] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:03:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:03:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:04:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:04:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:05:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:05:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:06:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:06:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:07:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:07:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:08:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:08:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:09:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:09:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:10:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:10:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:11:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 08:11:05] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-27 14:19:39] local.ERROR: SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php:678)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#18 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#39 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(949): call_user_func(Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(984): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(412): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(338): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(671): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#28 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#45 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#46 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#47 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#48 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#49 {main}
+"} 
+[2021-04-27 14:19:41] local.ERROR: SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php:678)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#18 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#39 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(949): call_user_func(Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(984): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(412): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(338): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(671): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#28 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#45 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#46 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#47 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#48 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#49 {main}
+"} 
+[2021-04-27 14:19:50] local.ERROR: SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente (SQL: select * from `oauth_access_tokens` where `id` = 9235b1035238ac307d9d3e6bcd914181381f6550cd3309b5efb1452c6a5a2678930c21564444e7ba limit 1) at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php:678)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#18 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#39 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(949): call_user_func(Object(Closure))
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(984): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(412): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(338): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(671): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(638): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Connection.php(346): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2313): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2301): Illuminate\\Database\\Query\\Builder->runSelect()
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2796): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Query\\Builder.php(2302): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(588): Illuminate\\Database\\Query\\Builder->get(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\database\\Concerns\\BuildsQueries.php(242): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(28): Illuminate\\Database\\Eloquent\\Builder->first()
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\TokenRepository.php(100): Laravel\\Passport\\TokenRepository->find('9235b1035238ac3...')
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Bridge\\AccessTokenRepository.php(88): Laravel\\Passport\\TokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\AuthorizationValidators\\BearerTokenValidator.php(115): Laravel\\Passport\\Bridge\\AccessTokenRepository->isAccessTokenRevoked('9235b1035238ac3...')
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\league\\oauth2-server\\src\\ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(204): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(147): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\Guards\\TokenGuard.php(110): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\passport\\src\\PassportServiceProvider.php(308): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#28 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\auth\\AuthManager.php(307): Illuminate\\Auth\\RequestGuard->user()
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\outes\\web.php(41): Illuminate\\Auth\\AuthManager->__call('user', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): Closure->{closure}()
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Object(Closure))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Dusterio\\LumenPassport\\Lumen7Application), Object(Closure), Array, NULL)
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(299): Illuminate\\Container\\Container->call(Object(Closure), Array)
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#45 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#46 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#47 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#48 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#49 {main}
+"} 
