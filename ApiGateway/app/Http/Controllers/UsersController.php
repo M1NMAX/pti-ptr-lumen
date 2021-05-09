@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['store']]);
+        $this->middleware('auth:api', ['except' => ['store', 'show']]);
     }
 
     public function store(Request $request)

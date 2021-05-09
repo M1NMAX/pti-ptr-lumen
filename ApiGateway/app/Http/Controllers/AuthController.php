@@ -21,38 +21,6 @@ class AuthController extends Controller
     }
 
 
-    /**
-     * Store a new user.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function register(Request $request)
-    {
-        //validate incoming request
-
-        $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed',
-        ]);
-
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()], 422);
-        }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email'=> $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-
-
-        //return successful response
-        return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
-
-    }
 
     /**
      * Get a JWT via given credentials.
