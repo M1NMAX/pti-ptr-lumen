@@ -4063,3 +4063,719 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2021-05-09 20:08:04] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:08:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:09:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:10:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:10:18] local.ERROR: cURL error 7: Failed to connect to localhost port 8010: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8010/accommodation/ {"exception":"[object] (Illuminate\\Http\\Client\\ConnectionException(code: 0): cURL error 7: Failed to connect to localhost port 8010: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8010/accommodation/ at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php:665)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\AccommodationController.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\AccommodationController->index()
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\AccommodationController), 'index', Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#26 {main}
+
+[previous exception] [object] (GuzzleHttp\\Exception\\ConnectException(code: 0): cURL error 7: Failed to connect to localhost port 8010: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8010/accommodation/ at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:210)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(852): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(822): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(808): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(35): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(37): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(61): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(168): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(187): GuzzleHttp\\Client->requestAsync('GET', Object(GuzzleHttp\\Psr7\\Uri), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(719): GuzzleHttp\\Client->request('GET', 'http://localhos...', Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(657): Illuminate\\Http\\Client\\PendingRequest->sendRequest('GET', 'http://localhos...', Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\AccommodationController.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\AccommodationController->index()
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\AccommodationController), 'index', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(166): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#44 {main}
+"} 
+[2021-05-09 20:11:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:12:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:13:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:14:08] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:15:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:16:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:17:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:17:46] local.ERROR: cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 {"exception":"[object] (Illuminate\\Http\\Client\\ConnectionException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php:665)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#27 {main}
+
+[previous exception] [object] (GuzzleHttp\\Exception\\ConnectException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:210)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(852): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(822): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(808): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(35): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(37): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(61): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(168): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(187): GuzzleHttp\\Client->requestAsync('GET', Object(GuzzleHttp\\Psr7\\Uri), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(719): GuzzleHttp\\Client->request('GET', 'http://localhos...', Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(657): Illuminate\\Http\\Client\\PendingRequest->sendRequest('GET', 'http://localhos...', Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#45 {main}
+"} 
+[2021-05-09 20:18:04] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:18:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:18:36] local.ERROR: cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 {"exception":"[object] (Illuminate\\Http\\Client\\ConnectionException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php:665)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#27 {main}
+
+[previous exception] [object] (GuzzleHttp\\Exception\\ConnectException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:210)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(852): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(822): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(808): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(35): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(37): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(61): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(168): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(187): GuzzleHttp\\Client->requestAsync('GET', Object(GuzzleHttp\\Psr7\\Uri), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(719): GuzzleHttp\\Client->request('GET', 'http://localhos...', Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(657): Illuminate\\Http\\Client\\PendingRequest->sendRequest('GET', 'http://localhos...', Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#45 {main}
+"} 
+[2021-05-09 20:19:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:20:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:21:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:21:28] local.ERROR: cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 {"exception":"[object] (Illuminate\\Http\\Client\\ConnectionException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php:665)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#27 {main}
+
+[previous exception] [object] (GuzzleHttp\\Exception\\ConnectException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:210)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(852): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(822): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(808): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(35): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(37): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(61): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(168): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(187): GuzzleHttp\\Client->requestAsync('GET', Object(GuzzleHttp\\Psr7\\Uri), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(719): GuzzleHttp\\Client->request('GET', 'http://localhos...', Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(657): Illuminate\\Http\\Client\\PendingRequest->sendRequest('GET', 'http://localhos...', Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#45 {main}
+"} 
+[2021-05-09 20:22:06] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:23:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:24:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:25:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:25:51] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:26:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:26:07] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:26:52] local.ERROR: cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 {"exception":"[object] (Illuminate\\Http\\Client\\ConnectionException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php:665)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#27 {main}
+
+[previous exception] [object] (GuzzleHttp\\Exception\\ConnectException(code: 0): cURL error 7: Failed to connect to localhost port 8020: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://localhost:8020/chat/notifications/5 at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:210)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(852): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(822): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(808): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(35): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(37): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(61): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#14 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(168): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#15 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(187): GuzzleHttp\\Client->requestAsync('GET', Object(GuzzleHttp\\Psr7\\Uri), Array)
+#16 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(719): GuzzleHttp\\Client->request('GET', 'http://localhos...', Array)
+#17 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(657): Illuminate\\Http\\Client\\PendingRequest->sendRequest('GET', 'http://localhos...', Array)
+#18 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\helpers.php(234): Illuminate\\Http\\Client\\PendingRequest->Illuminate\\Http\\Client\\{closure}(1)
+#19 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(667): retry(0, Object(Closure), 100)
+#20 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\PendingRequest.php(524): Illuminate\\Http\\Client\\PendingRequest->send('GET', 'http://localhos...', Array)
+#21 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\http\\Client\\Factory.php(352): Illuminate\\Http\\Client\\PendingRequest->get('http://localhos...')
+#22 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\support\\Facades\\Facade.php(261): Illuminate\\Http\\Client\\Factory->__call('get', Array)
+#23 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\app\\Http\\Controllers\\ChatController.php(59): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#24 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(36): App\\Http\\Controllers\\ChatController->notification('5')
+#25 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#28 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(611): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#29 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(386): Illuminate\\Container\\Container->call(Array, Array)
+#30 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(352): Laravel\\Lumen\\Application->callControllerCallable(Array, Array)
+#31 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(326): Laravel\\Lumen\\Application->callLumenController(Object(App\\Http\\Controllers\\ChatController), 'notification', Array)
+#32 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(279): Laravel\\Lumen\\Application->callControllerAction(Array)
+#33 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(264): Laravel\\Lumen\\Application->callActionOnArrayBasedRoute(Array)
+#34 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(234): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#35 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(170): Laravel\\Lumen\\Application->handleDispatcherResponse(Array)
+#36 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#37 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\
+ordsoftware\\lumen-cors\\src\\CorsMiddleware.php(45): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#38 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(167): Nord\\Lumen\\Cors\\CorsMiddleware->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#39 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Routing\\Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#40 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\pipeline\\Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#41 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(423): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#42 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(172): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#43 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Concerns\\RoutesRequests.php(109): Laravel\\Lumen\\Application->dispatch(NULL)
+#44 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\public\\index.php(28): Laravel\\Lumen\\Application->run()
+#45 {main}
+"} 
+[2021-05-09 20:27:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:28:04] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
+Stack trace:
+#0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(906): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(868): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(714): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(652): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064
+Stack trace:
+#0 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(971): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(906): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(868): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(714): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php(652): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\xampp\\htdocs\\Projects\\pti-ptr-lumen\\ApiGateway\\vendor\\illuminate\\container\\Container.php:1064)
+[stacktrace]
+#0 {main}
+"} 
+[2021-05-09 20:28:07] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

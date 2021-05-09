@@ -32,7 +32,7 @@ function Dashboard() {
 
     useEffect(() => {
         
-          api.get('api/me', {
+          api.get('api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }

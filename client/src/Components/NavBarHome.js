@@ -23,11 +23,12 @@ function NavBarHome() {
         if(token === null || token ===''){
             setAuth(false);
         }else{
-        api.get('api/me', {
+        api.get('api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }
         }).then( response => {
+            console.log(token);
             if(response.data.status && response.data.status === (401 || 498)){
                 console.log("erro")
                 localStorage.clear();
