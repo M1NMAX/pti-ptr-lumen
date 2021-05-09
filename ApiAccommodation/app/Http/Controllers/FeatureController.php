@@ -53,15 +53,53 @@ class FeatureController extends Controller
 
 
 
-    public function filter($ids, Request $request) 
+    public function filter($filters, Request $request) 
     {
-        $cIds = explode(',', $ids);        
+        $filters = explode(';', $filters); 
+        $cIds = explode(',', $filters[0]);    
+        $infos = explode(',', $filters[1]); 
+        
+        
+        $infoFilter = [];
+        $requirementFilter = [];
+        if(in_array('location', $infos)){
+            $index = array_search('location',$infos);
+            $infoFilter += [];
+        }
+        if(in_array('priceMax', $infos)){
+            $index = array_search('priceMax',$infos);
+            $infoFilter += ['price', '<', $infos[$index+1]];
+        }
+        if(in_array('priceMin', $infos)){
+            $index = array_search('priceMax',$infos);
+            $infoFilter += ['price', '>', $infos[$index+1]];
+        }
+        if(in_array('type', $infos)){
+            $index = array_search('type',$infos);
+            $infoFilter += ['accommodationType', '=', $infos[$index+1]];
+        }
+        if(in_array('wifi', $infos)){
+            $index = array_search('wifi',$infos);
+            $infoFilter += ['price', '=', 1];
+        }
+        if(in_array('clean', $infos)){
+            $index = array_search('clean',$infos);
+            $infoFilter += ['clean', '=', 1];
+        }
+
+
+        if (($key = array_search('', $cIds)) !== false) {
+            unset($cIds[$key]);
+        }
+
+
         $relationships = AF::whereIn('feature_id', $cIds)->get();
-        $accommodationIds = array();
+        $accommodationIds = [];
         foreach($relationships as $r){
             $id = $r->accommodation_id;
             array_push($accommodationIds, $id); 
         }
+
         $aIdCount = array_count_values($accommodationIds);
         $res = array_keys($aIdCount,count($cIds));
         $accommodations = Accommodation::findMany($res);
