@@ -85,7 +85,7 @@ $router->group(['prefix' => 'feature'], function () use ($router) {
     //BUSCAR TODAS AS CARACTERISTICAS
     $router->get('/', 'FeatureController@index');
     //FILTRAR PELAS CARACTERISTICAS DADAS NO ROUTE (EX: 2,3)
-    $router->get('/filter/{ids}', 'FeatureController@filter');
+    $router->get('/filter/{filters}', 'FeatureController@filter');
 
     //-------------POSTS----------------
 
