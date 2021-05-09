@@ -15,14 +15,14 @@ function Search() {
     const [Accmmodations, setAcommodations] = useState([]);
     console.log(location)
     
-    const [localizacao, setLocalizacao] = useState([]);
-    const [accommodationType, setAccommodationType] = useState('');
-    const [wifi, setWifi] = useState('');
-    const [cleaning, setClean] = useState('');
-    const [smoker, setSmoker] = useState('');
-    const [pet, setPet] = useState('');
-    const [ priceMin, setPriceMin ] = useState('');
-    const [ priceMax, setPriceMax ] = useState('');
+    const [localizacao, setLocalizacao] = useState(undefined);
+    const [accommodationType, setAccommodationType] = useState(undefined);
+    const [wifi, setWifi] = useState(undefined);
+    const [cleaning, setClean] = useState(undefined);
+    const [smoker, setSmoker] = useState(undefined);
+    const [pet, setPet] = useState(undefined);
+    const [ priceMin, setPriceMin ] = useState(undefined);
+    const [ priceMax, setPriceMax ] = useState(undefined);
    // setLocalizacao(location);
     const history = useHistory();
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
@@ -46,9 +46,53 @@ function Search() {
     }, []);
 
     async function handleSearch(e) { 
-        console.log(cleaning);
-        console.log(smoker);
-        /*e.preventDefault();
+        e.preventDefault();
+        let filters ={}
+
+        //Cacteristicas extra
+        let caractList = Object.keys(caract)
+        let caractIds = "" 
+        if(caractList.length != 0) {
+            for(let i = 0; i < caractList.length;i++){
+                caractIds+= caract[caractList[i]].id + ","
+            }
+            filters["features"]=caractIds;
+        }
+
+        //Cacteristicas principais
+        if(wifi != undefined){
+            filters["wifi"]=wifi;
+        }
+        if(cleaning != undefined){
+            filters["clean"]=cleaning;
+        }
+        if(smoker != undefined){
+            filters["smoker"]=smoker;
+        }
+        if(pet != undefined){
+            filters["pets"]=pet;
+        }
+
+        //Localização
+        if(localizacao != undefined){
+            filters["localizacao"]=localizacao;
+        }
+
+        //Preços
+        if(priceMin != undefined){
+            filters["priceMin"]=priceMin;
+        }
+        if(priceMax != undefined){
+            filters["priceMax"]=priceMax;
+        }
+
+        //Tipo de alojamento
+        if(accommodationType != undefined){
+            filters["accommodationType"]=accommodationType;
+        }
+
+        console.log(filters);
+        /*
         let data = {
             "price": priceMin,
             "price": priceMax,
