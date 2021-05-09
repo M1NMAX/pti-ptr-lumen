@@ -23,9 +23,6 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-$app = new \Dusterio\LumenPassport\Lumen7Application(
-    dirname(__DIR__)
-);
 
 $app->withFacades();
 
@@ -90,7 +87,6 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'clients' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
  ]);
 
 /*
@@ -108,10 +104,8 @@ $app->routeMiddleware([
 $app->register(App\Providers\AuthServiceProvider::class);
 //$app->register(App\Providers\EventServiceProvider::class);
 
-$app->register(Laravel\Passport\PassportServiceProvider::class);
-$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
-\Dusterio\LumenPassport\LumenPassport::routes($app ,['prefix' => 'v1/oauth']);
 
 $app->register('Nord\Lumen\Cors\CorsServiceProvider');
 /*

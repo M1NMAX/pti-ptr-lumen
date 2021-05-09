@@ -8,9 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 
 
@@ -25,10 +23,10 @@ class UsersController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('auth:api', ['except' => ['store']]);
     }
 
-    public function register(Request $request)
+    public function store(Request $request)
     {
         //VALIDATE THE USER TYPE
         //VALIDATE THE USER DATA
@@ -92,33 +90,9 @@ class UsersController extends Controller
     }
 
 
-    public function login(Request $request)
-    {
-        $validator= Validator::make($request->all(), [
-            'email'=>'required|email',
-            'password'=>'required'
-        ]);
 
-        if($validator->fails()){
-            return response(['errors'=>$validator->errors()->all()], 422);
-        }
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            $response = ['message' => 'Invalid Credentials'];
-            return response($response, 422);
-        }
-
-        $token = $user->createToken('access_token')->accessToken;
-        return response(['user'=>$user, 'token'=>$token], 200);
-    }
-
-
-    public function logout (Request $request) {
-        $token = $request->user()->token();
-        $token->revoke();
-        return response( ['message' => 'You have been successfully logged out!', 'status'=>true], 200);
+    public function profile(){
+        return response(Auth::user(), 200);
     }
 
     public function index(){

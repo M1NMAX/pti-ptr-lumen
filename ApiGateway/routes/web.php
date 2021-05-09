@@ -37,19 +37,19 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('/{id}', 'FavouritesController@destroy');
     });
 
-    // Auth and Users
-    $router->get('/me', function () {
-        return auth()->user();
-    });
-    $router->post('/login', 'UsersController@login');
-    $router->get('/logout', 'UsersController@logout');
-    $router->post('/register', 'UsersController@register'); //Create
+     // Auth
+    $router->post('/login', 'AuthController@login');
+    $router->get('/logout', 'AuthController@logout');
+    $router->post('/refresh', 'AuthController@refresh');
+
     // Users
     $router->group(['prefix' => 'users'], function () use ($router) {
+        $router->get('/me', 'UsersController@profile');
         $router->get('/', 'UsersController@index');
         $router->get('/{id}', 'UsersController@show');
         $router->put('/{id}', 'UsersController@update');
         $router->delete('/{id}', 'UsersController@destroy');
+        $router->post('/register', 'UsersController@store'); //Create
     });
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
@@ -70,9 +70,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
         $router->get('/rentedOwnAccommodation/{id}', 'AccommodationController@showRentLandlord');
-
-
-
 
 
     });
