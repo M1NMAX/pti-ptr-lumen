@@ -23,7 +23,7 @@ function NavBarHome() {
         if(token === null || token ===''){
             setAuth(false);
         }else{
-        api.get('api/me', {
+        api.get('api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           }
