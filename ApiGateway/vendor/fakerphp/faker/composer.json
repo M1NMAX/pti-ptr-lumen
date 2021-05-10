@@ -45,10 +45,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "v1.15-dev"
-        }
     }
 }

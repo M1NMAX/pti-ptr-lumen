@@ -1425,13 +1425,9 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(2, $parameters, 'required_if');
 
-        if (! Arr::has($this->data, $parameters[0])) {
-            return true;
-        }
-
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
-        if (in_array($other, $values, is_bool($other) || is_null($other))) {
+        if (in_array($other, $values, is_bool($other))) {
             return $this->validateRequired($attribute, $value);
         }
 
@@ -1465,7 +1461,7 @@ trait ValidatesAttributes
 
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
-        if (in_array($other, $values, is_bool($other) || is_null($other))) {
+        if (in_array($other, $values, is_bool($other))) {
             return ! $this->validateRequired($attribute, $value);
         }
 
@@ -1486,7 +1482,7 @@ trait ValidatesAttributes
 
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
-        if (! in_array($other, $values, is_bool($other) || is_null($other))) {
+        if (! in_array($other, $values, is_bool($other))) {
             return ! $this->validateRequired($attribute, $value);
         }
 
@@ -1505,13 +1501,9 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(2, $parameters, 'exclude_if');
 
-        if (! Arr::has($this->data, $parameters[0])) {
-            return true;
-        }
-
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
-        return ! in_array($other, $values, is_bool($other) || is_null($other));
+        return ! in_array($other, $values, is_bool($other));
     }
 
     /**
@@ -1526,38 +1518,9 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(2, $parameters, 'exclude_unless');
 
-        if (! Arr::has($this->data, $parameters[0])) {
-            return true;
-        }
-
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
-        return in_array($other, $values, is_bool($other) || is_null($other));
-    }
-
-    /**
-     * Validate that an attribute exists when another attribute does not have a given value.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  mixed  $parameters
-     * @return bool
-     */
-    public function validateRequiredUnless($attribute, $value, $parameters)
-    {
-        $this->requireParameterCount(2, $parameters, 'required_unless');
-
-        if (! Arr::has($this->data, $parameters[0])) {
-            return true;
-        }
-
-        [$values, $other] = $this->parseDependentRuleParameters($parameters);
-
-        if (! in_array($other, $values, is_bool($other) || is_null($other))) {
-            return $this->validateRequired($attribute, $value);
-        }
-
-        return true;
+        return in_array($other, $values, is_bool($other));
     }
 
     /**
@@ -1591,26 +1554,13 @@ trait ValidatesAttributes
 
         $values = array_slice($parameters, 1);
 
-        if ($this->shouldConvertToBoolean($parameters[0]) || is_bool($other)) {
+        if (is_bool($other)) {
             $values = $this->convertValuesToBoolean($values);
-        }
-
-        if (is_null($other)) {
+        } elseif (is_null($other)) {
             $values = $this->convertValuesToNull($values);
         }
 
         return [$values, $other];
-    }
-
-    /**
-     * Check if parameter should be converted to boolean.
-     *
-     * @param  string  $parameter
-     * @return bool
-     */
-    protected function shouldConvertToBoolean($parameter)
-    {
-        return in_array('boolean', Arr::get($this->rules, $parameter, []));
     }
 
     /**
@@ -1643,6 +1593,27 @@ trait ValidatesAttributes
         return array_map(function ($value) {
             return Str::lower($value) === 'null' ? null : $value;
         }, $values);
+    }
+
+    /**
+     * Validate that an attribute exists when another attribute does not have a given value.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @param  mixed  $parameters
+     * @return bool
+     */
+    public function validateRequiredUnless($attribute, $value, $parameters)
+    {
+        $this->requireParameterCount(2, $parameters, 'required_unless');
+
+        [$values, $other] = $this->parseDependentRuleParameters($parameters);
+
+        if (! in_array($other, $values, is_bool($other))) {
+            return $this->validateRequired($attribute, $value);
+        }
+
+        return true;
     }
 
     /**

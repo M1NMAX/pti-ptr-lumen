@@ -154,13 +154,6 @@ function RegisterAlojamento() {
                                 Informe se as pessoas vão partilhar o alojamento com alguém
                             </Form.Text>
                         </Form.Group>
-
-                        <Form.Group controlId="formBasicAdress" >
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada</Form.Label>
-                            <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
-                        </Form.Group>
-
-
                         <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização</Form.Label>
                             <Typeahead
@@ -248,6 +241,10 @@ function RegisterAlojamento() {
                             <option value="0">É feita por profissionais</option>
                             </Form.Control>
                         </Form.Group>
+                        <Form.Group controlId="formCategory14" style={{height:"500px"}}>
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Form.Label>
+                            <Maps></Maps>
+                        </Form.Group> 
                     </Col>
                     <Col className="cols" xs={12} sm={6}>
                         <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
@@ -309,10 +306,6 @@ function RegisterAlojamento() {
                                 selected={caract}
                             />
                         </Form.Group>
-                        <Form.Group controlId="formCategory14" style={{height:"400px"}}>
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Assinale a localização:</Form.Label>
-                            <Maps></Maps>
-                        </Form.Group> 
                     </Col>
                     
                 </Form.Row>

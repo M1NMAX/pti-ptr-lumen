@@ -1,0 +1,1838 @@
+[2021-04-15 13:01:05] local.ERROR: Command "mirgate" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"mirgate\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\symfony\\console\\Application.php:675)
+[stacktrace]
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\symfony\\console\\Application.php(254): Symfony\\Component\\Console\\Application->find('mirgate')
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\symfony\\console\\Application.php(166): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\console\\Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Console\\Kernel.php(116): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\artisan(35): Laravel\\Lumen\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2021-04-15 15:47:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+ce]
+#0 {main}
+"} 
+[2021-04-15 15:47:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Target [Illuminate\Contracts\Http\Kernel] is not instantiable. in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1042
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(839): Illuminate\Container\Container->notInstantiable('Illuminate\\Cont...')
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\Cont...')
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\Cont...', Array)
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\Cont...')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Target [Illuminate\\Contracts\\Http\\Kernel] is not instantiable. in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1042
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(839): Illuminate\\Container\\Container->notInstantiable('Illuminate\\\\Cont...')
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\Cont...')
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\\\Cont...')
+#6 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1042)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:47:55] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:48:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:49:43] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:49:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:50:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:51:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:52:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:53:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:54:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:55:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:56:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:57:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:57:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:58:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 15:59:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:00:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:01:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:02:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:03:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:04:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:05:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:06:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:07:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:07:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:08:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:09:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:10:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:11:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:12:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:13:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:14:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:15:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:16:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:17:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:17:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:18:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:19:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:20:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:21:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:22:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:23:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:24:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:25:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:26:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:27:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:27:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:28:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:29:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:30:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:31:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:32:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:33:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:34:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:35:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:36:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:37:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:37:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:38:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:39:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:40:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:41:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:42:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:43:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:44:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:45:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:46:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:47:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:47:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:48:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:49:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:50:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:51:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:52:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:53:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:54:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:55:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:56:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:57:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:57:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:58:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 16:59:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:00:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:01:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:02:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:03:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:04:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:05:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:06:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:07:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:07:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:08:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:09:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:10:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:11:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:12:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:13:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:14:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:15:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:16:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:17:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:17:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:18:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:19:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:20:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:21:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:22:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:23:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:24:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:25:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:26:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:27:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:27:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:28:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:29:54] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:30:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:31:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:32:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:33:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:34:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:35:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:36:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:37:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:37:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:38:04] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:38:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:39:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:40:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:41:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:42:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:43:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:44:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:45:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:46:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:47:54] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:47:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:48:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:49:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:50:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:51:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:52:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:53:55] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:55:50] local.ERROR: Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to a member function getRoutes() on array in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:55:50] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1057
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(964): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(899): Illuminate\Container\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(861): Illuminate\Container\Container->resolveDependencies(Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\View...')
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\View...', Array)
+#5 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\View...', Array)
+#6 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\View...', Array)
+#7 Command line code(1): app('Illuminate\\View...')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\\View\\Compilers\\Compiler in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(964): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(899): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(861): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\View...')
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\View...', Array)
+#5 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\View...', Array)
+#6 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\View...', Array)
+#7 Command line code(1): app('Illuminate\\\\View...')
+#8 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1057)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:55:51] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:55:51] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Target [Illuminate\Contracts\Http\Kernel] is not instantiable. in C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php:1042
+Stack trace:
+#0 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(839): Illuminate\Container\Container->notInstantiable('Illuminate\\Cont...')
+#1 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(712): Illuminate\Container\Container->build('Illuminate\\Cont...')
+#2 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\illuminate\container\Container.php(651): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
+#3 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\Application.php(300): Illuminate\Container\Container->make('Illuminate\\Cont...', Array)
+#4 C:\Users\costa\Desktop\Lumen Projeto\pti-ptr-lumen\ApiAlojamento\vendor\laravel\lumen-framework\src\helpers.php(42): Laravel\Lumen\Application->make('Illuminate\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\Cont...')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Illuminate\\Contracts\\Container\\BindingResolutionException: Target [Illuminate\\Contracts\\Http\\Kernel] is not instantiable. in C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1042
+Stack trace:
+#0 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(839): Illuminate\\Container\\Container->notInstantiable('Illuminate\\\\Cont...')
+#1 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(712): Illuminate\\Container\\Container->build('Illuminate\\\\Cont...')
+#2 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php(651): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array)
+#3 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\Application.php(300): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#4 C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\laravel\\lumen-framework\\src\\helpers.php(42): Laravel\\Lumen\\Application->make('Illuminate\\\\Cont...', Array)
+#5 Command line code(1): app('Illuminate\\\\Cont...')
+#6 {main}
+  thrown at C:\\Users\\costa\\Desktop\\Lumen Projeto\\pti-ptr-lumen\\ApiAlojamento\\vendor\\illuminate\\container\\Container.php:1042)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:56:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:57:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:58:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 17:59:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 18:00:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 18:01:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 18:02:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 18:03:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-04-15 18:04:50] local.ERROR: Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Call to undefined function app_path() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

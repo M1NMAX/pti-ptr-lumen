@@ -23,13 +23,12 @@ const style = {
     constructor(props) {
       super(props);
       this.state = { 
-        address: '',
+        address: 'Lisboa',
         mapCenter: {
-          lat: 49.2827291,
-          lng: -123.1207375
+          lat: 38.736946,
+          lng: -9.142685
         }
       };
-      
     }
     handleChange = address => {
       this.setState({ address });
@@ -43,6 +42,7 @@ const style = {
           this.setState({address});
           this.setState({mapCenter: latLng});
           console.log(this.state.mapCenter)
+          this.props.parentCallback([address,this.state.mapCenter]);
         })
         .catch(error => console.error('Error', error));
     };
@@ -66,7 +66,6 @@ const style = {
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
-                    console.log(suggestion)
                     const className = suggestion.active
                       ? 'suggestion-item--active'
                       : 'suggestion-item';
@@ -91,7 +90,7 @@ const style = {
           </PlacesAutocomplete>
           <Map 
             google={this.props.google}
-            zoom={14}
+            zoom={18}
             style={style}
             containerStyle={containerStyle}
             initialCenter={

@@ -1,20 +1,16 @@
 <?php
-
- return [
+return [
     'defaults' => [
         'guard' => 'api',
         'passwords' => 'users',
     ],
-
-
-    'guards' => [
+'guards' => [
         'api' => [
-            'driver' => 'jwt',
+            'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
-
-    'providers' => [
+'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => \App\Models\User::class
