@@ -4063,6 +4063,7 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+<<<<<<< HEAD
 [2021-05-09 20:08:04] local.ERROR: Uncaught Illuminate\Contracts\Container\BindingResolutionException: Unresolvable dependency resolving [Parameter #1 [ <required> $cachePath ]] in class Illuminate\View\Compilers\Compiler in C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php:1064
 Stack trace:
 #0 C:\xampp\htdocs\Projects\pti-ptr-lumen\ApiGateway\vendor\illuminate\container\Container.php(971): Illuminate\Container\Container->unresolvablePrimitive(Object(ReflectionParameter))
@@ -4789,3 +4790,5 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+=======
+>>>>>>> f2889a30321228cd5664cb3392ef51d591bfcd96

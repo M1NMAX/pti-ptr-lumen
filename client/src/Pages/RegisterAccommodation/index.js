@@ -32,8 +32,6 @@ function RegisterAlojamento() {
     const [cleaning, setClean] = useState('');
     const [gender, setGender] = useState('');
     const [smoker, setSmoker] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
     const [pet, setPet] = useState('');
     const [ ageMin, setAgeMin ] = useState(18);
     const [ ageMax, setAgeMax ] = useState(ageMin);
@@ -46,6 +44,7 @@ function RegisterAlojamento() {
     const [localizacao, setLocalizacao] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
+
     
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
@@ -73,8 +72,8 @@ function RegisterAlojamento() {
             "address": adress,
             "county": localizacao[0],
             "district": 'None',
-            "latitude": lat,
-            "longitude": lng,
+            "latitude": "100",
+            "longitude": "100",
             "rooms": nRooms,
             "bathRooms" : nWC,
             "accommodationType": accommodationType, 
@@ -116,15 +115,7 @@ function RegisterAlojamento() {
         }
     } 
 
-    async function getData(data) {
-        console.log(data[0])
-        console.log(data[1].lat)
-        console.log(data[1].lng)
-        setAdress(data[0])
-        setLat(data[1].lat);
-        setLng(data[1].lng);
 
-    }
     
     return (
         <div>
@@ -163,6 +154,13 @@ function RegisterAlojamento() {
                                 Informe se as pessoas vão partilhar o alojamento com alguém
                             </Form.Text>
                         </Form.Group>
+
+                        <Form.Group controlId="formBasicAdress" >
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada</Form.Label>
+                            <Form.Control required width="sm" type="textarea" placeholder="Rua da Igreja nº33, Lisboa, Portugal" value={adress} onChange={e => setAdress(e.target.value)}/>
+                        </Form.Group>
+
+
                         <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização</Form.Label>
                             <Typeahead
@@ -250,11 +248,6 @@ function RegisterAlojamento() {
                             <option value="0">É feita por profissionais</option>
                             </Form.Control>
                         </Form.Group>
-                                                
-                        <Form.Group controlId="formCategory14" style={{height:"500px"}}>
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Form.Label>
-                            <Maps parentCallback={getData}></Maps>
-                        </Form.Group> 
                     </Col>
                     <Col className="cols" xs={12} sm={6}>
                         <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
@@ -316,6 +309,10 @@ function RegisterAlojamento() {
                                 selected={caract}
                             />
                         </Form.Group>
+                        <Form.Group controlId="formCategory14" style={{height:"400px"}}>
+                            <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Assinale a localização:</Form.Label>
+                            <Maps></Maps>
+                        </Form.Group> 
                     </Col>
                     
                 </Form.Row>
