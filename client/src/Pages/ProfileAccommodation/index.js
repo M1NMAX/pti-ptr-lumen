@@ -84,6 +84,8 @@ function ProfileAccommodation() {
             setaccommodationComments(response.data.commentsAboutAccommodation);
             setaccommodationLat(response.data.aboutAccommodation.latitude);
             setaccommodationLon(response.data.aboutAccommodation.longitude);
+            console.log(response.data.aboutAccommodation.latitude);
+            console.log(response.data.aboutAccommodation.longitude);
             setMap([<Maps coordinates = {[response.data.aboutAccommodation.latitude,response.data.aboutAccommodation.longitude]}></Maps>])
         }).catch(err => {
           alert(err)
