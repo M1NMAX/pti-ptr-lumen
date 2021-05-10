@@ -49,7 +49,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'UsersController@show');
         $router->put('/{id}', 'UsersController@update');
         $router->delete('/{id}', 'UsersController@destroy');
-        $router->post('/register', 'UsersController@store'); //Create
+        $router->post('/register', 'UsersController@store'); //Create 
     });
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
@@ -71,6 +71,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
         $router->get('/rentedOwnAccommodation/{id}', 'AccommodationController@showRentLandlord');
 
+        $router->get('/filter/{filters}', 'AccommodationController@filter');
 
     });
 

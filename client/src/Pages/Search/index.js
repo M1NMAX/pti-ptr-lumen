@@ -12,6 +12,7 @@ import localizacoes from '../RegisterAccommodation/localizacoes.js';
 
 function Search() {
     let { location } = useParams();
+    const [token] = useState(localStorage.getItem('token'));
     const [Accmmodations, setAcommodations] = useState([]);
     console.log(location)
     
@@ -28,8 +29,13 @@ function Search() {
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
 
+    const [withoutFilters, setWithoutFilters] = useState(false);
+    const [withFilters, setWithFilters] = useState(true);
+    //ACCOMMODATIONS FILTERED
+    const[accomFiltered, setAccomFiltered] = useState([]);
 
     useEffect(() => {
+        //ALL ACCOMMODATIONS
         api.get('api/accommodations').then(response => {
             console.log(response.data)
             setAcommodations(response.data);
@@ -47,7 +53,7 @@ function Search() {
 
     async function handleSearch(e) { 
         e.preventDefault();
-        let filters ={}
+        let filters ="";
 
         //Cacteristicas extra
         let caractList = Object.keys(caract)
@@ -61,10 +67,10 @@ function Search() {
 
         //Cacteristicas principais
         if(wifi != undefined){
-            filters["wifi"]=wifi;
+            filters += "wifi,";
         }
         if(cleaning != undefined){
-            filters["clean"]=cleaning;
+            filters += "clean,";;
         }
         if(smoker != undefined){
             filters["smoker"]=smoker;
@@ -75,52 +81,41 @@ function Search() {
 
         //Localização
         if(localizacao != undefined){
-            filters["localizacao"]=localizacao;
+            filters += "location," + localizacao +",";
         }
 
         //Preços
         if(priceMin != undefined){
-            filters["priceMin"]=priceMin;
+            filters += "priceMin," + priceMin +",";
         }
         if(priceMax != undefined){
-            filters["priceMax"]=priceMax;
+            filters += "priceMax," + priceMax +",";
         }
 
         //Tipo de alojamento
         if(accommodationType != undefined){
-            filters["accommodationType"]=accommodationType;
+            filters += "accommodationType," + accommodationType +",";
         }
 
         console.log(filters);
-        /*
-        let data = {
-            "price": priceMin,
-            "price": priceMax,
-            "county": localizacao[0],
-            "accommodationType": accommodationType, 
-            "wifi": wifi,
-            "clean":cleaning,
-            "smoker": smoker,
-            "pets":pet,
-            "feature_id":caract,
-        };
 
-        console.log(data);
-            
-        api.post('api/accommodations/', data, {
+        api.get('api/accommodations/filter/', filters, {
             headers: {
-                //Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             }
         }).then(response => { 
             if(response.data.status){
-                 alert(true);
+                alert(true);
                 window.scrollTo(0, 0);
+                setAccomFiltered(response.data);
+                setWithoutFilters(!withoutFilters);
+                setWithFilters(!withFilters);
             }else{
                 alert(response.data);    
             }
          }).catch(err => {
             alert(err)
-        })*/
+        })
     } 
 
     return (
@@ -183,8 +178,10 @@ function Search() {
                     </Col>
                     <Col lg={10} sm={12}>
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
-                        <Container fluid>
-                            <Accommodations accom={Accmmodations} />   
+                        <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
+                            {withoutFilters?  <Accommodations accom={Accmmodations} /> : 
+                             (accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
+                             <p>Não foram encontrados alojamentos com essas caracteríticas</p>)} 
                         </Container>
                     </Col>
                 </Row>
