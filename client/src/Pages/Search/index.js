@@ -44,6 +44,7 @@ function Search() {
             alert(err)
         })
 
+
         api.get('api/accommodations/feature').then(response => {
             setFeature(response.data.data);            
         }).catch(err => {
@@ -62,7 +63,7 @@ function Search() {
             for(let i = 0; i < caractList.length;i++){
                 caractIds+= caract[caractList[i]].id + ","
             }
-            filters["features"]=caractIds;
+            filters += "feature_id"+caractIds +";";
         }
 
         //Cacteristicas principais
@@ -70,13 +71,13 @@ function Search() {
             filters += "wifi,";
         }
         if(cleaning != undefined){
-            filters += "clean,";;
+            filters += "clean,";
         }
         if(smoker != undefined){
-            filters["smoker"]=smoker;
+            filters += "smoker,";
         }
         if(pet != undefined){
-            filters["pets"]=pet;
+            filters += "pet,";
         }
 
         //Localização
