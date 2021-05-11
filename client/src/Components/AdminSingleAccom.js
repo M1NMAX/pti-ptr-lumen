@@ -1,9 +1,12 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from "react";
 import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
+
  
 function SingleAccommodation({accom, removeFavourite}) {
     const [id] = useState(accom.accommodation_id);
@@ -55,7 +58,7 @@ function SingleAccommodation({accom, removeFavourite}) {
                         <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
                     </Card.Text>
                     <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
-                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" onClick={handleRemove}>Remover</Button>
+                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/>Remover</Button>
 
                     </Col>
                 </Row>
