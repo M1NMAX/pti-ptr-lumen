@@ -63,7 +63,7 @@ function Search() {
             for(let i = 0; i < caractList.length;i++){
                 caractIds+= caract[caractList[i]].id + ","
             }
-            filters += "feature_id"+caractIds +";";
+            filters += "feature_id:"+caractIds +";";
         }
 
         //Cacteristicas principais

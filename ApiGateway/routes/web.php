@@ -71,8 +71,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
         $router->get('/rentedOwnAccommodation/{id}', 'AccommodationController@showRentLandlord');
 
-
-
+        $router->get('/filter/{filters}', 'AccommodationController@filter');
 
 
     });
