@@ -58,7 +58,7 @@ function SingleAccommodation({accom, removeFavourite}) {
                         <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
                     </Card.Text>
                     <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
-                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/>Remover</Button>
+                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
 
                     </Col>
                 </Row>
