@@ -55,6 +55,13 @@ class FeatureController extends Controller
 
     public function filter($filters, Request $request) 
     {
+
+
+        $phrase  = "You should eat fruits, vegetables, and fiber every day.";
+        $healthy = array("fruits", "vegetables", "fiber");
+        $yummy   = array("pizza", "beer", "ice cream");
+        return str_replace($healthy, $yummy, $phrase);
+
         $filters = explode(';', $filters); 
         $cIds = explode(',', $filters[0]);    
         $infos = explode(',', $filters[1]); 

@@ -62,6 +62,8 @@ function Search() {
                 caractIds+= caract[caractList[i]].id + ","
             }
             filters += "feature_id:"+caractIds +";";
+        }else{
+            filters+=";"
         }
 
         //Cacteristicas principais

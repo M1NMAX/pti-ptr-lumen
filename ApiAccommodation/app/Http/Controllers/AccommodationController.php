@@ -11,6 +11,8 @@ use App\Models\Feature;
 use App\Models\Rental;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Validator;
+use App\Models\AF;
+
 
 
 class AccommodationController extends Controller
@@ -253,9 +255,94 @@ class AccommodationController extends Controller
 
     }
 
-    public function filter($json)
+    public function filter($filters, Request $request) 
     {
-        return $filters;
+        $filters = str_replace("%20"," ",$filters);
+        $filters = explode(';', $filters); 
+        
+        $cIds = explode(',', $filters[0]); 
+        return $cIds;   
+        $infos = explode(',', $filters[1]); 
+        
+        
+        $infoFilter = [];
+        $requirementFilter = [];
+        $basicFilter = [];
+        if(in_array('location', $infos)){
+            $index = array_search('location',$infos);
+            array_push($basicFilter,['county', 'like', '%' . $infos[$index+1] . '%']);
+        }
+        //return $infoFilter;
+        if(in_array('priceMax', $infos)){
+            $index = array_search('priceMax',$infos);
+            array_push($basicFilter,['price', '<', $infos[$index+1]]);
+        }
+        if(in_array('priceMin', $infos)){
+            $index = array_search('priceMin',$infos);
+            array_push($basicFilter,['price', '>', $infos[$index+1]]);
+        }
+
+
+        if(in_array('accommodationType', $infos)){
+            $index = array_search('accommodationType',$infos);
+            array_push($infoFilter,['accommodationType', '=', $infos[$index+1]]);
+        }
+        if(in_array('wifi', $infos)){
+            $index = array_search('wifi',$infos);
+            array_push($infoFilter,['wifi', '=', 1]);
+        }
+        if(in_array('clean', $infos)){
+            $index = array_search('clean',$infos);
+            array_push($infoFilter,['clean', '=', 1]);
+        }
+
+ 
+
+        if (($key = array_search('', $cIds)) !== false) {
+            unset($cIds[$key]);
+        }
+
+        /////FEATURES///FILTER///IDS/////
+        $relationships = AF::whereIn('feature_id', $cIds)->get();
+        
+        
+        $accommodationFeatureIds = [];
+        foreach($relationships as $r){
+            $id = $r->accommodation_id;
+            array_push($accommodationFeatureIds, $id); 
+        }
+
+
+        /////INFOS///FILTER///IDS/////
+        $accommodationIdsInfoFilter = DB::table('accommodation_info')
+                ->select('accommodation_id')
+                ->where($infoFilter)
+                ->get();
+
+        
+        
+        $accommodationInfoIds = [];
+        foreach($accommodationIdsInfoFilter as $accommodation){
+            $id = $accommodation->accommodation_id;
+            array_push($accommodationInfoIds, $id); 
+        }
+        
+        //return $infoFilter;
+        $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
+        ->select('accommodation_id')
+        ->where($requirementFilter)
+        ->get();
+
+        $accommodationRequirementsIds = [];
+        foreach($accommodationIdsRequirementsFilter as $accommodation){
+            $id = $accommodation->accommodation_id;
+            array_push($accommodationRequirementsIds, $id); 
+        }
+        ///////////////////////////////////////////////////////////////
+        $aIdCount = array_count_values($accommodationFeatureIds);
+        $res = array_keys($aIdCount,count($cIds));
+        $accommodations = Accommodation::findMany($res);
+        return $accommodationRequirementsIds;
     }
 
 
