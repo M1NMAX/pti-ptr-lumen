@@ -1,34 +1,30 @@
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card,Row,Col,Container,Form} from 'react-bootstrap';
-import { AnimationWrapper } from 'react-hover-animation'
-import NavBarHome from '../../Components/NavBarHome'
+import {Button, Card,Row,Col,Container,Alert} from 'react-bootstrap';
+import NavBarHome from '../../Components/NavBarHome';
 import Search from '../../Components/Search'
-import chatImg from '../../img/chatImg.png'
-import chatImgNew from '../../img/chatImgNew.png'
-import profile from '../../img/profile.png'
-import favourite from '../../img/favourite.png'
-import pending from '../../img/pending.png'
-import search from '../../img/search.png'
-import manage from '../../img/manage.png'
-import create from '../../img/add.png'
-import edit from '../../img/create.png'
-import home from '../../img/home.png'
+import chatImg from '../../img/chatImg.png';
+import chatImgNew from '../../img/chatImgNew.png';
 import Footer from '../../Components/Footer';
 import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
 import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
-import alojamento from '../../img/basicRoom.png'
-import './index.css'
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCalendar, faCalendarMinus, faEdit, faHeart, faHome, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faCalendarMinus, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState('');
     const [myAccommodations, setMyAccommodations] = useState([]);
+    const [showWarning, setShowWarning] = useState(false);
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState('');
+    const [accommodationName, setAccommotionName] = useState();
+    const [accommodationId, setAccommotionId] = useState();
+
 
     const history = useHistory();
     
@@ -72,6 +68,46 @@ function Dashboard() {
         })
       }, [token]);
 
+
+      async function show(name, id){ 
+        window.scrollTo(0,0);
+        setAccommotionId(id);
+        setAccommotionName(name)
+        setShowWarning(true)
+      } 
+
+      async function deleteAccommodation(){
+        api.delete('api/accommodations/'+accommodationId).then(
+          response => {
+            if(response.data.status){
+              setShowWarning(false);
+              setShowResult(true);
+              setResult(<Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Alojamento apagado com sucesso</p>
+                </Alert>)
+              setMyAccommodations(myAccommodations.filter((accomm)=>accomm.accommodation_id != accommodationId));
+            }else{
+              setShowWarning(false);
+              setShowResult(true);
+              setResult(<Alert variant="danger">
+              <Alert.Heading>Messagem</Alert.Heading>
+              <p>Ocorreu erro durante a eliminação do alojamento</p>
+              </Alert>)
+            }
+
+          }).catch(err => {
+              console.log(err);
+              setShowWarning(false);
+              setShowResult(true);
+              setResult(<Alert variant="danger">
+              <Alert.Heading>Messagem</Alert.Heading>
+              <p>Ocorreu erro durante a eliminação do alojamento</p>
+            </Alert>)
+
+          })
+      }
+
     if (user.userable_type == "App\\Models\\Landlord") {
       
       return (
@@ -82,31 +118,26 @@ function Dashboard() {
               <Col sm={12} lg={2} className="sidebar">
                 <Row>
                   <a href="/listChat">
-                    {/* <img className = "imgDashboard" src={imgC}></img> */}
                     <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
                   </a>
                 </Row>
                 <Row>
                   <a href="/registerAccommodation">
-                    {/* <img className = "imgDashboard" src={create}></img> */}
                     <FontAwesomeIcon icon={faPlusCircle} size="2x"/> Adicionar Alojamento
                   </a>
                 </Row>
                 <Row>
                   <a href="/pending">
-                    {/* <img className = "imgDashboard" src={pending}></img> */}
                     <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pendentes
                   </a>
                 </Row>
                 <Row>
                   <a href="/me">
-                    {/* <img className = "imgDashboard" src={profile}></img>  */}
                     <FontAwesomeIcon icon={faUser} size="2x"/> Perfil
                   </a>
                 </Row>
                 <Row>
                   <a href="/pending">
-                    {/* <img className = "imgDashboard" src={edit}></img>  */}
                     <FontAwesomeIcon icon={faEdit} size="2x"/> Editar Alojamento
                   </a>
                 </Row>
@@ -116,10 +147,27 @@ function Dashboard() {
                 <Card className="text-center content">
                     <Card.Body>
                         <Card.Title>Bem-vindo, {user.username}</Card.Title>
+                        {showResult && result}
+                        <>
+                        <Alert show={showWarning} variant="danger">
+                          <Alert.Heading>Aviso</Alert.Heading>
+                          <p>Tem certeza que quer apagar o alojamento {accommodationName}</p>
+                          <hr />
+                          <div className="d-flex justify-content-center">
+                            <Button onClick={deleteAccommodation}  variant="danger">Sim</Button>
+                            <Button onClick={() =>{window.scrollTo(0,0); setShowWarning(false)}} className="ml-5" variant="success">Não</Button>
+                          </div>
+                        </Alert>
+                      </>
 
                         {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
-                          <DashboardAccoLandlord accommodation={accommodation}/>
-                          )): <p>Não tem alojamentos alugados</p>}
+                          <DashboardAccoLandlord accommodation={accommodation} showWarning={show}/>
+                          )):
+                           //MAIS BONITO
+                           <Alert variant="info">
+                            Não tem alojamentos alugados
+                          </Alert>
+                           }
                         {/* <Form inline className="searchDashboard">
                           <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                           <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
@@ -174,7 +222,9 @@ function Dashboard() {
                     <Card.Title>Bem-vindo, {user.username}</Card.Title>
                     {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
                           <DashboardAccoGuest accommodation={accommodation}/>
-                          )):<p>Não esta a alugar alojamento</p> }
+                          )):<Alert variant="info">
+                          Não esta a alugar alojamento
+                        </Alert> }
                     {/* <Form inline className="searchDashboard">
                       <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                       <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>

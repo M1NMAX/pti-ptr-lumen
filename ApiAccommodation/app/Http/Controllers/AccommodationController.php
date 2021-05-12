@@ -176,7 +176,7 @@ class AccommodationController extends Controller
                 $c->delete();
             }
         }
-        return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso']]);
+        return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso'], 'status'=>true]);
     }
 
     public function busyDates($id,Request $request)
@@ -253,7 +253,7 @@ class AccommodationController extends Controller
 
     }
 
-    public function filter($json) 
+    public function filter($json)
     {
         return $filters;
     }

@@ -101,7 +101,7 @@ function DashboardAccoGuest({accommodation}) {
                 <p>Senhorio/a: </p>
                 <Button size="m"  className="m-1" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
                 <Button size="m"  className="m-1" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
-                <Button size="m"  className="m-1" variant="info"> <FontAwesomeIcon icon={faMoneyBill}/>Pagar</Button>
+                <Button size="m"  className="m-1" variant="info" desable={accommodation.paymentState}> <FontAwesomeIcon icon={faMoneyBill}/>Pagar</Button>
                 <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
 
             </Row>

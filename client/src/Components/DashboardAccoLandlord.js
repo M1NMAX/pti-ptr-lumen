@@ -10,13 +10,14 @@ import api from '../services/api';
 import {useHistory} from 'react-router-dom';
 
 
-function DashboardAccoLandlord({accommodation}) {
-    const[token] = useState(localStorage.getItem('token'));
-    const[userData, setUserData] = useState([]);
-    const[userExtra, setUserExtra] = useState([]);
-    const[accommodationData, setAccommodationData] = useState([]);
-    const[accommodationRequirements, setAccommodationRequirements] = useState([]);
-    const[userAge, setUserAge]= useState(); 
+function DashboardAccoLandlord({accommodation, showWarning}) {
+    const [token] = useState(localStorage.getItem('token'));
+    const [userData, setUserData] = useState([]);
+    const [userExtra, setUserExtra] = useState([]);
+    const [accommodationData, setAccommodationData] = useState([]);
+    const [accommodationRequirements, setAccommodationRequirements] = useState([]);
+    const [userAge, setUserAge]= useState(); 
+    
 
     
 
@@ -61,11 +62,13 @@ function DashboardAccoLandlord({accommodation}) {
         }
     }, [token]);
 
-    // const handleAcceptPending = async (event) =>{
-    //     event.preventDefault();
-    //     await acceptPending(pending.id);
+    const handleShowWarning = async (event) =>{
+        event.preventDefault();
+        showWarning(accommodationData.name, accommodationData.id);
 
-    // };
+        // await acceptPending(pending.id);
+
+    };
 
     // const handleRejectPending = async (event) =>{
     //     event.preventDefault();
@@ -106,8 +109,8 @@ function DashboardAccoLandlord({accommodation}) {
             </Row>
             <Row className="ml-5">
                 <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
-                <Button variant="success"  className="m-1 "  size="m" >Editar Alojamento</Button>
-                <Button variant="danger" className="m-1 "   size="m"  >Apagar Alojamento</Button>
+                <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.accommodation_id}>Editar Alojamento</Button>
+                <Button variant="danger" className="m-1 "   size="m" onClick={handleShowWarning} >Apagar Alojamento</Button>
             </Row>
             
         </Card> 

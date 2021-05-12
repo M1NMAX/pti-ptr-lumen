@@ -74,7 +74,7 @@ class AccommodationController extends Controller
             $responseAccommodationAddFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $accommodation_id . '/addFeatures', [
                 'features' => $request->features,
             ]);
-            
+
             if ($responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
                 $finalResponse = ['newAccommodationId' => $accommodation_id, 'message' => 'alojamento registado com sucesso', 'status' => true];
                 return response($finalResponse, 200);
@@ -87,6 +87,13 @@ class AccommodationController extends Controller
 
         return response($responseAccommodation, 200);
     }
+
+    public function destroy($id)
+    {
+        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id );
+        return response($response);
+    }
+
     public function showDates($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/busyDates');
