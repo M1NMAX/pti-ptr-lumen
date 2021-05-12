@@ -17,9 +17,17 @@ function Login() {
 
     const history = useHistory();
     const [wrongPass, setWrongPass] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     async function handleLogin(e) {
         e.preventDefault();
+        //Verificar se os campos estão preenchidos
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setValidated(true);
 
         try {
         const response = await api.post('api/login', { email, password });
@@ -40,10 +48,13 @@ function Login() {
             {/* @someone please handle the way errors are diplay  */}
             <Container>
                 <h1 className="h1">Login</h1>
-                <Form className="login"  onSubmit={handleLogin}>
+                <Form className="login" noValidate validated={validated} onSubmit={handleLogin}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label className="label" as="h6">Email address</Form.Label>
                         <Form.Control required width="sm" type="email" placeholder="Insira o seu E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
+                        <Form.Control.Feedback type="invalid">
+                            Insira um e-mail!
+                        </Form.Control.Feedback>
                         <Form.Text className="text-muted">
                         O seu e-mail não será partilhado com nenhuma entidade interna ou externa
                         </Form.Text>
@@ -52,6 +63,9 @@ function Login() {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label className="label" as="h6">Password</Form.Label>
                         <Form.Control required type="password"  placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                        <Form.Control.Feedback type="invalid">
+                            Insira uma password!
+                        </Form.Control.Feedback>
                     </Form.Group>
                     {wrongPass && <p style={{color: 'red'}}>E-mail ou password incorretos</p>}
                     <Button variant="primary" type="submit">

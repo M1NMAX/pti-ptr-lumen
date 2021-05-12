@@ -35,18 +35,43 @@ function RegisterAlojamento() {
     const [lat, setLat] = useState('');
     const [lng, setLng] = useState('');
     const [pet, setPet] = useState('');
-    const [ ageMin, setAgeMin ] = useState(18);
-    const [ ageMax, setAgeMax ] = useState(ageMin);
+    const [ ageMin, setAgeMin ] = useState(17);
+    const [ ageMax, setAgeMax ] = useState(65);
+    const [localizacao, setLocalizacao] = useState([]);
+    const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     // After the register is concluded
     const [ showLink, setShowLink] = useState(false);
     const [ newAccommodationId, setNewAccommodationId] = useState('');
 
 
     const  history = useHistory();
-    const [localizacao, setLocalizacao] = useState([]);
-    const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
     
+    const [validated, setValidated] = useState(false);
+    const [ errors, setErrors ] = useState({});
+
+    const findFormErrors = () => {
+        
+        const newErrors = {}
+        // name errors
+        if ( !title || title === '' ) {newErrors.title = ''}
+        if ( !content || content === '' ) {newErrors.content = ''}
+        if ( !adress || adress === '' ) {newErrors.adress = ''}
+        if ( !price || price === '' ) {newErrors.price = ''}
+        if ( !nRooms || nRooms === '' ) {newErrors.nRooms = ''}
+        if ( !nWC || nWC === '' ) {newErrors.nWC = ''}
+        if ( !area || area === '' ) {newErrors.area = ''}
+        if ( !solar || solar === '' ) {newErrors.solar = ''}
+        if ( !wifi || wifi === '' ) {newErrors.wifi = ''}
+        if ( !cleaning || cleaning === '' ) {newErrors.cleaning = ''}
+        if ( !gender || gender === '' ) {newErrors.gender = ''}
+        if ( !smoker || smoker === '' ) {newErrors.smoker = ''}
+        if ( !pet || pet === '' ) {newErrors.pet = ''}
+        if ( !accommodationType || accommodationType === '' ) {newErrors.accommodationType = ''}
+        
+        return newErrors
+    }
+
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
             setFeature(response.data.data);            
@@ -57,6 +82,12 @@ function RegisterAlojamento() {
 
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
+        //Verificar se os campos estão preenchidos
+        const newErrors = findFormErrors();
+        if ( Object.keys(newErrors).length > 0 ) {
+            setErrors(newErrors);
+        }
+        console.log(errors);
         //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
         console.log(caract)
         let caractList = Object.keys(caract)
@@ -138,9 +169,9 @@ function RegisterAlojamento() {
                 <Col xs={6} md={4} className='text-center'><h1>Novo Alojamento</h1> </Col>                 
             </Row> 
             {showLink && <Row  className= "mt-3 mb-3">
-                <Button href={'/profileAccommodation/'+newAccommodationId}>VER PAGINA DO ALOJAMENTO</Button>                 
+                <Button href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
             </Row> }    
-            <Form   onSubmit={handleRegisterAlojamento} >
+            <Form  noValidate validated={validated} onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
                     <Col className="cols" xs={12} sm={6}>
                         <Row>
@@ -153,19 +184,25 @@ function RegisterAlojamento() {
                     <Col className="cols" xs={12} sm={6}>
                         <Form.Group controlId="formBasicTitle" >
                             <Form.Label as="h4" >Título</Form.Label>
-                            <Form.Control size="lg" required width="sm" type="textarea" placeholder="Apartamento T3 em Lisboa " value={title} onChange={e => setTitle(e.target.value)}/>
+                            <Form.Control size="lg" isInvalid={!!errors.title} width="sm" type="textarea" placeholder="Apartamento T3 em Lisboa " value={title} onChange={e => setTitle(e.target.value)}/>
+                            <Form.Control.Feedback type="invalid">
+                                Insira um título apelativo!
+                            </Form.Control.Feedback>
                         </Form.Group>
                         
                         <Form.Group controlId="formCategory4">
                             <Form.Label>Descrição:</Form.Label>
-                            <Form.Control required as="textarea" rows={3} value={content} onChange={e => setContent(e.target.value)} />
+                            <Form.Control required isInvalid={!!errors.content} as="textarea" rows={3} value={content} onChange={e => setContent(e.target.value)} />
                             <Form.Text className="text-muted">
-                                Informe se as pessoas vão partilhar o alojamento com alguém
+                                Informe se as pessoas vão partilhar o alojamento com alguém. Quanto mais descritivo for melhor!
                             </Form.Text>
+                            <Form.Control.Feedback type="invalid">
+                                Insira uma descrição!
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização</Form.Label>
-                            <Typeahead
+                            <Typeahead 
                                 id="basic-typeahead-single"
                                 labelKey="name"
                                 onChange={setLocalizacao}
@@ -173,11 +210,17 @@ function RegisterAlojamento() {
                                 placeholder="Escolha uma localização..."
                                 selected={localizacao}
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Escolha a localização!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPrice" >
                             <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês</Form.Label>
-                            <Form.Control required width="sm" type="number" value={price} onChange={e => setPrice(e.target.value)}/>
+                            <Form.Control required isInvalid={!!errors.price} width="sm" type="number" value={price} onChange={e => setPrice(e.target.value)}/>
+                            <Form.Control.Feedback type="invalid">
+                                Não se esqueça de inserir o preço!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         {/* <Form.Group controlId="formBasicOccupation">
@@ -195,32 +238,44 @@ function RegisterAlojamento() {
 
                         <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
-                            <Form.Control as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.accommodationType} as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)} >
                             <option>Selecione um opção</option>
                             <option value="Apartamento" >Apartamento </option>
                             <option value="Quarto">Quarto </option>
                             <option value="Moradia">Moradia </option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Escolha o tipo de alojamento!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicRoom">
-                            <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
-                            <Form.Control width="sm" type="number" value={nWC} onChange={e => setNWC(e.target.value)}/>
+                            <Form.Label><FontAwesomeIcon icon={faBed}  /> Nº de quartos:</Form.Label>
+                            <Form.Control required isInvalid={!!errors.nRooms}  width="sm" type="number"  value={nRooms} onChange={e => setNrooms(e.target.value)}/>
+                            <Form.Control.Feedback type="invalid">
+                                Insira o nº de quartos!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicWC">
                             <Form.Label><FontAwesomeIcon icon={faBath} /> Nº de casas de banho:</Form.Label>
-                            <Form.Control width="sm" type="number" value={nRooms} onChange={e => setNrooms(e.target.value)}/>
+                            <Form.Control required isInvalid={!!errors.nWC} width="sm" type="number" value={nWC} onChange={e => setNWC(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                                Insira o nº de casas de banho!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicArea" >
                             <Form.Label>Área:</Form.Label>
-                            <Form.Control width="sm" type="textarea" value={area} onChange={e => setArea(e.target.value)}/>
+                            <Form.Control required isInvalid={!!errors.area} width="sm" type="textarea" value={area} onChange={e => setArea(e.target.value)}/>
+                            <Form.Control.Feedback type="invalid">
+                                Insira a área!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar:</Form.Label>
-                            <Form.Control as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.solar} as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
                             <option>Selecione um opção</option>
                             <option value="N" >Norte (N)</option>
                             <option value="NE">Nordeste (NE)</option>
@@ -231,24 +286,33 @@ function RegisterAlojamento() {
                             <option value="O">Oeste (O)</option>
                             <option value="NO">Noroeste (NO)</option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Insira a orientação solar!
+                            </Form.Control.Feedback>
                         </Form.Group>  
 
                         <Form.Group controlId="formBasicWifi">
                             <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
-                            <Form.Control as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.wifi} as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
                             <option>Selecione um opção</option>
                             <option value="1">Existe</option>
                             <option value="0">Não existe</option>
-                        </Form.Control>
+                            </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Imdique se existe internet!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicClean">
                             <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
-                            <Form.Control as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.cleaning} as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
                             <option>Selecione um opção</option>
                             <option value="1">Cada um faz a sua própria</option>
                             <option value="0">É feita por profissionais</option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Indique como é a limpeza!
+                            </Form.Control.Feedback>
                         </Form.Group>
                                                 
                         <Form.Group controlId="formCategory14" style={{height:"500px"}}>
@@ -268,40 +332,44 @@ function RegisterAlojamento() {
                                     <RangeSlider value={ageMax} onChange={e => setAgeMax(e.target.value)} min={18} max={65} variant='info'/>
                                 	&nbsp;  anos
                                 </Row>
-                            {/*<Form.Control width="sm" type="number" min="17" max="26" value={ageMin} onChange={e => setAgeMin(e.target.value)}/>
-                            <Form.Text className="text-muted">
-                            aos
-                            </Form.Text>
-            <Form.Control width="sm" type="number" min="18" max="27" value={ageMax} onChange={e => setAgeMax(e.target.value)}/> */}
                         </Form.Group>
                         
                         <Form.Group controlId="formBasicGender">
                             <Form.Label>Género:</Form.Label>
-                            <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.gender} as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
                             <option>Selecione um opção</option>
                             <option value="Masculino"> Masculino </option>
                             <option value="Feminino"> Feminino </option>
                             <option value="Misto"> Misto </option>
                             <option value="Indiferente"> Indiferente </option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Insira o género!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicSmoker">
                             <Form.Label><FontAwesomeIcon icon={faSmoking} /> Permite fumadores?</Form.Label>
-                            <Form.Control as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
+                            <Form.Control required isInvalid={!!errors.smoker} as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
                             <option>Selecione um opção</option>
                             <option value="1"> Sim </option>
                             <option value="0"> Não </option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Indique se permite fumadores!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPet">
                             <Form.Label><FontAwesomeIcon icon={faPaw} /> Permite animais de estimação?</Form.Label>
-                            <Form.Control as="select" type="type" value={pet} onChange={e => setPet(e.target.value)}>
-                            <option>Selecione um opção</option>
+                            <Form.Control required isInvalid={!!errors.pet} as="select" type="type" value={pet} onChange={e => setPet(e.target.value)} custom>
+                            <option >Selecione um opção</option>
                             <option value="1"> Sim </option>
                             <option value="0"> Não </option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                Indique se permite animais de estimação!
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group controlId="formCategory14">
                             <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
@@ -323,6 +391,7 @@ function RegisterAlojamento() {
                 <Button variant="info" type="submit" className="button">
                     Submeter
                 </Button>
+                {validated && <p>Preencha todos os campos para o podermos ajudar durante o processo de pesquisa!</p>}
             </Form>
             </Container>
             <Footer/>

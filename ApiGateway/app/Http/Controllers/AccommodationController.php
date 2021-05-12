@@ -156,8 +156,8 @@ class AccommodationController extends Controller
         return response($response);
     }
 
-    public function filter(Request $filters){
-        $response = Http::post(env('API_ACCOMMODATION_URL') . 'filter/'.$filters ->all());
+    public function filter($filters){
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'filter/'.$filters);
         return response($response);
     }
 }

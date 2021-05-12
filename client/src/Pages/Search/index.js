@@ -37,9 +37,7 @@ function Search() {
     useEffect(() => {
         //ALL ACCOMMODATIONS
         api.get('api/accommodations').then(response => {
-            console.log(response.data)
             setAcommodations(response.data);
-            console.log(response.data.length);
         }).catch(err => {
             alert(err)
         })
@@ -97,10 +95,10 @@ function Search() {
         if(accommodationType != undefined){
             filters += "accommodationType," + accommodationType +",";
         }
-
+        console.log("OHHHHHfilters");
         console.log(filters);
 
-        api.get('api/accommodations/filter/', filters, {
+        api.get('api/accommodations/filter/' + filters, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -180,9 +178,8 @@ function Search() {
                     <Col lg={10} sm={12}>
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
                         <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
-                            {withoutFilters?  <Accommodations accom={Accmmodations} /> : 
-                             (accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
-                             <p>Não foram encontrados alojamentos com essas caracteríticas</p>)} 
+                            {(withoutFilters &&  accomFiltered.length>0)? <Accommodations accom={accomFiltered} />:
+                             <p>Não foram encontrados alojamentos com essas caracteríticas</p>} 
                         </Container>
                     </Col>
                 </Row>

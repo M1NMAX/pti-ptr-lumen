@@ -26,12 +26,19 @@ function Register() {
     console.log(type);
 
     const [errors, setErrors] = useState([]);
-
+    const [validated, setValidated] = useState(false);
     const history = useHistory();
     console.log(birthdate)
 
     async function handleRegister(e) {
         e.preventDefault();
+        //Verificar se os campos estão preenchidos
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setValidated(true);
 
         let data = {
             'username': username,
@@ -75,23 +82,33 @@ function Register() {
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
                     </Col>
                     <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>
-                        <Form  onSubmit={handleRegister}>
+                        <Form  noValidate validated={validated} onSubmit={handleRegister}>
                             <Form.Group controlId="formBasicName" >
                                 <Form.Label>Nome Completo</Form.Label>
                                 <Form.Control required width="sm" name="name" type="textarea" value={name} onChange={e => setName(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira o seu nome!
+                                </Form.Control.Feedback>
                             </Form.Group>
                             
                             <Form.Group controlId="formBasicEmail" onSubmit={handleRegister}>
                                 <Form.Label>  Email address</Form.Label>
                                 <Form.Control required width="sm" name="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira um e-mail!
+                                </Form.Control.Feedback>
                                 <Form.Text className="text-muted">
                                 O seu e-mail não será partilhado com nenhuma entidade interna ou externa
                                 </Form.Text>
+                                
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control  required width="sm" name="username" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira um username!
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
@@ -104,20 +121,26 @@ function Register() {
                                 <Form.Control required type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                                 <Form.Label>Confirmar Password</Form.Label>
                                 <Form.Control required type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Insira uma password!
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicType">
                                 <Form.Label>Tenho como objetivo</Form.Label>
                                 <Form.Control required as="select" type="type" value={type} onChange={e => setType(e.target.value)}>
-                                <option value="one" >selecione uma opção</option>
-                                <option value="guest" >Alugar um alojamento</option>
-                                <option value="landlord" >Colocar alojamentos para alugar</option>
+                                    <option value="one" >Selecione uma opção</option>
+                                    <option value="guest" >Alugar um alojamento</option>
+                                    <option value="landlord" >Colocar alojamentos para alugar</option>
                                 </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Escolha uma opção!
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             {type=='guest'&& <>
                                 <Form.Group controlId="formBasicCollege" onSubmit={handleRegister}>
-                                    <Form.Label> Nome da Instituição</Form.Label>
+                                    <Form.Label> Nome da Instituição:</Form.Label>
                                     <Form.Control width="sm" type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
                                 </Form.Group>
 
