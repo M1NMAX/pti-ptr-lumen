@@ -27,7 +27,7 @@ class RentalController extends Controller
 
     public function showId($id)
     {
-        return Rental::findOrFail($id); 
+        return Rental::findOrFail($id);
     }
 
     public function store(Request $request)
@@ -55,10 +55,10 @@ class RentalController extends Controller
     public function accommodationRented($user_id)
     {
         $accommodationIds = [];
-        $rentals = Rental::where('user_id', $user_id)
+        $rentals = Rental::where('guest_id', $user_id)
         ->get();
         foreach($rentals as $rental){
-            array_push($accommodationIds, $rental->accommodation_id);
+            array_push($accommodationIds, Accommodation::find($rental->accommodation_id));
         }
         //RETURNS IDS
         return $accommodationIds;
@@ -67,23 +67,33 @@ class RentalController extends Controller
 
     public function ownAccommodationRented($user_id)
     {
-        $accommodations = Accommodation::where('landlord_id', $user_id)->get();
-        $rentedAccommodations = [];
-        $ownAccommodations = [];
 
-        $rentals = Rental::get();
+        $accommodationIds = [];
+        $rentals = Rental::where('landlord_id', $user_id)->get();
         foreach($rentals as $rental){
-            array_push($rentedAccommodations, $rental->accommodation_id);
+            array_push($accommodationIds, Accommodation::find($rental->accommodation_id));
         }
-
-        foreach($accommodations as $accommodation){
-            if(in_array($accommodation->id, $rentedAccommodations))
-                array_push($ownAccommodations, $accommodation->id);
-        }
-
-        
         //RETURNS IDS
-        return $ownAccommodations;
+        return $accommodationIds;
+
+        //NAO ENTENDI O QUE ESTAVA A TENTAR FAZER POR ISSO COMENTEU E COLOQUEI O QUE ACHAVA CERTO
+        // $accommodations = Accommodation::where('landlord_id', $user_id)->get();
+        // $rentedAccommodations = [];
+        // $ownAccommodations = [];
+
+        // $rentals = Rental::get();
+        // foreach($rentals as $rental){
+        //     array_push($rentedAccommodations, $rental->accommodation_id);
+        // }
+
+        // foreach($accommodations as $accommodation){
+        //     if(in_array($accommodation->id, $rentedAccommodations))
+        //         array_push($ownAccommodations, $accommodation->id);
+        // }
+
+
+        //RETURNS IDS
+        // return $ownAccommodations;
     }
     ///////////////////////////////////////////////////////////////////////
 

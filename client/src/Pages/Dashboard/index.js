@@ -2,7 +2,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card,Row,Col,Container,Form} from 'react-bootstrap'
+import {Button, Card,Row,Col,Container,Form} from 'react-bootstrap';
+import { AnimationWrapper } from 'react-hover-animation'
 import NavBarHome from '../../Components/NavBarHome'
 import Search from '../../Components/Search'
 import chatImg from '../../img/chatImg.png'
@@ -16,6 +17,7 @@ import create from '../../img/add.png'
 import edit from '../../img/create.png'
 import home from '../../img/home.png'
 import Footer from '../../Components/Footer'
+import alojamento from '../../img/basicRoom.png'
 import './index.css'
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,8 +25,8 @@ import {faCalendar, faCalendarMinus, faEdit, faHeart, faHome, faPlusCircle, faSe
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
-    
     const [user, setUser] = useState('');
+    const [myAccommodations, setMyAccommodations] = useState([]);
 
     const history = useHistory();
     
@@ -43,7 +45,15 @@ function Dashboard() {
                 history.push('/login');
             }else{
                 setUser(response.data);
-                console.log(response.data.id)
+                console.log(response.data.userable_type)
+                let ownOrNot = response.data.userable_type == "App\\Models\\Landlord"? 'rentedOwnAccommodation': 'rentedAccommodation';
+                console.log(ownOrNot);
+                api.get('api/accommodations/'+ownOrNot+'/'+response.data.id).then(
+                  ownResponse => {
+                    setMyAccommodations(ownResponse.data);
+                    console.log(ownResponse.data);
+
+                  })
 
                 api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
                   console.log(responseChatNotification.data);
@@ -87,7 +97,7 @@ function Dashboard() {
                   </a>
                 </Row>
                 <Row>
-                  <a href="/profile">
+                  <a href="/me">
                     {/* <img className = "imgDashboard" src={profile}></img>  */}
                     <FontAwesomeIcon icon={faUser} size="2x"/> Perfil
                   </a>
@@ -104,6 +114,32 @@ function Dashboard() {
                 <Card className="text-center content">
                     <Card.Body>
                         <Card.Title>Bem-vindo, {user.username}</Card.Title>
+
+                        {myAccommodations.map((accommodation)=>(
+                          <Container fluid>
+                            <Card className="mb-2" style={{padding: '2%'}}>
+                                <Card.Header>{accommodation.name}</Card.Header>
+                                <Row> 
+                                    <Col xm={12} sm={6}>
+                                    <AnimationWrapper>
+                                        <a href={"/profileAccommodation/"+accommodation.id}>
+                                            <Card.Img   style={{ width: '50%'}} onclick={"/profileAccommodation/"+accommodation.id} className="img" src={alojamento}></Card.Img>
+                                        </a>
+                                    </AnimationWrapper>
+                                    </Col>
+                                    <Col xm={12} sm={6}>
+                                    <Card.Text >
+                                        <h5 style={{textAlign:"center"}}>Morada: {accommodation.address} </h5>
+                                        <h5 style={{textAlign:"center"}}>Preco: {accommodation.price}&euro;</h5>
+                                        <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
+                                    </Card.Text>
+                                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+accommodation.id}>Ver página do alojamento</Button>
+                                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" >Remover dos favoritos</Button>
+
+                                    </Col>
+                                </Row>
+                            </Card> 
+                        </Container>))}
                         {/* <Form inline className="searchDashboard">
                           <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                           <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
@@ -141,7 +177,7 @@ function Dashboard() {
               </a>
             </Row>
             <Row>
-              <a href="/profile">
+              <a href="/me">
               <FontAwesomeIcon icon={faUser} size="2x"/> Perfil
               </a>
             </Row>
