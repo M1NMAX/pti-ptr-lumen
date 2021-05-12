@@ -16,7 +16,9 @@ import manage from '../../img/manage.png'
 import create from '../../img/add.png'
 import edit from '../../img/create.png'
 import home from '../../img/home.png'
-import Footer from '../../Components/Footer'
+import Footer from '../../Components/Footer';
+import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
+import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
 import alojamento from '../../img/basicRoom.png'
 import './index.css'
 import api from '../../services/api';
@@ -115,31 +117,9 @@ function Dashboard() {
                     <Card.Body>
                         <Card.Title>Bem-vindo, {user.username}</Card.Title>
 
-                        {myAccommodations.map((accommodation)=>(
-                          <Container fluid>
-                            <Card className="mb-2" style={{padding: '2%'}}>
-                                <Card.Header>{accommodation.name}</Card.Header>
-                                <Row> 
-                                    <Col xm={12} sm={6}>
-                                    <AnimationWrapper>
-                                        <a href={"/profileAccommodation/"+accommodation.id}>
-                                            <Card.Img   style={{ width: '50%'}} onclick={"/profileAccommodation/"+accommodation.id} className="img" src={alojamento}></Card.Img>
-                                        </a>
-                                    </AnimationWrapper>
-                                    </Col>
-                                    <Col xm={12} sm={6}>
-                                    <Card.Text >
-                                        <h5 style={{textAlign:"center"}}>Morada: {accommodation.address} </h5>
-                                        <h5 style={{textAlign:"center"}}>Preco: {accommodation.price}&euro;</h5>
-                                        <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
-                                    </Card.Text>
-                                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+accommodation.id}>Ver página do alojamento</Button>
-                                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" >Remover dos favoritos</Button>
-
-                                    </Col>
-                                </Row>
-                            </Card> 
-                        </Container>))}
+                        {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                          <DashboardAccoLandlord accommodation={accommodation}/>
+                          )): <p>Não tem alojamentos alugados</p>}
                         {/* <Form inline className="searchDashboard">
                           <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                           <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
@@ -192,6 +172,9 @@ function Dashboard() {
             <Card className="text-center content">
                 <Card.Body>
                     <Card.Title>Bem-vindo, {user.username}</Card.Title>
+                    {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                          <DashboardAccoGuest accommodation={accommodation}/>
+                          )):<p>Não esta a alugar alojamento</p> }
                     {/* <Form inline className="searchDashboard">
                       <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                       <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
