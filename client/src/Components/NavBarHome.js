@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import Spinner from '../Components/Spinner';
 
 
 function NavBarHome() {
@@ -15,6 +16,7 @@ function NavBarHome() {
     const [auth, setAuth] = useState(true);
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
+    const [loading, setLoading] = useState(true);
 
     const history = useHistory();
 
@@ -35,6 +37,7 @@ function NavBarHome() {
             }else{
                 setUsername(response.data.username);
                 setUserid(response.data.id)
+                setLoading(false);
           }
         }).catch(err => {
           alert(err)
@@ -60,6 +63,7 @@ function NavBarHome() {
 
     return (
         <div className="header" style={{margin: "60px"}}>
+            {loading === false ? (
           <Switch>
                 <Route exact path="/" >
                     <Navbar bg="white" expand="lg" fixed="top">
@@ -142,6 +146,9 @@ function NavBarHome() {
                         </Navbar.Collapse>
                     </Navbar>
             </Switch>
+            ): (
+                <Spinner />
+                    )}
         </div>
     )
 }

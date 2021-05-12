@@ -8,6 +8,8 @@ import {faEnvelope, faTimesCircle, faCheckCircle} from '@fortawesome/free-solid-
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
+
 
 
 function DashboardAccoLandlord({accommodation, showWarning}) {
@@ -17,6 +19,8 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
     const [accommodationData, setAccommodationData] = useState([]);
     const [accommodationRequirements, setAccommodationRequirements] = useState([]);
     const [userAge, setUserAge]= useState(); 
+
+    const [loading, setLoading] = useState(true)
     
 
     
@@ -52,6 +56,7 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
                     if(response.data.status){
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -65,18 +70,12 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
     const handleShowWarning = async (event) =>{
         event.preventDefault();
         showWarning(accommodationData.name, accommodationData.id);
-
-        // await acceptPending(pending.id);
-
     };
 
-    // const handleRejectPending = async (event) =>{
-    //     event.preventDefault();
-    //     await rejectPending(pending.id)
-    // }
 
     return (
         <Container>
+            {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
 
@@ -114,6 +113,9 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
             </Row>
             
         </Card> 
+        ) : (
+            <Spinner />
+          )}
         </Container>
     )
 }

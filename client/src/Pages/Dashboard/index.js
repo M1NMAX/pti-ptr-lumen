@@ -24,6 +24,7 @@ function Dashboard() {
     const [result, setResult] = useState('');
     const [accommodationName, setAccommotionName] = useState();
     const [accommodationId, setAccommotionId] = useState();
+    
 
 
     const history = useHistory();
@@ -113,6 +114,7 @@ function Dashboard() {
       return (
         <div className="App">
           <NavBarHome/>
+          
           <Container fluid>
             <Row>
               <Col sm={12} lg={2} className="sidebar">
