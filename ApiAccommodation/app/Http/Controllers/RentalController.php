@@ -58,7 +58,7 @@ class RentalController extends Controller
         $rentals = Rental::where('guest_id', $user_id)
         ->get();
         foreach($rentals as $rental){
-            array_push($accommodationIds, Accommodation::find($rental->accommodation_id));
+            array_push($accommodationIds, $rental);
         }
         //RETURNS IDS
         return $accommodationIds;
@@ -71,7 +71,7 @@ class RentalController extends Controller
         $accommodationIds = [];
         $rentals = Rental::where('landlord_id', $user_id)->get();
         foreach($rentals as $rental){
-            array_push($accommodationIds, Accommodation::find($rental->accommodation_id));
+            array_push($accommodationIds, $rental);
         }
         //RETURNS IDS
         return $accommodationIds;
