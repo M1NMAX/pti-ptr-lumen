@@ -25,7 +25,7 @@ function Register() {
 
     console.log(type);
 
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState({});
     const [validated, setValidated] = useState(false);
     const history = useHistory();
     console.log(birthdate)
@@ -34,10 +34,18 @@ function Register() {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
         const form = e.currentTarget;
-        if (form.checkValidity() === false) {
+        const newErrors = {}
+        // name errors
+        if ( !birthdate || birthdate === '' ) {newErrors.birthdate = ''}
+        if ( !type || type === '' ) {newErrors.type = ''}
+        console.log(form.checkValidity() === false  || Object.keys(newErrors).length > 0);
+        if (form.checkValidity() === false  || Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
             e.preventDefault();
             e.stopPropagation();
-        }
+            
+            console.log(errors);
+        };
         setValidated(true);
 
         let data = {
@@ -113,7 +121,10 @@ function Register() {
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                                 <Form.Label>Data de nascimento</Form.Label>
-                                <Form.Control width="sm" name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+                                <Form.Control width="sm" isInvalid={ !!errors.birthdate } name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira uma data de nascimento!
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">

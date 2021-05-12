@@ -20,17 +20,24 @@ import localizacoes from '../RegisterAccommodation/localizacoes.js';
 function ProfileAccommodationEditable () {
     const  history = useHistory();
     let { id } = useParams();
-    const [accommodation, setaccommodation] = useState([]);
+    
 
     const [localizacao, setLocalizacao] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
 
+    const [accommodation, setaccommodation] = useState([]);
+    const [accommodationFeature, setaccommodationFeature] = useState([]);
+    const [accommodationInfo, setaccommodationInfo] = useState([]);
+    const [accommodationRequirements, setaccommodationRequirements] = useState([]);
+   
+
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
-            // you must define a default operation
-            setaccommodation(response.data);
-        
+            setaccommodation(response.data.aboutAccommodation);
+            setaccommodationFeature(response.data.aboutAccommodation.feature);
+            setaccommodationInfo(response.data.aboutAccommodation.info);
+            setaccommodationRequirements(response.data.aboutAccommodation.requirements);
         }).catch(err => {
           alert(err)
         })
@@ -39,6 +46,21 @@ function ProfileAccommodationEditable () {
         }).catch(err => {
           alert(err)
         })
+
+        api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
+            // you must define a default operation
+            console.log(responseFeatures.data.length)
+            let featuresArray = [];
+            if(responseFeatures.data.length > 0){
+                for(let i = 0; i < responseFeatures.data.length; i++ ){
+                    featuresArray.push(responseFeatures.data[i].name);
+                }
+                setCaract(featuresArray);
+            }
+        }).catch(err => {
+          alert(err)
+        })
+
       }, []);
 
     const [ ageMin, setAgeMin ] = useState(18);
@@ -53,12 +75,11 @@ function ProfileAccommodationEditable () {
     setImages(imageList);
   };
 
-
+        
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
         var profilePic3=DefaultRoomPic3;
     
-        var titulo = "Quarto num apartamento T2 só para rapazes";
         return (
             <div>
                 <NavBarHome/>
@@ -69,7 +90,7 @@ function ProfileAccommodationEditable () {
                     </Col>
                     <Col xs={6} md={10} >
                         <Form.Group controlId="formCategory1">
-                            <Form.Control size="lg" type="text" defaultValue={titulo}/>
+                            <Form.Control size="lg" type="text" defaultValue={accommodation.name}/>
                         </Form.Group>
                     </Col>                 
                 </Row> 
@@ -149,8 +170,7 @@ function ProfileAccommodationEditable () {
                             <h3 class="w3-border-top">Informações Importantes </h3>
                             <Form.Group controlId="formCategory0">
                                 <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
-                                <Form.Control type="text" defaultValue={accommodation.streetName,accommodation.city,
-                                accommodation.country}/>
+                                <Form.Control type="text" defaultValue={accommodation.address}/>
                             </Form.Group>
                             <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label>
@@ -159,34 +179,34 @@ function ProfileAccommodationEditable () {
                                     labelKey="name"
                                     onChange={setLocalizacao}
                                     options={localizacoes}
-                                    placeholder="Meter da bd"
+                                    placeholder={accommodation.county}
                                     selected={localizacao}
                                 />
                             </Form.Group>
 
                             <Form.Group controlId="formCategory2">
-                                <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço:</Form.Label>
+                                <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Form.Label>
                                 <Form.Control type="text" defaultValue={accommodation.price} />
                             </Form.Group>
-                            <Form.Group controlId="formCategory3">
+                            {/*<Form.Group controlId="formCategory3">
                                 <Form.Label>Estado de ocupação:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"desocupado" === "ocupado"}
+                                    checked={accommodation.available === false}
                                     type="radio"
                                     label="Ocupado"
                                     name="ocupado"
                                     id="ocupado"
                                     />
                                     <Form.Check
-                                    checked={"desocupado"=== "desocupado"}
+                                    checked={accommodation.available === true}
                                     type="radio"
                                     label="Desocupado"
                                     name="desocupado"
                                     id="desocupado"
                                     />
                                 </Col>
-                            </Form.Group>
+                                </Form.Group> */}
                             <Form.Group controlId="formCategory4">
                                 <Form.Label>Descrição:</Form.Label>
                                 <Form.Control as="textarea" rows={3} defaultValue={accommodation.description}/>
@@ -197,7 +217,7 @@ function ProfileAccommodationEditable () {
                                 <Row> 
                                      &nbsp; &nbsp; Dos 	&nbsp;
                                         <RangeSlider
-                                            value={ageMin}
+                                            value={accommodationRequirements.ageRangeBot}
                                             onChange={e => setAgeMin(e.target.value)}
                                             min={17}
                                             max={64}
@@ -206,7 +226,7 @@ function ProfileAccommodationEditable () {
                                     	&nbsp; aos 	&nbsp;
                                         <RangeSlider
                                             variant='info'
-                                            value={ageMax}
+                                            value={accommodationRequirements.ageRangeTop}
                                             onChange={e => setAgeMax(e.target.value)}
                                             min={18}
                                             max={65}
@@ -219,28 +239,28 @@ function ProfileAccommodationEditable () {
                                 <Form.Label>Género preferecial:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"m" === "m"}
+                                    checked={accommodationRequirements.gender === "Masculino"}
                                     type="radio"
                                     label="Masculino"
                                     name="m"
                                     id="m"
                                     />
                                     <Form.Check
-                                    checked={"m"=== "f"}
+                                    checked={ accommodationRequirements.gender === "Feminino"}
                                     type="radio"
                                     label="Feminino"
                                     name="f"
                                     id="f"
                                     />
                                     <Form.Check
-                                    checked={"m"=== "mix"}
+                                    checked={ accommodationRequirements.gender === "Misto"}
                                     type="radio"
                                     label="Misto"
                                     name="mix"
                                     id="mix"
                                     />
                                     <Form.Check
-                                    checked={"ind" === "m"}
+                                    checked={accommodationRequirements.gender === "Indiferente"}
                                     type="radio"
                                     label="Indiferente"
                                     name="ind"
@@ -252,14 +272,14 @@ function ProfileAccommodationEditable () {
                                 <Form.Label>Permite fumadores?</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"simF" === "simF"}
+                                    checked={accommodationRequirements.smoker === 1}
                                     type="radio"
                                     label="Sim"
                                     name="simF"
                                     id="simF"
                                     />
                                     <Form.Check
-                                    checked={"simF"=== "naoF"}
+                                    checked={accommodationRequirements.smoker === 0}
                                     type="radio"
                                     label="Não"
                                     name="naoF"
@@ -271,14 +291,14 @@ function ProfileAccommodationEditable () {
                                 <Form.Label>Permite animais de estimação?</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"simA" === "simA"}
+                                    checked={accommodationRequirements.pets === 1}
                                     type="radio"
                                     label="Sim"
                                     name="simA"
                                     id="simA"
                                     />
                                     <Form.Check
-                                    checked={"simA"=== "naoA"}
+                                    checked={accommodationRequirements.pets === 0}
                                     type="radio"
                                     label="Não"
                                     name="naoA"
@@ -302,72 +322,98 @@ function ProfileAccommodationEditable () {
                         </Col>
                         <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
-                            <Form.Group controlId="formCategory4">
+                            <Form.Group controlId="formCategoryType">
+                                <Form.Label>Tipo de Alojamento:</Form.Label>
+                                <Col sm={10}>
+                                    <Form.Check
+                                    checked={accommodationInfo.accommodationType === "Quarto"}
+                                    type="radio"
+                                    label="Quarto"
+                                    name="Quarto"
+                                    id="Quarto"
+                                    />
+                                    <Form.Check
+                                    checked={accommodationInfo.accommodationType === "Apartamento"}
+                                    type="radio"
+                                    label="Apartamento"
+                                    name="Apartamento"
+                                    id="Apartamento"
+                                    />
+                                    <Form.Check
+                                    checked={accommodationInfo.accommodationType === "Moradia"}
+                                    type="radio"
+                                    label="Moradia"
+                                    name="Moradia"
+                                    id="Moradia"
+                                    />
+                                </Col>
+                            </Form.Group>
+                            <Form.Group controlId="formCategoryRooms">
                                 <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
-                                <Form.Control type="number" defaultValue="2"/>
+                                <Form.Control type="number" defaultValue={accommodationInfo.rooms}/>
                             </Form.Group>
-                            <Form.Group controlId="formCategory5">
+                            <Form.Group controlId="formCategoryBaths">
                                 <Form.Label><FontAwesomeIcon icon={faBath} /> Nº de casas de banho:</Form.Label>
-                                <Form.Control type="number" defaultValue="2" />
+                                <Form.Control type="number" defaultValue={accommodationInfo.bathRooms} />
                             </Form.Group>
-                            <Form.Group controlId="formCategory6">
+                            <Form.Group controlId="formCategoryArea">
                                 <Form.Label>Área: </Form.Label>
-                                <Form.Control type="text" defaultValue="100m<sup>2</sup>"/>
+                                <Form.Control type="text" defaultValue={accommodationInfo.area}/>
                             </Form.Group>
-                            <Form.Group controlId="formCategory7">
+                            <Form.Group controlId="formCategorySolar">
                                 <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar do quarto:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"n" === "n"}
+                                    checked={accommodationInfo.solar === "N"}
                                     type="radio"
                                     label="Norte (N)"
                                     name="n"
                                     id="ne"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "ne"}
+                                    checked={accommodationInfo.solar === "NE"}
                                     type="radio"
                                     label="Nordeste (NE)"
                                     name="ne"
                                     id="ne"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "e"}
+                                    checked={accommodationInfo.solar === "E"}
                                     type="radio"
                                     label="Este (E)"
                                     name="e"
                                     id="e"
                                     />
                                     <Form.Check
-                                    checked={"n" === "se"}
+                                    checked={accommodationInfo.solar === "SE"}
                                     type="radio"
                                     label="Sudeste (SE)"
                                     name="se"
                                     id="se"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "s"}
+                                    checked={accommodationInfo.solar === "S"}
                                     type="radio"
                                     label="Sul (S)"
                                     name="s"
                                     id="s"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "so"}
+                                    checked={accommodationInfo.solar === "SO"}
                                     type="radio"
                                     label="Sudoeste (SO)"
                                     name="so"
                                     id="so"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "o"}
+                                    checked={accommodationInfo.solar === "O"}
                                     type="radio"
                                     label="Oeste (O) "
                                     name="o"
                                     id="o"
                                     />
                                     <Form.Check
-                                    checked={"n"=== "no"}
+                                    checked={accommodationInfo.solar === "NO"}
                                     type="radio"
                                     label="Noroeste (NO)"
                                     name="no"
@@ -379,14 +425,14 @@ function ProfileAccommodationEditable () {
                                 <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"existe" === "existe"}
+                                    checked={accommodationInfo.wifi === 1}
                                     type="radio"
                                     label="Existe"
                                     name="existe"
                                     id="existe"
                                     />
                                     <Form.Check
-                                    checked={"existe"=== "naoExiste"}
+                                    checked={accommodationInfo.wifi=== 0}
                                     type="radio"
                                     label="Não existe"
                                     name="naoExiste"
@@ -398,14 +444,14 @@ function ProfileAccommodationEditable () {
                                 <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
                                 <Col sm={10}>
                                     <Form.Check
-                                    checked={"propria" === "propria"}
+                                    checked={accommodationInfo.clean === 0}
                                     type="radio"
                                     label="Cada um faz a sua própria"
                                     name="propria"
                                     id="propria"
                                     />
                                     <Form.Check
-                                    checked={"propria"=== "profissionais"}
+                                    checked={accommodationInfo.clean=== 1}
                                     type="radio"
                                     label="É feita por profissionais"
                                     name="profissionais"

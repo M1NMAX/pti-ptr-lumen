@@ -48,11 +48,11 @@ function RegisterAlojamento() {
     const [feature, setFeature] = useState([]);
     
     const [validated, setValidated] = useState(false);
-    const [ errors, setErrors ] = useState({});
+    let [ errors, setErrors ] = useState({});
 
     const findFormErrors = () => {
         
-        const newErrors = {}
+        let newErrors = {}
         // name errors
         if ( !title || title === '' ) {newErrors.title = ''}
         if ( !content || content === '' ) {newErrors.content = ''}
@@ -83,10 +83,10 @@ function RegisterAlojamento() {
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
-        const newErrors = findFormErrors();
+        let newErrors = findFormErrors();
         if ( Object.keys(newErrors).length > 0 ) {
             setErrors(newErrors);
-        }
+        };
         console.log(errors);
         //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
         console.log(caract)
