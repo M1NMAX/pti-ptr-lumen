@@ -4,11 +4,14 @@ import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
+import Spinner from './Spinner';
+
  
 function SingleAccommodation({accom, removeFavourite}) {
     const [id] = useState(accom.accommodation_id);
     const [token] = useState(localStorage.getItem('token'));
     const [accommodation, setAccommodation] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
           api.get( 'api/accommodations/'+id,{
@@ -21,8 +24,8 @@ function SingleAccommodation({accom, removeFavourite}) {
                 localStorage.clear();
                
             }else{
-               setAccommodation(response.data.aboutAccommodation)
-
+               setAccommodation(response.data.aboutAccommodation);
+               setLoading(false);
           }
         }).catch(err => {
           alert(err)
@@ -38,6 +41,7 @@ function SingleAccommodation({accom, removeFavourite}) {
    
     return (
         <Container fluid>
+            {loading === false ? (
             <Card className="mb-2" style={{padding: '2%'}}>
                 <Card.Header>{accommodation.name}</Card.Header>
                 <Row> 
@@ -59,7 +63,9 @@ function SingleAccommodation({accom, removeFavourite}) {
 
                     </Col>
                 </Row>
-            </Card> 
+            </Card> ) : (
+            <Spinner />
+          )}
         </Container>
     )
 }
