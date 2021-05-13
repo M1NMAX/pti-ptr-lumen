@@ -13,7 +13,8 @@ class CreateRentalTable extends Migration
      */
     public function up()
     {
-        Schema::create('rental', function (Blueprint $table) {
+        Schema::create('rental', function (Blueprint $table)
+        {
             $table->id();
             $table->integer('accommodation_id');
             $table->integer('guest_id');
