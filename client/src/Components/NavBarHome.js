@@ -24,6 +24,7 @@ function NavBarHome() {
         
         if(token === null || token ===''){
             setAuth(false);
+            setLoading(false);
         }else{
         api.get('api/me', {
           headers: {
