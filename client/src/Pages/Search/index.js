@@ -61,7 +61,7 @@ function Search() {
             for(let i = 0; i < caractList.length;i++){
                 caractIds+= caract[caractList[i]].id + ","
             }
-            filters += "feature_id:"+caractIds +";";
+            filters += caractIds +";";
         }else{
             filters+=";"
         }
@@ -105,15 +105,10 @@ function Search() {
                 Authorization: `Bearer ${token}`,
             }
         }).then(response => { 
-            if(response.data.status){
-                alert(true);
-                window.scrollTo(0, 0);
-                setAccomFiltered(response.data);
-                setWithoutFilters(!withoutFilters);
-                setWithFilters(!withFilters);
-            }else{
-                alert(response.data);    
-            }
+            window.scrollTo(0, 0);
+            setAccomFiltered(response.data);
+            setWithoutFilters(!withoutFilters);
+            setWithFilters(!withFilters);
          }).catch(err => {
             alert(err)
         })
@@ -180,8 +175,9 @@ function Search() {
                     <Col lg={10} sm={12}>
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
                         <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
-                            {(withoutFilters &&  accomFiltered.length>0)? <Accommodations accom={accomFiltered} />:
+                            {accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
                              <p>Não foram encontrados alojamentos com essas caracteríticas</p>} 
+                             
                         </Container>
                     </Col>
                 </Row>
