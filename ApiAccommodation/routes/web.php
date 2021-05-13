@@ -45,7 +45,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->get('/status/{id}', 'AccommodationController@status');
 
     //FILTRAR
-    $router->get('/filter/{json}', 'AccommodationController@filter');
+    $router->get('/filter/{filters}', 'AccommodationController@filter');
 
     //-------------POSTS----------------
 

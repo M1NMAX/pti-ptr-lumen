@@ -55,6 +55,7 @@ class FeatureController extends Controller
 
     public function filter($filters, Request $request) 
     {
+
         $filters = explode(';', $filters); 
         $cIds = explode(',', $filters[0]);    
         $infos = explode(',', $filters[1]); 

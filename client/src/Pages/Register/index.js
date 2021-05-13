@@ -23,58 +23,67 @@ function Register() {
     const [pet, setPet] = useState('');
     
 
-    console.log(type);
-
     const [errors, setErrors] = useState({});
-    const [validated, setValidated] = useState(false);
     const history = useHistory();
-    console.log(birthdate)
+    const [validated, setValidated] = useState(false);
+
+    const findFormErrors = () => {
+        let newErrors = {}
+        // name errors
+        if ( !name || name === '' ) {newErrors.name = true}
+        if ( !email || email === '' ) {newErrors.email = true}
+        if ( !username || username === '' ) {newErrors.username = true}
+        if ( !birthdate || birthdate === '' ) {newErrors.birthdate = true}
+        if ( !type || type === '' ) {newErrors.type = true}
+        if ( !password || password === '' ) {newErrors.password = true}
+        if ( !password_confirmation || password_confirmation === '' ) {newErrors.password_confirmation = true}
+        
+        return newErrors
+    }
 
     async function handleRegister(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
-        const form = e.currentTarget;
-        const newErrors = {}
-        // name errors
-        if ( !birthdate || birthdate === '' ) {newErrors.birthdate = ''}
-        if ( !type || type === '' ) {newErrors.type = ''}
-        console.log(form.checkValidity() === false  || Object.keys(newErrors).length > 0);
-        if (form.checkValidity() === false  || Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-            e.preventDefault();
-            e.stopPropagation();
-            
-            console.log(errors);
-        };
-        setValidated(true);
+        
+        setErrors(findFormErrors());
+        
+        if (Object.keys(errors).length > 0 || !(errors === {})) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+            setValidated(true);
+        }else{
+            setValidated(false);
 
-        let data = {
-            'username': username,
-            'name': name,
-            'email': email,
-            'birthdate':  birthdate,
-            'password': password,
-            'password_confirmation': password_confirmation,
-            'type': type,
-            'college': college,
-            'gender': gender, 
-            'smoker': smoker, 
-            'pets': pet,
-        };
+            let data = {
+                'username': username,
+                'name': name,
+                'email': email,
+                'birthdate':  birthdate,
+                'password': password,
+                'password_confirmation': password_confirmation,
+                'type': type,
+                'college': college,
+                'gender': gender, 
+                'smoker': smoker, 
+                'pets': pet,
+            };
 
-        console.log(data);
-        await api.post('api/users/register', data
-         ).then(async (response) =>{
-            if(response.data.status){
-                const responseLogin = await api.post('api/login', { email, password });
-                console.log(response.data);
-                localStorage.setItem('token', responseLogin.data.token);
-                localStorage.setItem('userID', responseLogin.data.user.id);
-                history.push('/dashboard');
-            }
-        }).catch (err => {
-            console.log(err);
-        })
+            console.log(data);
+            await api.post('api/users/register', data
+            ).then(async (response) =>{
+                if(response.data.status){
+                    const responseLogin = await api.post('api/login', { email, password });
+                    console.log(response.data);
+                    localStorage.setItem('token', responseLogin.data.token);
+                    localStorage.setItem('userID', responseLogin.data.user.id);
+                    history.push('/dashboard');
+                }
+            }).catch (err => {
+                console.log(err);
+            })
+        }
     }
     return (
         <div>
@@ -90,10 +99,10 @@ function Register() {
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
                     </Col>
                     <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>
-                        <Form  noValidate validated={validated} onSubmit={handleRegister}>
+                        <Form  noValidate onSubmit={handleRegister}>
                             <Form.Group controlId="formBasicName" >
                                 <Form.Label>Nome Completo</Form.Label>
-                                <Form.Control required width="sm" name="name" type="textarea" value={name} onChange={e => setName(e.target.value)}/>
+                                <Form.Control required isInvalid={errors.name} width="sm" name="name" type="textarea" value={name} onChange={e => setName(e.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     Insira o seu nome!
                                 </Form.Control.Feedback>
@@ -101,7 +110,7 @@ function Register() {
                             
                             <Form.Group controlId="formBasicEmail" onSubmit={handleRegister}>
                                 <Form.Label>  Email address</Form.Label>
-                                <Form.Control required width="sm" name="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
+                                <Form.Control required isInvalid={errors.email} width="sm" name="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     Insira um e-mail!
                                 </Form.Control.Feedback>
@@ -113,7 +122,7 @@ function Register() {
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control  required width="sm" name="username" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
+                                <Form.Control  required isInvalid={errors.username} width="sm" name="username" type="textarea" value={username} onChange={e => setUsername(e.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     Insira um username!
                                 </Form.Control.Feedback>
@@ -121,7 +130,7 @@ function Register() {
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                                 <Form.Label>Data de nascimento</Form.Label>
-                                <Form.Control width="sm" isInvalid={ !!errors.birthdate } name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+                                <Form.Control width="sm" isInvalid={errors.birthdate } name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     Insira uma data de nascimento!
                                 </Form.Control.Feedback>
@@ -129,9 +138,9 @@ function Register() {
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control required type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                                <Form.Control required isInvalid={errors.password} type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                                 <Form.Label>Confirmar Password</Form.Label>
-                                <Form.Control required type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
+                                <Form.Control required isInvalid={errors.password_confirmation} type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
                                 <Form.Control.Feedback type="invalid">
                                     Insira uma password!
                                 </Form.Control.Feedback>
@@ -139,7 +148,7 @@ function Register() {
 
                             <Form.Group controlId="formBasicType">
                                 <Form.Label>Tenho como objetivo</Form.Label>
-                                <Form.Control required as="select" type="type" value={type} onChange={e => setType(e.target.value)}>
+                                <Form.Control required isInvalid={errors.type} as="select" type="type" value={type} onChange={e => setType(e.target.value)}>
                                     <option value="one" >Selecione uma opção</option>
                                     <option value="guest" >Alugar um alojamento</option>
                                     <option value="landlord" >Colocar alojamentos para alugar</option>
