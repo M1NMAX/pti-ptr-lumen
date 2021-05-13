@@ -99,8 +99,9 @@ function RegisterAlojamento() {
                 top: 0,
                 behavior: "smooth"
             });
-
+            setValidated(true);
         }else{
+            setValidated(false);
             let caractList = Object.keys(caract)
             let caractIds = ""    
             for(let i = 0; i < caractList.length;i++){
@@ -183,7 +184,7 @@ function RegisterAlojamento() {
             {showLink && <Row  className= "mt-3 mb-3">
                 <Button href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
             </Row> }    
-            <Form  noValidate validated={validated} onSubmit={handleRegisterAlojamento} >
+            <Form  noValidate onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
                     <Col className="cols" xs={12} sm={6}>
                         <Row>
