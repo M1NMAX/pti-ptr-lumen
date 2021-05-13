@@ -261,7 +261,7 @@ class AccommodationController extends Controller
         $filters = explode(';', $filters); 
         
         $cIds = explode(',', $filters[0]); 
-        return $cIds;   
+         
         $infos = explode(',', $filters[1]); 
         
         
@@ -275,11 +275,11 @@ class AccommodationController extends Controller
         //return $infoFilter;
         if(in_array('priceMax', $infos)){
             $index = array_search('priceMax',$infos);
-            array_push($basicFilter,['price', '<', $infos[$index+1]]);
+            array_push($basicFilter,['price', '<=', $infos[$index+1]]);
         }
         if(in_array('priceMin', $infos)){
             $index = array_search('priceMin',$infos);
-            array_push($basicFilter,['price', '>', $infos[$index+1]]);
+            array_push($basicFilter,['price', '>=', $infos[$index+1]]);
         }
 
 
@@ -296,12 +296,34 @@ class AccommodationController extends Controller
             array_push($infoFilter,['clean', '=', 1]);
         }
 
+        if(in_array('pet', $infos)){
+            $index = array_search('pet',$infos);
+            array_push($requirementFilter,['pets', '=', 1]);
+        }
+        if(in_array('smoker', $infos)){
+            $index = array_search('smoker',$infos);
+            array_push($requirementFilter,['smoker', '=', 1]);
+        }
  
 
         if (($key = array_search('', $cIds)) !== false) {
             unset($cIds[$key]);
         }
+        
+        /////INFOS///FILTER///IDS/////
+        $accommodationIdsBasicFilter = DB::table('accommodation')
+                ->select('id')
+                ->where($basicFilter)
+                ->get();
 
+        
+        return $accommodationIdsBasicFilter; 
+        $accommodationBasicInfoIds = [];
+        foreach($accommodationIdsBasicFilters as $accommodation){
+            $id = $accommodation->accommodation_id;
+            array_push($accommodationBasicInfoIds, $id); 
+        }
+        return
         /////FEATURES///FILTER///IDS/////
         $relationships = AF::whereIn('feature_id', $cIds)->get();
         
@@ -326,23 +348,26 @@ class AccommodationController extends Controller
             $id = $accommodation->accommodation_id;
             array_push($accommodationInfoIds, $id); 
         }
-        
-        //return $infoFilter;
+        /////REQUIREMENTS///FILTER///IDS/////
         $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
         ->select('accommodation_id')
         ->where($requirementFilter)
         ->get();
+
+        
 
         $accommodationRequirementsIds = [];
         foreach($accommodationIdsRequirementsFilter as $accommodation){
             $id = $accommodation->accommodation_id;
             array_push($accommodationRequirementsIds, $id); 
         }
+        
+
         ///////////////////////////////////////////////////////////////
         $aIdCount = array_count_values($accommodationFeatureIds);
         $res = array_keys($aIdCount,count($cIds));
         $accommodations = Accommodation::findMany($res);
-        return $accommodationRequirementsIds;
+        return $accommodations;
     }
 
 
