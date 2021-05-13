@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 import NavBarHome from '../../Components/NavBarHome'
 import {Container, Card, Form, Button,Row,Col} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams, useHistory, useLocation} from 'react-router-dom';
 import api from '../../services/api';
 import Accommodations from '../../Components/Accommodation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import { Typeahead } from 'react-bootstrap-typeahead';
+import {faArrowLeft, faHome} from '@fortawesome/free-solid-svg-icons'
+import { Typeahead } from 'react-bootstrap-typeahead'
 import localizacoes from '../RegisterAccommodation/localizacoes.js';
 
 function Search() {
-    let { location } = useParams();
+   // let { location } = useParams();
     const [token] = useState(localStorage.getItem('token'));
     const [Accmmodations, setAcommodations] = useState([]);
-    console.log(location)
     
+    
+    const location = useLocation();
+    
+    
+
     const [localizacao, setLocalizacao] = useState(undefined);
     const [accommodationType, setAccommodationType] = useState(undefined);
     const [wifi, setWifi] = useState(undefined);
@@ -29,15 +33,12 @@ function Search() {
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
 
-    const [withoutFilters, setWithoutFilters] = useState(false);
-    const [withFilters, setWithFilters] = useState(true);
     //ACCOMMODATIONS FILTERED
     const[accomFiltered, setAccomFiltered] = useState([]);
 
     useEffect(() => {
-        //ALL ACCOMMODATIONS
-        api.get('api/accommodations').then(response => {
-            setAcommodations(response.data);
+        api.get('api/accommodations/localSearch/' + location.state).then(response => {
+            setAccomFiltered(response.data);
         }).catch(err => {
             alert(err)
         })
@@ -107,8 +108,6 @@ function Search() {
         }).then(response => { 
             window.scrollTo(0, 0);
             setAccomFiltered(response.data);
-            setWithoutFilters(!withoutFilters);
-            setWithFilters(!withFilters);
          }).catch(err => {
             alert(err)
         })
@@ -167,7 +166,7 @@ function Search() {
                                     selected={caract}
                                 />
                             </Form.Group>
-                            <Button variant="info" type="submit" className="button">
+                            <Button className="mb-5" variant="info" type="submit" className="button">
                                 Mostrar Alojamentos
                             </Button>
                         </Form>
@@ -176,7 +175,7 @@ function Search() {
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
                         <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
                             {accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
-                             <p>Não foram encontrados alojamentos com essas caracteríticas</p>} 
+                             <h6 className="center mt-5 text-muted"  ><FontAwesomeIcon icon={faHome} />  Não foram encontrados alojamentos com essas caracteríticas</h6>} 
                              
                         </Container>
                     </Col>

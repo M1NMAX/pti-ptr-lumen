@@ -173,4 +173,9 @@ class AccommodationController extends Controller
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/filter/'.$filters);
         return response($response);
     }
+
+    public function localSearch($location){
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/localSearch/'.$location);
+        return response($response);
+    }
 }

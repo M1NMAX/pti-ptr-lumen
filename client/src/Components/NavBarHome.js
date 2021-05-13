@@ -19,6 +19,14 @@ function NavBarHome() {
     const [loading, setLoading] = useState(true);
 
     const history = useHistory();
+    const [local, setLocal]=useState();
+
+    async function routeChange(local){
+        history.push({
+            pathname: '/Search',
+            state: local
+        });
+    }
 
     useEffect(() => {
         
@@ -124,8 +132,8 @@ function NavBarHome() {
                             <Nav className="text-center">
                                 {/* show auth user data  */}
                                 <Form inline className="searchDashboard">
-                                    <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                                    <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                    <Form.Control type="text" placeholder="Onde?" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)} />
+                                    <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">

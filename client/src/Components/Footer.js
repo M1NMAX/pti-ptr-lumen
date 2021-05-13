@@ -6,7 +6,7 @@ import { faReact, faBootstrap, faLaravel } from '@fortawesome/free-brands-svg-ic
 
 function Footer() {
     return (
-        <footer className="border-top">
+        <footer className="border-top mt-3">
             <Card  text="black">
                 <Card.Header className="pl-5 mb-0 mt-0" style={{backgroundColor: "rgb(233, 232, 232)"}}><b>Ficha técnica</b>  </Card.Header>
                 <Card.Body className="pb-0 mb-0 mt-0" style={{backgroundColor: "rgb(241, 241, 241)", textAlign:"center"}}>
