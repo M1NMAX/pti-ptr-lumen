@@ -112,13 +112,14 @@ class AccommodationController extends Controller
     {
         $data = $request->all();
         $accommodation = $this->accommodation->find($id);
+        $accommodation->update($request->all());
 
-        $accommodation->fill($data);
-        $accommodation->touch();
+        // $accommodation->fill($data);
+        // $accommodation->touch();
 
-        $accommodation->save();
+        // $accommodation->save();
 
-        return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso']]);
+        return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso'], 'status'=>true]);
 
     }
 

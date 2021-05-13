@@ -94,6 +94,12 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function update($id, Request $request)
+    {
+        $response = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id, $request->all());
+        return response($response);
+    }
+
     public function showDates($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/busyDates');
