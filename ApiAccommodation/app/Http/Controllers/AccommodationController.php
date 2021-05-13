@@ -268,6 +268,7 @@ class AccommodationController extends Controller
         $infoFilter = [];
         $requirementFilter = [];
         $basicFilter = [];
+
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
             array_push($basicFilter,['county', 'like', '%' . $infos[$index+1] . '%']);
@@ -310,62 +311,101 @@ class AccommodationController extends Controller
             unset($cIds[$key]);
         }
         
-        /////INFOS///FILTER///IDS/////
-        $accommodationIdsBasicFilter = DB::table('accommodation')
-                ->select('id')
-                ->where($basicFilter)
-                ->get();
-
+        /////BASIC///FILTER///IDS/////DONE
+        if(count($basicFilter) == 0){
+            $accommodationIdsBasicFilter = DB::table('accommodation')
+            ->select('id')
+            ->get();
+        }else{
+            $accommodationIdsBasicFilter = DB::table('accommodation')
+            ->select('id')
+            ->where($basicFilter)
+            ->get();
+        }
         
-        return $accommodationIdsBasicFilter; 
         $accommodationBasicInfoIds = [];
-        foreach($accommodationIdsBasicFilters as $accommodation){
-            $id = $accommodation->accommodation_id;
+        foreach($accommodationIdsBasicFilter as $accommodation){
+            $id = $accommodation->id;
             array_push($accommodationBasicInfoIds, $id); 
         }
-        return
-        /////FEATURES///FILTER///IDS/////
-        $relationships = AF::whereIn('feature_id', $cIds)->get();
-        
-        
+
+
+        /////FEATURES///FILTER///IDS/////DONE
         $accommodationFeatureIds = [];
-        foreach($relationships as $r){
-            $id = $r->accommodation_id;
-            array_push($accommodationFeatureIds, $id); 
+
+        if(count($cIds) == 0){
+            $accommodationIds = DB::table('accommodation')
+            ->select('id')
+            ->get();
+
+            foreach($accommodationIds as $accommodation_id){
+                $id = $accommodation_id->id;
+                array_push($accommodationFeatureIds, $id); 
+            }
+        }else{
+            $relationships = AF::whereIn('feature_id', $cIds)->get();
+
+            foreach($relationships as $r){
+                $id = $r->accommodation_id;
+                array_push($accommodationFeatureIds, $id); 
+            }
+            $aIdCount = array_count_values($accommodationFeatureIds);
+            $accommodationFeatureIds = array_keys($aIdCount,count($cIds));
         }
+                
+        /////INFOS///FILTER///IDS/////DONE
+        $accommodationInfoIds = [];
+        if(count($infoFilter) == 0){
+            $accommodationIdsInfoFilter = DB::table('accommodation')
+                ->select('id')
+                ->get();
 
-
-        /////INFOS///FILTER///IDS/////
-        $accommodationIdsInfoFilter = DB::table('accommodation_info')
+            foreach($accommodationIdsInfoFilter as $accommodation){
+                $id = $accommodation->id;
+                array_push($accommodationInfoIds, $id); 
+            }
+        }else{
+            $accommodationIdsInfoFilter = DB::table('accommodation_info')
                 ->select('accommodation_id')
                 ->where($infoFilter)
                 ->get();
 
-        
-        
-        $accommodationInfoIds = [];
-        foreach($accommodationIdsInfoFilter as $accommodation){
-            $id = $accommodation->accommodation_id;
-            array_push($accommodationInfoIds, $id); 
+            foreach($accommodationIdsInfoFilter as $accommodation){
+                $id = $accommodation->accommodation_id;
+                array_push($accommodationInfoIds, $id); 
+            }
         }
-        /////REQUIREMENTS///FILTER///IDS/////
-        $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
-        ->select('accommodation_id')
-        ->where($requirementFilter)
-        ->get();
+
 
         
-
+        /////REQUIREMENTS///FILTER///IDS/////DONE
         $accommodationRequirementsIds = [];
-        foreach($accommodationIdsRequirementsFilter as $accommodation){
-            $id = $accommodation->accommodation_id;
-            array_push($accommodationRequirementsIds, $id); 
-        }
-        
+        if(count($requirementFilter) == 0){
+            $accommodationIdsRequirementsFilter = DB::table('accommodation')
+                ->select('id')
+                ->get();
 
-        ///////////////////////////////////////////////////////////////
-        $aIdCount = array_count_values($accommodationFeatureIds);
-        $res = array_keys($aIdCount,count($cIds));
+            foreach($accommodationIdsRequirementsFilter as $accommodation){
+                $id = $accommodation->id;
+                array_push($accommodationRequirementsIds, $id); 
+            }
+        }else{
+            $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
+                ->select('accommodation_id')
+                ->where($requirementFilter)
+                ->get();
+
+            foreach($accommodationIdsRequirementsFilter as $accommodation){
+                $id = $accommodation->accommodation_id;
+                array_push($accommodationRequirementsIds, $id); 
+            }
+        }
+
+
+
+        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);   
+        $res = array_values($res);
+        
         $accommodations = Accommodation::findMany($res);
         return $accommodations;
     }
