@@ -71,7 +71,7 @@ function Register() {
             };
 
             console.log(data);
-            await api.post('api/users/register', data
+            await api.post('api/register', data
             ).then(async (response) =>{
                 if(response.data.status){
                     const responseLogin = await api.post('api/login', { email, password });
