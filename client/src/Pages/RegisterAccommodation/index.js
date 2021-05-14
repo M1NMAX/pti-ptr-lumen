@@ -114,7 +114,7 @@ function RegisterAlojamento() {
                 "description" :content, 
                 "price": price,
                 "address": adress,
-                "county": localizacao[0],
+                "location": localizacao[0],
                 "district": 'None',
                 "latitude": lat,
                 "longitude": lng,

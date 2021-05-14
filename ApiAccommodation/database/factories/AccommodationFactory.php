@@ -29,10 +29,9 @@ class AccommodationFactory extends Factory
             'description' => $this->faker->realText(50,2),
             'price' => $this->faker->randomNumber(3),
             'address' => $this->faker->address,
-            'district' => $this->faker->state,
-            'county' => $this->faker->cityPrefix,
-            'latitude' => $this->faker->latitude(-90, 90),
-            'longitude' => $this->faker->latitude(-180, 180),
+            'location' => $this->faker->city,
+            'latitude' => $this->faker->latitude(-60, 70),
+            'longitude' => $this->faker->latitude(-150, 130),
             'available' => $this->faker->boolean,
         ];
     }
