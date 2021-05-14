@@ -129,7 +129,7 @@ class AccommodationController extends Controller
     {
         $accommodation = Accommodation::find($id);
         $cIds = explode(',', $request->input("features"));
-        array_pop($cIds);
+        //array_pop($cIds);
         $accommodation->features()->attach($cIds);
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
@@ -172,13 +172,11 @@ class AccommodationController extends Controller
     {
         $accommodation = $this->accommodation->find($accommodation);
         $accommodation->delete();
-        $aComments = $accommodation->comments;
-        if(!($aComments == null)){
-            foreach($aComments as $comment){
-                $c = Comment::find($comment->id);
-                $c->delete();
-            }
-        }
+        $aRentalsPenging = DB::table('comment')->where('accommodation_id', $accommodation)->delete();
+        $aRentalsPenging = DB::table('rental_pending')->where('accommodation_id', $accommodation)->delete();
+        $aRentals = DB::table('rental')->where('accommodation_id', $accommodation)->delete();
+        $aFeatures = DB::table('accommodation_feature')->where('accommodation_id', $accommodation)->delete();
+        $aInfo = DB::table('accommodation_info')->where('accommodation_id', $accommodation)->delete();
         return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso'], 'status'=>true]);
     }
 
