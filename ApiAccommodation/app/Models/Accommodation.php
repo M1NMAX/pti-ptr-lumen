@@ -21,7 +21,7 @@ class Accommodation extends Model implements AuthenticatableContract, Authorizab
 
     protected $table = "accommodation";
     protected $fillable = [
-        'landlord_id','name', 'description', 'price', 'address','latitude','longitude','district','county',
+        'landlord_id','name', 'description', 'price','location', 'address','latitude','longitude','district','county',
     ];
 
 
