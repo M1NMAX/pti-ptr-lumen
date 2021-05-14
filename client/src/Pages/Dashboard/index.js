@@ -18,7 +18,7 @@ import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSm
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState('');
-    const [myAccommodations, setMyAccommodations] = useState([]);
+    const [rentalAccommodations, setrentalAccommodations] = useState([]);
     const [showWarning, setShowWarning] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [result, setResult] = useState('');
@@ -48,7 +48,7 @@ function Dashboard() {
                 console.log(ownOrNot);
                 api.get('api/accommodations/'+ownOrNot+'/'+response.data.id).then(
                   ownResponse => {
-                    setMyAccommodations(ownResponse.data);
+                    setrentalAccommodations(ownResponse.data);
                     console.log(ownResponse.data);
 
                   })
@@ -86,7 +86,7 @@ function Dashboard() {
                 <Alert.Heading>Messagem</Alert.Heading>
                 <p>Alojamento apagado com sucesso</p>
                 </Alert>)
-              setMyAccommodations(myAccommodations.filter((accomm)=>accomm.accommodation_id != accommodationId));
+              setrentalAccommodations(rentalAccommodations.filter((accomm)=>accomm.accommodation_id != accommodationId));
             }else{
               setShowWarning(false);
               setShowResult(true);
@@ -138,8 +138,8 @@ function Dashboard() {
                   </a>
                 </Row>
                 <Row>
-                  <a href="/pending">
-                    <FontAwesomeIcon icon={faEdit} size="2x"/> Editar Alojamento
+                  <a href="/meusAlojamentos">
+                    <FontAwesomeIcon icon={faEdit} size="2x"/> Meus alojamento
                   </a>
                 </Row>
                 
@@ -161,7 +161,7 @@ function Dashboard() {
                         </Alert>
                       </>
 
-                        {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                        {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoLandlord accommodation={accommodation} showWarning={show}/>
                           )):
                            //MAIS BONITO
@@ -169,6 +169,7 @@ function Dashboard() {
                             Não tem alojamentos alugados
                           </Alert>
                            }
+                          
                         {/* <Form inline className="searchDashboard">
                           <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                           <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
@@ -221,7 +222,7 @@ function Dashboard() {
             <Card className="text-center content">
                 <Card.Body>
                     <Card.Title>Bem-vindo, {user.username}</Card.Title>
-                    {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                    {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoGuest accommodation={accommodation}/>
                           )):<Alert variant="info">
                           Não esta a alugar alojamento

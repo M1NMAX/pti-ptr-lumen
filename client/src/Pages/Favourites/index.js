@@ -7,7 +7,7 @@ import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import SingleAccommodation from '../../Components/SingleAccommodation'
-import { Container,Row,Col, Button} from 'react-bootstrap'
+import { Alert, Row, Col, Button} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 
 
@@ -65,12 +65,17 @@ function Favourites() {
           </Row>
 
           <div class="center"><h3>Criar filtros e possiblitar pesquisa</h3></div>
+          {/* ORDERNAR POR PRECO E DATA */}
 
           { Accommodations.length>0 ? 
                   Accommodations.map((accommodation)=>(<SingleAccommodation accom={accommodation} removeFavourite={removeFavourite} />)): 
                   <div className="center">
-                  <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
-                  <a className="center" href="/">Procurar Alojamentos</a>
+                    <Alert variant="info">
+                      <FontAwesomeIcon icon={faHeartBroken}/>
+                      <h6> Ainda não tem favoritos</h6>
+                    </Alert>
+                 
+                  {/* <a className="center" href="/">Procurar Alojamentos</a> */}
               </div>
           }
         <Footer/>

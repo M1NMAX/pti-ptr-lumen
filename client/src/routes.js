@@ -12,6 +12,7 @@ import RegisterAccom from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
 import Favourites from './Pages/Favourites'
 import Pending from './Pages/Pending'
+import LandlordAccommodations from './Pages/LandlordAccommodations'
 import AdminPage from './Pages/Admin'
 import AdminLogin from './Pages/AdminLogin'
 import Search from './Pages/Search'
@@ -37,6 +38,7 @@ function Routes() {
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/favourites" exact component={Favourites} />
             <Route path="/pending" exact component={Pending} />
+            <Route path="/meusAlojamentos" exact component={LandlordAccommodations} />
             <Route path="/admin" exact component={AdminPage} />
             <Route path="/adminLogin" exact component={AdminLogin} />
           </Switch>

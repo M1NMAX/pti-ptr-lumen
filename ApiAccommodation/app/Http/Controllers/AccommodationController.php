@@ -218,10 +218,10 @@ class AccommodationController extends Controller
 
     }
 
-    public function landlordSearch($id,Request $request)
+    public function landlordSearch($id)
     {
-        $accommodations = Accommodation::where('landlord_id', $id)->get();
-        return $accommodations;
+        $response = ['accommodations'=>Accommodation::where('landlord_id', $id)->get(), 'status'=> true];
+        return response()->json($response, 200);
 
     }
 
@@ -254,16 +254,16 @@ class AccommodationController extends Controller
 
     }
 
-    public function filter($filters, Request $request) 
+    public function filter($filters, Request $request)
     {
         $filters = str_replace("%20"," ",$filters);
-        $filters = explode(';', $filters); 
-        
-        $cIds = explode(',', $filters[0]); 
-         
-        $infos = explode(',', $filters[1]); 
-        
-        
+        $filters = explode(';', $filters);
+
+        $cIds = explode(',', $filters[0]);
+
+        $infos = explode(',', $filters[1]);
+
+
         $infoFilter = [];
         $requirementFilter = [];
         $basicFilter = [];
@@ -304,12 +304,12 @@ class AccommodationController extends Controller
             $index = array_search('smoker',$infos);
             array_push($requirementFilter,['smoker', '=', 1]);
         }
- 
+
 
         if (($key = array_search('', $cIds)) !== false) {
             unset($cIds[$key]);
         }
-        
+
         /////BASIC///FILTER///IDS/////DONE
         if(count($basicFilter) == 0){
             $accommodationIdsBasicFilter = DB::table('accommodation')
@@ -321,11 +321,11 @@ class AccommodationController extends Controller
             ->where($basicFilter)
             ->get();
         }
-        
+
         $accommodationBasicInfoIds = [];
         foreach($accommodationIdsBasicFilter as $accommodation){
             $id = $accommodation->id;
-            array_push($accommodationBasicInfoIds, $id); 
+            array_push($accommodationBasicInfoIds, $id);
         }
 
 
@@ -339,19 +339,19 @@ class AccommodationController extends Controller
 
             foreach($accommodationIds as $accommodation_id){
                 $id = $accommodation_id->id;
-                array_push($accommodationFeatureIds, $id); 
+                array_push($accommodationFeatureIds, $id);
             }
         }else{
             $relationships = AF::whereIn('feature_id', $cIds)->get();
 
             foreach($relationships as $r){
                 $id = $r->accommodation_id;
-                array_push($accommodationFeatureIds, $id); 
+                array_push($accommodationFeatureIds, $id);
             }
             $aIdCount = array_count_values($accommodationFeatureIds);
             $accommodationFeatureIds = array_keys($aIdCount,count($cIds));
         }
-                
+
         /////INFOS///FILTER///IDS/////DONE
         $accommodationInfoIds = [];
         if(count($infoFilter) == 0){
@@ -361,7 +361,7 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsInfoFilter as $accommodation){
                 $id = $accommodation->id;
-                array_push($accommodationInfoIds, $id); 
+                array_push($accommodationInfoIds, $id);
             }
         }else{
             $accommodationIdsInfoFilter = DB::table('accommodation_info')
@@ -371,12 +371,12 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsInfoFilter as $accommodation){
                 $id = $accommodation->accommodation_id;
-                array_push($accommodationInfoIds, $id); 
+                array_push($accommodationInfoIds, $id);
             }
         }
 
 
-        
+
         /////REQUIREMENTS///FILTER///IDS/////DONE
         $accommodationRequirementsIds = [];
         if(count($requirementFilter) == 0){
@@ -386,7 +386,7 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsRequirementsFilter as $accommodation){
                 $id = $accommodation->id;
-                array_push($accommodationRequirementsIds, $id); 
+                array_push($accommodationRequirementsIds, $id);
             }
         }else{
             $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
@@ -396,15 +396,15 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsRequirementsFilter as $accommodation){
                 $id = $accommodation->accommodation_id;
-                array_push($accommodationRequirementsIds, $id); 
+                array_push($accommodationRequirementsIds, $id);
             }
         }
 
 
 
-        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);   
+        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
         $res = array_values($res);
-        
+
         $accommodations = Accommodation::findMany($res);
         return $accommodations;
     }
