@@ -28,6 +28,11 @@ function Homepage() {
         });
     }
 
+    async function enter(target){
+        if(target.charCode==13){
+            routeChange(local)
+        } 
+    }
 
     console.log(Accmmodations)
     useEffect(() => {
@@ -51,7 +56,7 @@ function Homepage() {
                 <Container>
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
-                            <Form.Control type="text" placeholder="Onde?(Distrito/Concelho/Morada)" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)}/>
+                            <Form.Control type="text" placeholder="Onde?(Distrito/Concelho/Morada)" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)}/>
                             <Button variant="info" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                         </Form>
                         <div className="buttonImg" >

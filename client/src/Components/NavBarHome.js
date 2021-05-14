@@ -28,6 +28,12 @@ function NavBarHome() {
         });
     }
 
+    async function enter(target){
+        if(target.charCode==13){
+            routeChange(local)
+        } 
+    }
+
     useEffect(() => {
         
         if(token === null || token ===''){
@@ -133,7 +139,7 @@ function NavBarHome() {
                             <Nav className="text-center">
                                 {/* show auth user data  */}
                                 <Form inline className="searchDashboard">
-                                    <Form.Control type="text" placeholder="Onde?" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)} />
+                                    <Form.Control type="text" placeholder="Onde?" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
                                     <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
