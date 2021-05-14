@@ -24,8 +24,9 @@ function Register() {
     
 
     const [errors, setErrors] = useState({});
+    const [msgPass, setMsgPass] = useState(''); //Mensagem de erro das password
     const history = useHistory();
-    const [validated, setValidated] = useState(false);
+    const [validated, setValidated] = useState(true); //Dá um pequeno erro, tem que se carregar 2x no submeter
 
     const findFormErrors = () => {
         let newErrors = {}
@@ -35,26 +36,34 @@ function Register() {
         if ( !username || username === '' ) {newErrors.username = true}
         if ( !birthdate || birthdate === '' ) {newErrors.birthdate = true}
         if ( !type || type === '' ) {newErrors.type = true}
-        if ( !password || password === '' ) {newErrors.password = true}
-        if ( !password_confirmation || password_confirmation === '' ) {newErrors.password_confirmation = true}
-        
+        if ( !password || password === '' ) {newErrors.password = true; setMsgPass("Insira uma password!")}
+        if ( !password_confirmation || password_confirmation === '' ) {newErrors.password_confirmation = true; setMsgPass("Insira uma password!") }
+        if ( !(password_confirmation === password)  ) {newErrors.passwordDif = true; setMsgPass("As passwords tem que ser iguais!")}
+
+        if ( type === 'guest' ) {
+            if ( !college || college === '' ) {newErrors.college = true}
+            if ( !gender || gender === '' ) {newErrors.gender = true}
+            if ( !smoker || smoker === '' ) {newErrors.smoker = true}
+            if ( !age || age === '' ) {newErrors.age = true}
+            if ( !pet || pet === '' ) {newErrors.pet = true}    
+        }
+
+        if(Object.keys(newErrors).length > 0) {setValidated(true)} else{setValidated(false)}
         return newErrors
     }
 
     async function handleRegister(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
+        const newErrors = findFormErrors()
         
-        setErrors(findFormErrors());
-        
-        if (Object.keys(errors).length > 0 || !(errors === {})) {
+        if (validated) {
+            setErrors(newErrors);
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
-            setValidated(true);
         }else{
-            setValidated(false);
 
             let data = {
                 'username': username,
@@ -130,7 +139,7 @@ function Register() {
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
                                 <Form.Label>Data de nascimento</Form.Label>
-                                <Form.Control width="sm" isInvalid={errors.birthdate } name="birthdate" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+                                <Form.Control width="sm" isInvalid={errors.birthdate } name="birthdate" min="1950-12-31" max="2002-12-31" type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     Insira uma data de nascimento!
                                 </Form.Control.Feedback>
@@ -138,11 +147,11 @@ function Register() {
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control required isInvalid={errors.password} type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                                <Form.Control required isInvalid={errors.password || errors.passwordDif} type="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                                 <Form.Label>Confirmar Password</Form.Label>
-                                <Form.Control required isInvalid={errors.password_confirmation} type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
+                                <Form.Control required isInvalid={errors.password_confirmation || errors.passwordDif} type="password" name="password_confirmation" placeholder="PasswordConf" value={password_confirmation} onChange={e => setPasswordConf(e.target.value)} />
                                 <Form.Control.Feedback type="invalid">
-                                    Insira uma password!
+                                    {msgPass}
                                 </Form.Control.Feedback>
                             </Form.Group>
 
@@ -161,40 +170,55 @@ function Register() {
                             {type=='guest'&& <>
                                 <Form.Group controlId="formBasicCollege" onSubmit={handleRegister}>
                                     <Form.Label> Nome da Instituição:</Form.Label>
-                                    <Form.Control width="sm" type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
+                                    <Form.Control width="sm" isInvalid={errors.college} type="textarea" value={college} onChange={e => setCollege(e.target.value)}/>
+                                    <Form.Control.Feedback type="invalid">
+                                        Insira o nome de uma Instituição!
+                                    </Form.Control.Feedback>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicRoom">
                                     <Form.Label> Idade:</Form.Label>
-                                    <Form.Control width="sm" type="number" value={age} onChange={e => setAge(e.target.value)}/>
+                                    <Form.Control width="sm" isInvalid={errors.age} type="number" value={age} onChange={e => setAge(e.target.value)}/>
+                                    <Form.Control.Feedback type="invalid">
+                                        Insira a sua idade!
+                                    </Form.Control.Feedback>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicGender">
                                     <Form.Label>Género:</Form.Label>
-                                    <Form.Control required as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                                    <Form.Control required as="select" isInvalid={errors.gender} type="gender" value={gender} onChange={e => setGender(e.target.value)}>
                                     <option  value="one"> Selecione uma opção</option>
                                     <option  value="Masculino"> Masculino </option>
                                     <option  value="Feminino"> Feminino </option>
                                     <option  value="Outro"> Outro </option>
                                     </Form.Control>
+                                    <Form.Control.Feedback type="invalid">
+                                        Escolha uma opção!
+                                    </Form.Control.Feedback>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicSmoker">
                                     <Form.Label> É fumador/a?</Form.Label>
-                                    <Form.Control as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
+                                    <Form.Control as="select" type="type" isInvalid={errors.smoker} value={smoker} onChange={e => setSmoker(e.target.value)}>
                                     <option  value="one"> Selecione uma opção</option>  
                                     <option  value="1">Sim</option>
                                     <option  value="0">Não</option>
                                     </Form.Control>
+                                    <Form.Control.Feedback type="invalid">
+                                        Escolha uma opção!
+                                    </Form.Control.Feedback>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicPet">
                                     <Form.Label>Tem animais de estimações</Form.Label>
-                                    <Form.Control as="select" type="type" value={pet} onChange={e => setPet(e.target.value)}>
+                                    <Form.Control as="select" type="type" isInvalid={errors.pet} value={pet} onChange={e => setPet(e.target.value)}>
                                     <option  value="one"> Selecione uma opção</option>
                                     <option  value="1">Sim</option>
                                     <option  value="0">Não</option>
                                     </Form.Control>
+                                    <Form.Control.Feedback type="invalid">
+                                        Escolha uma opção!
+                                    </Form.Control.Feedback>
                                 </Form.Group>
                                 </>
                             }
