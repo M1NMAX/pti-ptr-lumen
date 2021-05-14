@@ -13,7 +13,7 @@ import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
 import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCalendarMinus, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
@@ -23,8 +23,7 @@ function Dashboard() {
     const [showResult, setShowResult] = useState(false);
     const [result, setResult] = useState('');
     const [accommodationName, setAccommotionName] = useState();
-    const [accommodationId, setAccommotionId] = useState();
-    
+    const [accommodationId, setAccommotionId] = useState();  
 
 
     const history = useHistory();
@@ -57,9 +56,9 @@ function Dashboard() {
                 api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
                   console.log(responseChatNotification.data);
                   if(responseChatNotification.data.length == 0){
-                    setImgC(chatImg);
+                    setImgC();
                   }else{
-                    setImgC(chatImgNew);
+                    setImgC(faCircle);
                   }
                 })
 
@@ -120,7 +119,7 @@ function Dashboard() {
               <Col sm={12} lg={2} className="sidebar">
                 <Row>
                   <a href="/listChat">
-                    <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
+                    <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} />
                   </a>
                 </Row>
                 <Row>
@@ -193,7 +192,7 @@ function Dashboard() {
           <Col sm={12} lg={2} className="sidebar">
             <Row>
               <a href="/listChat">
-              <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
+              <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} className="red"/>
               </a>
             </Row>
             <Row>
