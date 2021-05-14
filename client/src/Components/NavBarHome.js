@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../Components/Spinner';
 
 
@@ -20,6 +20,8 @@ function NavBarHome() {
 
     const history = useHistory();
     const [local, setLocal]=useState();
+
+    const [imgC, setImgC] = useState();
 
     async function routeChange(local){
         history.push({
@@ -53,6 +55,15 @@ function NavBarHome() {
                 setUsername(response.data.username);
                 setUserid(response.data.id)
                 setLoading(false);
+
+                api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
+                    console.log(responseChatNotification.data);
+                    if(responseChatNotification.data.length == 0){
+                      setImgC();
+                    }else{
+                      setImgC(faCircle);
+                    }
+                  })
           }
         }).catch(err => {
           alert(err)
@@ -92,7 +103,7 @@ function NavBarHome() {
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon icon={imgC}/> </NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
