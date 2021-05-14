@@ -22,10 +22,9 @@ class CreateAccommodationTable extends Migration
             $table->integer('nRates');
             $table->integer('price');
             $table->string('address', 120);
-            $table->string('district');
-            $table->string('county');
-            $table->integer('latitude');  
-            $table->integer('longitude');    
+            $table->string('location');
+            $table->float('latitude');  
+            $table->float('longitude');    
             $table->boolean('available');  
             $table->string('profileImage');
             $table->timestamps();       

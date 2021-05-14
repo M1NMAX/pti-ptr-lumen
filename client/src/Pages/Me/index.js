@@ -7,6 +7,8 @@ import api from '../../services/api';
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import Loading from '../../Components/Loading';
+
 
 
 function ProfileUser(){
@@ -23,6 +25,7 @@ function ProfileUser(){
     const [userType, setUserType] = useState();
     const [description, setdescription] = useState();
     const [feedback, setfeedback] = useState('');
+    const [loading, setLoading] = useState(true);
     
     const history = useHistory();
 
@@ -45,6 +48,7 @@ function ProfileUser(){
             setsmoker(response.data.extra.smoker);
             setpets(response.data.extra.pets)
             setUserType(response.data.user.userable_type.substring(11).toLowerCase());
+            setLoading(false);
           }
         }).catch(err => {
           alert(err)
@@ -84,9 +88,10 @@ function ProfileUser(){
         return (
             <div>
                 <NavBarHome/>
+                {loading === false ? (
                 <Container>
                     <p className="center">{feedback}</p>
-                <Row  className= "mt-3 mb-3">
+                <Row  className= "mt-1 mb-3">
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "ml-3 mr-3" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
@@ -175,7 +180,9 @@ function ProfileUser(){
                         </Form>
                     </Col>
                 </Row>
-                </Container>
+                </Container>): (
+                    <Loading />
+                        )}
                 <Footer/>
             </div>
         )

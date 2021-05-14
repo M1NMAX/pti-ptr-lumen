@@ -1,10 +1,23 @@
-import './App.css'
-import Routes from './routes'
+import './App.css';
+import Routes from './routes';
+import React, { useState, useEffect } from 'react';
+import Spinner from './Components/Spinner';
+
+
 function App() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000)
+  }, [])
   return (
     <div className="App">
+      {loading === false ? (
         <Routes />
-    </div>
+        ) : (
+          <Spinner />
+        )}
+    </div> 
   );
 }
 

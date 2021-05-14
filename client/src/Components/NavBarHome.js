@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import Spinner from '../Components/Spinner';
 
 
 function NavBarHome() {
@@ -15,13 +16,29 @@ function NavBarHome() {
     const [auth, setAuth] = useState(true);
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
+    const [loading, setLoading] = useState(true);
 
     const history = useHistory();
+    const [local, setLocal]=useState();
+
+    async function routeChange(local){
+        history.push({
+            pathname: '/Search',
+            state: local
+        });
+    }
+
+    async function enter(target){
+        if(target.charCode==13){
+            routeChange(local)
+        } 
+    }
 
     useEffect(() => {
         
         if(token === null || token ===''){
             setAuth(false);
+            setLoading(false);
         }else{
         api.get('api/me', {
           headers: {
@@ -35,6 +52,7 @@ function NavBarHome() {
             }else{
                 setUsername(response.data.username);
                 setUserid(response.data.id)
+                setLoading(false);
           }
         }).catch(err => {
           alert(err)
@@ -60,6 +78,7 @@ function NavBarHome() {
 
     return (
         <div className="header" style={{margin: "60px"}}>
+            {loading === false ? (
           <Switch>
                 <Route exact path="/" >
                     <Navbar bg="white" expand="lg" fixed="top">
@@ -120,8 +139,8 @@ function NavBarHome() {
                             <Nav className="text-center">
                                 {/* show auth user data  */}
                                 <Form inline className="searchDashboard">
-                                    <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                                    <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                    <Form.Control type="text" placeholder="Onde?" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
+                                    <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
@@ -142,6 +161,9 @@ function NavBarHome() {
                         </Navbar.Collapse>
                     </Navbar>
             </Switch>
+            ): (
+                <Spinner />
+                    )}
         </div>
     )
 }

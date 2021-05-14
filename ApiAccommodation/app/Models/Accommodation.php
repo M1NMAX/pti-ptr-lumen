@@ -12,7 +12,7 @@ use Laravel\Lumen\Auth\Authorizable;
 class Accommodation extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
-
+ 
     /**
      * The attributes that are mass assignable.
      *
