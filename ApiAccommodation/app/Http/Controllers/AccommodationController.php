@@ -212,8 +212,8 @@ class AccommodationController extends Controller
 
     public function localSearch($search,Request $request)
     {
-        $accommodations = Accommodation::where('county', $search)
-        ->orWhere('county', 'like', '%' . $search . '%')->get();
+        $accommodations = Accommodation::where('location', $search)
+        ->orWhere('location', 'like', '%' . $search . '%')->get();
         return $accommodations;
 
     }
