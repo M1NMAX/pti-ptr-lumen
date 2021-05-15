@@ -13,18 +13,17 @@ import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
 import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCalendarMinus, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState('');
-    const [myAccommodations, setMyAccommodations] = useState([]);
+    const [rentalAccommodations, setrentalAccommodations] = useState([]);
     const [showWarning, setShowWarning] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [result, setResult] = useState('');
     const [accommodationName, setAccommotionName] = useState();
-    const [accommodationId, setAccommotionId] = useState();
-    
+    const [accommodationId, setAccommotionId] = useState();  
 
 
     const history = useHistory();
@@ -49,7 +48,7 @@ function Dashboard() {
                 console.log(ownOrNot);
                 api.get('api/accommodations/'+ownOrNot+'/'+response.data.id).then(
                   ownResponse => {
-                    setMyAccommodations(ownResponse.data);
+                    setrentalAccommodations(ownResponse.data);
                     console.log(ownResponse.data);
 
                   })
@@ -57,9 +56,9 @@ function Dashboard() {
                 api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
                   console.log(responseChatNotification.data);
                   if(responseChatNotification.data.length == 0){
-                    setImgC(chatImg);
+                    setImgC();
                   }else{
-                    setImgC(chatImgNew);
+                    setImgC(faCircle);
                   }
                 })
 
@@ -87,7 +86,7 @@ function Dashboard() {
                 <Alert.Heading>Messagem</Alert.Heading>
                 <p>Alojamento apagado com sucesso</p>
                 </Alert>)
-              setMyAccommodations(myAccommodations.filter((accomm)=>accomm.accommodation_id != accommodationId));
+              setrentalAccommodations(rentalAccommodations.filter((accomm)=>accomm.accommodation_id != accommodationId));
             }else{
               setShowWarning(false);
               setShowResult(true);
@@ -116,11 +115,14 @@ function Dashboard() {
           <NavBarHome/>
           
           <Container fluid>
-            <Row>
-              <Col sm={12} lg={2} className="sidebar">
+          <h3 className="center">Bem-vindo, {user.username}</h3>
+
+            
+            <Row >
+              <Col sm={12} lg={2} className="sidebar ml-2 pl-2">
                 <Row>
                   <a href="/listChat">
-                    <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
+                    <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} color="red" />
                   </a>
                 </Row>
                 <Row>
@@ -139,21 +141,20 @@ function Dashboard() {
                   </a>
                 </Row>
                 <Row>
-                  <a href="/pending">
-                    <FontAwesomeIcon icon={faEdit} size="2x"/> Editar Alojamento
+                  <a href="/meusAlojamentos">
+                    <FontAwesomeIcon icon={faEdit} size="2x"/> Meus alojamento
                   </a>
                 </Row>
                 
               </Col>
-              <Col sm={10} lg={10}>
-                <Card className="text-center content">
+              <Col sm={10} lg={10} style={{ width: '100%' }}>
+                <Card className="text-center content" >
                     <Card.Body>
-                        <Card.Title>Bem-vindo, {user.username}</Card.Title>
                         {showResult && result}
                         <>
                         <Alert show={showWarning} variant="danger">
                           <Alert.Heading>Aviso</Alert.Heading>
-                          <p>Tem certeza que quer apagar o alojamento {accommodationName}</p>
+                          <p>Tem a certeza que quer apagar o alojamento {accommodationName}?</p>
                           <hr />
                           <div className="d-flex justify-content-center">
                             <Button onClick={deleteAccommodation}  variant="danger">Sim</Button>
@@ -162,18 +163,14 @@ function Dashboard() {
                         </Alert>
                       </>
 
-                        {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                        {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoLandlord accommodation={accommodation} showWarning={show}/>
                           )):
-                           //MAIS BONITO
-                           <Alert variant="info">
+
+                           <Alert variant="info" className="mt-4">
                             Não tem alojamentos alugados
                           </Alert>
                            }
-                        {/* <Form inline className="searchDashboard">
-                          <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                          <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                        </Form> */}
                     </Card.Body>
                 </Card>   
               </Col>
@@ -189,20 +186,21 @@ function Dashboard() {
     <div className="App">
       <NavBarHome/>
       <Container fluid>
+      <h3 className="center mt-4">Bem-vindo, {user.username}</h3>
         <Row>
-          <Col sm={12} lg={2} className="sidebar">
+          <Col sm={12} lg={2} className="sidebar ml-2 mt-5 pl-2">
             <Row>
               <a href="/listChat">
-              <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens
+              <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} color="red"/>
               </a>
             </Row>
             <Row>
-              <a href="/registerAccommodation">
+              <a href="/search">
               <FontAwesomeIcon icon={faSearch} size="2x"/> Procurar Alojamento
               </a>
             </Row>
             <Row>
-              <a href="/pending">
+              <a href="/favourites">
               <FontAwesomeIcon icon={faHeart} size="2x"/> Alojamentos Favoritos
               </a>
             </Row>
@@ -212,8 +210,8 @@ function Dashboard() {
               </a>
             </Row>
             <Row>
-              <a href="/pending">
-              <FontAwesomeIcon icon={faTasks} size="2x"/> Gerir Alojamento/os
+              <a href="/pendingG">
+              <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pedidos Pendentes
               </a>
             </Row>
             
@@ -221,11 +219,10 @@ function Dashboard() {
           <Col sm={10} lg={10}>
             <Card className="text-center content">
                 <Card.Body>
-                    <Card.Title>Bem-vindo, {user.username}</Card.Title>
-                    {myAccommodations.length>0? myAccommodations.map((accommodation)=>(
+                    {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoGuest accommodation={accommodation}/>
-                          )):<Alert variant="info">
-                          Não esta a alugar alojamento
+                          )):<Alert variant="info" className="mt-4">
+                          Não esta a alugar nenhum alojamento
                         </Alert> }
                     {/* <Form inline className="searchDashboard">
                       <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />

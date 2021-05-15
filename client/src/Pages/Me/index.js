@@ -4,10 +4,13 @@ import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
-import Footer from '../../Components/Footer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import Loading from '../../Components/Loading';
+import Footer from '../../Components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import Spinner from '../../Components/Spinner';
+
+
+
 
 
 
@@ -23,7 +26,6 @@ function ProfileUser(){
     const [smoker, setsmoker] = useState();
     const [pets, setpets] = useState();
     const [userType, setUserType] = useState();
-    const [description, setdescription] = useState();
     const [feedback, setfeedback] = useState('');
     const [loading, setLoading] = useState(true);
     
@@ -99,11 +101,11 @@ function ProfileUser(){
                 </Row>
                 
                 <Row>
-                    <Col sm={12} md={6}>
-                            <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
+                    <Col sm={12} md={5} className="center">
+                            <img src={DefaultUserPic} alt="profiles pic" className="mt-2" style={{maxWidth: '70%'}}/>
                             <Button className="changeImage" variant="info" style={{margin: '4%'}}>Alterar imagem</Button>
                     </Col>
-                    <Col sm={12} md={6}>
+                    <Col sm={12} md={7}>
                         
                         <Form className="form" onSubmit={handleUpdateUserData}>     
                        
@@ -181,7 +183,7 @@ function ProfileUser(){
                     </Col>
                 </Row>
                 </Container>): (
-                    <Loading />
+                    <Spinner />
                         )}
                 <Footer/>
             </div>

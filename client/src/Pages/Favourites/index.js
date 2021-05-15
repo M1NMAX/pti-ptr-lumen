@@ -2,12 +2,12 @@ import NavBarHome from '../../Components/NavBarHome'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DefaultUserPic from "../../img/standartUser3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartBroken, faArrowLeft, faSearch} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import SingleAccommodation from '../../Components/SingleAccommodation'
-import { Container,Row,Col, Button} from 'react-bootstrap'
+import { Container,Row,Col, Button, Alert} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 
 
@@ -57,22 +57,24 @@ function Favourites() {
     return(
         <div>
         <NavBarHome/>
+        <Container>
           <Row  className= "mt-3 mb-3">
-            <Col  xs={{ span: 4, offset: 1 }} md={{ span: 3, offset: 1 }}>
+            <Col  xs={{ span: 5, offset: 0 }} md={{ span: 4, offset: 0 }}>
               <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
             </Col>
             <Col xs={7} md={4} className='text-center'><h3><FontAwesomeIcon icon={faHeart}/> Os meus favoritos</h3> </Col>                 
           </Row>
 
-          <div class="center"><h3>Criar filtros e possiblitar pesquisa</h3></div>
-
           { Accommodations.length>0 ? 
                   Accommodations.map((accommodation)=>(<SingleAccommodation accom={accommodation} removeFavourite={removeFavourite} />)): 
                   <div className="center">
-                  <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
-                  <a className="center" href="/">Procurar Alojamentos</a>
+                    <Alert variant="info" className="mt-4">
+                      <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
+                    </Alert> 
+                  <Button className="center" href="/" variant="info"><FontAwesomeIcon icon={faSearch}/> Procurar Alojamentos</Button>
               </div>
           }
+          </Container>
         <Footer/>
        </div>
 

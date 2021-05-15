@@ -138,6 +138,8 @@ $router->group(['prefix' => 'rentalpending'], function () use ($router) {
     $router->get('/', 'RentalPendingController@index');
     $router->get('/{landlord_id}', 'RentalPendingController@landlordIdSearch');
     $router->get('/rentalNotification/{landlord_id}', 'RentalPendingController@checkNotification');
+
+    $router->get('/guest/{guest_id}', 'RentalPendingController@guestIdSearch');
     //-------------POSTS----------------
 
     $router->post('/', 'RentalPendingController@store');

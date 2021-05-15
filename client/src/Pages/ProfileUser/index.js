@@ -44,26 +44,26 @@ function Me(){
                 <Row  className= "mt-3 mb-3">
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "ml-3 mr-3" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
-                        <Button size="sm" variant="info">{user.name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>
                     </Col>
-                    <Col xs={6} md={4} className='text-center'><h2>Sobre</h2></Col>                 
+                    <Col xs={6} md={4} className='text-center'><h2>Sobre {user.name}</h2></Col>                 
                 </Row>
                 <Row>
-                    <Col sm={12} md={6}>
-                            <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
+                    <Col sm={12} md={5} className="center">
+                      <img src={DefaultUserPic} alt="profiles pic" className="mt-2"  style={{maxWidth: '70%'}}/><br/>
+                      <Button variant="info">{user.name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>
                     </Col>
-                    <Col sm={12} md={6}>
-                        <Card style={{ width: '18rem' }}>
+                    <Col sm={12} md={7}>
+                        <Card style={{ width: '70%' }} className="ml-3">
                         <Card.Header>Detalhes</Card.Header>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>Username: {user.username}</ListGroup.Item>
-                            <ListGroup.Item>Nome completo: {user.name}</ListGroup.Item>
-                            <ListGroup.Item>Email: {user.email}</ListGroup.Item>
-                            <ListGroup.Item>Data de nascimento: {user.birthdate}</ListGroup.Item>
-                            <ListGroup.Item>Género: {userExtra.gender}</ListGroup.Item>
-                            <ListGroup.Item>Instituição: {userExtra.college}</ListGroup.Item>
-                            <ListGroup.Item>Tem animais de estimação: {userExtra.pets?'sim':'não'}</ListGroup.Item>
-                            <ListGroup.Item>É fumador/a: {userExtra.smoker?'sim':'não'}</ListGroup.Item>
+                        <ListGroup variant="flush" className="ml-3">
+                            <ListGroup.Item><b>Username:</b> {user.username}</ListGroup.Item>
+                            <ListGroup.Item><b>Nome completo: </b>{user.name}</ListGroup.Item>
+                            <ListGroup.Item><b>Email:</b> {user.email}</ListGroup.Item>
+                            <ListGroup.Item><b>Data de nascimento:</b> {user.birthdate}</ListGroup.Item>
+                            <ListGroup.Item><b>Género:</b> {userExtra.gender}</ListGroup.Item>
+                            <ListGroup.Item><b>Instituição:</b> {userExtra.college}</ListGroup.Item>
+                            <ListGroup.Item><b>Tem animais de estimação:</b> {userExtra.pets?'Sim':'Não'}</ListGroup.Item>
+                            <ListGroup.Item><b>É fumador/a:</b> {userExtra.smoker?'Sim':'Não'}</ListGroup.Item>
                         </ListGroup>
                         </Card>  
                     </Col>

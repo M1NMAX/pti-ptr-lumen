@@ -12,6 +12,8 @@ import RegisterAccom from './Pages/RegisterAccommodation';
 import Dashboard from './Pages/Dashboard'
 import Favourites from './Pages/Favourites'
 import Pending from './Pages/Pending'
+import LandlordAccommodations from './Pages/LandlordAccommodations'
+import PendingGuest from './Pages/PendingGuest'
 import AdminPage from './Pages/Admin'
 import AdminLogin from './Pages/AdminLogin'
 import Search from './Pages/Search'
@@ -32,11 +34,13 @@ function Routes() {
             <Route path="/profileAccommodation/:id" exact component={ProfileAccom} />
             <Route path="/profileAccommodationEditable/:id" exact component={ProfileAccomEdi} />
             <Route path="/search/:location" exact component={Search} />
-            <Route path="/search/" exact component={Search} />
+            <Route path="/search" exact component={Search} />
             <Route path="/registerAccommodation" exact component={RegisterAccom} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/favourites" exact component={Favourites} />
             <Route path="/pending" exact component={Pending} />
+            <Route path="/meusAlojamentos" exact component={LandlordAccommodations} />
+            <Route path="/pendingG" exact component={PendingGuest} />
             <Route path="/admin" exact component={AdminPage} />
             <Route path="/adminLogin" exact component={AdminLogin} />
           </Switch>

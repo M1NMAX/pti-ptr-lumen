@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../Components/Spinner';
 
 
@@ -19,6 +19,22 @@ function NavBarHome() {
     const [loading, setLoading] = useState(true);
 
     const history = useHistory();
+    const [local, setLocal]=useState();
+
+    const [imgC, setImgC] = useState();
+
+    async function routeChange(local){
+        history.push({
+            pathname: '/Search',
+            state: local
+        });
+    }
+
+    async function enter(target){
+        if(target.charCode==13){
+            routeChange(local)
+        } 
+    }
 
     useEffect(() => {
         
@@ -39,6 +55,15 @@ function NavBarHome() {
                 setUsername(response.data.username);
                 setUserid(response.data.id)
                 setLoading(false);
+
+                api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
+                    console.log(responseChatNotification.data);
+                    if(responseChatNotification.data.length == 0){
+                      setImgC();
+                    }else{
+                      setImgC(faCircle);
+                    }
+                  })
           }
         }).catch(err => {
           alert(err)
@@ -70,15 +95,15 @@ function NavBarHome() {
                     <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
+                        <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs ">
                             
-                            <Nav className="text-center">
+                            <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/> </NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
@@ -121,18 +146,18 @@ function NavBarHome() {
                 <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
-                            <Nav className="text-center">
+                        <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs">
+                            <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
-                                <Form inline className="searchDashboard">
-                                    <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                                    <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                <Form inline >
+                                    <Form.Control type="text" placeholder="Onde?"  className="mr-sm-1 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
+                                    <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/></NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 

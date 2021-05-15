@@ -100,6 +100,12 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function landlordAccommodation($id)
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/landlord/' . $id );
+        return response($response);
+    }
+
     public function showDates($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/busyDates');
@@ -171,6 +177,11 @@ class AccommodationController extends Controller
 
     public function filter($filters){
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/filter/'.$filters);
+        return response($response);
+    }
+
+    public function localSearch($location){
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/localSearch/'.$location);
         return response($response);
     }
 }

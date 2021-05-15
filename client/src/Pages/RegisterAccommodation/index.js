@@ -52,6 +52,7 @@ function RegisterAlojamento() {
 
     const findFormErrors = () => {
         let newErrors = {}
+        let incomplete = false;
         // name errors
         if ( !title || title === '' ) {newErrors.title = true}
         if ( !content || content === '' ) {newErrors.content = true}
@@ -68,7 +69,8 @@ function RegisterAlojamento() {
         if ( !pet || pet === '' ) {newErrors.pet = true}
         if ( !accommodationType || accommodationType === '' ) {newErrors.accommodationType = true}
         
-        return newErrors
+        if(Object.keys(newErrors).length > 0) {incomplete=true} else{incomplete=false}
+        return [newErrors, incomplete]
     }
 
     useEffect(() => {
@@ -82,19 +84,13 @@ function RegisterAlojamento() {
     async function handleRegisterAlojamento(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
-        setErrors(findFormErrors());
+        //setErrors(findFormErrors());
         
-        console.log(errors);
-        /*let newErrors = findFormErrors();
-        if (Object.keys(newErrors).length > 0 ) {
-            console.log(newErrors);
+        const newErrors = findFormErrors()[0];
+        const incomplete = findFormErrors()[1];
+       
+        if (incomplete) {
             setErrors(newErrors);
-            console.log(errors);
-        };
-        */
-        //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
-        console.log(caract)
-        if (Object.keys(errors).length > 0 || !(errors === {})) {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -102,6 +98,7 @@ function RegisterAlojamento() {
             setValidated(true);
         }else{
             setValidated(false);
+            //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
             let caractList = Object.keys(caract)
             let caractIds = ""    
             for(let i = 0; i < caractList.length;i++){
@@ -114,7 +111,7 @@ function RegisterAlojamento() {
                 "description" :content, 
                 "price": price,
                 "address": adress,
-                "county": localizacao[0],
+                "location": localizacao[0],
                 "district": 'None',
                 "latitude": lat,
                 "longitude": lng,
@@ -331,7 +328,10 @@ function RegisterAlojamento() {
                                                 
                         <Form.Group controlId="formCategory14" style={{height:"500px"}}>
                             <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Form.Label>
-                            <Maps parentCallback={getData}></Maps>
+                            <Maps isInvalid={errors.adress} parentCallback={getData}></Maps>
+                            <Form.Control.Feedback type="invalid">
+                                Insira uma morada!
+                            </Form.Control.Feedback>
                         </Form.Group> 
                     </Col>
                     <Col className="cols" xs={12} sm={6}>
@@ -405,7 +405,7 @@ function RegisterAlojamento() {
                 <Button variant="info" type="submit" className="button">
                     Submeter
                 </Button>
-                {validated && <p>Preencha todos os campos para o podermos ajudar durante o processo de pesquisa!</p>}
+                {validated && <p style={{color: "red"}}>Preencha todos os campos para o podermos ajudar durante o processo de pesquisa!</p>}
             </Form>
             </Container>
             <Footer/>

@@ -55,11 +55,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
         $router->get('/feature', 'AccommodationController@showFeature');
 
+        $router->get('/landlord/{id}', 'AccommodationController@landlordAccommodation');
+
         $router->get('/', 'AccommodationController@index');
         $router->get('/{id}', 'AccommodationController@show');
         $router->post('/', 'AccommodationController@store');
         $router->put('/{id}', 'AccommodationController@update');
         $router->delete('/{id}', 'AccommodationController@destroy');
+
+
 
         $router->get('/{id}/dates', 'AccommodationController@showDates');
         $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
@@ -75,6 +79,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/rentedOwnAccommodation/{id}', 'AccommodationController@showRentLandlord');
 
         $router->get('/filter/{filters}', 'AccommodationController@filter');
+        $router->get('/localSearch/{location}', 'AccommodationController@localSearch');
 
 
     });

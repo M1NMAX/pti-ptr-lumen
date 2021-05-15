@@ -52,14 +52,18 @@ function SingleAccommodation({accom, removeFavourite}) {
                     </AnimationWrapper>
                     </Col>
                     <Col xm={12} sm={6}>
-                    <Card.Text >
-                        <h5 style={{textAlign:"center"}}>Morada: {accommodation.address} </h5>
-                        <h5 style={{textAlign:"center"}}>Preco: {accommodation.price}&euro;</h5>
-                        <h5 style={{textAlign:"center"}}>Rating: {accommodation.rating} &#42;</h5>
+                   
+                    <Card.Text className="mt-1">
+                        <h5 style={{textAlign:"center"}}><b>Morada:</b> {accommodation.address} </h5>
+                        <h5 style={{textAlign:"center"}}><b>Preco:</b> {accommodation.price}&euro;</h5>
+                        <h5 style={{textAlign:"center"}}><b>Rating: </b>{accommodation.rating} &#42;</h5>
                     </Card.Text>
-                    <Button style={{margin:"0 auto", display:"block", width:"100%"}} className="m-2" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button>
-                    <Button style={{margin:"0 auto", display:"block", width: "100%"}} className="m-2" variant="info" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/>Remover</Button>
-
+                    <div className="d-flex justify-content-center">
+                        <Button style={{margin:"0 auto", display:"block", width:"300px"}} className="m-1" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button><br/>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <Button style={{margin:"0 auto", display:"block", width: "300px"}} className="m-1" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
+                    </div>
                     </Col>
                 </Row>
             </Card> 

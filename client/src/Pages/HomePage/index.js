@@ -22,11 +22,17 @@ function Homepage() {
     const [local, setLocal]=useState();
 
     async function routeChange(local){
-        console.log(local)
-        let path = "/Search/" + local;
-        history.push(path);
+        history.push({
+            pathname: '/Search',
+            state: local
+        });
     }
 
+    async function enter(target){
+        if(target.charCode==13){
+            routeChange(local)
+        } 
+    }
 
     console.log(Accmmodations)
     useEffect(() => {
@@ -50,16 +56,7 @@ function Homepage() {
                 <Container>
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
-                            <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" onChange={e => setLocal(e.target.value)}/>
-                            {/*<Typeahead
-                                className="mr-sm-2 search-box" 
-                                id="basic-typeahead-single"
-                                labelKey="name"
-                                onChange={setLocal}
-                                options={localizacoes}
-                                placeholder="Onde?(Concelho/Freguesia/Morada)" 
-                                selected={local}
-                            />*/}
+                            <Form.Control type="text" placeholder="Onde?(Distrito/Concelho/Morada)" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)}/>
                             <Button variant="info" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                         </Form>
                         <div className="buttonImg" >

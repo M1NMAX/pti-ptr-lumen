@@ -116,10 +116,10 @@ class AccommodationController extends Controller
         $accommodation = $this->accommodation->find($id);
         $accommodation->update($request->all());
 
-        // $accommodation->fill($data);
-        // $accommodation->touch();
+         $accommodation->fill($data);
+         $accommodation->touch();
 
-        // $accommodation->save();
+         $accommodation->save();
 
         return response()->json(['data' => ['message' => 'Alojamento foi atualizado com sucesso'], 'status'=>true]);
 
@@ -129,7 +129,7 @@ class AccommodationController extends Controller
     {
         $accommodation = Accommodation::find($id);
         $cIds = explode(',', $request->input("features"));
-        array_pop($cIds);
+        //array_pop($cIds);
         $accommodation->features()->attach($cIds);
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
@@ -172,13 +172,11 @@ class AccommodationController extends Controller
     {
         $accommodation = $this->accommodation->find($accommodation);
         $accommodation->delete();
-        $aComments = $accommodation->comments;
-        if(!($aComments == null)){
-            foreach($aComments as $comment){
-                $c = Comment::find($comment->id);
-                $c->delete();
-            }
-        }
+        $aRentalsPenging = DB::table('comment')->where('accommodation_id', $accommodation)->delete();
+        $aRentalsPenging = DB::table('rental_pending')->where('accommodation_id', $accommodation)->delete();
+        $aRentals = DB::table('rental')->where('accommodation_id', $accommodation)->delete();
+        $aFeatures = DB::table('accommodation_feature')->where('accommodation_id', $accommodation)->delete();
+        $aInfo = DB::table('accommodation_info')->where('accommodation_id', $accommodation)->delete();
         return response()->json(['data' => ['message' => 'Alojamento foi eliminado com sucesso'], 'status'=>true]);
     }
 
@@ -214,16 +212,16 @@ class AccommodationController extends Controller
 
     public function localSearch($search,Request $request)
     {
-        $accommodations = Accommodation::where('county', $search)
-        ->orWhere('county', 'like', '%' . $search . '%')->get();
+        $accommodations = Accommodation::where('location', $search)
+        ->orWhere('location', 'like', '%' . $search . '%')->get();
         return $accommodations;
 
     }
 
-    public function landlordSearch($id,Request $request)
+    public function landlordSearch($id)
     {
-        $accommodations = Accommodation::where('landlord_id', $id)->get();
-        return $accommodations;
+        $response = ['accommodations'=>Accommodation::where('landlord_id', $id)->get(), 'status'=> true];
+        return response()->json($response, 200);
 
     }
 
@@ -256,16 +254,16 @@ class AccommodationController extends Controller
 
     }
 
-    public function filter($filters, Request $request) 
+    public function filter($filters, Request $request)
     {
         $filters = str_replace("%20"," ",$filters);
-        $filters = explode(';', $filters); 
-        
-        $cIds = explode(',', $filters[0]); 
-         
-        $infos = explode(',', $filters[1]); 
-        
-        
+        $filters = explode(';', $filters);
+
+        $cIds = explode(',', $filters[0]);
+
+        $infos = explode(',', $filters[1]);
+
+
         $infoFilter = [];
         $requirementFilter = [];
         $basicFilter = [];
@@ -306,12 +304,12 @@ class AccommodationController extends Controller
             $index = array_search('smoker',$infos);
             array_push($requirementFilter,['smoker', '=', 1]);
         }
- 
+
 
         if (($key = array_search('', $cIds)) !== false) {
             unset($cIds[$key]);
         }
-        
+
         /////BASIC///FILTER///IDS/////DONE
         if(count($basicFilter) == 0){
             $accommodationIdsBasicFilter = DB::table('accommodation')
@@ -323,11 +321,11 @@ class AccommodationController extends Controller
             ->where($basicFilter)
             ->get();
         }
-        
+
         $accommodationBasicInfoIds = [];
         foreach($accommodationIdsBasicFilter as $accommodation){
             $id = $accommodation->id;
-            array_push($accommodationBasicInfoIds, $id); 
+            array_push($accommodationBasicInfoIds, $id);
         }
 
 
@@ -341,19 +339,19 @@ class AccommodationController extends Controller
 
             foreach($accommodationIds as $accommodation_id){
                 $id = $accommodation_id->id;
-                array_push($accommodationFeatureIds, $id); 
+                array_push($accommodationFeatureIds, $id);
             }
         }else{
             $relationships = AF::whereIn('feature_id', $cIds)->get();
 
             foreach($relationships as $r){
                 $id = $r->accommodation_id;
-                array_push($accommodationFeatureIds, $id); 
+                array_push($accommodationFeatureIds, $id);
             }
             $aIdCount = array_count_values($accommodationFeatureIds);
             $accommodationFeatureIds = array_keys($aIdCount,count($cIds));
         }
-                
+
         /////INFOS///FILTER///IDS/////DONE
         $accommodationInfoIds = [];
         if(count($infoFilter) == 0){
@@ -363,7 +361,7 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsInfoFilter as $accommodation){
                 $id = $accommodation->id;
-                array_push($accommodationInfoIds, $id); 
+                array_push($accommodationInfoIds, $id);
             }
         }else{
             $accommodationIdsInfoFilter = DB::table('accommodation_info')
@@ -373,12 +371,12 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsInfoFilter as $accommodation){
                 $id = $accommodation->accommodation_id;
-                array_push($accommodationInfoIds, $id); 
+                array_push($accommodationInfoIds, $id);
             }
         }
 
 
-        
+
         /////REQUIREMENTS///FILTER///IDS/////DONE
         $accommodationRequirementsIds = [];
         if(count($requirementFilter) == 0){
@@ -388,7 +386,7 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsRequirementsFilter as $accommodation){
                 $id = $accommodation->id;
-                array_push($accommodationRequirementsIds, $id); 
+                array_push($accommodationRequirementsIds, $id);
             }
         }else{
             $accommodationIdsRequirementsFilter = DB::table('accommodation_requirements')
@@ -398,15 +396,15 @@ class AccommodationController extends Controller
 
             foreach($accommodationIdsRequirementsFilter as $accommodation){
                 $id = $accommodation->accommodation_id;
-                array_push($accommodationRequirementsIds, $id); 
+                array_push($accommodationRequirementsIds, $id);
             }
         }
 
 
 
-        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);   
+        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
         $res = array_values($res);
-        
+
         $accommodations = Accommodation::findMany($res);
         return $accommodations;
     }
