@@ -68,7 +68,7 @@ function Login() {
                         </Form.Control.Feedback>
                     </Form.Group>
                     {wrongPass && <p style={{color: 'red'}}>E-mail ou password incorretos</p>}
-                    <Button variant="primary" type="submit">
+                    <Button variant="info" type="submit">
                         Entrar
                     </Button>
                     <Link className="back-link" to="/register">

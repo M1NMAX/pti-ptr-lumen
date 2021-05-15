@@ -99,11 +99,11 @@ function ProfileUser(){
                 </Row>
                 
                 <Row>
-                    <Col sm={12} md={6}>
-                            <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
+                    <Col sm={12} md={5} className="center">
+                            <img src={DefaultUserPic} alt="profiles pic" className="mt-2" style={{maxWidth: '70%'}}/>
                             <Button className="changeImage" variant="info" style={{margin: '4%'}}>Alterar imagem</Button>
                     </Col>
-                    <Col sm={12} md={6}>
+                    <Col sm={12} md={7}>
                         
                         <Form className="form" onSubmit={handleUpdateUserData}>     
                        

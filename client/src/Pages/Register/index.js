@@ -26,10 +26,10 @@ function Register() {
     const [errors, setErrors] = useState({});
     const [msgPass, setMsgPass] = useState(''); //Mensagem de erro das password
     const history = useHistory();
-    const [validated, setValidated] = useState(true); //Dá um pequeno erro, tem que se carregar 2x no submeter
 
     const findFormErrors = () => {
         let newErrors = {}
+        let incomplete = false;
         // name errors
         if ( !name || name === '' ) {newErrors.name = true}
         if ( !email || email === '' ) {newErrors.email = true}
@@ -48,16 +48,17 @@ function Register() {
             if ( !pet || pet === '' ) {newErrors.pet = true}    
         }
 
-        if(Object.keys(newErrors).length > 0) {setValidated(true)} else{setValidated(false)}
-        return newErrors
+        if(Object.keys(newErrors).length > 0) {incomplete=true} else{incomplete=false}
+        return [newErrors, incomplete]
     }
 
     async function handleRegister(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
-        const newErrors = findFormErrors()
+        const newErrors = findFormErrors()[0];
+        const incomplete = findFormErrors()[1];
         
-        if (validated) {
+        if (incomplete) {
             setErrors(newErrors);
             window.scrollTo({
                 top: 0,
@@ -104,7 +105,7 @@ function Register() {
                 <h1 className='text-center'>Registo</h1>
                 <Row>
                     <Col className="pt-3" sm={{ span: 7, offset: 1 }} md={{ span: 3, offset: 1 }}>
-                        <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '90%'}}/>
+                        <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '70%'}}/>
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
                     </Col>
                     <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>

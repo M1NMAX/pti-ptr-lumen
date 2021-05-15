@@ -86,7 +86,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
             <Row >
                 <Col className="pb-2 pt-2 pl-2 pr-2 center" xm={6} sm={2}>
                     <img src={DefaultUserPic} alt="Imagem de perfil" width="100%"></img>
-                    <Button ize="sm" variant="info" href={ "/profileUser/"+pending.user_id} > ver perfil do {userData.name}</Button>
+                    <Button ize="sm" variant="info" href={ "/profileUser/"+pending.user_id} > Ver perfil do {userData.name}</Button>
                 </Col>
                 <Col className="pb-4 pt-4 pr-4 center" xm={6} sm={4}>
                     <Button ize="sm" variant="info">{userData.name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>

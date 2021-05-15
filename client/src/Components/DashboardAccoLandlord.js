@@ -76,9 +76,9 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
     return (
         <Container>
             {loading === false ? (
-        <Card className="mb-2 border" style={{padding: '2%'}}>
+        <Card className="mb-2 border" >
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
-
+            <Card.Text>
             <Row>
                 <p>Inquilino/a: </p>
                 <Button size="m"  className="m-1" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
@@ -111,7 +111,7 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
                 <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.accommodation_id}>Editar Alojamento</Button>
                 <Button variant="danger" className="m-1 "   size="m" onClick={handleShowWarning} >Apagar Alojamento</Button>
             </Row>
-            
+            </Card.Text>
         </Card> 
         ) : (
             <Spinner />
