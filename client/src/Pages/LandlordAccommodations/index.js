@@ -1,15 +1,13 @@
-import NavBarHome from '../../Components/NavBarHome'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import DefaultUserPic from "../../img/standartUser3.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import NavBarHome from '../../Components/NavBarHome';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import DashboardAllLandlordAcco from '../../Components/DashboardAllLandlordAcco';
-
-import { Alert, Row, Col, Button} from 'react-bootstrap'
-import Footer from '../../Components/Footer'
+import { Alert, Row, Col, Button} from 'react-bootstrap';
+import Footer from '../../Components/Footer';
 
 
 function Favourites() {
@@ -110,7 +108,10 @@ function Favourites() {
 
           <div class="center"><h3>Criar filtros e possiblitar pesquisa</h3></div>
           {/* ORDERNAR POR PRECO E DATA */}
-          <Button className="center" href="/registerAccommodation">Disponibilizar  alojamento</Button>
+           <div class="center mb-1">
+             <Button  href="/registerAccommodation" variant="info">Disponibilizar  alojamento</Button>
+            </div>
+          
           {Accommodations.length>0? Accommodations.map((anotherAccommodation)=>(
                             <DashboardAllLandlordAcco accommodation={anotherAccommodation} showWarning={show}/>
                           )):<Alert className="d-flex justify-content-center" variant="info">

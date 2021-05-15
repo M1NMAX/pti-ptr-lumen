@@ -28,18 +28,18 @@ function DashboardAllLandlordAcco({accommodation, showWarning}) {
             <Card.Header><b>{accommodation.name}</b></Card.Header>
 
             <Row className="d-flex justify-content-center">
-                <Col> <p>Nome: {accommodation.name} &euro;</p></Col>
-                <Col> <p>Preço: {accommodation.price}</p></Col>
+                <Col> <p>Nome: {accommodation.name} </p></Col>
+                <Col> <p>Preço: {accommodation.price}&euro;</p></Col>
                 <Col> <p>Estado: {available}</p></Col>
                 
             </Row>
             <Row className="d-flex justify-content-center">
-                <p>Morada: {accommodation.address} &euro;</p>
+                <p>Morada: {accommodation.address}</p>
                 
             </Row>
             <Row className="d-flex justify-content-center">
-                <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
-                <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.accommodation_id}>Editar Alojamento</Button>
+                <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.id}>Ver alojamento</Button>
+                <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.id}>Editar Alojamento</Button>
                 <Button variant="danger" className="m-1 "   size="m" onClick={handleShowWarning} >Apagar Alojamento</Button>
             </Row>
             
