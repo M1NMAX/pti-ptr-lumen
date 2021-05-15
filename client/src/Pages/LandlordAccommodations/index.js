@@ -1,7 +1,7 @@
 import NavBarHome from '../../Components/NavBarHome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
@@ -105,11 +105,8 @@ function Favourites() {
                         </Alert>
                       </>
           </Row>
-
-          <div class="center"><h3>Criar filtros e possiblitar pesquisa</h3></div>
-          {/* ORDERNAR POR PRECO E DATA */}
            <div class="center mb-1">
-             <Button  href="/registerAccommodation" variant="info">Disponibilizar  alojamento</Button>
+             <Button  href="/registerAccommodation" variant="info"><FontAwesomeIcon icon={faPlusCircle}/>Disponibilizar  alojamento</Button>
             </div>
           
           {Accommodations.length>0? Accommodations.map((anotherAccommodation)=>(

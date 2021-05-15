@@ -15,16 +15,12 @@ import Spinner from './Spinner';
 function DashboardAccoLandlord({accommodation, showWarning}) {
     const [token] = useState(localStorage.getItem('token'));
     const [userData, setUserData] = useState([]);
-    const [userExtra, setUserExtra] = useState([]);
     const [accommodationData, setAccommodationData] = useState([]);
     const [accommodationRequirements, setAccommodationRequirements] = useState([]);
-    const [userAge, setUserAge]= useState(); 
+    const [paymentState, setPaymentState]= useState(); 
 
     const [loading, setLoading] = useState(true)
     
-
-    
-
     
     const history = useHistory();
     useEffect(() => {
@@ -38,8 +34,6 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
             }).then(response => {
                 if(response.data.status){
                     setUserData(response.data.user)
-                    setUserExtra(response.data.extra);
-
                 }else{
                     localStorage.clear();
                     history.push('/login')
@@ -56,6 +50,9 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
                     if(response.data.status){
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        accommodation.paymentState?
+                            setPaymentState(<p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Pago </p>):
+                            setPaymentState(<p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Pago </p>)
                         setLoading(false);
                     }else{
                         localStorage.clear();
@@ -79,34 +76,21 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
         <Card className="mb-2 border" >
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
             <Card.Text>
-            <Row>
-                <p>Inquilino/a: </p>
+            <Row className="d-flex justify-content-center">
+                <h4 className="d-flex align-items-center">Inquilino/a: </h4>
                 <Button size="m"  className="m-1" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
                 <Button size="m"  className="m-1" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
                 
             </Row>
-            <Row >
+            <Row className="d-flex justify-content-center">
                 <Col> <p>Início: {accommodation.beginDate} </p></Col>
                 <Col><p>Fim: {accommodation.endDate} </p></Col>
                 <Col> <p>Preço: {accommodation.price} &euro;</p></Col>
-                <Col> {accommodation.paymentState?
-                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Pago </p>:
-                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Pago </p>} </Col>
+                <Col> {paymentState} </Col>
                 
-                {/* <Col className="center" xm={4} sm={3}>
-                    <AnimationWrapper>
-                        <a href={ "/profileAccommodation/"+accommodation.accommodation_id} >
-                            <Card.Img onclick="href='/profileAlojamento" className="pb-4 pt-4 pl-2 pr-2 center" style={{ width: '70%'}} src={alojamento}></Card.Img>
-                        
-                            <Card.Text>
-                                <p style={{ fontSize: '100%', color:'black', textDecoration:'none' }}>{accommodationData.name} </p>
-                                {/* <Button style={{ fontSize: '60%' }}  variant="primary"href={ "/profileAccommodation/"+pending.accommodation_id}>Ver alojamento</Button> 
-                            </Card.Text>
-                        </a>
-                    </AnimationWrapper>
-                </Col> */}
+               
             </Row>
-            <Row className="ml-5">
+            <Row className="d-flex justify-content-center">
                 <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
                 <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.accommodation_id}>Editar Alojamento</Button>
                 <Button variant="danger" className="m-1 "   size="m" onClick={handleShowWarning} >Apagar Alojamento</Button>

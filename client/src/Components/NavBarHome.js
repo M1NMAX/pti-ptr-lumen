@@ -95,9 +95,9 @@ function NavBarHome() {
                     <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
+                        <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs ">
                             
-                            <Nav className="text-center">
+                            <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
@@ -146,11 +146,11 @@ function NavBarHome() {
                 <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="nav justify-content-end nav nav-tabs ">
-                            <Nav className="text-center">
+                        <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs">
+                            <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
-                                <Form inline className="searchDashboard">
-                                    <Form.Control type="text" placeholder="Onde?" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
+                                <Form inline >
+                                    <Form.Control type="text" placeholder="Onde?"  className="mr-sm-1 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
                                     <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>

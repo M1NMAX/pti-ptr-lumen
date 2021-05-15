@@ -115,9 +115,11 @@ function Dashboard() {
           <NavBarHome/>
           
           <Container fluid>
-            <h3 className="center mt-4">Bem-vindo, {user.username}</h3>
-            <Row style={{ width: '100%' }}>
-              <Col sm={12} lg={2} className="sidebar ml-2 mt-5 pl-2">
+          <h3 className="center">Bem-vindo, {user.username}</h3>
+
+            
+            <Row >
+              <Col sm={12} lg={2} className="sidebar ml-2 pl-2">
                 <Row>
                   <a href="/listChat">
                     <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} color="red" />
@@ -164,16 +166,11 @@ function Dashboard() {
                         {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoLandlord accommodation={accommodation} showWarning={show}/>
                           )):
-                           //MAIS BONITO
+
                            <Alert variant="info" className="mt-4">
                             Não tem alojamentos alugados
                           </Alert>
                            }
-                          
-                        {/* <Form inline className="searchDashboard">
-                          <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                          <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                        </Form> */}
                     </Card.Body>
                 </Card>   
               </Col>

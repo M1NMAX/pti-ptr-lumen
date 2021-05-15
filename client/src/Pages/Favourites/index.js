@@ -2,7 +2,7 @@ import NavBarHome from '../../Components/NavBarHome'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DefaultUserPic from "../../img/standartUser3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartBroken, faArrowLeft, faSearch} from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
@@ -71,7 +71,7 @@ function Favourites() {
                     <Alert variant="info" className="mt-4">
                       <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
                     </Alert> 
-                  <a className="center" href="/">Procurar Alojamentos</a>
+                  <Button className="center" href="/" variant="info"><FontAwesomeIcon icon={faSearch}/> Procurar Alojamentos</Button>
               </div>
           }
           </Container>
