@@ -103,7 +103,7 @@ function NavBarHome() {
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon icon={imgC}/> </NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/> </NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 
@@ -157,7 +157,7 @@ function NavBarHome() {
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
                                         <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> chat</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/></NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown> 

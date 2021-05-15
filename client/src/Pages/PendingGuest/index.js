@@ -9,7 +9,7 @@ import { Container,Row,Col, Button,Alert} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
-function Pending() {
+function PendingGuest() {
     const[token] = useState(localStorage.getItem('token'));
     const[userId]= useState(localStorage.getItem('userID'));
     const[allPending, setAllPending] = useState([]);
@@ -90,7 +90,7 @@ function Pending() {
                 {allPending.length>0? allPending.map((singlePending)=>(
                 <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
                  <Alert variant="info" className="text-center mt-4"> 
-                    Não tens pedidos pendentes
+                    Não tens assuntos pendentes
                 </Alert>}
 
             </Container>   
@@ -99,4 +99,4 @@ function Pending() {
 
     )
 }
-export default Pending
+export default PendingGuest
