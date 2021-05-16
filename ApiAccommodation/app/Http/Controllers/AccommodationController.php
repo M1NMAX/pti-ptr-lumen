@@ -93,6 +93,7 @@ class AccommodationController extends Controller
             'name'=>'required|max:30',
             'description' => 'required',
             'price' => 'required',
+            'location' => 'required',
             'address' => 'required',
             'latitude' => 'required',
             'longitude' => 'required'
@@ -212,8 +213,18 @@ class AccommodationController extends Controller
 
     public function localSearch($search,Request $request)
     {
-        $accommodations = Accommodation::where('location', $search)
-        ->orWhere('location', 'like', '%' . $search . '%')->get();
+        $str = 'null';
+        $search = str_replace("%20"," ",$search);
+        if($search == $str){
+            $accommodations = Accommodation::get();
+        }else{
+            $accommodations = Accommodation::where('location', $search)
+            ->orWhere('location', 'like', '%' . $search . '%')
+            ->orWhere('address', 'like', '%' . $search . '%')
+            ->get();
+
+            
+        }
         return $accommodations;
 
     }

@@ -45,6 +45,17 @@ class CommentController extends Controller
     public function addComment(Request $request)
     {
 
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'accommodation_id'=>'required|max:30',
+            'rate' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response(['errors' =>  $validator->errors()->all()], 422);
+        }
+
+
         $query = DB::table('comment')
         ->where('user_id', $request->user_id) 
         ->where('accommodation_id', $request->accommodation_id)
