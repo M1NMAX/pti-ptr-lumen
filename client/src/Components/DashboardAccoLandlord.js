@@ -51,8 +51,8 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
                         accommodation.paymentState?
-                            setPaymentState(<p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Pago </p>):
-                            setPaymentState(<p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Pago </p>)
+                            setPaymentState(<p><FontAwesomeIcon color="green" icon={faCheckCircle}/> <b>Pago </b></p>):
+                            setPaymentState(<p><FontAwesomeIcon color="red" icon={faTimesCircle}/> <b>Não Pago </b> </p>)
                         setLoading(false);
                     }else{
                         localStorage.clear();
@@ -76,21 +76,21 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
         <Card className="mb-2 border" >
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
             <Card.Text>
-            <Row className="d-flex justify-content-center">
-                <h4 className="d-flex align-items-center">Inquilino/a: </h4>
-                <Button size="m"  className="m-1" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
-                <Button size="m"  className="m-1" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
+            <Row className="d-flex justify-content-left d-flex align-items-center ml-5" >
+                <h6 className="mr-4"><b> &nbsp; &nbsp;   Inquilino/a:</b> </h6>
+                <Button size="m"  className="mr-4 m-2 " variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
+                <Button size="m"  className="m-2" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
                 
             </Row>
             <Row className="d-flex justify-content-center">
-                <Col> <p>Início: {accommodation.beginDate} </p></Col>
-                <Col><p>Fim: {accommodation.endDate} </p></Col>
-                <Col> <p>Preço: {accommodation.price} &euro;</p></Col>
+                <Col> <p><b>Início: </b> {accommodation.beginDate} </p></Col>
+                <Col><p><b>Fim: </b> {accommodation.endDate} </p></Col>
+                <Col> <p><b>Preço:</b> {accommodation.price} &euro;</p></Col>
                 <Col> {paymentState} </Col>
                 
                
             </Row>
-            <Row className="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center mb-2">
                 <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
                 <Button variant="success"  className="m-1 "  size="m" href={ "/profileAccommodationEditable/"+accommodation.accommodation_id}>Editar Alojamento</Button>
                 <Button variant="danger" className="m-1 "   size="m" onClick={handleShowWarning} >Apagar Alojamento</Button>

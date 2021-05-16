@@ -119,7 +119,7 @@ function Dashboard() {
 
             
             <Row >
-              <Col sm={12} lg={2} className="sidebar ml-2 pl-2">
+              <Col md={12} lg={2} className="sidebar ml-2 pl-2">
                 <Row>
                   <a href="/listChat">
                     <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} color="red" />
@@ -147,9 +147,7 @@ function Dashboard() {
                 </Row>
                 
               </Col>
-              <Col sm={10} lg={10} style={{ width: '100%' }}>
-                <Card className="text-center content" >
-                    <Card.Body>
+              <Col md={10} lg={10} style={{ width: '100%' }} className="text-center content" >
                         {showResult && result}
                         <>
                         <Alert show={showWarning} variant="danger">
@@ -171,8 +169,6 @@ function Dashboard() {
                             Não tem alojamentos alugados
                           </Alert>
                            }
-                    </Card.Body>
-                </Card>   
               </Col>
             </Row>
           </Container>
@@ -216,9 +212,7 @@ function Dashboard() {
             </Row>
             
           </Col>
-          <Col sm={10} lg={10}>
-            <Card className="text-center content">
-                <Card.Body>
+          <Col sm={10} lg={10} className="text-center content" >
                     {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoGuest accommodation={accommodation}/>
                           )):<Alert variant="info" className="mt-4">
@@ -228,8 +222,7 @@ function Dashboard() {
                       <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
                       <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                     </Form> */}
-                </Card.Body>
-            </Card>   
+                    
           </Col>
         </Row>
       </Container>

@@ -40,8 +40,7 @@ function AdminPage() {
         }).catch(err => {
           alert(err)
         })
-
-        setAccommodations(Accommodations);
+        setAccommodations(Accommodations.filter((accommodation) => accommodation.accommodation_id != accommodationId ));
     }
     
     return(
