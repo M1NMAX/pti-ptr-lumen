@@ -180,6 +180,7 @@ function RegisterAlojamento() {
             </Row> 
             {showLink && <Row  className= "mt-3 mb-3">
                 <Button href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
+                <Button href={'/profileAccommodationEditable/'+newAccommodationId}>Editar alojamento</Button>                 
             </Row> }    
             <Form  noValidate onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
