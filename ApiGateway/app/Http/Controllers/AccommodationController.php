@@ -96,8 +96,23 @@ class AccommodationController extends Controller
 
     public function update($id, Request $request)
     {
-        $response = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id, $request->all());
-        return response($response);
+        //Miss location
+        $responseBasic = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id,
+        $request->only('name', 'address', 'description', 'price', 'latitude', 'longitude'));
+
+        $responseAccommodationInfo = Http::put(env('API_ACCOMMODATION_URL') . 'accommodationInfo/' . $id,
+            $request->only('accommodationType', 'rooms', 'bathRooms', 'area', 'solar', 'clean', 'wifi'));
+
+        $responseAccommodationRequiriments = Http::put(env('API_ACCOMMODATION_URL') . 'accommodationRequirements/' . $id,
+        $request->only('ageRangeBot', 'ageRangeTop', 'gender', 'smoker', 'pets'));
+
+
+        if ($responseBasic->json('status') && $responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
+            $finalResponse = ['message' => 'alojamento atualizado com sucesso', 'status' => true];
+            return response($finalResponse, 200);
+        }
+
+        // return response($responseAccommodationRequiriments, 200);
     }
 
     public function landlordAccommodation($id)

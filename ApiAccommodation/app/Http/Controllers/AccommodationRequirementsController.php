@@ -39,7 +39,7 @@ class AccommodationRequirementsController extends Controller
 
     public function update($accommodation_requirements, Request $request)
     {
-        $accommodation_requirements = $this->accommodation_requirements->find($accommodation_requirements);
+        $accommodation_requirements = $this->accommodation_requirements->where('accommodation_id', $accommodation_requirements);
         $accommodation_requirements->update($request->all());
         return response()->json(['data' => ['message' => 'Requisitos atualizados com sucesso'], 'status'=>true]);
     }

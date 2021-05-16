@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AccommodationInfo;
+use Illuminate\Support\Facades\DB;
 
 class AccommodationInfoController extends Controller
 {
@@ -32,9 +33,13 @@ class AccommodationInfoController extends Controller
 
     public function update($accommodation_info, Request $request)
     {
-        $accommodation_info = $this->accommodation_info->find($accommodation_info);
-        $accommodation_info->update($request->all());
-        return response()->json(['data' => ['message' => 'User foi atualizado com sucesso']]);
+
+    $accommodation_info = DB::table('accommodation_info')->where('accommodation_id', $accommodation_info);
+    $accommodation_info->update($request->all());
+
+    return response()->json(
+        ['data' => ['message' => 'Informações do alojamento foram atualizadas com sucesso'],
+        'status'=>true]);
     }
 
     public function destroy($accommodation_info)
@@ -45,6 +50,6 @@ class AccommodationInfoController extends Controller
     }
 
 
-    
+
 
 }

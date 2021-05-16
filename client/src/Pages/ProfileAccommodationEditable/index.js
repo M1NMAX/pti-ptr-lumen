@@ -1,26 +1,26 @@
 import {React, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory } from 'react-router-dom';
 import api from '../../services/api';
-import {useHistory} from 'react-router-dom';
-import { Container,Row,Col,Form ,Button, Carousel} from 'react-bootstrap'
-//import {connect} from 'react-redux';
+import { Container,Row,Col,Form ,Button, Carousel, Alert} from 'react-bootstrap'
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft, faStar, faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, faEuroSign, faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
-//const axios = require('axios');
+import {faArrowLeft,  faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, faEuroSign, faHome, faBed, faBath, faSun, faWifi, faBroom, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import localizacoes from '../RegisterAccommodation/localizacoes.js';
 
 function ProfileAccommodationEditable () {
-    const  history = useHistory();
-    let { id } = useParams();
     
+    let { id } = useParams();
+    const  history = useHistory();
+    const [token] = useState(localStorage.getItem('token'));
+
+    const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] =  useState('');
     const [address, setAddress] = useState('');
@@ -43,10 +43,14 @@ function ProfileAccommodationEditable () {
     const [localizacao, setLocalizacao] = useState('');
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
+    //AFTER THE ACCOMMODATION UPDATE
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState('');
    
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
+            setName(response.data.aboutAccommodation.name)
             setTitle(response.data.aboutAccommodation.name)
             setContent(response.data.aboutAccommodation.description)
             setAddress(response.data.aboutAccommodation.address)
@@ -132,8 +136,46 @@ function ProfileAccommodationEditable () {
             "smoker": smoker,
             "pets":pet,
         };
+       
+        if(token ==null || token ===''){
+            localStorage.clear();
+            history.push('/login');
+        }else{
+            
+            api.put('api/accommodations/'+id, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(response => { 
+                console.log(response.data);
+                if(response.data.status){
+                    window.scrollTo(0, 0);
+                    setShowResult(true);
+                    setResult(<Alert variant="success">
+                                <Alert.Heading>Messagem</Alert.Heading>
+                                <hr></hr>
+                                <p>Alojamento atualizado com sucesso</p>
+                                <Button href={'/profileAccommodation/'+id} variant="info">Ver a página do alojamentos</Button>                 
+                            </Alert>)
+                }else{
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                                <Alert.Heading>Messagem</Alert.Heading>
+                                <hr></hr>
+                                <p>Ocorreu erro durante a atualização do alojamento, tente novamente</p>
+                            </Alert>)
+                }
+            }).catch(err => {
+                console.log(err)
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                            <Alert.Heading>Messagem</Alert.Heading>
+                            <hr></hr>
+                            <p>Ocorreu erro durante a atualizado do alojamento, tente novamente</p>
+                            </Alert>)
+                })
+        }
 
-        console.log(data);
     }
         
         var profilePic1=DefaultRoomPic1;
@@ -144,12 +186,13 @@ function ProfileAccommodationEditable () {
             <div>
                 <NavBarHome/>
                 <Container>
+                {showResult && result}
                 <Row  className= "mt-3 mb-3">
                     <Col xs={6} md={2}>
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}}> <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
                     <Col xs={6} md={10} >
-                       <h3>Edição do alojamento {title} </h3>
+                       <h3>Edição do alojamento {name} </h3>
                     </Col>                 
                 </Row> 
                 
