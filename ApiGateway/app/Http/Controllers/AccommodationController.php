@@ -43,7 +43,7 @@ class AccommodationController extends Controller
     {
         $responseAccommodation = Http::post(
             env('API_ACCOMMODATION_URL') . 'accommodation/',
-            $request->only('landlord_id', 'name', 'description', 'address', 'district', 'county','price', 'latitude', 'longitude')
+            $request->only('landlord_id', 'name', 'description', 'address', 'location','price', 'latitude', 'longitude')
         );
 
         if ($responseAccommodation->status()) {

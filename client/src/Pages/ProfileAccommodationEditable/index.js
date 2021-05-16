@@ -10,7 +10,7 @@ import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
 import NavBarHome from '../../Components/NavBarHome'
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft, faStar, faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, faEuroSign, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faStar, faMapMarkerAlt, faMapMarkedAlt, faSearchLocation, faEuroSign, faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus} from '@fortawesome/free-solid-svg-icons'
 //const axios = require('axios');
 import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
@@ -21,63 +21,55 @@ function ProfileAccommodationEditable () {
     const  history = useHistory();
     let { id } = useParams();
     
-    const [localizacao, setLocalizacao] = useState([]);
+    const [title, setTitle] = useState('');
+    const [content, setContent] =  useState('');
+    const [adress, setAdress] = useState('');
+    const [price, setPrice] = useState('');
+    const [accommodationType, setAccommodationType] = useState('');
+    const [nRooms, setNrooms] = useState('');
+    const [nWC, setNWC] = useState('');
+    const [area, setArea] = useState('');
+    const [solar, setSolar] = useState('');
+    const [wifi, setWifi] = useState('');
+    const [cleaning, setClean] = useState('');
+    const [gender, setGender] = useState('');
+    const [smoker, setSmoker] = useState('');
+    const [lat, setLat] = useState('');
+    const [lng, setLng] = useState('');
+    const [pet, setPet] = useState('');
+    const [ ageMin, setAgeMin ] = useState(17);
+    const [ ageMax, setAgeMax ] = useState(65);
+
+    const [localizacao, setLocalizacao] = useState('');
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
-
-    const [accommodation, setaccommodation] = useState([]);
-    const [accommodationFeature, setaccommodationFeature] = useState([]);
-    const [accommodationInfo, setaccommodationInfo] = useState([]);
-    const [accommodationRequirements, setaccommodationRequirements] = useState([]);
-
-
-    const [userId] = useState(localStorage.getItem('userID'));
-    const [token] = useState(localStorage.getItem('token'));
-    const [title, setTitle] = useState('');
-    const [address, setAddress] = useState('');
-    const [price, setPrice] = useState('');
-    const [content, setContent] =  useState('');
-   
-    const [accommodationType, setAccommodationType] = useState('');
-    // const [nRooms, setNrooms] = useState('');
-    // const [nWC, setNWC] = useState('');
-    // const [area, setArea] = useState('');
-    // const [solar, setSolar] = useState('');
-    // const [wifi, setWifi] = useState('');
-    // const [cleaning, setClean] = useState('');
-    // const [gender, setGender] = useState('');
-    // const [smoker, setSmoker] = useState('');
-    // const [lat, setLat] = useState('');
-    // const [lng, setLng] = useState('');
-    // const [pet, setPet] = useState('');
-    // const [ ageMin, setAgeMin ] = useState(17);
-    // const [ ageMax, setAgeMax ] = useState(65);
-    // const [localizacao, setLocalizacao] = useState([]);
-    // const [caract, setCaract] = useState([]);
-
-
-    const [ ageMin, setAgeMin ] = useState();
-    const [ ageMax, setAgeMax ] = useState();
-
-    const [images, setImages] = useState([]);
-    const maxNumber = 69;
    
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
-            setTitle(response.data.aboutAccommodation.name);
-            setAddress(response.data.aboutAccommodation.address);
-            setPrice(response.data.aboutAccommodation.price);
-            setContent(response.data.aboutAccommodation.description);
-            setAgeMin(response.data.aboutAccommodation.requirements.ageRangeBot);
-            setAgeMax(response.data.aboutAccommodation.requirements.ageRangeTop);
+            setTitle(response.data.aboutAccommodation.name)
+            setContent(response.data.aboutAccommodation.description)
+            setAdress(response.data.aboutAccommodation.address)
+            setPrice(response.data.aboutAccommodation.price)
+            setLat(response.data.aboutAccommodation.latitude)
+            setLng(response.data.aboutAccommodation.longitude)
+            setLocalizacao(response.data.aboutAccommodation.location) 
 
-            setAccommodationType(response.data.aboutAccommodation.info.accommodationType);
-            console.log(response.data);
-            setaccommodation(response.data.aboutAccommodation);
-            setaccommodationFeature(response.data.aboutAccommodation.feature);
-            setaccommodationInfo(response.data.aboutAccommodation.info);
-            setaccommodationRequirements(response.data.aboutAccommodation.requirements);
+            setAccommodationType(response.data.aboutAccommodation.info.accommodationType)
+            setNrooms(response.data.aboutAccommodation.info.rooms)
+            setNWC(response.data.aboutAccommodation.info.bathRooms)
+            setArea(response.data.aboutAccommodation.info.area)
+            setSolar(response.data.aboutAccommodation.info.solar)
+            setWifi(response.data.aboutAccommodation.info.wifi)
+            setClean(response.data.aboutAccommodation.info.clean)
+
+            setAgeMin(response.data.aboutAccommodation.requirements.ageRangeBot)
+            setAgeMax(response.data.aboutAccommodation.requirements.ageRangeTop)
+            setGender(response.data.aboutAccommodation.requirements.gender)
+            setSmoker(response.data.aboutAccommodation.requirements.smoker)
+            setPet(response.data.aboutAccommodation.requirements.pets)
+
+            setCaract(response.data.aboutAccommodation.feature);
         }).catch(err => {
           alert(err)
         })
@@ -250,7 +242,7 @@ function ProfileAccommodationEditable () {
                                     labelKey="name"
                                     onChange={setLocalizacao}
                                     options={localizacoes}
-                                    placeholder={accommodation.county}
+                                    placeholder={localizacao}
                                     selected={localizacao}
                                 />
                             </Form.Group>
@@ -306,76 +298,37 @@ function ProfileAccommodationEditable () {
                                    	&nbsp;  anos
                                 </Row>
                         </Form.Group>
-                            <Form.Group controlId="formCategory11">
-                                <Form.Label>Género preferecial:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationRequirements.gender === "Masculino"}
-                                    type="radio"
-                                    label="Masculino"
-                                    name="m"
-                                    id="m"
-                                    />
-                                    <Form.Check
-                                    checked={ accommodationRequirements.gender === "Feminino"}
-                                    type="radio"
-                                    label="Feminino"
-                                    name="f"
-                                    id="f"
-                                    />
-                                    <Form.Check
-                                    checked={ accommodationRequirements.gender === "Misto"}
-                                    type="radio"
-                                    label="Misto"
-                                    name="mix"
-                                    id="mix"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationRequirements.gender === "Indiferente"}
-                                    type="radio"
-                                    label="Indiferente"
-                                    name="ind"
-                                    id="ind"
-                                    />                                
-                                </Col>
+                            <Form.Group controlId="formBasicGender">
+                                <Form.Label>Género:</Form.Label>
+                                <Form.Control required isInvalid={errors.gender} as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                                <option>Selecione um opção</option>
+                                <option value="Masculino"> Masculino </option>
+                                <option value="Feminino"> Feminino </option>
+                                <option value="Misto"> Misto </option>
+                                <option value="Indiferente"> Indiferente </option>
+                                </Form.Control>
                             </Form.Group>
-                            <Form.Group controlId="formCategory12">
-                                <Form.Label>Permite fumadores?</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationRequirements.smoker === 1}
-                                    type="radio"
-                                    label="Sim"
-                                    name="simF"
-                                    id="simF"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationRequirements.smoker === 0}
-                                    type="radio"
-                                    label="Não"
-                                    name="naoF"
-                                    id="naoF"
-                                    />
-                                </Col>
+                            <Form.Group controlId="formBasicSmoker">
+                                <Form.Label><FontAwesomeIcon icon={faSmoking} /> Permite fumadores?</Form.Label>
+                                <Form.Control required isInvalid={errors.smoker} as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
+                                <option>Selecione um opção</option>
+                                <option value="1"> Sim </option>
+                                <option value="0"> Não </option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Indique se permite fumadores!
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formCategory13">
-                                <Form.Label>Permite animais de estimação?</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationRequirements.pets === 1}
-                                    type="radio"
-                                    label="Sim"
-                                    name="simA"
-                                    id="simA"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationRequirements.pets === 0}
-                                    type="radio"
-                                    label="Não"
-                                    name="naoA"
-                                    id="naoA"
-                                    />
-                                </Col>
+                            <Form.Group controlId="formBasicPet">
+                                <Form.Label><FontAwesomeIcon icon={faPaw} /> Permite animais de estimação?</Form.Label>
+                                <Form.Control required isInvalid={errors.pet} as="select" type="type" value={pet} onChange={e => setPet(e.target.value)} custom>
+                                <option >Selecione um opção</option>
+                                <option value="1"> Sim </option>
+                                <option value="0"> Não </option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Indique se permite animais de estimação!
+                                </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId="formCategory14">
                                 <Form.Label><FontAwesomeIcon icon={faPlus} /> Outras características complementares:</Form.Label>
@@ -425,117 +378,81 @@ function ProfileAccommodationEditable () {
                                     />
                                 </Col> */}
                             </Form.Group>
-                            <Form.Group controlId="formCategoryRooms">
-                                <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
-                                <Form.Control type="number" defaultValue={accommodationInfo.rooms}/>
+
+                            <Form.Group controlId="formBasicRoom">
+                                <Form.Label><FontAwesomeIcon icon={faBed}  /> Nº de quartos:</Form.Label>
+                                <Form.Control required isInvalid={errors.nRooms}  width="sm" type="number"  value={nRooms} onChange={e => setNrooms(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira o nº de quartos!
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formCategoryBaths">
+
+                            <Form.Group controlId="formBasicWC">
                                 <Form.Label><FontAwesomeIcon icon={faBath} /> Nº de casas de banho:</Form.Label>
-                                <Form.Control type="number" defaultValue={accommodationInfo.bathRooms} />
+                                <Form.Control required isInvalid={errors.nWC} width="sm" type="number" value={nWC} onChange={e => setNWC(e.target.value)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Insira o nº de casas de banho!
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formCategoryArea">
-                                <Form.Label>Área: </Form.Label>
-                                <Form.Control type="text" defaultValue={accommodationInfo.area}/>
+
+                            <Form.Group controlId="formBasicArea" >
+                                <Form.Label>Área:</Form.Label>
+                                <Form.Control required isInvalid={errors.area} width="sm" type="textarea" value={area} onChange={e => setArea(e.target.value)}/>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira a área!
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formCategorySolar">
-                                <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar do quarto:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "N"}
-                                    type="radio"
-                                    label="Norte (N)"
-                                    name="n"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "NE"}
-                                    type="radio"
-                                    label="Nordeste (NE)"
-                                    name="ne"
-                                    id="ne"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "E"}
-                                    type="radio"
-                                    label="Este (E)"
-                                    name="e"
-                                    id="e"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "SE"}
-                                    type="radio"
-                                    label="Sudeste (SE)"
-                                    name="se"
-                                    id="se"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "S"}
-                                    type="radio"
-                                    label="Sul (S)"
-                                    name="s"
-                                    id="s"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "SO"}
-                                    type="radio"
-                                    label="Sudoeste (SO)"
-                                    name="so"
-                                    id="so"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "O"}
-                                    type="radio"
-                                    label="Oeste (O) "
-                                    name="o"
-                                    id="o"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.solar === "NO"}
-                                    type="radio"
-                                    label="Noroeste (NO)"
-                                    name="no"
-                                    id="no"
-                                    />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group controlId="formCategory8">
+
+                            <Form.Group controlId="formBasicSolar" >
+                                <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar:</Form.Label>
+                                <Form.Control required isInvalid={errors.solar} as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
+                                <option>Selecione um opção</option>
+                                <option value="N" >Norte (N)</option>
+                                <option value="NE">Nordeste (NE)</option>
+                                <option value="E">Este (E)</option>
+                                <option value="SE">Sudeste (SE)</option>
+                                <option value="S">Sul (S)</option>
+                                <option value="SO">Sudoeste (SO)</option>
+                                <option value="O">Oeste (O)</option>
+                                <option value="NO">Noroeste (NO)</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira a orientação solar!
+                                </Form.Control.Feedback>
+                            </Form.Group>  
+
+                            <Form.Group controlId="formBasicWifi">
                                 <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationInfo.wifi === 1}
-                                    type="radio"
-                                    label="Existe"
-                                    name="existe"
-                                    id="existe"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.wifi=== 0}
-                                    type="radio"
-                                    label="Não existe"
-                                    name="naoExiste"
-                                    id="naoExiste"
-                                    />
-                                </Col>
+                                <Form.Control required isInvalid={errors.wifi} as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
+                                <option>Selecione um opção</option>
+                                <option value="1">Existe</option>
+                                <option value="0">Não existe</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Imdique se existe internet!
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formCategory9">
+
+                            <Form.Group controlId="formBasicClean">
                                 <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationInfo.clean === 0}
-                                    type="radio"
-                                    label="Cada um faz a sua própria"
-                                    name="propria"
-                                    id="propria"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.clean=== 1}
-                                    type="radio"
-                                    label="É feita por profissionais"
-                                    name="profissionais"
-                                    id="profissionais"
-                                    />
-                                </Col>
+                                <Form.Control required isInvalid={errors.cleaning} as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
+                                <option>Selecione um opção</option>
+                                <option value="1">Cada um faz a sua própria</option>
+                                <option value="0">É feita por profissionais</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Indique como é a limpeza!
+                                </Form.Control.Feedback>
                             </Form.Group>
+                                                
+                            {/*<Form.Group controlId="formCategory14" style={{height:"500px"}}>
+                                <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt} /> Morada:</Form.Label>
+                                <Maps isInvalid={errors.adress} parentCallback={getData}></Maps>
+                                <Form.Control.Feedback type="invalid">
+                                    Insira uma morada!
+                                </Form.Control.Feedback>
+                            </Form.Group> */}
+
                             
                             
                            {/* <Form.Group controlId="formCategory15">

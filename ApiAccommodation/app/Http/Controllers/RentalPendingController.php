@@ -33,13 +33,36 @@ class RentalPendingController extends Controller
 
     public function landlordIdSearch($landlord_id)
     {
-        $landLordPending= RentalPending::where('landlord_id', $landlord_id)->get();
+        $guestPending = DB::table('rental_pending')
+                    ->where('landlord_id', $guest_id)
+                    ->where('landlordAccepted','=', 0)
+                    ->get();
+        
+        
         $response =['pending'=>$landLordPending, 'status'=>true];
 
         $query = DB::table('rental_notification')
                     ->where('user_id', $landlord_id)
                     ->delete();
 
+
+        return response($response, 200);
+    }
+
+
+    public function guestIdSearch($guest_id)
+    {
+    
+        $guestPending = DB::table('rental_pending')
+                    ->where('user_id', $guest_id)
+                    ->where('landlordAccepted','=', 1)
+                    ->get();
+
+        $response =['pending'=>$guestPending, 'status'=>true];
+
+        $query = DB::table('rental_notification')
+                    ->where('user_id', $guest_id)
+                    ->delete();
 
         return response($response, 200);
     }

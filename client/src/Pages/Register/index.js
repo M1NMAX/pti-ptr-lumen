@@ -52,6 +52,14 @@ function Register() {
         return [newErrors, incomplete]
     }
 
+    const uploadImage = () => {
+        let photo = document.getElementById("image-file").files[0];
+        let formData = new FormData();
+     
+        formData.append("photo", photo);
+        fetch('', {method: "POST", body: formData});
+    }
+
     async function handleRegister(e) {
         e.preventDefault();
         //Verificar se os campos estão preenchidos
@@ -107,6 +115,7 @@ function Register() {
                     <Col className="pt-3" sm={{ span: 7, offset: 1 }} md={{ span: 3, offset: 1 }}>
                         <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '70%'}}/>
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
+                        <input id="ProfileImg" type="file" onchange={uploadImage()}/>
                     </Col>
                     <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>
                         <Form  noValidate onSubmit={handleRegister}>
