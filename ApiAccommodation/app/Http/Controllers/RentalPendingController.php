@@ -34,8 +34,8 @@ class RentalPendingController extends Controller
 
     public function landlordIdSearch($landlord_id)
     {
-        $guestPending = DB::table('rental_pending')
-                    ->where('landlord_id', $guest_id)
+        $landLordPending = DB::table('rental_pending')
+                    ->where('landlord_id', $landlord_id)
                     ->where('landlordAccepted','=', 0)
                     ->get();
         
