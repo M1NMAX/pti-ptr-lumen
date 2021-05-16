@@ -142,7 +142,7 @@ function Dashboard() {
                 </Row>
                 <Row>
                   <a href="/meusAlojamentos">
-                    <FontAwesomeIcon icon={faEdit} size="2x"/> Meus alojamento
+                    <FontAwesomeIcon icon={faEdit} size="2x"/> Os meus alojamentos
                   </a>
                 </Row>
                 
