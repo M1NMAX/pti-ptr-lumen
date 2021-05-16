@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
 import {useHistory} from 'react-router-dom';
-import { Container,Row,Col,Form ,Button, Carousel} from 'react-bootstrap'
+import { Container,Row,Col,Form ,Button, Carousel, FormLabel} from 'react-bootstrap'
 //import {connect} from 'react-redux';
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
@@ -21,7 +21,6 @@ function ProfileAccommodationEditable () {
     const  history = useHistory();
     let { id } = useParams();
     
-
     const [localizacao, setLocalizacao] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
@@ -30,10 +29,51 @@ function ProfileAccommodationEditable () {
     const [accommodationFeature, setaccommodationFeature] = useState([]);
     const [accommodationInfo, setaccommodationInfo] = useState([]);
     const [accommodationRequirements, setaccommodationRequirements] = useState([]);
+
+
+    const [userId] = useState(localStorage.getItem('userID'));
+    const [token] = useState(localStorage.getItem('token'));
+    const [title, setTitle] = useState('');
+    const [address, setAddress] = useState('');
+    const [price, setPrice] = useState('');
+    const [content, setContent] =  useState('');
+   
+    const [accommodationType, setAccommodationType] = useState('');
+    // const [nRooms, setNrooms] = useState('');
+    // const [nWC, setNWC] = useState('');
+    // const [area, setArea] = useState('');
+    // const [solar, setSolar] = useState('');
+    // const [wifi, setWifi] = useState('');
+    // const [cleaning, setClean] = useState('');
+    // const [gender, setGender] = useState('');
+    // const [smoker, setSmoker] = useState('');
+    // const [lat, setLat] = useState('');
+    // const [lng, setLng] = useState('');
+    // const [pet, setPet] = useState('');
+    // const [ ageMin, setAgeMin ] = useState(17);
+    // const [ ageMax, setAgeMax ] = useState(65);
+    // const [localizacao, setLocalizacao] = useState([]);
+    // const [caract, setCaract] = useState([]);
+
+
+    const [ ageMin, setAgeMin ] = useState();
+    const [ ageMax, setAgeMax ] = useState();
+
+    const [images, setImages] = useState([]);
+    const maxNumber = 69;
    
 
     useEffect(() => {
         api.get('api/accommodations/'+id).then(response => {
+            setTitle(response.data.aboutAccommodation.name);
+            setAddress(response.data.aboutAccommodation.address);
+            setPrice(response.data.aboutAccommodation.price);
+            setContent(response.data.aboutAccommodation.description);
+            setAgeMin(response.data.aboutAccommodation.requirements.ageRangeBot);
+            setAgeMax(response.data.aboutAccommodation.requirements.ageRangeTop);
+
+            setAccommodationType(response.data.aboutAccommodation.info.accommodationType);
+            console.log(response.data);
             setaccommodation(response.data.aboutAccommodation);
             setaccommodationFeature(response.data.aboutAccommodation.feature);
             setaccommodationInfo(response.data.aboutAccommodation.info);
@@ -49,7 +89,7 @@ function ProfileAccommodationEditable () {
 
         api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
             // you must define a default operation
-            console.log(responseFeatures.data.length)
+            // console.log(responseFeatures.data.length)
             let featuresArray = [];
             if(responseFeatures.data.length > 0){
                 for(let i = 0; i < responseFeatures.data.length; i++ ){
@@ -63,17 +103,43 @@ function ProfileAccommodationEditable () {
 
       }, []);
 
-    const [ ageMin, setAgeMin ] = useState(18);
-    const [ ageMax, setAgeMax ] = useState(27);
-
-    const [images, setImages] = useState([]);
-    const maxNumber = 69;
+    
  
     const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
-  };
+    };
+
+    async function handleUpdateAcccommodation(e){
+        e.preventDefault();
+        // let data = {
+        //     "name": title,
+        //     "description" :content, 
+        //     "price": price,
+        //     "address": adress,
+        //     "location": localizacao[0],
+        //     "district": 'None',
+        //     "latitude": lat,
+        //     "longitude": lng,
+        //     "rooms": nRooms,
+        //     "bathRooms" : nWC,
+        //     "accommodationType": accommodationType, 
+        //     "area":area,
+        //     "solar":solar, 
+        //     "wifi": wifi,
+        //     "clean":cleaning,
+        //     "ageRangeBot": ageMin,
+        //     "ageRangeTop": ageMax,
+        //     "gender": gender,
+        //     "smoker": smoker,
+        //     "pets":pet,
+        //     "features":caractIds,
+        // };
+        // console.log(data);
+        console.log('UMA');
+        
+    }
 
         
         var profilePic1=DefaultRoomPic1;
@@ -89,9 +155,10 @@ function ProfileAccommodationEditable () {
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}}> <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
                     <Col xs={6} md={10} >
-                        <Form.Group controlId="formCategory1">
+                       <h2>Edição do alojamento {accommodation.name}</h2> 
+                        {/* <Form.Group controlId="formCategory1">
                             <Form.Control size="lg" type="text" defaultValue={accommodation.name}/>
-                        </Form.Group>
+                        </Form.Group> */}
                     </Col>                 
                 </Row> 
                 
@@ -164,13 +231,17 @@ function ProfileAccommodationEditable () {
                     </Col>
                 </Row>
                         
-                    <Form className="form">   
+                    <Form className="form" onSubmit={handleUpdateAcccommodation}>  
+                        <Form.Group controlId="formCategory1">
+                            <Form.Label>Nome do alojamento</Form.Label>
+                            <Form.Control size="lg" type="text"  value={title} onChange={e => setTitle(e.target.value)}/>
+                        </Form.Group>
                         <Form.Row>
                             <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações Importantes </h3>
                             <Form.Group controlId="formCategory0">
                                 <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
-                                <Form.Control type="text" defaultValue={accommodation.address}/>
+                                <Form.Control type="text" value={address} onChange={e => setAddress(e.target.value)}/>
                             </Form.Group>
                             <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label>
@@ -186,7 +257,7 @@ function ProfileAccommodationEditable () {
 
                             <Form.Group controlId="formCategory2">
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Form.Label>
-                                <Form.Control type="text" defaultValue={accommodation.price} />
+                                <Form.Control type="text" value={price} onChange={e => setPrice(e.target.value)} />
                             </Form.Group>
                             {/*<Form.Group controlId="formCategory3">
                                 <Form.Label>Estado de ocupação:</Form.Label>
@@ -209,7 +280,7 @@ function ProfileAccommodationEditable () {
                                 </Form.Group> */}
                             <Form.Group controlId="formCategory4">
                                 <Form.Label>Descrição:</Form.Label>
-                                <Form.Control as="textarea" rows={3} defaultValue={accommodation.description}/>
+                                <Form.Control as="textarea" rows={3} value={content} onChange={e => setContent(e.target.value)}/>
                             </Form.Group>
                             <h3 class="w3-border-top">Requisitos dos inquilinos</h3>
                             <Form.Group controlId="formCategory10">
@@ -217,7 +288,7 @@ function ProfileAccommodationEditable () {
                                 <Row> 
                                      &nbsp; &nbsp; Dos 	&nbsp;
                                         <RangeSlider
-                                            value={accommodationRequirements.ageRangeBot}
+                                            value={ageMin}
                                             onChange={e => setAgeMin(e.target.value)}
                                             min={17}
                                             max={64}
@@ -226,9 +297,9 @@ function ProfileAccommodationEditable () {
                                     	&nbsp; aos 	&nbsp;
                                         <RangeSlider
                                             variant='info'
-                                            value={accommodationRequirements.ageRangeTop}
+                                            value={ageMax}
                                             onChange={e => setAgeMax(e.target.value)}
-                                            min={18}
+                                            min={ageMin}
                                             max={65}
                                             
                                         />
@@ -324,7 +395,13 @@ function ProfileAccommodationEditable () {
                             <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
                             <Form.Group controlId="formCategoryType">
                                 <Form.Label>Tipo de Alojamento:</Form.Label>
-                                <Col sm={10}>
+                                <Form.Control  as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)} >
+                            <option>Selecione um opção</option>
+                            <option value="Apartamento" >Apartamento </option>
+                            <option value="Quarto">Quarto </option>
+                            <option value="Moradia">Moradia </option>
+                            </Form.Control>
+                                {/* <Col sm={10}>
                                     <Form.Check
                                     checked={accommodationInfo.accommodationType === "Quarto"}
                                     type="radio"
@@ -346,7 +423,7 @@ function ProfileAccommodationEditable () {
                                     name="Moradia"
                                     id="Moradia"
                                     />
-                                </Col>
+                                </Col> */}
                             </Form.Group>
                             <Form.Group controlId="formCategoryRooms">
                                 <Form.Label><FontAwesomeIcon icon={faBed} /> Nº de quartos:</Form.Label>
