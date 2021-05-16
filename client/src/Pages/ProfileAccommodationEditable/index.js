@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import api from '../../services/api';
 import {useHistory} from 'react-router-dom';
-import { Container,Row,Col,Form ,Button, Carousel, FormLabel} from 'react-bootstrap'
+import { Container,Row,Col,Form ,Button, Carousel} from 'react-bootstrap'
 //import {connect} from 'react-redux';
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
@@ -23,7 +23,7 @@ function ProfileAccommodationEditable () {
     
     const [title, setTitle] = useState('');
     const [content, setContent] =  useState('');
-    const [adress, setAdress] = useState('');
+    const [address, setAddress] = useState('');
     const [price, setPrice] = useState('');
     const [accommodationType, setAccommodationType] = useState('');
     const [nRooms, setNrooms] = useState('');
@@ -49,7 +49,7 @@ function ProfileAccommodationEditable () {
         api.get('api/accommodations/'+id).then(response => {
             setTitle(response.data.aboutAccommodation.name)
             setContent(response.data.aboutAccommodation.description)
-            setAdress(response.data.aboutAccommodation.address)
+            setAddress(response.data.aboutAccommodation.address)
             setPrice(response.data.aboutAccommodation.price)
             setLat(response.data.aboutAccommodation.latitude)
             setLng(response.data.aboutAccommodation.longitude)
@@ -81,7 +81,7 @@ function ProfileAccommodationEditable () {
 
         api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
             // you must define a default operation
-            // console.log(responseFeatures.data.length)
+            console.log(responseFeatures.data.length)
             let featuresArray = [];
             if(responseFeatures.data.length > 0){
                 for(let i = 0; i < responseFeatures.data.length; i++ ){
@@ -95,7 +95,9 @@ function ProfileAccommodationEditable () {
 
       }, []);
 
-    
+    let [ errors, setErrors ] = useState({});
+    const [images, setImages] = useState([]);
+    const maxNumber = 69;
  
     const onChange = (imageList, addUpdateIndex) => {
     // data for submit
@@ -103,36 +105,36 @@ function ProfileAccommodationEditable () {
     setImages(imageList);
     };
 
-    async function handleUpdateAcccommodation(e){
+    async function handleUpdateAccommodation(e){
         e.preventDefault();
-        // let data = {
-        //     "name": title,
-        //     "description" :content, 
-        //     "price": price,
-        //     "address": adress,
-        //     "location": localizacao[0],
-        //     "district": 'None',
-        //     "latitude": lat,
-        //     "longitude": lng,
-        //     "rooms": nRooms,
-        //     "bathRooms" : nWC,
-        //     "accommodationType": accommodationType, 
-        //     "area":area,
-        //     "solar":solar, 
-        //     "wifi": wifi,
-        //     "clean":cleaning,
-        //     "ageRangeBot": ageMin,
-        //     "ageRangeTop": ageMax,
-        //     "gender": gender,
-        //     "smoker": smoker,
-        //     "pets":pet,
-        //     "features":caractIds,
-        // };
-        // console.log(data);
-        console.log('UMA');
-        
-    }
+        // "landlord_id": userId,
+        // "features":caractIds,
 
+        let data = {
+            "name": title,
+            "description" :content, 
+            "price": price,
+            "address": address,
+            "location": localizacao[0],
+            "district": 'None',
+            "latitude": lat,
+            "longitude": lng,
+            "rooms": nRooms,
+            "bathRooms" : nWC,
+            "accommodationType": accommodationType, 
+            "area":area,
+            "solar":solar, 
+            "wifi": wifi,
+            "clean":cleaning,
+            "ageRangeBot": ageMin,
+            "ageRangeTop": ageMax,
+            "gender": gender,
+            "smoker": smoker,
+            "pets":pet,
+        };
+
+        console.log(data);
+    }
         
         var profilePic1=DefaultRoomPic1;
         var profilePic2=DefaultRoomPic2;
@@ -147,10 +149,7 @@ function ProfileAccommodationEditable () {
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}}> <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
                     <Col xs={6} md={10} >
-                       <h2>Edição do alojamento {accommodation.name}</h2> 
-                        {/* <Form.Group controlId="formCategory1">
-                            <Form.Control size="lg" type="text" defaultValue={accommodation.name}/>
-                        </Form.Group> */}
+                       <h3>Edição do alojamento {title} </h3>
                     </Col>                 
                 </Row> 
                 
@@ -223,11 +222,12 @@ function ProfileAccommodationEditable () {
                     </Col>
                 </Row>
                         
-                    <Form className="form" onSubmit={handleUpdateAcccommodation}>  
+                    <Form className="form" onSubmit={handleUpdateAccommodation}>  
+
                         <Form.Group controlId="formCategory1">
-                            <Form.Label>Nome do alojamento</Form.Label>
-                            <Form.Control size="lg" type="text"  value={title} onChange={e => setTitle(e.target.value)}/>
+                            <Form.Control size="lg" type="text" value={title} onChange={e => setTitle(e.target.value)}/>
                         </Form.Group>
+
                         <Form.Row>
                             <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações Importantes </h3>
@@ -237,14 +237,16 @@ function ProfileAccommodationEditable () {
                             </Form.Group>
                             <Form.Group controlId="formBasicSolar" >
                             <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label>
-                                <Typeahead
+
+                            {/* Impontant */}
+                                {/* <Typeahead
                                     id="basic-typeahead-single"
                                     labelKey="name"
                                     onChange={setLocalizacao}
                                     options={localizacoes}
                                     placeholder={localizacao}
                                     selected={localizacao}
-                                />
+                                /> */}
                             </Form.Group>
 
                             <Form.Group controlId="formCategory2">
@@ -301,7 +303,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicGender">
                                 <Form.Label>Género:</Form.Label>
                                 <Form.Control required isInvalid={errors.gender} as="select" type="gender" value={gender} onChange={e => setGender(e.target.value)}>
-                                <option>Selecione um opção</option>
                                 <option value="Masculino"> Masculino </option>
                                 <option value="Feminino"> Feminino </option>
                                 <option value="Misto"> Misto </option>
@@ -311,7 +312,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicSmoker">
                                 <Form.Label><FontAwesomeIcon icon={faSmoking} /> Permite fumadores?</Form.Label>
                                 <Form.Control required isInvalid={errors.smoker} as="select" type="type" value={smoker} onChange={e => setSmoker(e.target.value)}>
-                                <option>Selecione um opção</option>
                                 <option value="1"> Sim </option>
                                 <option value="0"> Não </option>
                                 </Form.Control>
@@ -322,7 +322,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicPet">
                                 <Form.Label><FontAwesomeIcon icon={faPaw} /> Permite animais de estimação?</Form.Label>
                                 <Form.Control required isInvalid={errors.pet} as="select" type="type" value={pet} onChange={e => setPet(e.target.value)} custom>
-                                <option >Selecione um opção</option>
                                 <option value="1"> Sim </option>
                                 <option value="0"> Não </option>
                                 </Form.Control>
@@ -346,37 +345,16 @@ function ProfileAccommodationEditable () {
                         </Col>
                         <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações sobre o Alojamento</h3>
-                            <Form.Group controlId="formCategoryType">
-                                <Form.Label>Tipo de Alojamento:</Form.Label>
-                                <Form.Control  as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)} >
-                            <option>Selecione um opção</option>
-                            <option value="Apartamento" >Apartamento </option>
-                            <option value="Quarto">Quarto </option>
-                            <option value="Moradia">Moradia </option>
-                            </Form.Control>
-                                {/* <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodationInfo.accommodationType === "Quarto"}
-                                    type="radio"
-                                    label="Quarto"
-                                    name="Quarto"
-                                    id="Quarto"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.accommodationType === "Apartamento"}
-                                    type="radio"
-                                    label="Apartamento"
-                                    name="Apartamento"
-                                    id="Apartamento"
-                                    />
-                                    <Form.Check
-                                    checked={accommodationInfo.accommodationType === "Moradia"}
-                                    type="radio"
-                                    label="Moradia"
-                                    name="Moradia"
-                                    id="Moradia"
-                                    />
-                                </Col> */}
+                            <Form.Group controlId="formBasicSolar" >
+                                <Form.Label><FontAwesomeIcon icon={faHome} /> Tipo de Alojamento:</Form.Label>
+                                <Form.Control required isInvalid={errors.accommodationType} as="select" type="solar" value={accommodationType} onChange={e => setAccommodationType(e.target.value)} >
+                                <option value="Apartamento" >Apartamento </option>
+                                <option value="Quarto">Quarto </option>
+                                <option value="Moradia">Moradia </option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    Escolha o tipo de alojamento!
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicRoom">
@@ -406,7 +384,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicSolar" >
                                 <Form.Label><FontAwesomeIcon icon={faSun} /> Orientação solar:</Form.Label>
                                 <Form.Control required isInvalid={errors.solar} as="select" type="solar" value={solar} onChange={e => setSolar(e.target.value)}>
-                                <option>Selecione um opção</option>
                                 <option value="N" >Norte (N)</option>
                                 <option value="NE">Nordeste (NE)</option>
                                 <option value="E">Este (E)</option>
@@ -424,7 +401,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicWifi">
                                 <Form.Label><FontAwesomeIcon icon={faWifi} /> Acesso à Internet:</Form.Label>
                                 <Form.Control required isInvalid={errors.wifi} as="select" type="wifi" value={wifi} onChange={e => setWifi(e.target.value)}>
-                                <option>Selecione um opção</option>
                                 <option value="1">Existe</option>
                                 <option value="0">Não existe</option>
                                 </Form.Control>
@@ -436,7 +412,6 @@ function ProfileAccommodationEditable () {
                             <Form.Group controlId="formBasicClean">
                                 <Form.Label><FontAwesomeIcon icon={faBroom} /> Limpeza:</Form.Label>
                                 <Form.Control required isInvalid={errors.cleaning} as="select" type="cleaning" value={cleaning} onChange={e => setClean(e.target.value)}>
-                                <option>Selecione um opção</option>
                                 <option value="1">Cada um faz a sua própria</option>
                                 <option value="0">É feita por profissionais</option>
                                 </Form.Control>
@@ -461,7 +436,7 @@ function ProfileAccommodationEditable () {
                            */}
                            </Col>
                          </Form.Row>
-                         <Button variant="info">Guardar alterações</Button>
+                         <Button variant="info" type="submit" >Guardar alterações</Button>
                     </Form>
 
                     
