@@ -71,8 +71,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/comment', 'AccommodationController@storeComment');
 
         $router->post('/rentalpending', 'AccommodationController@storeRentalPending');
-        $router->post('/rentalpending/accept/{id}', 'AccommodationController@landlordAcceptRentalPending');
+        $router->post('/rentalpending/acceptLandlord/{id}', 'AccommodationController@landlordAcceptRentalPending');
+        $router->post('/rentalpending/acceptGuest/{id}', 'AccommodationController@guestAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
+        $router->get('/rentalpendingGuest/{id}', 'AccommodationController@showGuestRentalPending');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
 
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');

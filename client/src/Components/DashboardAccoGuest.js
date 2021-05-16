@@ -17,9 +17,6 @@ function DashboardAccoGuest({accommodation}) {
     const[accommodationData, setAccommodationData] = useState([]);
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
-
-    
-
     
     const history = useHistory();
     useEffect(() => {

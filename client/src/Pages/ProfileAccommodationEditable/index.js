@@ -13,6 +13,7 @@ import ImageUploading from 'react-images-uploading';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import localizacoes from '../RegisterAccommodation/localizacoes.js';
+import Footer from '../../Components/Footer';
 
 function ProfileAccommodationEditable () {
     
@@ -296,25 +297,7 @@ function ProfileAccommodationEditable () {
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Form.Label>
                                 <Form.Control type="text" value={price} onChange={e => setPrice(e.target.value)} />
                             </Form.Group>
-                            {/*<Form.Group controlId="formCategory3">
-                                <Form.Label>Estado de ocupação:</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Check
-                                    checked={accommodation.available === false}
-                                    type="radio"
-                                    label="Ocupado"
-                                    name="ocupado"
-                                    id="ocupado"
-                                    />
-                                    <Form.Check
-                                    checked={accommodation.available === true}
-                                    type="radio"
-                                    label="Desocupado"
-                                    name="desocupado"
-                                    id="desocupado"
-                                    />
-                                </Col>
-                                </Form.Group> */}
+
                             <Form.Group controlId="formCategory4">
                                 <Form.Label>Descrição:</Form.Label>
                                 <Form.Control as="textarea" rows={3} value={content} onChange={e => setContent(e.target.value)}/>
@@ -484,6 +467,7 @@ function ProfileAccommodationEditable () {
 
                     
                 </Container>
+                <Footer/>
             </div>
         )
 }

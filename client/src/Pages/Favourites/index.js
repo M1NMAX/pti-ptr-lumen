@@ -71,7 +71,7 @@ function Favourites() {
                     <Alert variant="info" className="mt-4">
                       <h6><FontAwesomeIcon icon={faHeartBroken}/> Ainda não tem favoritos</h6>
                     </Alert> 
-                  <Button className="center" href="/" variant="info"><FontAwesomeIcon icon={faSearch}/> Procurar Alojamentos</Button>
+                  <Button className="center" href="/search" variant="info"><FontAwesomeIcon icon={faSearch}/> Procurar Alojamentos</Button>
               </div>
           }
           </Container>
