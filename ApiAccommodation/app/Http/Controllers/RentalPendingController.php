@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Rental;
 use App\Models\RentalPending;
+use Illuminate\Support\Facades\Validator;
 
 class RentalPendingController extends Controller
 {
@@ -33,8 +34,8 @@ class RentalPendingController extends Controller
 
     public function landlordIdSearch($landlord_id)
     {
-        $guestPending = DB::table('rental_pending')
-                    ->where('landlord_id', $guest_id)
+        $landLordPending = DB::table('rental_pending')
+                    ->where('landlord_id', $landlord_id)
                     ->where('landlordAccepted','=', 0)
                     ->get();
         
@@ -69,6 +70,20 @@ class RentalPendingController extends Controller
 
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'landlord_id' => 'required',
+            'accommodation_id'=>'required|max:30',
+            'user_id' => 'required',
+            'price' => 'required',
+            'beginDate' => 'required',
+            'endDate' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response(['errors' =>  $validator->errors()->all()], 422);
+        }
+
         $rental_pending = RentalPending::create($request->all());
         $query = DB::table('rental_notification')
                     ->where('user_id', $request->landlord_id)

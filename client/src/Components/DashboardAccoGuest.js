@@ -17,9 +17,6 @@ function DashboardAccoGuest({accommodation}) {
     const[accommodationData, setAccommodationData] = useState([]);
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
-
-    
-
     
     const history = useHistory();
     useEffect(() => {
@@ -76,13 +73,13 @@ function DashboardAccoGuest({accommodation}) {
         <Container>
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
-            <Row >
-                <Col> <p>Início: {accommodation.beginDate} </p></Col>
-                <Col><p>Fim: {accommodation.endDate} </p></Col>
-                <Col> <p>Preço: {accommodation.price} &euro;</p></Col>
+            <Row className="d-flex justify-content-center mt-2">
+                <Col> <p><b>Início: </b> {accommodation.beginDate} </p></Col>
+                <Col><p><b>Fim: </b> {accommodation.endDate} </p></Col>
+                <Col> <p><b>Preço:</b> {accommodation.price} &euro;</p></Col>
                 <Col> {accommodation.paymentState?
-                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Pago </p>:
-                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Pago </p>} </Col>
+                            <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> <b>Pago</b> </p>:
+                            <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> <b>Não Pago</b> </p>} </Col>
                 
                 {/* <Col className="center" xm={4} sm={3}>
                     <AnimationWrapper>
@@ -97,12 +94,12 @@ function DashboardAccoGuest({accommodation}) {
                     </AnimationWrapper>
                 </Col> */}
             </Row>
-            <Row>
-                <p>Senhorio/a: </p>
-                <Button size="m"  className="m-1" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
-                <Button size="m"  className="m-1" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
-                <Button size="m"  className="m-1" variant="info" desable={accommodation.paymentState}> <FontAwesomeIcon icon={faMoneyBill}/>Pagar</Button>
-                <Button variant="primary" className="m-1 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
+            <Row className="d-flex justify-content-left d-flex align-items-center ml-5" >
+                <h6 className="mr-4"><b> &nbsp; &nbsp;   Senhorio/a:</b> </h6>
+                <Button size="m"  className="mr-4 m-2" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
+                <Button size="m"  className="mr-4 m-2" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
+                <Button size="m"  className="mr-4 m-2" variant="info" desable={accommodation.paymentState}> <FontAwesomeIcon icon={faMoneyBill}/> Pagar</Button>
+                <Button variant="primary" className="mr-4 m-2 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
 
             </Row>
             

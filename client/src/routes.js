@@ -16,6 +16,7 @@ import LandlordAccommodations from './Pages/LandlordAccommodations'
 import PendingGuest from './Pages/PendingGuest'
 import AdminPage from './Pages/Admin'
 import AdminLogin from './Pages/AdminLogin'
+import AdminFeature from './Pages/AdminFeature'
 import Search from './Pages/Search'
 import capa from './img/capa.png'
 import './App.css'
@@ -43,6 +44,7 @@ function Routes() {
             <Route path="/pendingG" exact component={PendingGuest} />
             <Route path="/admin" exact component={AdminPage} />
             <Route path="/adminLogin" exact component={AdminLogin} />
+            <Route path="/adminFeature" exact component={AdminFeature} />
           </Switch>
         </BrowserRouter>
       );

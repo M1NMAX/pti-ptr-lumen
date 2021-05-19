@@ -5,7 +5,7 @@ import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DefaultHome from "../../img/standartHome.png"
 import NavBarHome from '../../Components/NavBarHome'
-import { Container,Row,Col,Form,Button} from 'react-bootstrap'
+import { Container,Row,Col,Form,Button, Alert} from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMapMarkerAlt, faSearchLocation, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faArrowLeft, faTemperatureLow} from '@fortawesome/free-solid-svg-icons'
@@ -40,8 +40,12 @@ function RegisterAlojamento() {
     const [localizacao, setLocalizacao] = useState([]);
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     // After the register is concluded
-    const [ showLink, setShowLink] = useState(false);
+   
     const [ newAccommodationId, setNewAccommodationId] = useState('');
+
+    //AFTER THE ACCOMMODATION UPDATE
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState('');
 
 
     const  history = useHistory();
@@ -142,16 +146,34 @@ function RegisterAlojamento() {
                     }
                 }).then(response => { 
                     if(response.data.status){
-                        alert(true);
-                        setShowLink(true);
+                        
                         window.scrollTo(0, 0);
                         setNewAccommodationId(response.data.newAccommodationId);
-                        //history.push('/dashboard');
+                        setShowResult(true);
+                        setResult(<Alert  variant="success">
+                                <Alert.Heading>Sucesso</Alert.Heading>
+                                <hr></hr>
+                                <p>Alojamento criado com sucesso!</p>
+                                <Button  href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
+                                <Button className="ml-3" href={'/profileAccommodationEditable/'+newAccommodationId}>Editar alojamento</Button>
+                            </Alert>)
+                        
                     }else{
-                        alert(response.data);    
+                        setShowResult(true);
+                        setResult(<Alert variant="danger">
+                                    <Alert.Heading>Erro</Alert.Heading>
+                                <hr></hr>
+                                <p>Ocorreu um erro durante a criação do alojamento, tente novamente!</p>
+                            </Alert>)  
                     }
                 }).catch(err => {
-                alert(err)
+                    console.log(err);
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                                <Alert.Heading>Erro</Alert.Heading>
+                                <hr></hr>
+                                <p>Ocorreu um erro durante a atualização do alojamento, tente novamente! </p>
+                                </Alert>);
                 })
             }
         }
@@ -171,6 +193,7 @@ function RegisterAlojamento() {
         <div>
 
             <NavBarHome/>
+            {showResult && result}
             <Container>
             <Row  className= "mt-3 mb-3">
                 <Col xs={6} md={4}>
@@ -178,9 +201,16 @@ function RegisterAlojamento() {
                 </Col>
                 <Col xs={6} md={4} className='text-center'><h1>Novo Alojamento</h1> </Col>                 
             </Row> 
-            {showLink && <Row  className= "mt-3 mb-3">
-                <Button href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
-            </Row> }    
+             <Row  className= "mt-3 mb-3">
+             
+                {/* <Alert variant="success">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <hr></hr>
+                    <p>Alojamento criado com sucesso</p>
+                    <Button href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
+                    <Button href={'/profileAccommodationEditable/'+newAccommodationId}>Editar alojamento</Button> 
+                </Alert>               */}
+            </Row>    
             <Form  noValidate onSubmit={handleRegisterAlojamento} >
                 <Form.Row>
                     <Col className="cols" xs={12} sm={6}>

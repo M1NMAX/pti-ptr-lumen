@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 import {Button, Card, Row, Col, Container} from 'react-bootstrap'
 import { AnimationWrapper } from 'react-hover-animation'
 import alojamento from '../img/basicRoom.png'
@@ -56,7 +58,7 @@ function SingleAccommodation({accom, removeFavourite}) {
                     <Card.Text className="mt-1">
                         <h5 style={{textAlign:"center"}}><b>Morada:</b> {accommodation.address} </h5>
                         <h5 style={{textAlign:"center"}}><b>Preco:</b> {accommodation.price}&euro;</h5>
-                        <h5 style={{textAlign:"center"}}><b>Rating: </b>{accommodation.rating} &#42;</h5>
+                        <h5 style={{textAlign:"center"}}><b>Rating: </b>{accommodation.rating} <FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/></h5>
                     </Card.Text>
                     <div className="d-flex justify-content-center">
                         <Button style={{margin:"0 auto", display:"block", width:"300px"}} className="m-1" variant="info" href={ "/profileAccommodation/"+id}>Ver página do alojamento</Button><br/>

@@ -1,13 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Navbar, Nav, NavDropdown, Button, Form, FormControl} from 'react-bootstrap'
-import React from "react";
-import ReactDOM from "react-dom";
-import {  BrowserRouter as Router,  Switch,  Route} from "react-router-dom";
-import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import {Navbar, Nav, NavDropdown, Button, Form} from 'react-bootstrap'
+import React, { useState, useEffect }  from "react";
+import {useHistory,  Switch,  Route} from "react-router-dom";
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
+import {faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../Components/Spinner';
 
 
@@ -15,7 +12,7 @@ function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
     const [auth, setAuth] = useState(true);
     const [username, setUsername] = useState('');
-    const [userid, setUserid] = useState();
+    const [hasFavourites, setHasFavourites] = useState();
     const [loading, setLoading] = useState(true);
 
     const history = useHistory();
@@ -23,7 +20,7 @@ function NavBarHome() {
 
     const [imgC, setImgC] = useState();
 
-    async function routeChange(local){
+    async function routeChange(){
         history.push({
             pathname: '/Search',
             state: local
@@ -32,7 +29,7 @@ function NavBarHome() {
 
     async function enter(target){
         if(target.charCode==13){
-            routeChange(local)
+            routeChange()
         } 
     }
 
@@ -53,7 +50,11 @@ function NavBarHome() {
                 history.push('/');
             }else{
                 setUsername(response.data.username);
-                setUserid(response.data.id)
+                response.data.userable_type == "App\\Models\\Guest" 
+                    && setHasFavourites(<NavDropdown.Item href={ "/favourites"}>
+                                <FontAwesomeIcon icon={faHeart}/> Favoritos
+                        </NavDropdown.Item>
+                );
                 setLoading(false);
 
                 api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
@@ -102,7 +103,7 @@ function NavBarHome() {
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
+                                        {hasFavourites}
                                         <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/> </NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
@@ -151,12 +152,12 @@ function NavBarHome() {
                                 {/* show auth user data  */}
                                 <Form inline >
                                     <Form.Control type="text" placeholder="Onde?"  className="mr-sm-1 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
-                                    <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                    <Button variant="info" onClick={() => routeChange()}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
                                         <NavDropdown.Item href={ "/me"}><FontAwesomeIcon icon={faUser}/> Perfil</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/favourites"}><FontAwesomeIcon icon={faHeart}/> Favoritos</NavDropdown.Item>
+                                        {hasFavourites}
                                         <NavDropdown.Item href={ "/listChat"}><FontAwesomeIcon icon={faSms}/> Chat <FontAwesomeIcon color="red" size="xs" icon={imgC}/></NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
@@ -166,8 +167,6 @@ function NavBarHome() {
                                             <Nav.Link href="/login">Login</Nav.Link>
                                             <Nav.Link href="/register">Registo</Nav.Link>
                                         </> }
-                                    {/* @carol when do you want Alojamento to been seen href={ "/profileUser/"+userid} */}
-                                {/* <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link> */}
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

@@ -39,7 +39,7 @@ function Pending() {
     }, [token]);
 
     async function acceptPending(pendingId){
-        await api.post('api/accommodations/rentalpending/accept/'+pendingId,{
+        await api.post('api/accommodations/rentalpending/acceptLandlord/'+pendingId,{
             headers: {
                 Authorization : `Bearer ${token}`,
             }

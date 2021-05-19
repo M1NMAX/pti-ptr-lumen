@@ -3,7 +3,7 @@ import NavBarHome from '../../Components/NavBarHome';
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import {useHistory} from 'react-router-dom';
-import PendingAc from '../../Components/PendingAc';
+import PendingAcGuest from '../../Components/PendingAcGuest';
 import Footer from '../../Components/Footer';
 import { Container,Row,Col, Button,Alert} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,7 +20,7 @@ function PendingGuest() {
         if(token === null || token === ''){
             history.push('/login');    
         }else{
-            api.get('api/accommodations/rentalpending/'+userId, {
+            api.get('api/accommodations/rentalpendingGuest/'+userId, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -39,7 +39,7 @@ function PendingGuest() {
     }, [token]);
 
     async function acceptPending(pendingId){
-        await api.post('api/accommodations/rentalpending/accept/'+pendingId,{
+        await api.post('api/accommodations/rentalpending/acceptGuest/'+pendingId,{
             headers: {
                 Authorization : `Bearer ${token}`,
             }
@@ -88,7 +88,7 @@ function PendingGuest() {
                 </Row> 
             
                 {allPending.length>0? allPending.map((singlePending)=>(
-                <PendingAc pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
+                <PendingAcGuest pending={singlePending} acceptPending={acceptPending} rejectPending={rejectPending}/>)):
                  <Alert variant="info" className="text-center mt-4"> 
                     Não tens assuntos pendentes
                 </Alert>}

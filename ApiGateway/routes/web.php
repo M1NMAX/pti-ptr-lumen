@@ -37,13 +37,16 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('/{id}', 'FavouritesController@destroy');
     });
 
-    // Auth and Users
-    $router->get('/me', function () {
+    // Return the current authenticate user
+    $router->get('/me',['middleware' => 'auth', function () {
         return auth()->user();
-    });
+    }]);
+
+    //Auth
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
-    $router->post('/register', 'UsersController@register'); //Create
+    //Create
+    $router->post('/register', 'UsersController@register');
     // Users
     $router->group(['prefix' => 'users'], function () use ($router) {
         $router->get('/', 'UsersController@index');
@@ -71,8 +74,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/comment', 'AccommodationController@storeComment');
 
         $router->post('/rentalpending', 'AccommodationController@storeRentalPending');
-        $router->post('/rentalpending/accept/{id}', 'AccommodationController@landlordAcceptRentalPending');
+        $router->post('/rentalpending/acceptLandlord/{id}', 'AccommodationController@landlordAcceptRentalPending');
+        $router->post('/rentalpending/acceptGuest/{id}', 'AccommodationController@guestAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
+        $router->get('/rentalpendingGuest/{id}', 'AccommodationController@showGuestRentalPending');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
 
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');

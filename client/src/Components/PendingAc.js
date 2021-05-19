@@ -86,11 +86,11 @@ function PendingAc({pending, acceptPending, rejectPending}) {
             <Row >
                 <Col className="pb-2 pt-2 pl-2 pr-2 center" xm={6} sm={2}>
                     <img src={DefaultUserPic} alt="Imagem de perfil" width="100%"></img>
-                    <Button ize="sm" variant="info" href={ "/profileUser/"+pending.user_id} > Ver perfil do {userData.name}</Button>
+                    <Button variant="info" href={ "/profileUser/"+pending.user_id} > Ver perfil do {userData.name}</Button>
                 </Col>
                 <Col className="pb-4 pt-4 pr-4 center" xm={6} sm={4}>
                     <Button ize="sm" variant="info">{userData.name}  &nbsp; <FontAwesomeIcon icon={faEnvelope}/></Button>
-                    <div className="pt-2" style={{textAlign: 'left'}}>
+                    <div className="ml-4 mt-3 pt-2" style={{textAlign: 'left'}}>
                         {accommodationRequirements.gender === userExtra.gender || accommodationRequirements.gender === "Misto" || accommodationRequirements.gender === "Indiferente" ?
                         <p><FontAwesomeIcon color="green" icon={faCheckCircle}/> Género</p>:
                         <p><FontAwesomeIcon color="red" icon={faTimesCircle}/> Género</p>}
@@ -112,7 +112,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 <Col className="center" xm={4} sm={3}>
                     <AnimationWrapper>
                         <a href={ "/profileAccommodation/"+pending.accommodation_id} >
-                            <Card.Img onclick="href='/profileAlojamento" className="pb-4 pt-4 pl-2 pr-2 center" style={{ width: '70%'}} src={alojamento}></Card.Img>
+                            <Card.Img onclick="href='/profileAlojamento" className="pb-2 pt-4 pl-2 pr-2 center" style={{ width: '70%'}} src={alojamento}></Card.Img>
                         
                             <Card.Text>
                                 <p style={{ fontSize: '100%', color:'black', textDecoration:'none' }}>{accommodationData.name} </p>
@@ -120,6 +120,8 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                             </Card.Text>
                         </a>
                     </AnimationWrapper>
+                    <p className="mt-4 mb-1"><b>Início:</b> {pending.beginDate}</p>
+                    <p><b>Fim:</b> {pending.endDate}</p>
                 </Col>
                 <Col className="pb-4 pt-4 pl-4 pr-4 center border-left inline" xm={8} sm={3}>
                     <Button variant="success"  className="m-1 mt-5" onClick={handleAcceptPending} size="m" >Aceitar</Button>

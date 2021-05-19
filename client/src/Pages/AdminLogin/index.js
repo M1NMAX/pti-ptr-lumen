@@ -4,7 +4,7 @@ import './index.css'
 //import { FiLogIn } from 'react-icons/fi';
 import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBarHome from '../../Components/NavBarHome'
+import NavBarAdmin from '../../Components/NavBarAdmin'
 import {Container, Card, Form, Button} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 
@@ -33,7 +33,7 @@ function AdminLogin() {
     }
     return (
         <div>
-            <NavBarHome/>
+            <NavBarAdmin/>
 
             {/* @someone please handle the way errors are diplay  */}
             {/*{errors.map((error)=>(<span>{error}</span>))} */}

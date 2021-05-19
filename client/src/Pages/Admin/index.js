@@ -1,4 +1,4 @@
-import NavBarHome from '../../Components/NavBarHome'
+import NavBarAdmin from '../../Components/NavBarAdmin'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import api from '../../services/api';
 import React, { useState, useEffect } from "react";
@@ -40,13 +40,12 @@ function AdminPage() {
         }).catch(err => {
           alert(err)
         })
-
-        setAccommodations(Accommodations);
+        setAccommodations(Accommodations.filter((accommodation) => accommodation.accommodation_id != accommodationId ));
     }
     
     return(
         <div>
-            <NavBarHome/>
+            <NavBarAdmin/>
             <Container>
                 <h3 className="center">Página do Admistrador</h3> 
                 <div inline> 
