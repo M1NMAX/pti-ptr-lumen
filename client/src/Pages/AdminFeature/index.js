@@ -29,7 +29,7 @@ function AdminPage() {
         <div>
             <NavBarAdmin/>
             <Container>
-                <h3 className="center"></h3> 
+                <h3 className="center">Características</h3> 
                 <div inline> 
                     <Form inline style={{float:'right', maxWidth:'100%'}}>
                         <Form.Control type="text"  placeholder="Pesquisar" className="mr-sm-2 "/>

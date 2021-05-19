@@ -42,13 +42,14 @@ function AdminSingleFeature({feat, removeFeat}) {
     return (
         <Container fluid>
             <Card className="mb-2" style={{padding: '2%'}}>
-                <Card.Header>{feat.name}</Card.Header>
+                
                 <Row> 
                     <Col xm={12} sm={6}>
+                    <Card.Header>{feat.name} </Card.Header>
                     </Col>
                     <Col xm={12} sm={6}>
                     <div className="d-flex justify-content-center">
-                        <Button style={{margin:"0 auto", display:"block", width: "300px"}} className="m-1" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
+                        <Button size="sm" style={{margin:"0 auto", display:"block", width: "300px"}} className="m-1" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
                     </div>
                     </Col>
                 </Row>
