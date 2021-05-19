@@ -74,6 +74,23 @@ class AccommodationController extends Controller
         array_push($r, $acc);
         array_push($r, $acc->info);
         array_push($r, $acc->requirements);
+
+
+        $comments = $acc->comments;
+        $sum = 0;
+        $sumN = 0;
+        foreach ($comments as $comment) {
+            $sum += $comment->rate;
+            $sumN += 1;
+        }
+        if(!($sumN == 0)){
+            $acc->rating = $sum/$sumN;
+            $acc->nRates = $sumN;
+            $acc->save();
+        }
+
+
+
         return $r[0];
     }
 
@@ -243,6 +260,9 @@ class AccommodationController extends Controller
     {
         $str = 'null';
         $search = str_replace("%20"," ",$search);
+        if(str_contains($search, ",")){
+            $search = explode(',', $search)[0];
+        }
         if($search == $str){
             $accommodations = Accommodation::get();
         }else{
@@ -309,7 +329,7 @@ class AccommodationController extends Controller
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
-            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);
+            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);   
         }
         //return $infoFilter;
         if(in_array('priceMax', $infos)){
