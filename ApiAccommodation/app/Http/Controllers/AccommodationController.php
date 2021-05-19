@@ -243,6 +243,9 @@ class AccommodationController extends Controller
     {
         $str = 'null';
         $search = str_replace("%20"," ",$search);
+        if(str_contains($search, ",")){
+            $search = explode(',', $search)[0];
+        }
         if($search == $str){
             $accommodations = Accommodation::get();
         }else{
@@ -309,7 +312,7 @@ class AccommodationController extends Controller
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
-            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);
+            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);   
         }
         //return $infoFilter;
         if(in_array('priceMax', $infos)){
