@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import {Button, Card, Row, Col} from 'react-bootstrap';
 import { AnimationWrapper } from 'react-hover-animation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 //import alojamento from '../img/basicRoom.png';
 
 
@@ -19,7 +21,7 @@ function Accommodation({accom}) {
             <Card.Text>
                 <p>{accommodation.description}</p>
                 <p>Preco: {accommodation.price}&euro;</p>
-                <p>Rating: {accommodation.rating}&#42;</p>
+                <p>Rating: {accommodation.rating} <FontAwesomeIcon icon={faStar} style={{color:'rgb(243, 243, 78)'}}/></p>
             </Card.Text>
         </Card> 
     )
