@@ -28,7 +28,6 @@ function Search() {
     const [pet, setPet] = useState(undefined);
     const [ priceMin, setPriceMin ] = useState(undefined);
     const [ priceMax, setPriceMax ] = useState(undefined);
-   // setLocalizacao(location);
     const history = useHistory();
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
@@ -37,11 +36,31 @@ function Search() {
     const[accomFiltered, setAccomFiltered] = useState([]);
 
     useEffect(() => {
-        api.get('api/accommodations/localSearch/' + location.state).then(response => {
-            setAccomFiltered(response.data);
-        }).catch(err => {
-            alert(err)
-        })
+        console.log(location.state);
+        if(location.state== undefined){
+            api.get('api/accommodations/localSearch/null').then(response => {
+                setAccomFiltered(response.data);
+            }).catch(err => {
+                alert(err)
+            })
+        }else{
+            const typeL = location.state[0]+',';
+            if(typeL.includes('Object')){
+                api.get('api/accommodations/localSearch/' + location.state[0].name).then(response => {
+                    setAccomFiltered(response.data);
+                }).catch(err => {
+                    alert(err)
+                })
+            }else{
+                api.get('api/accommodations/localSearch/' + location.state[0]).then(response => {
+                    setAccomFiltered(response.data);
+                }).catch(err => {
+                    alert(err)
+                })
+            }
+        }
+        
+        
 
 
         api.get('api/accommodations/feature').then(response => {
@@ -83,7 +102,13 @@ function Search() {
 
         //Localização
         if(localizacao != undefined){
-            filters += "location," + localizacao +",";
+            const typeLoc = "location," + localizacao +",";
+            if(typeLoc.includes('Object')){
+                filters += "location," + localizacao[0].name +",";
+            }else{
+                filters += "location," + localizacao +",";
+            }
+            
         }
 
         //Preços
@@ -131,7 +156,12 @@ function Search() {
                                     options={localizacoes}
                                     placeholder="Escolha uma localização..."
                                     selected={localizacao}
+                                    allowNew
+                                    newSelectionPrefix=''
+                                    ignoreDiacritics
+
                                 />
+                                
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label><b>Preço:</b></Form.Label>
