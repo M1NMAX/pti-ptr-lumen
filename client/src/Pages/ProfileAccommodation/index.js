@@ -356,6 +356,14 @@ function ProfileAccommodation() {
                     setaccommodationComments([...accommodationComments, response.data.comment]);
                     setContent('');
                     setStar(0);
+                    window.scrollTo(0, 0);
+                    setShowResult(true);
+                    setResult(<Alert variant="success">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>A sua avaliação foi adiciondado alojamento</p>
+                    <Button onClick={()=>window.scrollTo(0,document.body.scrollHeight)}> Ver a avaliação </Button>
+                    </Alert>)
+                    // setTimeout(() => window.scrollTo(0,document.body.scrollHeight), 3000)
                 }else{
                     setShowResult(true);
                     setResult(<Alert variant="danger">
