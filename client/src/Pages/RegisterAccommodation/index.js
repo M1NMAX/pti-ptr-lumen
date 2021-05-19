@@ -151,9 +151,9 @@ function RegisterAlojamento() {
                         setNewAccommodationId(response.data.newAccommodationId);
                         setShowResult(true);
                         setResult(<Alert  variant="success">
-                                <Alert.Heading>Messagem</Alert.Heading>
+                                <Alert.Heading>Sucesso</Alert.Heading>
                                 <hr></hr>
-                                <p>Alojamento criado com sucesso</p>
+                                <p>Alojamento criado com sucesso!</p>
                                 <Button  href={'/profileAccommodation/'+newAccommodationId}>Ver a página do alojamentos</Button>                 
                                 <Button className="ml-3" href={'/profileAccommodationEditable/'+newAccommodationId}>Editar alojamento</Button>
                             </Alert>)
@@ -161,18 +161,18 @@ function RegisterAlojamento() {
                     }else{
                         setShowResult(true);
                         setResult(<Alert variant="danger">
-                                    <Alert.Heading>Messagem</Alert.Heading>
+                                    <Alert.Heading>Erro</Alert.Heading>
                                 <hr></hr>
-                                <p>Ocorreu erro durante a criação do alojamento, tente novamente</p>
+                                <p>Ocorreu um erro durante a criação do alojamento, tente novamente!</p>
                             </Alert>)  
                     }
                 }).catch(err => {
                     console.log(err);
                     setShowResult(true);
                     setResult(<Alert variant="danger">
-                                <Alert.Heading>Messagem</Alert.Heading>
+                                <Alert.Heading>Erro</Alert.Heading>
                                 <hr></hr>
-                                <p>Ocorreu erro durante a atualizado do alojamento,tente novamente </p>
+                                <p>Ocorreu um erro durante a atualização do alojamento, tente novamente! </p>
                                 </Alert>);
                 })
             }

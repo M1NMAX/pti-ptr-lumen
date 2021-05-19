@@ -73,8 +73,6 @@ function ProfileAccommodationEditable () {
             setGender(response.data.aboutAccommodation.requirements.gender)
             setSmoker(response.data.aboutAccommodation.requirements.smoker)
             setPet(response.data.aboutAccommodation.requirements.pets)
-
-            setCaract(response.data.aboutAccommodation.feature);
         }).catch(err => {
           alert(err)
         })
@@ -115,6 +113,15 @@ function ProfileAccommodationEditable () {
         // "landlord_id": userId,
         // "features":caractIds,
 
+         //Transformar as caracteristicas numa string estilo 'id1,id2,id3,'
+         let caractList = Object.keys(caract)
+         let caractIds = ""    
+         for(let i = 0; i < caractList.length;i++){
+             caractIds+= caract[caractList[i]].id + ","
+         }
+
+         console.log(caractIds);
+
         let data = {
             "name": title,
             "description" :content, 
@@ -136,6 +143,7 @@ function ProfileAccommodationEditable () {
             "gender": gender,
             "smoker": smoker,
             "pets":pet,
+            "features":caractIds,
         };
        
         if(token ==null || token ===''){
@@ -153,17 +161,17 @@ function ProfileAccommodationEditable () {
                     window.scrollTo(0, 0);
                     setShowResult(true);
                     setResult(<Alert variant="success">
-                                <Alert.Heading>Messagem</Alert.Heading>
+                                <Alert.Heading>Sucesso</Alert.Heading>
                                 <hr></hr>
-                                <p>Alojamento atualizado com sucesso</p>
+                                <p>Alojamento atualizado com sucesso!</p>
                                 <Button href={'/profileAccommodation/'+id} variant="info">Ver a página do alojamentos</Button>                 
                             </Alert>)
                 }else{
                     setShowResult(true);
                     setResult(<Alert variant="danger">
-                                <Alert.Heading>Messagem</Alert.Heading>
+                                <Alert.Heading>Erro</Alert.Heading>
                                 <hr></hr>
-                                <p>Ocorreu erro durante a atualização do alojamento, tente novamente</p>
+                                <p>Ocorreu erro durante a atualização do alojamento, tente novamente!</p>
                             </Alert>)
                 }
             }).catch(err => {
