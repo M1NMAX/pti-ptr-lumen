@@ -38,13 +38,16 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('/{id}', 'FavouritesController@destroy');
     });
 
-    // Auth and Users
-    $router->get('/me', function () {
+    // Return the current authenticate user
+    $router->get('/me',['middleware' => 'auth', function () {
         return auth()->user();
-    });
+    }]);
+
+    //Auth
     $router->post('/login', 'UsersController@login');
     $router->get('/logout', 'UsersController@logout');
-    $router->post('/register', 'UsersController@register'); //Create
+    //Create
+    $router->post('/register', 'UsersController@register');
     // Users
     $router->group(['prefix' => 'users'], function () use ($router) {
         $router->get('/', 'UsersController@index');

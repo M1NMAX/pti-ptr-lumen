@@ -107,12 +107,15 @@ class AccommodationController extends Controller
         $request->only('ageRangeBot', 'ageRangeTop', 'gender', 'smoker', 'pets'));
 
 
+        $responseAccommodationAddFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/updateFeatures', [
+            'features' => $request->features,
+        ]);
+
         if ($responseBasic->json('status') && $responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
             $finalResponse = ['message' => 'alojamento atualizado com sucesso', 'status' => true];
             return response($finalResponse, 200);
         }
 
-        // return response($responseAccommodationRequiriments, 200);
     }
 
     public function landlordAccommodation($id)
@@ -161,7 +164,7 @@ class AccommodationController extends Controller
 
     public function showGuestRentalPending($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/guest/' . $id); 
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/guest/' . $id);
 
         return response($response);
     }

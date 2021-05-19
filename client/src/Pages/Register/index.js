@@ -21,7 +21,7 @@ function Register() {
     const [smoker, setSmoker] = useState('');
     const [age, setAge] = useState('');
     const [pet, setPet] = useState('');
-    
+
 
     const [errors, setErrors] = useState({});
     const [msgPass, setMsgPass] = useState(''); //Mensagem de erro das password
@@ -45,7 +45,7 @@ function Register() {
             if ( !gender || gender === '' ) {newErrors.gender = true}
             if ( !smoker || smoker === '' ) {newErrors.smoker = true}
             if ( !age || age === '' ) {newErrors.age = true}
-            if ( !pet || pet === '' ) {newErrors.pet = true}    
+            if ( !pet || pet === '' ) {newErrors.pet = true}
         }
 
         if(Object.keys(newErrors).length > 0) {incomplete=true} else{incomplete=false}
@@ -53,11 +53,11 @@ function Register() {
     }
 
     const uploadImage = () => {
-        let photo = document.getElementById("image-file").files[0];
+        let photo = document.getElementById("ProfileImg").files[0];
         let formData = new FormData();
-     
+
         formData.append("photo", photo);
-        fetch('', {method: "POST", body: formData});
+        fetch('../../img', {method: "POST", body: formData});
     }
 
     async function handleRegister(e) {
@@ -65,7 +65,7 @@ function Register() {
         //Verificar se os campos estão preenchidos
         const newErrors = findFormErrors()[0];
         const incomplete = findFormErrors()[1];
-        
+
         if (incomplete) {
             setErrors(newErrors);
             window.scrollTo({
@@ -83,8 +83,8 @@ function Register() {
                 'password_confirmation': password_confirmation,
                 'type': type,
                 'college': college,
-                'gender': gender, 
-                'smoker': smoker, 
+                'gender': gender,
+                'smoker': smoker,
                 'pets': pet,
             };
 
@@ -101,21 +101,19 @@ function Register() {
             }).catch (err => {
                 console.log(err);
             })
+            uploadImage();
         }
     }
     return (
         <div>
             <NavBarHome/>
-            {/* @someone please handle the way errors are diplay  */}
-            {/*{errors.map((error)=>(<span>{error}</span>))} */}
-            {/* @someone please handle the way errors are diplay  */}
             <Container>
                 <h1 className='text-center'>Registo</h1>
                 <Row>
                     <Col className="pt-3" sm={{ span: 7, offset: 1 }} md={{ span: 3, offset: 1 }}>
                         <img src={DefaultUserPic} alt="profiles pic" style={{maxWidth: '70%'}}/>
                         <Button className="changeImage" variant="info" style={{margin: '4%'}}>Adicionar imagem</Button>
-                        <input id="ProfileImg" type="file" />
+                        <input id="ProfileImg" type="file"/>
                     </Col>
                     <Col className="pt-3" sm={{ span: 10, offset: 1 }} md={{ span: 6, offset: 1 }}>
                         <Form  noValidate onSubmit={handleRegister}>
@@ -126,7 +124,7 @@ function Register() {
                                     Insira o seu nome!
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            
+
                             <Form.Group controlId="formBasicEmail" onSubmit={handleRegister}>
                                 <Form.Label>  Email address</Form.Label>
                                 <Form.Control required isInvalid={errors.email} width="sm" name="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={e => setEmail(e.target.value)}/>
@@ -136,7 +134,7 @@ function Register() {
                                 <Form.Text className="text-muted">
                                 O seu e-mail não será partilhado com nenhuma entidade interna ou externa
                                 </Form.Text>
-                                
+
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername" onSubmit={handleRegister}>
@@ -210,7 +208,7 @@ function Register() {
                                 <Form.Group controlId="formBasicSmoker">
                                     <Form.Label> É fumador/a?</Form.Label>
                                     <Form.Control as="select" type="type" isInvalid={errors.smoker} value={smoker} onChange={e => setSmoker(e.target.value)}>
-                                    <option  value="one"> Selecione uma opção</option>  
+                                    <option  value="one"> Selecione uma opção</option>
                                     <option  value="1">Sim</option>
                                     <option  value="0">Não</option>
                                     </Form.Control>
@@ -232,7 +230,7 @@ function Register() {
                                 </Form.Group>
                                 </>
                             }
-                            
+
 
                             <Button variant="info" type="submit">
                                 Submeter

@@ -32,7 +32,7 @@ class AccommodationController extends Controller
     {
         // return $this->accommodation->paginate(10);
 
-        $accommodations = $this->accommodation->take(9)->get();
+        $accommodations = $this->accommodation->get();
         //$accommodations = $this->accommodation->get();
         //--------updateRating--------//
         //(O rate dos comentários quando se faz seed, n afeta o rate do alojamento)
@@ -52,6 +52,18 @@ class AccommodationController extends Controller
 
         }
         return $accommodations;
+    }
+
+    public function showBestAccommodation()
+    {
+
+        $r = [];
+        $accommodation = DB::table('rental_pending')->where('accommodation_id', $accommodation)->delete();
+        $acc = Accommodation::find($id);
+        array_push($r, $acc);
+        array_push($r, $acc->info);
+        array_push($r, $acc->requirements);
+        return $r[0];
     }
 
     public function showId($id)
@@ -131,6 +143,16 @@ class AccommodationController extends Controller
         $accommodation = Accommodation::find($id);
         $cIds = explode(',', $request->input("features"));
         //array_pop($cIds);
+        $accommodation->features()->attach($cIds);
+        return response()->json(['data' => ['message' => 'Sucesso']]);
+    }
+
+    public function updateFeatures($id,Request $request)
+    {
+        $deleteQuery = DB::table('accommodation_feature')->where('accommodation_id', $id)->delete();
+
+        $accommodation = Accommodation::find($id);
+        $cIds = explode(',', $request->input("features"));
         $accommodation->features()->attach($cIds);
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }

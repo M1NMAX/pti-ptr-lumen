@@ -310,7 +310,7 @@ function ProfileAccommodation() {
             width: '100%',
             height: '100%'
           };
-    
+        console.log(accommodation);
         return (
             <div>
                 <NavBarHome/>
@@ -326,9 +326,9 @@ function ProfileAccommodation() {
                     <Col xs={12} sm={8}>
                         <Carousel >
                             <Carousel.Item>
-                                <img className="d-block w-100" src={profilePic1}  alt="First image" />
+                                <img className="d-block w-100" src={"/img/" + accommodation.id + ".jpg"}  alt="First image" />
                                 <Carousel.Caption>
-                                <p>Quarto</p>
+                                <p>Casa</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
