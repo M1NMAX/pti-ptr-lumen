@@ -107,10 +107,11 @@ class AccommodationController extends Controller
         $request->only('ageRangeBot', 'ageRangeTop', 'gender', 'smoker', 'pets'));
 
 
-        $responseAccommodationAddFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/updateFeatures', [
+        $responseAccommodationUpdateFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/updateFeatures', [
             'features' => $request->features,
         ]);
 
+        
         if ($responseBasic->json('status') && $responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
             $finalResponse = ['message' => 'alojamento atualizado com sucesso', 'status' => true];
             return response($finalResponse, 200);

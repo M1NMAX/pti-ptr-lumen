@@ -151,9 +151,15 @@ class AccommodationController extends Controller
     {
         $deleteQuery = DB::table('accommodation_feature')->where('accommodation_id', $id)->delete();
 
-        $accommodation = Accommodation::find($id);
         $cIds = explode(',', $request->input("features"));
-        $accommodation->features()->attach($cIds);
+        array_pop($cIds);
+
+        foreach($cIds as $idFeature){
+            DB::table('accommodation_feature')->insert([
+                'accommodation_id' => $id,
+                'feature_id' => $idFeature
+            ]);
+        }
         return response()->json(['data' => ['message' => 'Sucesso']]);
     }
 

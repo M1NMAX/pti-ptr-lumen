@@ -70,7 +70,6 @@ class CommentController extends Controller
             $comment = $this->comment->create($request->all());
         }
         return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'comment'=>$comment ,'status'=>true]);
-        return $query;
 
     
     }

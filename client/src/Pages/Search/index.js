@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBarHome from '../../Components/NavBarHome'
-import {Container, Card, Form, Button,Row,Col} from 'react-bootstrap'
+import {Container, Card, Form, Button,Row,Col, Alert} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 import {useParams, useHistory, useLocation} from 'react-router-dom';
 import api from '../../services/api';
@@ -98,7 +98,6 @@ function Search() {
         if(accommodationType != undefined){
             filters += "accommodationType," + accommodationType +",";
         }
-        console.log("OHHHHHfilters");
         console.log(filters);
 
         api.get('api/accommodations/filter/' + filters, {
@@ -174,8 +173,10 @@ function Search() {
                     <Col lg={10} sm={12}>
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
                         <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
-                            {accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
-                             <h6 className="center mt-5 text-muted"  ><FontAwesomeIcon icon={faHome} />  Não foram encontrados alojamentos com essas caracteríticas</h6>} 
+                            {accomFiltered.length>0? <Accommodations accom={accomFiltered} />: 
+                            <Alert variant="info" className="mt-4">
+                                <h6 className="center text-muted"  ><FontAwesomeIcon icon={faHome} />  Não foram encontrados alojamentos com essas caracteríticas</h6>
+                            </Alert>} 
                              
                         </Container>
                     </Col>

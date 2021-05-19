@@ -19,9 +19,10 @@ import api from '../../services/api';
 function Homepage() {
     const [Accmmodations, setAcommodations] = useState([]);
     const history = useHistory();
-    const [local, setLocal]=useState();
+    const [local, setLocal]=useState('null');
 
     async function routeChange(local){
+        console.log(local);
         history.push({
             pathname: '/Search',
             state: local
@@ -69,6 +70,7 @@ function Homepage() {
             </div>
             <Container id='down' fluid>
                 <Accommodations accom={Accmmodations} />   
+                <Button variant="info" onClick={() => routeChange(local)} style={{marginLeft: '48%'}} className="button mt-1 mb-1">Ver mais!</Button>
             </Container>
             <Footer/>
         </div>

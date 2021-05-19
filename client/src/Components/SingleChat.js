@@ -16,6 +16,9 @@ function SingleChat({chats}) {
     const [userid, setUserid] = useState();
     const [user,setUser] = useState();
     const[userName, setUserName] = useState();
+    const[accommodation, setAccommodation] = useState();
+    const[accommodationId, setAccommodationId] = useState();
+    const[accommodationName, setAccommodationName] = useState();
     const[text, setText] = useState();
     const[bt, setBt] = useState();
     const history = useHistory();
@@ -45,6 +48,7 @@ function SingleChat({chats}) {
                      
                   }else{
                         setChat(responseChat.data)
+                        console.log(responseChat.data)
                         if(responseChat.data.user_id1 == response.data.id){
                             /*console.log(idUser2);*/
                             idTarget = responseChat.data.user_id2;
@@ -57,6 +61,16 @@ function SingleChat({chats}) {
                           console.log(responseUser.data)
                           setUserName(responseUser.data.user.name);
                          
+                      }).catch(err => {
+                          alert(err)
+                      })
+
+                      api.get('api/accommodations/'+ responseChat.data.accommodation_id).then(responseAccommodation => {
+                        console.log(responseAccommodation.data.aboutAccommodation)
+                        setAccommodation(responseAccommodation.data.aboutAccommodation);
+                        setAccommodationName(responseAccommodation.data.aboutAccommodation.name);
+                        setAccommodationId(responseAccommodation.data.aboutAccommodation.id);
+                       
                       }).catch(err => {
                           alert(err)
                       })
@@ -87,8 +101,8 @@ function SingleChat({chats}) {
                 <Container>
                     <Card className="mb-4 mt-4 ml-4 mr-4 border border-10 center">
                     <Card.Body>
-                            <Card.Img   style={{ width: '20%'}} onclick={"/profileAccommodation/"} className="img" src={alojamento}></Card.Img>
-                            <Card.Title className="">Casa dos Mares</Card.Title>
+                            <Card.Img   style={{ width: '20%'}} onclick={"/profileAccommodation/"} className="img" src={"/img/" + accommodationId + ".jpg"}></Card.Img>
+                            <Card.Title className="">{accommodationName}</Card.Title>
                             <Card.Text style={{textAlign:"center", verticalAlign:"middle"}}>
                                 <h6 style={{textAlign:"center", verticalAlign:"middle"}}>{userName}</h6>
                             </Card.Text>
