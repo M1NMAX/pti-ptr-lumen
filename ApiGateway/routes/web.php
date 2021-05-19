@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\FeatureController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -97,5 +98,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/addMessage', 'ChatController@storeMessage');
 
 
+    });
+
+    $router->group(['prefix' => 'feature'], function () use ($router) {
+        $router->get('/', 'FeatureController@index');
+        $router->get('/filter/{filters}', 'FeatureController@filter');
+        $router->post('/', 'FeatureController@store');
+        $router->put('/{feature}', 'FeatureController@update');
+        $router->delete('/{feature}', 'FeatureController@destroy');
     });
 });
