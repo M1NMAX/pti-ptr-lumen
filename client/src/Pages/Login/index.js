@@ -5,15 +5,13 @@ import './index.css'
 import api from '../../services/api';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarHome from '../../Components/NavBarHome'
-import {Container, Card, Form, Button} from 'react-bootstrap'
+import {Container,Form, Button} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const [errors, setErrors] = useState([]);
 
     const history = useHistory();
     const [wrongPass, setWrongPass] = useState(false);
@@ -30,22 +28,21 @@ function Login() {
         setValidated(true);
 
         try {
-        const response = await api.post('api/login', { email, password });
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userID', response.data.user.id);
-        history.push('/dashboard');
+            const response = await api.post('api/login', { email, password });
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userID', response.data.user.id);
+            if(response.data.user.userable_type ==="App\\Models\\Admin"){
+                history.push('/admin');
+            }else{
+                history.push('/dashboard');
+            }
         } catch (err) {
-            setErrors(err.response.data.errors);
             setWrongPass(!wrongPass);
         }
     }
     return (
         <div>
             <NavBarHome/>
-
-            {/* @someone please handle the way errors are diplay  */}
-            {/*{errors.map((error)=>(<span>{error}</span>))} */}
-            {/* @someone please handle the way errors are diplay  */}
             <Container>
                 <h1 className="h1">Login</h1>
                 <Form className="login" noValidate validated={validated} onSubmit={handleLogin}>

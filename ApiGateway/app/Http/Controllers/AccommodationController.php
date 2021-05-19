@@ -112,7 +112,6 @@ class AccommodationController extends Controller
             return response($finalResponse, 200);
         }
 
-        // return response($responseAccommodationRequiriments, 200);
     }
 
     public function landlordAccommodation($id)
@@ -161,7 +160,7 @@ class AccommodationController extends Controller
 
     public function showGuestRentalPending($id)
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/guest/' . $id); 
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/guest/' . $id);
 
         return response($response);
     }

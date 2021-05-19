@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
+
 
 
 
@@ -25,13 +27,16 @@ class UsersController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('auth', ['except' => [
+            'register',
+            'login',
+            'show'
+        ]]);
     }
 
     public function register(Request $request)
     {
-        //VALIDATE THE USER TYPE
-        //VALIDATE THE USER DATA
+        //VALIDATE THE USER TYPE AND DATA
         $validator = Validator::make($request->all(), [
             'type' => 'required',
             'username'=>'required|max:30',
@@ -122,14 +127,21 @@ class UsersController extends Controller
     }
 
     public function index(){
+        //Only admin can see all users
+        if (!Gate::authorize('view-users', auth()->user())) {
+            abort(403);
+        }
         $users = User::get();
         return response($users, 200);
     }
 
     public function show($id)
     {
+        //Only landlord and admin can see an expecific user data
+        // if (!Gate::authorize('show-user', auth()->user())) {
+        //     abort(403);
+        // }
         $user = User::findOrFail($id);
-
         $response = ['user'=>$user, 'extra'=>$user->userable()->first(), 'status'=>true];
         return response($response, 200);
     }
@@ -137,9 +149,12 @@ class UsersController extends Controller
     public function update($id, Request $request)
     {
         $user = User::find($id);
+        if (!Gate::authorize('update-user', $user)) {
+            abort(403);
+        }
+
         $user->update($request->only('username', 'email', 'name', 'birthdate'));
-        if($request->type === 'guest')
-        {
+        if($request->type === 'guest'){
             $user->userable()->update($request->only('college', 'gender', 'age', 'pets', 'smoker'));
         }
         $response = ['message' => 'data have been updated successfuly', 'status'=> true];
@@ -148,6 +163,9 @@ class UsersController extends Controller
 
     public function destroy($id)
     {
+        if (!Gate::authorize('destroy-user', auth()->user())) {
+            abort(403);
+        }
         $user = User::find($id);
         $user->delete();
         $response = ['message' => 'your data have been successfully deleted'];

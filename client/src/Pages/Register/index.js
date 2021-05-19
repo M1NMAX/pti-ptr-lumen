@@ -53,11 +53,10 @@ function Register() {
     }
 
     const uploadImage = () => {
-        let photo = document.getElementById("image-file").files[0];
-        let formData = new FormData();
-     
-        formData.append("photo", photo);
-        fetch('', {method: "POST", body: formData});
+        // let photo = document.getElementById("image-file").files[0];
+        // let formData = new FormData();
+        // formData.append("photo", photo);
+        // fetch('', {method: "POST", body: formData});
     }
 
     async function handleRegister(e) {
@@ -106,9 +105,6 @@ function Register() {
     return (
         <div>
             <NavBarHome/>
-            {/* @someone please handle the way errors are diplay  */}
-            {/*{errors.map((error)=>(<span>{error}</span>))} */}
-            {/* @someone please handle the way errors are diplay  */}
             <Container>
                 <h1 className='text-center'>Registo</h1>
                 <Row>
