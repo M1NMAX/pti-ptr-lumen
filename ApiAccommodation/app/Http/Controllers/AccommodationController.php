@@ -74,6 +74,23 @@ class AccommodationController extends Controller
         array_push($r, $acc);
         array_push($r, $acc->info);
         array_push($r, $acc->requirements);
+
+
+        $comments = $acc->comments;
+        $sum = 0;
+        $sumN = 0;
+        foreach ($comments as $comment) {
+            $sum += $comment->rate;
+            $sumN += 1;
+        }
+        if(!($sumN == 0)){
+            $acc->rating = $sum/$sumN;
+            $acc->nRates = $sumN;
+            $acc->save();
+        }
+
+
+
         return $r[0];
     }
 
