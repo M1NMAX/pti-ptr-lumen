@@ -2,14 +2,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import {Button, Card, Row, Col} from 'react-bootstrap';
 import { AnimationWrapper } from 'react-hover-animation';
-import alojamento from '../img/basicRoom.png';
+//import alojamento from '../img/basicRoom.png';
+
+
 
 function Accommodation({accom}) {
     const x = accom.map((accommodation)=>
         <Card className="mb-4 mt-4 ml-4 mr-4 border border-10 center">
             <AnimationWrapper>
                 <a href={"/profileAccommodation/"+accommodation.id}>
-                    <Card.Img onclick="href='/profileAccommodation" className="img" src={alojamento}></Card.Img>
+                    <Card.Img onclick="href='/profileAccommodation" className="img" src= {'/img/'+ accommodation.id+'.jpg'} style={{height:"300px", width:"450px"}}></Card.Img>
                 </a>
             </AnimationWrapper>
             <Card.Title className="center">{accommodation.name}</Card.Title>
