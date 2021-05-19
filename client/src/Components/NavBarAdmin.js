@@ -55,15 +55,6 @@ function NavBarAdmin() {
                 setUsername(response.data.username);
                 setUserid(response.data.id)
                 setLoading(false);
-
-                api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
-                    console.log(responseChatNotification.data);
-                    if(responseChatNotification.data.length == 0){
-                      setImgC();
-                    }else{
-                      setImgC(faCircle);
-                    }
-                  })
           }
         }).catch(err => {
           alert(err)
