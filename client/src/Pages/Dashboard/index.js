@@ -13,7 +13,7 @@ import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
 import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faBell, faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
@@ -30,6 +30,7 @@ function Dashboard() {
     const history = useHistory();
     
     const [imgC, setImgC] = useState();
+    const [imgP, setImgP] = useState();
 
     useEffect(() => {
         
@@ -59,7 +60,16 @@ function Dashboard() {
                   if(responseChatNotification.data.length == 0){
                     setImgC();
                   }else{
-                    setImgC(faCircle);
+                    setImgC(faBell);
+                  }
+                })
+
+                api.get('api/accommodations/rentalNotification/' + response.data.id).then(responsePendGNotification => {
+                  console.log(responsePendGNotification.data);
+                  if(responsePendGNotification.data.length == 0){
+                    setImgP();
+                  }else{
+                    setImgP(faBell);
                   }
                 })
 
@@ -134,7 +144,7 @@ function Dashboard() {
                 </Row>
                 <Row>
                   <a href="/pending">
-                    <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pendentes
+                    <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pendentes   <FontAwesomeIcon icon={imgP} color="red" />
                   </a>
                 </Row>
                 <Row>
@@ -209,7 +219,7 @@ function Dashboard() {
             </Row>
             <Row>
               <a href="/pendingG">
-              <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pedidos Pendentes
+              <FontAwesomeIcon icon={faCalendarMinus} size="2x"/> Pedidos Pendentes   <FontAwesomeIcon icon={imgP} color="red"/>
               </a>
             </Row>
             

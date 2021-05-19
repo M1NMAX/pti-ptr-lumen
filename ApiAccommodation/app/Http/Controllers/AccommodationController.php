@@ -309,7 +309,7 @@ class AccommodationController extends Controller
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
-            array_push($basicFilter,['county', 'like', '%' . $infos[$index+1] . '%']);
+            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);
         }
         //return $infoFilter;
         if(in_array('priceMax', $infos)){

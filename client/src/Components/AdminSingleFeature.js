@@ -9,12 +9,12 @@ import api from '../services/api';
 
  
 function AdminSingleFeature({feat, removeFeat}) {
-    const [id] = useState(feat.feature_id);
+    const [id] = useState(feat.id);
     const [token] = useState(localStorage.getItem('token'));
     const [feature, setFeature] = useState([]);
 
     useEffect(() => {
-          api.get( 'api/feature/'+id,{
+          api.get( 'api/accommodations/feature/',{
               headers:{
                   Authentication:`Bearer ${token}`,
               }
@@ -42,7 +42,7 @@ function AdminSingleFeature({feat, removeFeat}) {
     return (
         <Container fluid>
             <Card className="mb-2" style={{padding: '2%'}}>
-                <Card.Header>{feature.name}</Card.Header>
+                <Card.Header>{feat.name}</Card.Header>
                 <Row> 
                     <Col xm={12} sm={6}>
                     </Col>
@@ -54,7 +54,7 @@ function AdminSingleFeature({feat, removeFeat}) {
                 </Row>
             </Card> 
         </Container>
-    )
+    ) 
 }
 
 export default AdminSingleFeature

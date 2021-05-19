@@ -208,7 +208,7 @@ function ProfileAccommodationEditable () {
                     <Col xs={12} sm={8} className="imagem">
                         <Carousel >
                             <Carousel.Item>
-                                <img className="d-block w-100" src={profilePic1}  alt="First image" />
+                                <img className="d-block w-100" src={"/img/" + id + ".jpg"}  alt="First image" />
                                 <Carousel.Caption>
                                 <p>Quarto</p>
                                 </Carousel.Caption>
