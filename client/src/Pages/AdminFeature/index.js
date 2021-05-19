@@ -11,6 +11,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 
 function AdminPage() {
     const [feature, setFeature] = useState([]);
+    const [featureName, setFeatureName] = useState();
     const [token] = useState(localStorage.getItem('token'));
 
     const history = useHistory();
@@ -18,7 +19,7 @@ function AdminPage() {
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
             setFeature(response.data.data);  
-            console.log(response.data.data);          
+            setFeatureName(response.data.data.name);
         }).catch(err => {
           alert(err)
         })
@@ -35,7 +36,7 @@ function AdminPage() {
                         <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                     </Form>
                 </div>
-                {/* {feature.map((feature)=>(<AdminSingleFeature accom={feature} /remove={remove}/ />)) */}
+                {feature.map((singleFeat)=>(<AdminSingleFeature feat={singleFeat} /*remove={remove}*/ />)) }
             </Container>
             <Footer/>
        </div>
