@@ -84,7 +84,6 @@ function ProfileAccommodationEditable () {
 
         api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
             // you must define a default operation
-            console.log(responseFeatures.data.length)
             let featuresArray = [];
             if(responseFeatures.data.length > 0){
                 for(let i = 0; i < responseFeatures.data.length; i++ ){
@@ -283,24 +282,21 @@ function ProfileAccommodationEditable () {
                         <Form.Row>
                             <Col xs={12} sm={6}>
                             <h3 class="w3-border-top">Informações Importantes </h3>
-                            <Form.Group controlId="formCategory0">
-                                <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
-                                <Form.Control type="text" value={address} onChange={e => setAddress(e.target.value)}/>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicSolar" >
-                            <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label>
-
-                            {/* Impontant */}
-                                {/* <Typeahead
+                            <fieldset disabled>
+                                <Form.Group controlId="formCategory0">
+                                    <Form.Label><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon> Morada:</Form.Label>
+                                    <Form.Control type="text" value={address} onChange={e => setAddress(e.target.value)}/>
+                                </Form.Group>
+                            </fieldset>
+                            <fieldset disabled>
+                                <Form.Group controlId="formBasicLocation" >
+                                <Form.Label><FontAwesomeIcon icon={faMapMarkedAlt} /> Localização:</Form.Label> <Typeahead
                                     id="basic-typeahead-single"
                                     labelKey="name"
-                                    onChange={setLocalizacao}
-                                    options={localizacoes}
                                     placeholder={localizacao}
-                                    selected={localizacao}
-                                /> */}
-                            </Form.Group>
-
+                                    />
+                                </Form.Group>
+                            </fieldset>
                             <Form.Group controlId="formCategory2">
                                 <Form.Label><FontAwesomeIcon icon={faEuroSign} /> Preço/mês:</Form.Label>
                                 <Form.Control type="text" value={price} onChange={e => setPrice(e.target.value)} />

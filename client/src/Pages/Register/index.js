@@ -38,6 +38,7 @@ function Register() {
         if ( !type || type === '' ) {newErrors.type = true}
         if ( !password || password === '' ) {newErrors.password = true; setMsgPass("Insira uma password!")}
         if ( !password_confirmation || password_confirmation === '' ) {newErrors.password_confirmation = true; setMsgPass("Insira uma password!") }
+        if ( password_confirmation.length < 7 || password.length < 7  ) {newErrors.passwordDif = true; setMsgPass("As passwords tem que ter pelo menos 6 caracteres!")}
         if ( !(password_confirmation === password)  ) {newErrors.passwordDif = true; setMsgPass("As passwords tem que ser iguais!")}
 
         if ( type === 'guest' ) {
