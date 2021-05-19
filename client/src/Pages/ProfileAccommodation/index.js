@@ -43,6 +43,7 @@ function ProfileAccommodation() {
     const [isDisabled, setDisabled] = useState(true);
     const [showMessage, setshowMessage] = useState(false);
 
+
     const [gender, setGender] = useState([]);
 
     const ref = useRef(null);
@@ -310,7 +311,6 @@ function ProfileAccommodation() {
             width: '100%',
             height: '100%'
           };
-        console.log(accommodation);
         return (
             <div>
                 <NavBarHome/>

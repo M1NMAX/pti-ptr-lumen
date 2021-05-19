@@ -19,7 +19,7 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
     const [accommodationRequirements, setAccommodationRequirements] = useState([]);
     const [paymentState, setPaymentState]= useState(); 
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     
     
     const history = useHistory();
@@ -53,7 +53,7 @@ function DashboardAccoLandlord({accommodation, showWarning}) {
                         accommodation.paymentState?
                             setPaymentState(<p><FontAwesomeIcon color="green" icon={faCheckCircle}/> <b>Pago </b></p>):
                             setPaymentState(<p><FontAwesomeIcon color="red" icon={faTimesCircle}/> <b>Não Pago </b> </p>)
-                        setLoading(false);
+                            setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')

@@ -8,9 +8,11 @@ import {faEnvelope, faTimesCircle, faCheckCircle} from '@fortawesome/free-solid-
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
 
 
-function PendingAc({pending, acceptPending, rejectPending}) {
+
+function PendingAc({pending, acceptPending, rejectPending, showWarning}) {
     const[token] = useState(localStorage.getItem('token'));
     const[userData, setUserData] = useState([]);
     const[userExtra, setUserExtra] = useState([]);
@@ -18,7 +20,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
 
-    
+    const [loading, setLoading] = useState(true);
 
     
     const history = useHistory();
@@ -56,6 +58,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                     if(response.data.status){
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -79,10 +82,18 @@ function PendingAc({pending, acceptPending, rejectPending}) {
         await rejectPending(pending.id)
     }
 
+    const handleShowWarning = async (event) =>{
+        event.preventDefault();
+        console.log(event.target.value);
+        console.log(accommodationData.id);
+        showWarning(event.target.value, userData.name, accommodationData.name, pending.id);
+    };
+
     return (
         <Container>
+            {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
-            <Card.Header><b>{userData.name}</b> está interessado(a) em arrendar <b>{pending.accommodation_name}</b>, aceita?</Card.Header>
+            <Card.Header><b>{userData.name}</b> está interessado(a) em arrendar <b>{accommodationData.name}</b>, aceita?</Card.Header>
             <Row >
                 <Col className="pb-2 pt-2 pl-2 pr-2 center" xm={6} sm={2}>
                     <img src={DefaultUserPic} alt="Imagem de perfil" width="100%"></img>
@@ -124,11 +135,15 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                     <p><b>Fim:</b> {pending.endDate}</p>
                 </Col>
                 <Col className="pb-4 pt-4 pl-4 pr-4 center border-left inline" xm={8} sm={3}>
-                    <Button variant="success"  className="m-1 mt-5" onClick={handleAcceptPending} size="m" >Aceitar</Button>
-                    <Button variant="danger" className="m-1 mt-5" onClick={handleRejectPending}  size="m"  >Rejeitar</Button>                    
+                    <Button variant="success"  className="m-1 mt-5" onClick={handleShowWarning} size="m" value="accept" >Aceitar</Button>
+                    <Button variant="danger" className="m-1 mt-5"  onClick={handleShowWarning} size="m" value="reject" >Rejeitar</Button> 
+                    {/* onClick={handleRejectPending}                    */}
                 </Col>
             </Row>
         </Card> 
+        ) : (
+            <Spinner />
+          )}
         </Container>
     )
 }
