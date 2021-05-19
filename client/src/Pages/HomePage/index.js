@@ -13,16 +13,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 import api from '../../services/api';
-//import { Typeahead } from 'react-bootstrap-typeahead';
-//import localizacoes from '../RegisterAccommodation/localizacoes.js';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import localizacoes from '../RegisterAccommodation/localizacoes.js';
 
 function Homepage() {
     const [Accmmodations, setAcommodations] = useState([]);
     const history = useHistory();
-    const [local, setLocal]=useState('null');
+    const [local, setLocal]=useState(undefined);
 
     async function routeChange(local){
-        console.log(local);
         history.push({
             pathname: '/Search',
             state: local
@@ -57,7 +56,19 @@ function Homepage() {
                 <Container>
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
-                            <Form.Control type="text" placeholder="Onde?(Distrito/Concelho/Morada)" className="mr-sm-2 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)}/>
+                            <Typeahead
+                                className="mr-sm-2 search-box" 
+                                id="basic-typeahead-single"
+                                labelKey="name"
+                                onChange={setLocal}
+                                onKeyPress={e => enter(e)}
+                                options={localizacoes}
+                                placeholder="Onde?(Distrito/Concelho/Morada)" 
+                                selected={local}
+                                allowNew
+                                newSelectionPrefix=''
+                                ignoreDiacritics
+                            />
                             <Button variant="info" onClick={() => routeChange(local)} className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                         </Form>
                         <div className="buttonImg" >
