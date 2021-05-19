@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card,Row,Col,Container,Alert} from 'react-bootstrap';
+import {Button,Row,Col,Container,Alert} from 'react-bootstrap';
 import NavBarHome from '../../Components/NavBarHome';
 import Search from '../../Components/Search'
 import chatImg from '../../img/chatImg.png';
@@ -13,7 +13,7 @@ import DashboardAccoLandlord from '../../Components/DashboardAccoLandlord';
 import DashboardAccoGuest from '../../Components/DashboardAccoGuest';
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faTasks, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faCalendarMinus, faCircle, faEdit, faHeart, faPlusCircle, faSearch, faSms, faUser} from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const [token] = useState(localStorage.getItem('token'));
@@ -25,6 +25,7 @@ function Dashboard() {
     const [accommodationName, setAccommotionName] = useState();
     const [accommodationId, setAccommotionId] = useState();  
 
+   
 
     const history = useHistory();
     
@@ -116,6 +117,7 @@ function Dashboard() {
           
           <Container fluid>
           <h3 className="center">Bem-vindo, {user.username}</h3>
+          <p className="center"> {rentalAccommodations.length>0 && 'Os seus alojamentos arrendados'} </p>
 
             
             <Row >
@@ -160,7 +162,7 @@ function Dashboard() {
                           </div>
                         </Alert>
                       </>
-
+                        
                         {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoLandlord accommodation={accommodation} showWarning={show}/>
                           )):
@@ -184,7 +186,7 @@ function Dashboard() {
       <Container fluid>
       <h3 className="center mt-4">Bem-vindo, {user.username}</h3>
         <Row>
-          <Col sm={12} lg={2} className="sidebar ml-2 mt-5 pl-2">
+          <Col sm={12} lg={2} className="sidebar ml-2  pl-2">
             <Row>
               <a href="/listChat">
               <FontAwesomeIcon icon={faSms} size="2x"/> Mensagens   <FontAwesomeIcon icon={imgC} color="red"/>
@@ -213,7 +215,9 @@ function Dashboard() {
             
           </Col>
           <Col sm={10} lg={10} className="text-center content" >
-                    {rentalAccommodations.length>0? rentalAccommodations.map((accommodation)=>(
+          <p className="center"> {rentalAccommodations.length>0 && 'O(s) alojamento(s) que estás a alugar'} </p>
+
+                    {rentalAccommodations.length>0?  rentalAccommodations.map((accommodation)=>(
                           <DashboardAccoGuest accommodation={accommodation}/>
                           )):<Alert variant="info" className="mt-4">
                           Não esta a alugar nenhum alojamento

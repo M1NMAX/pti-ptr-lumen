@@ -8,6 +8,8 @@ import {faEnvelope, faTimesCircle, faCheckCircle} from '@fortawesome/free-solid-
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
+
 
 
 function PendingAc({pending, acceptPending, rejectPending}) {
@@ -17,7 +19,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
 
-    
+    const [loading, setLoading] = useState(true);
 
     
     const history = useHistory();
@@ -48,6 +50,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                     if(response.data.status){
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -73,6 +76,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
 
     return (
         <Container>
+            {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header>O senhorio do alojamento <b>{accommodationData.name}</b> aceitou-o, tem a certeza que quer prosseguir?</Card.Header>
             <Row className="d-flex justify-content-center" >
@@ -102,6 +106,9 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 </Col>
             </Row>
         </Card> 
+         ) : (
+            <Spinner />
+          )}
         </Container>
     )
 }

@@ -8,6 +8,8 @@ import {faEnvelope, faTimesCircle, faCheckCircle, faMoneyBill} from '@fortawesom
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
+
 
 
 function DashboardAccoGuest({accommodation}) {
@@ -18,6 +20,9 @@ function DashboardAccoGuest({accommodation}) {
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
     
+    const [loading, setLoading] = useState(true);
+
+
     const history = useHistory();
     useEffect(() => {
         if(token === null || token === ''){
@@ -48,6 +53,7 @@ function DashboardAccoGuest({accommodation}) {
                         setAccommodationData(response.data.aboutAccommodation);
                         console.log(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -71,6 +77,7 @@ function DashboardAccoGuest({accommodation}) {
 
     return (
         <Container>
+             {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
             <Row className="d-flex justify-content-center mt-2">
@@ -104,6 +111,9 @@ function DashboardAccoGuest({accommodation}) {
             </Row>
             
         </Card> 
+            ) : (
+                <Spinner />
+              )}
         </Container>
     )
 }

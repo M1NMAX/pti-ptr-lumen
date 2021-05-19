@@ -13,6 +13,10 @@ function PendingGuest() {
     const[token] = useState(localStorage.getItem('token'));
     const[userId]= useState(localStorage.getItem('userID'));
     const[allPending, setAllPending] = useState([]);
+
+    //after the decision
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState('');
     
     const history = useHistory();
 
@@ -45,12 +49,28 @@ function PendingGuest() {
             }
         }).then(response => {
             console.log(response);
-            if(!response.data.status){
-                localStorage.clear();
-                history.push('/login');
+            if(response.data.status){
+                setShowResult(true);
+                setResult(<Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>O senhorio será informado da sua decisão</p>
+                </Alert>);
+            }else{
+                // localStorage.clear();
+                // history.push('/login');
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu um erro durante o processo de confirmação, por favor tente mais tarde</p>
+                </Alert>);
             }
         }).catch(err => {
-            alert(err);
+            console.log(err);
+            setShowResult(true);
+            setResult(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu um erro durante o processo de confirmação, por favor tente mais tarde</p>
+            </Alert>);
         });
 
         setAllPending(allPending.filter((pending)=> pending.id != pendingId))
@@ -64,12 +84,28 @@ function PendingGuest() {
             }
         }).then(response => {
             console.log(response);
-            if(!response.data.status){
-                localStorage.clear();
-                history.push('/login');
+            if(response.data.status){
+                setShowResult(true);
+                setResult(<Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>O senhorio será informado da sua decisão</p>
+                </Alert>);
+            }else{
+                // localStorage.clear();
+                // history.push('/login');
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu um erro durante o processo de rejeição, por favor tente mais tarde</p>
+                </Alert>);
             }
         }).catch(err => {
-            alert(err);
+            console.log(err);
+            setShowResult(true);
+            setResult(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu um erro durante o processo de rejeição, por favor tente mais tarde</p>
+            </Alert>);
         })
 
         setAllPending(allPending.filter((pending)=> pending.id != pendingId))
@@ -80,6 +116,7 @@ function PendingGuest() {
         <div>
             <NavBarHome/>
             <Container>
+            {showResult && result}
                 <Row  className= "mt-3 mb-3">
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
