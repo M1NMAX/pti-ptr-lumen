@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef}  from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import api from '../../services/api';
-import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay} from 'react-bootstrap'
+import { Container,Row,Col,Form ,Button, Card, Carousel, Popover, Overlay, Modal, Alert} from 'react-bootstrap'
 import DefaultRoomPic1 from "../../img/basicRoom.png"
 import DefaultRoomPic2 from "../../img/basicWC.png"
 import DefaultRoomPic3 from "../../img/basicKitchen.jpg"
@@ -13,7 +13,6 @@ import './index.css'
 import BeautyStars from 'beauty-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "react-datepicker/dist/react-datepicker.css";
-import { useHistory } from 'react-router-dom';
 import { faArrowLeft, faEnvelope, faStar, faMapMarkerAlt, faMapMarkedAlt, faEuroSign,faHome, faBed, faBath, faSun, faWifi, faBroom, faPeopleArrows,  faMars, faVenus,faVenusMars, faNeuter, faSmoking, faPaw, faPlus, faComments, faComment} from '@fortawesome/free-solid-svg-icons'
 
 
@@ -43,8 +42,13 @@ function ProfileAccommodation() {
     const [isDisabled, setDisabled] = useState(true);
     const [showMessage, setshowMessage] = useState(false);
 
+    const [showNotAuthMessage, setShowNotAuthMessage] = useState(false);
 
-    const [gender, setGender] = useState([]);
+    
+
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState();
+
 
     const ref = useRef(null);
 
@@ -89,7 +93,12 @@ function ProfileAccommodation() {
             console.log(response.data.aboutAccommodation.longitude);
             setMap([<Maps coordinates = {[response.data.aboutAccommodation.latitude,response.data.aboutAccommodation.longitude]}></Maps>])
         }).catch(err => {
-          alert(err)
+            console.log(err);
+            setShowResult(true);
+            setResult(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu erro durante a procurar dos dados do alojamento</p>
+          </Alert>)
         })
         
         api.get('api/accommodations/'+ id + '/showFeatures').then(responseFeatures => {
@@ -105,10 +114,13 @@ function ProfileAccommodation() {
                 setFeatures(featuresArray);
             }
             
-            
-
         }).catch(err => {
-          alert(err)
+            console.log(err);
+            setShowResult(true);
+            setResult(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu erro durante a procurar dos dados do alojamento</p>
+          </Alert>)
         })
 
         api.get('api/accommodations/'+ id + '/dates').then(response => {
@@ -118,7 +130,12 @@ function ProfileAccommodation() {
             
 
         }).catch(err => {
-          alert(err)
+            console.log(err);
+            setShowResult(true);
+            setResult(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu erro durante a procurar dos dados do alojamento</p>
+          </Alert>)
         })
 
         if(token ===null || token ===''){
@@ -142,7 +159,12 @@ function ProfileAccommodation() {
             
             
             }).catch(err => {
-            alert(err)
+                console.log(err);
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu erro durante a procurar dos dados do alojamento</p>
+              </Alert>)
             })
         }
 
@@ -151,7 +173,7 @@ function ProfileAccommodation() {
       async function handleFavourite(){
 
         if(token ==null || token ===''){
-            alert('Não estas autenticado');
+            setShowNotAuthMessage(true);
         }else{
             if(isFavourite){
                 api.delete('/api/favourites/'+id, {
@@ -162,11 +184,20 @@ function ProfileAccommodation() {
                     if(response.data.status){
                         setIsFavourite(false);
                     }else{
-                        alert('Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde');
+                        setShowResult(true);
+                        setResult(<Alert variant="danger">
+                        <Alert.Heading>Messagem</Alert.Heading>
+                        <p>Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde</p>
+                        </Alert>)
                     }
 
                 }).catch(err => {
-                alert(err)
+                    console.log(err);
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>Ocorreu um erro, não foi possivel adicionar o item dos favoritos, tente mais tarde</p>
+                    </Alert>)
                 })
             }
             else if(!isFavourite){
@@ -182,10 +213,19 @@ function ProfileAccommodation() {
                     if(response.data.status){
                         setIsFavourite(true);
                     }else{
-                        alert('Ocorreu um erro, não foi possivel remover o item dos favoritos, tente mais tarde');
+                        setShowResult(true);
+                        setResult(<Alert variant="danger">
+                        <Alert.Heading>Messagem</Alert.Heading>
+                        <p>Ocorreu um erro, não foi possivel adicionar o item dos favoritos, por favor tente novamente</p>
+                        </Alert>)
                     }
                 }).catch(err => {
-                alert(err)
+                    console.log(err);
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>Ocorreu um erro, não foi possivel adicionar o item dos favoritos, por favor tente novamente</p>
+                    </Alert>)
                 })
             }
         }
@@ -221,7 +261,7 @@ function ProfileAccommodation() {
 
         console.log(data);
         if(token ==null || token ===''){
-            alert('Não estas autenticado');
+            setShowNotAuthMessage(true);
         }else{
             api.post('/api/accommodations/rentalpending/', data, {
                 headers: {
@@ -231,13 +271,27 @@ function ProfileAccommodation() {
                 if(response.data.status){
                     setShow(!show);
                     setshowMessage(!showMessage);
-                    console.log('done');
+                    window.scrollTo(0, 0);
+                    setShowResult(true);
+                    setResult(<Alert variant="success">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>O senhorio foi informado do seu interesse no alojamento</p>
+                    </Alert>)
         
                 }else{
-                    alert('Ocorreu um erro, não foi possivel enviar o seu pedido, tente mais tarde');
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>Ocorreu um erro, não foi possivel enviar o seu interesse ao pelo alojamente ao senhorio, por favor tente novamente</p>
+                    </Alert>)
                 }
             }).catch(err => {
-            alert(err)
+                console.log(err);
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu um erro, não foi possivel enviar o seu interesse ao pelo alojamente ao senhorio, por favor tente novamente</p>
+                </Alert>)
             })
         }
 
@@ -245,7 +299,7 @@ function ProfileAccommodation() {
 
     async function chatCheck(id1,id2){
         if(token ==null || token ===''){
-            alert('Não estas autenticado');
+            setShowNotAuthMessage(true);
         }else{
             console.log(id1,id2,accommodation.id)
 
@@ -259,10 +313,19 @@ function ProfileAccommodation() {
                     //console.log(response.data.data)
                     window.location.assign('/chat/' + response.data.data.id)
                 }else{
-                    alert('Ocorreu um erro, não foi possivel criar chat, tente novamente');
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>Ocorreu um erro, não foi possivel criar chat, por favor tente novamente</p>
+                    </Alert>)
                 }
             }).catch(err => {
-            alert(err)
+                console.log(err);
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu um erro, não foi possivel criar chat, por favor tente novamente</p>
+                </Alert>)
             })
         }
 
@@ -281,7 +344,7 @@ function ProfileAccommodation() {
          
         console.log(data)
         if(token ==null || token ===''){
-            alert('Não estas autenticado');
+            setShowNotAuthMessage(true);
         }else{
             api.post('/api/accommodations/comment/', data, {
                 headers: {
@@ -294,10 +357,19 @@ function ProfileAccommodation() {
                     setContent('');
                     setStar(0);
                 }else{
-                    alert('Ocorreu um erro, não foi possivel avaliar o alojamento, tente mais tarde');
+                    setShowResult(true);
+                    setResult(<Alert variant="danger">
+                    <Alert.Heading>Messagem</Alert.Heading>
+                    <p>Ocorreu um erro, não foi possivel avaliar o alojamento, tente mais tarde</p>
+                    </Alert>)
                 }
             }).catch(err => {
-            alert(err)
+                console.log(err);
+                setShowResult(true);
+                setResult(<Alert variant="danger">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Ocorreu um erro, não foi possivel avaliar o alojamento, tente mais tarde</p>
+                </Alert>)
             })
         }
     
@@ -315,6 +387,15 @@ function ProfileAccommodation() {
             <div>
                 <NavBarHome/>
                 <Container>
+                {showResult && result}
+                <>
+                <Modal show={showNotAuthMessage} onHide={()=> setShowNotAuthMessage(false)}>
+                    <Modal.Header closeButton>
+                    <Modal.Title> Aviso </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Precisa estar autenticado para realizar esta ação </Modal.Body>
+                </Modal>
+                </>
                 <Row  className= "mt-3 mb-3">
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
