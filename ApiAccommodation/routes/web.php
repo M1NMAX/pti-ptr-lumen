@@ -60,7 +60,7 @@ $router->group(['prefix' => 'accommodation'], function () use ($router) {
     $router->put('/{id}', 'AccommodationController@update');
     //ADICIONAR CARACTERISTICA
     $router->put('/{id}/addFeatures', 'AccommodationController@addFeatures');
-
+    $router->put('/{id}/updateFeatures', 'AccommodationController@updateFeatures');
 
     //-------------DELETES----------------
 
