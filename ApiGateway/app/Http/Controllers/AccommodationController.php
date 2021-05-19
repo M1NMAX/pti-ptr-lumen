@@ -215,4 +215,9 @@ class AccommodationController extends Controller
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/localSearch/'.$location);
         return response($response);
     }
+
+    public function rentalPendingNotification($id){
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/rentalpending/rentalNotification/'.$id);
+        return response($response);
+    }
 }

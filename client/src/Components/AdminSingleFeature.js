@@ -9,12 +9,12 @@ import api from '../services/api';
 
  
 function AdminSingleFeature({feat, removeFeat}) {
-    const [id] = useState(feat.feature_id);
+    const [id] = useState(feat.id);
     const [token] = useState(localStorage.getItem('token'));
     const [feature, setFeature] = useState([]);
 
     useEffect(() => {
-          api.get( 'api/feature/'+id,{
+          api.get( 'api/acommodattion/feature/'+id,{
               headers:{
                   Authentication:`Bearer ${token}`,
               }

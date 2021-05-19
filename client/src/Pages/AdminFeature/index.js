@@ -10,52 +10,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 
 function AdminPage() {
-    const [Feature, setFeature] = useState([]);
+    const [feature, setFeature] = useState([]);
     const [token] = useState(localStorage.getItem('token'));
 
     const history = useHistory();
    
     useEffect(() => {
-        api.get('api/features').then(response => {
-                console.log(response.data)
-                setFeature(response.data);
-                console.log(response.data.length);
-            }).catch(err => {
-                alert(err)
-            })
-        }, []);
-
-
-    async function remove(featureId){
-       await api.delete('api/feature/'+featureId, {
-            headers: {
-                Authentication: `Bearer ${token}`,
-            }
-          }).then(response => {
-          if(!response.data.status){
-            console.log("erro")
-            localStorage.clear();
-          }
-
+        api.get('api/accommodations/feature').then(response => {
+            setFeature(response.data.data);  
+            console.log(response.data.data);          
         }).catch(err => {
           alert(err)
         })
-
-        setFeature(Feature);
-    }
+        }, []);
     
     return(
         <div>
             <NavBarAdmin/>
             <Container>
-                <h3 className="center">Caracteristicas</h3> 
+                <h3 className="center"></h3> 
                 <div inline> 
                     <Form inline style={{float:'right', maxWidth:'100%'}}>
                         <Form.Control type="text"  placeholder="Pesquisar" className="mr-sm-2 "/>
                         <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
                     </Form>
                 </div>
-                {Feature.map((feature)=>(<AdminSingleFeature accom={feature} remove={remove} />)) }
+                {/* {feature.map((feature)=>(<AdminSingleFeature accom={feature} /remove={remove}/ />)) */}
             </Container>
             <Footer/>
        </div>

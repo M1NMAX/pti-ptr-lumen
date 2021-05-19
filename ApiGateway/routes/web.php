@@ -79,6 +79,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/rentalpending/acceptGuest/{id}', 'AccommodationController@guestAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
         $router->get('/rentalpendingGuest/{id}', 'AccommodationController@showGuestRentalPending');
+        $router->get('/rentalNotification/{id}', 'AccommodationController@rentalPendingNotification');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
 
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
@@ -103,11 +104,4 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     });
 
-    $router->group(['prefix' => 'feature'], function () use ($router) {
-        $router->get('/', 'FeatureController@index');
-        $router->get('/filter/{filters}', 'FeatureController@filter');
-        $router->post('/', 'FeatureController@store');
-        $router->put('/{feature}', 'FeatureController@update');
-        $router->delete('/{feature}', 'FeatureController@destroy');
-    });
 });
