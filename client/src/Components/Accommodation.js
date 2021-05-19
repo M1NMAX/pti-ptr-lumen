@@ -11,7 +11,7 @@ function Accommodation({accom}) {
         <Card className="mb-4 mt-4 ml-4 mr-4 border border-10 center">
             <AnimationWrapper>
                 <a href={"/profileAccommodation/"+accommodation.id}>
-                    <Card.Img onclick="href='/profileAccommodation" className="img" src= {'/img/'+ accommodation.id+'.jpg'} style={{height:"300px", width:"450px"}}></Card.Img>
+                    <Card.Img onclick="href='/profileAccommodation" className="img" src= {'/img/'+ accommodation.id+'.jpg'} ></Card.Img>
                 </a>
             </AnimationWrapper>
             <Card.Title className="center">{accommodation.name}</Card.Title>
