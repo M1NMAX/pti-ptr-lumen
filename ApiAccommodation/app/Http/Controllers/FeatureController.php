@@ -46,7 +46,7 @@ class FeatureController extends Controller
 
     public function destroy($feature)
     {
-        $feature = $this->feature->find('id', $feature);
+        $feature = $this->feature->find($feature);
         $feature->delete();
         return response()->json(['data' => ['message' => 'Caracteristica foi eliminado com sucesso']]);
     }

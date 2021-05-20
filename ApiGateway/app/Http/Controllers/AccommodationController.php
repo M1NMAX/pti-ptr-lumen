@@ -138,6 +138,18 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function addFeature(Request $request)
+    {
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'feature/', $request->all());
+        return response($response);
+    }
+
+    public function removeFeature($id)
+    {
+        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'feature/'. $id);
+        return response($response);
+    }
+
     public function showComments($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/comments');
