@@ -12,7 +12,7 @@ import Spinner from './Spinner';
 
 
 
-function DashboardAccoGuest({accommodation}) {
+function DashboardAccoGuest({accommodation, attempt}) {
     const[token] = useState(localStorage.getItem('token'));
     const[userData, setUserData] = useState([]);
     const[userExtra, setUserExtra] = useState([]);
@@ -64,11 +64,12 @@ function DashboardAccoGuest({accommodation}) {
         }
     }, [token]);
 
-    // const handleAcceptPending = async (event) =>{
-    //     event.preventDefault();
-    //     await acceptPending(pending.id);
+    const handleAttempt = async (event) =>{
+        event.preventDefault();
+        await attempt(accommodationData.name,accommodation.id);
+        // await acceptPending(pending.id);
 
-    // };
+    };
 
     // const handleRejectPending = async (event) =>{
     //     event.preventDefault();
@@ -105,7 +106,7 @@ function DashboardAccoGuest({accommodation}) {
                 <h6 className="mr-4"><b> &nbsp; &nbsp;   Senhorio/a:</b> </h6>
                 <Button size="m"  className="mr-4 m-2" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
                 <Button size="m"  className="mr-4 m-2" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
-                <Button size="m"  className="mr-4 m-2" variant="info" desable={accommodation.paymentState}> <FontAwesomeIcon icon={faMoneyBill}/> Pagar</Button>
+                <Button size="m"  className="mr-4 m-2" variant="info" onClick={handleAttempt}> <FontAwesomeIcon icon={faMoneyBill}/> Pagar</Button>
                 <Button variant="primary" className="mr-4 m-2 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
 
             </Row>

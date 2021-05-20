@@ -25,6 +25,11 @@ function Dashboard() {
     const [accommodationName, setAccommotionName] = useState();
     const [accommodationId, setAccommotionId] = useState();  
 
+    const [showAttempt, setAttempt] = useState(false);
+    const [OtherAccommodationName, setOtherAccommotionName] = useState();
+    const [OtherAccommodationId, setOtherAccommotionId] = useState();
+
+
    
 
     const history = useHistory();
@@ -117,6 +122,46 @@ function Dashboard() {
             </Alert>)
 
           })
+      }
+
+      async function attemptToPay(name, id){
+        setAttempt(true);
+        setOtherAccommotionName(name)
+        setOtherAccommotionId(id)
+      }
+
+
+      async function makePayment(){
+        api.put('api/accommodations/payment/'+OtherAccommodationId).then(
+          response => {
+            if(response.data.status){
+              setAttempt(false);
+              setShowResult(true);
+              setResult(<Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>A renda foi paga com sucesso</p>
+                </Alert>)
+              setrentalAccommodations(rentalAccommodations.map((accomm)=>accomm.id === OtherAccommodationId? 
+              {...accomm, paymentState: !accomm.paymentState}: accomm));
+            }else{
+              setAttempt(false);
+              setShowResult(true);
+              setResult(<Alert variant="danger">
+              <Alert.Heading>Messagem</Alert.Heading>
+              <p>Ocorreu erro durante o pagamento do alojamento, por favor tente mais tarde</p>
+              </Alert>)
+            }
+
+          }).catch(err => {
+              console.log(err);
+              setAttempt(false);
+              setShowResult(true);
+              setResult(<Alert variant="danger">
+              <Alert.Heading>Messagem</Alert.Heading>
+              <p>Ocorreu erro durante o pagamento do alojamento, por favor tente mais tarde</p>
+            </Alert>)
+          })
+
       }
 
     if (user.userable_type == "App\\Models\\Landlord") {
@@ -225,10 +270,23 @@ function Dashboard() {
             
           </Col>
           <Col sm={10} lg={10} className="text-center content" >
+          {showResult && result}
+                        <>
+                        <Alert show={showAttempt} variant="danger">
+                          <Alert.Heading>Aviso</Alert.Heading>
+                          <p>Tem a certeza que quer pretende efetuar o pagamento do {OtherAccommodationName}?</p>
+                          <p>Nota: Não há faturas disponíveis</p>
+                          <hr />
+                          <div className="d-flex justify-content-center">
+                            <Button onClick={makePayment} variant="danger">Sim</Button>
+                            <Button onClick={() =>{window.scrollTo(0,0); setAttempt(false)}} className="ml-5" variant="success">Não</Button>
+                          </div>
+                        </Alert>
+                      </>
           <p className="center"> {rentalAccommodations.length>0 && 'O(s) alojamento(s) que estás a alugar'} </p>
 
                     {rentalAccommodations.length>0?  rentalAccommodations.map((accommodation)=>(
-                          <DashboardAccoGuest accommodation={accommodation}/>
+                          <DashboardAccoGuest accommodation={accommodation} attempt={attemptToPay}/>
                           )):<Alert variant="info" className="mt-4">
                           Não esta a alugar nenhum alojamento
                         </Alert> }
@@ -247,89 +305,3 @@ function Dashboard() {
 }
 
 export default Dashboard
-
-
-/*
-<div>
-      <NavBarHome/>
-      <Card className="text-center">
-          <Card.Header>Dashboard</Card.Header>
-          <Card.Body>
-              <Card.Title>Bem-vindo, {user.username}</Card.Title>
-              <Form inline className="searchDashboard">
-                <Form.Control type="text" placeholder="Onde?(Concelho/Freguesia/Morada)" className="mr-sm-2 search-box" />
-                <Button variant="primary" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-              </Form>
-          </Card.Body>
-      </Card>
-          <Container fluid>
-            <Row className="mb-5 mt-5" xs={6} sm={4}>
-              <Col xs={6} sm={4}>
-                <a href="/listChat">
-                  <Card className="text-center">                   
-                    <Card.Img className="imgDashboard" src={imgC}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Veja as suas mensagens!</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-              
-              <Col xs={6} sm={4}>
-                <a href="/registerAccommodation">
-                  <Card className="text-center">
-                    <Card.Img className="imgDashboard" src={search}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Procure um alojamento!</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-              
-              <Col xs={6} sm={4}>
-                <a href="/favourites">
-                  <Card className="text-center">
-                    <Card.Img className="imgDashboard" src={favourite}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Verifique os seus alojamentos favoritos!</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-
-              <Col xs={6} sm={4}>
-                <a href="/profile">
-                  <Card className="text-center">
-                    <Card.Img className="imgDashboard" src={profile}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Aceda ao seu perfil!</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-              
-              <Col xs={6} sm={4}>
-                <a href="/registerAccommodation">
-                  <Card className="text-center">
-                    <Card.Img className="imgDashboard" src={manage}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Gerir alojamentos!</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-              
-              <Col xs={6} sm={4}>
-                <a href="/">
-                  <Card className="text-center">
-                    <Card.Img className="imgDashboard" src={home}></Card.Img>
-                    <Card.Body>
-                      <Card.Title>Página inicial</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </Col>
-            </Row>
-          </Container>
-          <Footer></Footer>
-    </div> */

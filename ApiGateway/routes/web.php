@@ -69,7 +69,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->put('/{id}', 'AccommodationController@update');
         $router->delete('/{id}', 'AccommodationController@destroy');
 
-
+        $router->put('/payment/{id}', 'AccommodationController@makePayment');
 
         $router->get('/{id}/dates', 'AccommodationController@showDates');
         $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');

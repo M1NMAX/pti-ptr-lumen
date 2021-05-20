@@ -111,12 +111,18 @@ class AccommodationController extends Controller
             'features' => $request->features,
         ]);
 
-        
+
         if ($responseBasic->json('status') && $responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
             $finalResponse = ['message' => 'alojamento atualizado com sucesso', 'status' => true];
             return response($finalResponse, 200);
         }
 
+    }
+
+    public function makePayment($id)
+    {
+        $response = Http::put(env('API_ACCOMMODATION_URL') . 'rental/payRent/' . $id );
+        return response($response);
     }
 
     public function landlordAccommodation($id)
