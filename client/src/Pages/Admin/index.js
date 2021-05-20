@@ -4,14 +4,17 @@ import api from '../../services/api';
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import AdminSingleAccommodation from '../../Components/AdminSingleAccom'
-import {Container, Card,Row,Col, Form, Button, FormControl} from 'react-bootstrap'
+import {Container, Card,Row,Col, Form, Button, FormControl, Alert} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 function AdminPage() {
     const [Accommodations, setAccommodations] = useState([]);
     const [token] = useState(localStorage.getItem('token'));
+
+    const [showResult, setShowResult] = useState(false);
+    const [result, setResult] = useState('');
 
     const history = useHistory();
    
@@ -32,29 +35,36 @@ function AdminPage() {
                 Authentication: `Bearer ${token}`,
             }
           }).then(response => {
-          if(!response.data.status){
-            console.log("erro")
-            localStorage.clear();
-          }
-
+            setShowResult(true);
+            setResult(<Alert  variant="danger">
+                        <hr></hr>
+                        <p>Alojamento removido com sucesso!</p>
+                    </Alert>)
+             window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }).catch(err => {
           alert(err)
         })
-        setAccommodations(Accommodations.filter((accommodation) => accommodation.accommodation_id != accommodationId ));
+        setAccommodations(Accommodations.filter((accommodation) => accommodation.id != accommodationId ));
     }
     
     return(
         <div>
             <NavBarAdmin/>
             <Container>
-                <h3 className="center">Página do Admistrador</h3> 
+                <Row  className= "mt-3 mb-3">
+                    <Col  xs={{ span: 5, offset: 0 }} md={{ span: 4, offset: 0 }}>
+                        <Button  size="sm" className= "mr-3 mt-2" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
+                    </Col>
+                    <Col xs={7} md={4} className='text-center'><h3>Gerir Alojamentos</h3> </Col>                 
+                </Row>
+                {showResult && result}
                 <div inline> 
                     <Button variant="info" className="button mr-sm-2">Filtrar</Button>
                     <Button variant="info" className="button">Imprimir resultados</Button>
-                    <Form inline style={{float:'right', maxWidth:'100%'}}>
-                        <Form.Control type="text"  placeholder="Pesquisar" className="mr-sm-2 "/>
-                        <Button variant="info" className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                    </Form>
+                    
                 </div>
                 {Accommodations.map((accommodation)=>(<AdminSingleAccommodation accom={accommodation} remove={remove} />)) }
             </Container>

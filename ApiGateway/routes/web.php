@@ -58,6 +58,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
         $router->get('/feature', 'AccommodationController@showFeature');
+        $router->post('/feature', 'AccommodationController@addFeature');
+        $router->delete('/feature/{id}', 'AccommodationController@removeFeature');
 
         $router->get('/landlord/{id}', 'AccommodationController@landlordAccommodation');
 

@@ -82,7 +82,6 @@ function NavBarAdmin() {
         <div className="header" style={{margin: "60px"}}>
             {loading === false ? (
           <Switch>
-                <Route exact path="/admin" >
                     <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/admin">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -91,9 +90,9 @@ function NavBarAdmin() {
                             <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
                                 {auth?<>
-                                    <NavDropdown drop="left" title={username} id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href={ "/admin"}><FontAwesomeIcon icon={faHome}/> Alojamentos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/adminFeature"}><FontAwesomeIcon icon={faFile}/> Gerir de Caracteristicas</NavDropdown.Item>
+                                    <NavDropdown drop="left" title="Página do Admistrador" id="collasible-nav-dropdown">
+                                        <NavDropdown.Item href={ "/admin"}><FontAwesomeIcon icon={faHome}/> Gerir Alojamentos</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/adminFeature"}><FontAwesomeIcon icon={faFile}/> Gerir Caracteristicas</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown>
@@ -103,7 +102,6 @@ function NavBarAdmin() {
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
-                </Route>
             </Switch>
             ): (
                 <Spinner />

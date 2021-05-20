@@ -8,7 +8,7 @@ import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
 
  
-function AdminSingleFeature({feat, removeFeat}) {
+function AdminSingleFeature({feat, remove}) {
     const [id] = useState(feat.id);
     const [token] = useState(localStorage.getItem('token'));
     const [feature, setFeature] = useState([]);
@@ -34,18 +34,19 @@ function AdminSingleFeature({feat, removeFeat}) {
 
       async function handleRemove(event){
         event.preventDefault();
-        await removeFeat(id);
+        await remove(id);
        
       }
     
    
     return (
         <Container fluid>
-            <Card className="mb-2" style={{padding: '2%'}}>
-                
+            <Card className="mb-2 border" style={{padding: '2%'}}>
                 <Row> 
                     <Col xm={12} sm={6}>
-                    <Card.Header>{feat.name} </Card.Header>
+                    <div className="d-flex justify-content-center">
+                        {feat.name}
+                    </div>
                     </Col>
                     <Col xm={12} sm={6}>
                     <div className="d-flex justify-content-center">
