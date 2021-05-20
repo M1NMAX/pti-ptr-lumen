@@ -21,7 +21,7 @@ class AccommodationController extends Controller
     //
     public function index()
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/');
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation');
         return response($response);
     }
 
@@ -218,7 +218,7 @@ class AccommodationController extends Controller
     }
 
     public function rentalPendingNotification($id){
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/rentalpending/rentalNotification/'.$id);
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/rentalNotification/'.$id);
         return response($response);
     }
 }

@@ -195,7 +195,7 @@ function Search() {
                                     selected={caract}
                                 />
                             </Form.Group>
-                            <Button className="mb-5" variant="info" type="submit" className="button">
+                            <Button className="mb-5" variant="info" type="submit" className="button4">
                                 Mostrar Alojamentos
                             </Button>
                         </Form>

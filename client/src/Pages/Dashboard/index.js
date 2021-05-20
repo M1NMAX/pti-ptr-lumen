@@ -37,7 +37,7 @@ function Dashboard() {
           api.get('api/me', {
           headers: {
             Authorization: `Bearer ${token}`,
-          }
+          } 
         }).then(response => {
             if(response.data.status && response.data.status === (401 || 498)){
                 console.log("erro")
@@ -65,8 +65,8 @@ function Dashboard() {
                 })
 
                 api.get('api/accommodations/rentalNotification/' + response.data.id).then(responsePendGNotification => {
-                  console.log(responsePendGNotification.data);
-                  if(responsePendGNotification.data.length == 0){
+                  console.log(responsePendGNotification.data.data.notification);
+                  if(responsePendGNotification.data.data.notification == false){
                     setImgP();
                   }else{
                     setImgP(faBell);

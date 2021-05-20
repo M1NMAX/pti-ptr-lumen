@@ -57,7 +57,8 @@ function Homepage() {
                         <h1 className="slogan">Your sweet home away from home</h1>
                         <Form inline className="search">
                             <Typeahead
-                                className="mr-sm-2 search-box" 
+                                style={{width:"60%",right:"0"}}
+                                className="mr-sm-2 search-box"
                                 id="basic-typeahead-single"
                                 labelKey="name"
                                 onChange={setLocal}
@@ -81,7 +82,7 @@ function Homepage() {
             </div>
             <Container id='down' fluid>
                 <Accommodations accom={Accmmodations} />   
-                <Button variant="info" onClick={() => routeChange(local)} style={{marginLeft: '48%'}} className="button mt-1 mb-1">Ver mais!</Button>
+                <Button variant="info" onClick={() => routeChange(local)} style={{marginLeft: '48%'}} className="button3 mt-1 mb-1">Ver mais!</Button>
             </Container>
             <Footer/>
         </div>

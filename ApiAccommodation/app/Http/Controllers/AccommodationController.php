@@ -30,33 +30,18 @@ class AccommodationController extends Controller
 
     public function index()
     {
-        // return $this->accommodation->paginate(10);
-
         $accommodations = $this->accommodation->get();
-        //$accommodations = $this->accommodation->get();
-        //--------updateRating--------//
-        //(O rate dos comentários quando se faz seed, n afeta o rate do alojamento)
-        foreach ($accommodations as $acc) {
-            $comments = $acc->comments;
-            $sum = 0;
-            $sumN = 0;
-            foreach ($comments as $comment) {
-                $sum += $comment->rate;
-                $sumN += 1;
-            }
-            if(!($sumN == 0)){
-                $acc->rating = $sum/$sumN;
-                $acc->nRates = $sumN;
-                $acc->save();
-            }
-
-        }
         return $accommodations;
     }
 
+
+    public function indexBest()
+    {
+        $accommodations = Accommodation::orderBy('rating','desc')->get()->take(9);
+        return $accommodations;
+    }
     public function showBestAccommodation()
     {
-
         $r = [];
         $accommodation = DB::table('rental_pending')->where('accommodation_id', $accommodation)->delete();
         $acc = Accommodation::find($id);
@@ -329,7 +314,9 @@ class AccommodationController extends Controller
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
-            array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']);   
+            if(!($infos[$index+1] == "")){
+                array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']); 
+            }
         }
         //return $infoFilter;
         if(in_array('priceMax', $infos)){
@@ -348,27 +335,27 @@ class AccommodationController extends Controller
         }
         if(in_array('wifi', $infos)){
             $index = array_search('wifi',$infos);
-            array_push($infoFilter,['wifi', '=', 1]);
+            array_push($infoFilter,['wifi', '=', true]);
         }
         if(in_array('clean', $infos)){
             $index = array_search('clean',$infos);
-            array_push($infoFilter,['clean', '=', 1]);
+            array_push($infoFilter,['clean', '=', true]);
         }
 
         if(in_array('pet', $infos)){
             $index = array_search('pet',$infos);
-            array_push($requirementFilter,['pets', '=', 1]);
+            array_push($requirementFilter,['pets', '=', true]);
         }
         if(in_array('smoker', $infos)){
             $index = array_search('smoker',$infos);
-            array_push($requirementFilter,['smoker', '=', 1]);
+            array_push($requirementFilter,['smoker', '=', true]);
         }
 
 
         if (($key = array_search('', $cIds)) !== false) {
             unset($cIds[$key]);
         }
-
+        
         /////BASIC///FILTER///IDS/////DONE
         if(count($basicFilter) == 0){
             $accommodationIdsBasicFilter = DB::table('accommodation')
@@ -458,8 +445,6 @@ class AccommodationController extends Controller
                 array_push($accommodationRequirementsIds, $id);
             }
         }
-
-
 
         $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
         $res = array_values($res);

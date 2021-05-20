@@ -8,7 +8,7 @@ import {faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortaw
 import Spinner from '../Components/Spinner';
 import { Typeahead } from 'react-bootstrap-typeahead'
 import localizacoes from '../Pages/RegisterAccommodation/localizacoes.js';
-
+import '../App.css'
 
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
@@ -152,8 +152,9 @@ function NavBarHome() {
                         <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs">
                             <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
-                                <Form inline >
+                                <Form inline className="search2">
                                     <Typeahead
+                                        style={{width:"60%",right:"0"}}
                                         className="mr-sm-2 search-box" 
                                         id="basic-typeahead-single"
                                         labelKey="name"
@@ -166,7 +167,7 @@ function NavBarHome() {
                                         newSelectionPrefix=''
                                         ignoreDiacritics
                                     />
-                                    <Button variant="info" onClick={() => routeChange()}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                    <Button variant="info" onClick={() => routeChange()} ><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">
