@@ -311,14 +311,35 @@ class AccommodationController extends Controller
         $infoFilter = [];
         $requirementFilter = [];
         $basicFilter = [];
+        $locationFilter = [];
+        $addressFilter = [];
+        $locationResults = [];
+        $check = false;
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
             if(!($infos[$index+1] == "")){
-                array_push($basicFilter,['location', 'like', '%' . $infos[$index+1] . '%']); 
+                $check = true;
+                array_push($locationFilter,['location', 'like', '%' . $infos[$index+1] . '%']); 
+                array_push($addressFilter,['address', 'like', '%' . $infos[$index+1] . '%']); 
+
+                $locationResults = DB::table('accommodation')
+                ->select('id')
+                ->where($locationFilter)
+                ->orWhere($addressFilter)
+                ->get();
+
+                $localsIds = [];
+                foreach($locationResults as $localId){
+                    $id = $localId->id;
+                    array_push($localsIds, $id);
+                }
+
             }
         }
-        //return $infoFilter;
+
+       
+
         if(in_array('priceMax', $infos)){
             $index = array_search('priceMax',$infos);
             array_push($basicFilter,['price', '<=', $infos[$index+1]]);
@@ -445,9 +466,15 @@ class AccommodationController extends Controller
                 array_push($accommodationRequirementsIds, $id);
             }
         }
-
-        $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
-        $res = array_values($res);
+        
+        if(!$check){
+            $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
+            $res = array_values($res);
+        }else{
+            $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds, $localsIds);
+            $res = array_values($res);
+        }
+        
 
         $accommodations = Accommodation::findMany($res);
         return $accommodations;

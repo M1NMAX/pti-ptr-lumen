@@ -36,7 +36,7 @@ function Homepage() {
 
     console.log(Accmmodations)
     useEffect(() => {
-        api.get('api/accommodations').then(response => {
+        api.get('api/accommodations/bestOnes').then(response => {
             console.log(response.data)
             setAcommodations(response.data);
             console.log(response.data.length);
@@ -81,6 +81,7 @@ function Homepage() {
                 </Container>
             </div>
             <Container id='down' fluid>
+                <h1>Top 9 alojamentos melhor classificados:</h1>
                 <Accommodations accom={Accmmodations} />   
                 <Button variant="info" onClick={() => routeChange(local)} style={{marginLeft: '48%'}} className="button3 mt-1 mb-1">Ver mais!</Button>
             </Container>

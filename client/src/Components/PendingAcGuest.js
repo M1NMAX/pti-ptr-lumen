@@ -83,7 +83,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 <Col className="pb-2 pt-2 pl-2 pr-2 center"  xm={4} sm={3} >
                     <AnimationWrapper>
                         <a href={ "/profileAccommodation/"+pending.accommodation_id} >
-                            <Card.Img onclick="href='/profileAlojamento" className="pb-2 pt-4 pl-2 pr-2 center" style={{ width: '100%'}} src={alojamento}></Card.Img>
+                            <Card.Img onclick="href='/profileAlojamento" className="pb-2 pt-4 pl-2 pr-2 center" style={{ width: '100%'}} src={"/img/" + accommodationData.id + ".jpg"}></Card.Img>
                         
                             <Card.Text>
                                 <p style={{ fontSize: '100%', color:'black', textDecoration:'none' }}>{accommodationData.name} </p>

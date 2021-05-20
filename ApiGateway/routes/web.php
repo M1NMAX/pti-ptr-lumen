@@ -64,6 +64,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/landlord/{id}', 'AccommodationController@landlordAccommodation');
 
         $router->get('/', 'AccommodationController@index');
+        $router->get('/bestOnes', 'AccommodationController@indexBestOnes');
         $router->get('/{id}', 'AccommodationController@show');
         $router->post('/', 'AccommodationController@store');
         $router->put('/{id}', 'AccommodationController@update');

@@ -91,12 +91,13 @@ function AdminFeature() {
                 {showResult && result}
                 <div > 
                     {!newF &&
-                        <Button variant="info" className="button" onClick={() => setNew(true)}>Adicionar Nova Característica</Button>
+                        <Button variant="info" className="m-3" onClick={() => setNew(true)}>Adicionar Nova Característica</Button>
+                        
                     }
                     {newF &&
                     <Form inline onSubmit={handleNewCarac}>
                         <Form.Control type="text"  placeholder="Nova Característica" className="mr-sm-2 " onChange={e => setNewFeature(e.target.value)}/>
-                        <Button variant="info" className="button" type="submit">Adicionar</Button>
+                        <Button variant="info" className="m-3" type="submit">Adicionar</Button>
                     </Form>
                     }
                     
