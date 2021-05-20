@@ -88,7 +88,7 @@ class RentalPendingController extends Controller
         $query = DB::table('rental_notification')
                     ->where('user_id', $request->landlord_id)
                     ->get();
-
+        
         if(count($query) == 0){
             DB::table('rental_notification')
             ->insert(['user_id' => $request->landlord_id]);
@@ -138,6 +138,16 @@ class RentalPendingController extends Controller
         $rentalAccepted->landlordAccepted = true;
         $rentalAccepted->touch();
         $rentalAccepted->save();
+        
+        $query = DB::table('rental_notification')
+                    ->where('user_id', $rentalAccepted->user_id)
+                    ->get();
+
+        if(count($query) == 0){
+            DB::table('rental_notification')
+            ->insert(['user_id' => $rentalAccepted->user_id]);
+        }
+
         return response()->json(['data' => ['message' => 'Aluguer foi aceite pelo senhorio'], 'status'=>true]);
     }
 

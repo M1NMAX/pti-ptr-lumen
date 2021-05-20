@@ -25,6 +25,11 @@ class AccommodationController extends Controller
         return response($response);
     }
 
+    public function indexBestOnes()
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/bestOnes');
+        return response($response);
+    }
 
     public function show($id)
     {
