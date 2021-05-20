@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Container,Row,Col,Form ,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form ,Button, Alert} from 'react-bootstrap';
 import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
 import {useHistory} from 'react-router-dom';
@@ -74,13 +74,20 @@ function ProfileUser(){
         await api.put('api/users/'+id, data
             ).then(async (response) =>{
             if(response.data.status){
-                setfeedback('Os seus perfil foi atualizado com sucesso');
+                setfeedback( <Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Os seus perfil foi atualizado com sucesso</p>
+                </Alert>);
                 window.scrollTo(0,0);
             }
             
         }).catch (err => {
             console.log(err);
-            setfeedback('Ocorreu durante a atualização do seu perfil, por favor tente mais tarde');
+            setfeedback(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu durante a atualização do seu perfil, por favor tente mais tarde</p>
+            </Alert>);
+            window.scrollTo(0,0);
         })
 
       }
