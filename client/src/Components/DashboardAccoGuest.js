@@ -8,9 +8,11 @@ import {faEnvelope, faTimesCircle, faCheckCircle, faMoneyBill} from '@fortawesom
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
 
 
-function DashboardAccoGuest({accommodation}) {
+
+function DashboardAccoGuest({accommodation, attempt}) {
     const[token] = useState(localStorage.getItem('token'));
     const[userData, setUserData] = useState([]);
     const[userExtra, setUserExtra] = useState([]);
@@ -18,6 +20,9 @@ function DashboardAccoGuest({accommodation}) {
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
     
+    const [loading, setLoading] = useState(true);
+
+
     const history = useHistory();
     useEffect(() => {
         if(token === null || token === ''){
@@ -48,6 +53,7 @@ function DashboardAccoGuest({accommodation}) {
                         setAccommodationData(response.data.aboutAccommodation);
                         console.log(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -58,11 +64,12 @@ function DashboardAccoGuest({accommodation}) {
         }
     }, [token]);
 
-    // const handleAcceptPending = async (event) =>{
-    //     event.preventDefault();
-    //     await acceptPending(pending.id);
+    const handleAttempt = async (event) =>{
+        event.preventDefault();
+        await attempt(accommodationData.name,accommodation.id);
+        // await acceptPending(pending.id);
 
-    // };
+    };
 
     // const handleRejectPending = async (event) =>{
     //     event.preventDefault();
@@ -71,6 +78,7 @@ function DashboardAccoGuest({accommodation}) {
 
     return (
         <Container>
+             {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header><b>{accommodationData.name}</b></Card.Header>
             <Row className="d-flex justify-content-center mt-2">
@@ -98,12 +106,15 @@ function DashboardAccoGuest({accommodation}) {
                 <h6 className="mr-4"><b> &nbsp; &nbsp;   Senhorio/a:</b> </h6>
                 <Button size="m"  className="mr-4 m-2" variant="info" href={ "/profileUser/"+accommodation.guest_id}>{userData.name}</Button>
                 <Button size="m"  className="mr-4 m-2" variant="info"> <FontAwesomeIcon icon={faEnvelope}/></Button>
-                <Button size="m"  className="mr-4 m-2" variant="info" desable={accommodation.paymentState}> <FontAwesomeIcon icon={faMoneyBill}/> Pagar</Button>
+                <Button size="m"  className="mr-4 m-2" variant="info" onClick={handleAttempt}> <FontAwesomeIcon icon={faMoneyBill}/> Pagar</Button>
                 <Button variant="primary" className="mr-4 m-2 "  size="m" href={ "/profileAccommodation/"+accommodation.accommodation_id}>Ver alojamento</Button>
 
             </Row>
             
         </Card> 
+            ) : (
+                <Spinner />
+              )}
         </Container>
     )
 }

@@ -3,6 +3,11 @@
   z-index: -1;
 }
 
+.button3{
+  align-items: center;
+  margin-top: 2%;
+}
+
 .img {
   display: block;
   margin-left: auto;
@@ -21,12 +26,11 @@
 
 .search {
   position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 30%;
   color: white;
   z-index: 1;
-  width: 100%;
+  width: 70%;
 }
 
 .form-inline .form-control {
@@ -37,6 +41,8 @@
 }
 
 .button {
+  position: absolute;
+  left: 50%;
   align-items: center;
   margin-top: 2%;
 }

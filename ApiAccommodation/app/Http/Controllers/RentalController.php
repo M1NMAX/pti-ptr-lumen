@@ -102,7 +102,7 @@ class RentalController extends Controller
         $rental = $this->rental->find($id);
         $rental->paymentState = true;
         $rental->save();
-        return response()->json(['data' => ['message' => 'Aluguer pago com sucesso']]);
+        return response()->json(['data' => ['message' => 'Aluguer pago com sucesso'], 'status'=> true]);
     }
 
 

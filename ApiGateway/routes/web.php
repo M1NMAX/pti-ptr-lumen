@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\FeatureController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,16 +62,19 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {
         $router->get('/feature', 'AccommodationController@showFeature');
+        $router->post('/feature', 'AccommodationController@addFeature');
+        $router->delete('/feature/{id}', 'AccommodationController@removeFeature');
 
         $router->get('/landlord/{id}', 'AccommodationController@landlordAccommodation');
 
         $router->get('/', 'AccommodationController@index');
+        $router->get('/bestOnes', 'AccommodationController@indexBestOnes');
         $router->get('/{id}', 'AccommodationController@show');
         $router->post('/', 'AccommodationController@store');
         $router->put('/{id}', 'AccommodationController@update');
         $router->delete('/{id}', 'AccommodationController@destroy');
 
-
+        $router->put('/payment/{id}', 'AccommodationController@makePayment');
 
         $router->get('/{id}/dates', 'AccommodationController@showDates');
         $router->get('/{id}/showFeatures', 'AccommodationController@showFeatures');
@@ -82,6 +86,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('/rentalpending/acceptGuest/{id}', 'AccommodationController@guestAcceptRentalPending');
         $router->get('/rentalpending/{id}', 'AccommodationController@showLandlordRentalPending');
         $router->get('/rentalpendingGuest/{id}', 'AccommodationController@showGuestRentalPending');
+        $router->get('/rentalNotification/{id}', 'AccommodationController@rentalPendingNotification');
         $router->delete('/rentalpending/{id}', 'AccommodationController@landlordRejectRentalPending');
 
         $router->get('/rentedAccommodation/{id}', 'AccommodationController@showRentGuest');
@@ -105,4 +110,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 
     });
+
 });

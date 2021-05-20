@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBarHome from '../../Components/NavBarHome'
-import {Container, Card, Form, Button,Row,Col} from 'react-bootstrap'
+import {Container, Card, Form, Button,Row,Col, Alert} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 import {useParams, useHistory, useLocation} from 'react-router-dom';
 import api from '../../services/api';
@@ -28,7 +28,6 @@ function Search() {
     const [pet, setPet] = useState(undefined);
     const [ priceMin, setPriceMin ] = useState(undefined);
     const [ priceMax, setPriceMax ] = useState(undefined);
-   // setLocalizacao(location);
     const history = useHistory();
     const [caract, setCaract] = useState([]); //Lista de caracteristicas complementares
     const [feature, setFeature] = useState([]);
@@ -37,11 +36,31 @@ function Search() {
     const[accomFiltered, setAccomFiltered] = useState([]);
 
     useEffect(() => {
-        api.get('api/accommodations/localSearch/' + location.state).then(response => {
-            setAccomFiltered(response.data);
-        }).catch(err => {
-            alert(err)
-        })
+        console.log(location.state);
+        if(location.state== undefined){
+            api.get('api/accommodations/localSearch/null').then(response => {
+                setAccomFiltered(response.data);
+            }).catch(err => {
+                alert(err)
+            })
+        }else{
+            const typeL = location.state[0]+',';
+            if(typeL.includes('Object')){
+                api.get('api/accommodations/localSearch/' + location.state[0].name).then(response => {
+                    setAccomFiltered(response.data);
+                }).catch(err => {
+                    alert(err)
+                })
+            }else{
+                api.get('api/accommodations/localSearch/' + location.state[0]).then(response => {
+                    setAccomFiltered(response.data);
+                }).catch(err => {
+                    alert(err)
+                })
+            }
+        }
+        
+        
 
 
         api.get('api/accommodations/feature').then(response => {
@@ -83,7 +102,13 @@ function Search() {
 
         //Localização
         if(localizacao != undefined){
-            filters += "location," + localizacao +",";
+            const typeLoc = "location," + localizacao +",";
+            if(typeLoc.includes('Object')){
+                filters += "location," + localizacao[0].name +",";
+            }else{
+                filters += "location," + localizacao +",";
+            }
+            
         }
 
         //Preços
@@ -98,7 +123,6 @@ function Search() {
         if(accommodationType != undefined){
             filters += "accommodationType," + accommodationType +",";
         }
-        console.log("OHHHHHfilters");
         console.log(filters);
 
         api.get('api/accommodations/filter/' + filters, {
@@ -132,7 +156,12 @@ function Search() {
                                     options={localizacoes}
                                     placeholder="Escolha uma localização..."
                                     selected={localizacao}
+                                    allowNew
+                                    newSelectionPrefix=''
+                                    ignoreDiacritics
+
                                 />
+                                
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label><b>Preço:</b></Form.Label>
@@ -166,7 +195,7 @@ function Search() {
                                     selected={caract}
                                 />
                             </Form.Group>
-                            <Button className="mb-5" variant="info" type="submit" className="button">
+                            <Button className="mb-5" variant="info" type="submit" className="button4">
                                 Mostrar Alojamentos
                             </Button>
                         </Form>
@@ -174,8 +203,10 @@ function Search() {
                     <Col lg={10} sm={12}>
                         <h2 style={{textAlign:"center"}}>Alojamentos</h2>
                         <Container fluid>    {/*FALTA METER OS ALOJAMENTOS QUE VEEM*/}
-                            {accomFiltered.length>0? <Accommodations accom={accomFiltered} />:
-                             <h6 className="center mt-5 text-muted"  ><FontAwesomeIcon icon={faHome} />  Não foram encontrados alojamentos com essas caracteríticas</h6>} 
+                            {accomFiltered.length>0? <Accommodations accom={accomFiltered} />: 
+                            <Alert variant="info" className="mt-4">
+                                <h6 className="center text-muted"  ><FontAwesomeIcon icon={faHome} />  Não foram encontrados alojamentos com essas caracteríticas</h6>
+                            </Alert>} 
                              
                         </Container>
                     </Col>

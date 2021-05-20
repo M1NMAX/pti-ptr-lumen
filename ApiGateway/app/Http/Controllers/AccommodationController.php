@@ -21,10 +21,15 @@ class AccommodationController extends Controller
     //
     public function index()
     {
-        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/');
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation');
         return response($response);
     }
 
+    public function indexBestOnes()
+    {
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/bestOnes');
+        return response($response);
+    }
 
     public function show($id)
     {
@@ -107,15 +112,22 @@ class AccommodationController extends Controller
         $request->only('ageRangeBot', 'ageRangeTop', 'gender', 'smoker', 'pets'));
 
 
-        $responseAccommodationAddFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/updateFeatures', [
+        $responseAccommodationUpdateFeatures = Http::put(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/updateFeatures', [
             'features' => $request->features,
         ]);
+
 
         if ($responseBasic->json('status') && $responseAccommodationRequiriments->json('status') && $responseAccommodationInfo->json('status')) {
             $finalResponse = ['message' => 'alojamento atualizado com sucesso', 'status' => true];
             return response($finalResponse, 200);
         }
 
+    }
+
+    public function makePayment($id)
+    {
+        $response = Http::put(env('API_ACCOMMODATION_URL') . 'rental/payRent/' . $id );
+        return response($response);
     }
 
     public function landlordAccommodation($id)
@@ -134,6 +146,18 @@ class AccommodationController extends Controller
     public function showFeatures($id)
     {
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/' . $id . '/showFeatures');
+        return response($response);
+    }
+
+    public function addFeature(Request $request)
+    {
+        $response = Http::post(env('API_ACCOMMODATION_URL') . 'feature/', $request->all());
+        return response($response);
+    }
+
+    public function removeFeature($id)
+    {
+        $response = Http::delete(env('API_ACCOMMODATION_URL') . 'feature/'. $id);
         return response($response);
     }
 
@@ -213,6 +237,11 @@ class AccommodationController extends Controller
 
     public function localSearch($location){
         $response = Http::get(env('API_ACCOMMODATION_URL') . 'accommodation/localSearch/'.$location);
+        return response($response);
+    }
+
+    public function rentalPendingNotification($id){
+        $response = Http::get(env('API_ACCOMMODATION_URL') . 'rentalpending/rentalNotification/'.$id);
         return response($response);
     }
 }

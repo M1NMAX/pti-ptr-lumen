@@ -19,7 +19,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 120px;
+  width: 130px;
+  font-size: 18px;
 }
 
 .desocupado{
@@ -27,7 +28,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 120px;
+  width: 130px;
+  font-size: 18px;
 }
 
 .mas{
@@ -35,7 +37,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 30px;
+  width: 130px;
+  font-size: 18px;
 }
 
 .fem{
@@ -43,7 +46,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 120px;
+  width: 130px;
+  font-size: 18px;
 }
 
 .mix{
@@ -55,7 +59,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 25%;
+  width: 130px;
+  font-size: 18px;
 }
 
 .indif{
@@ -63,7 +68,8 @@
   font-weight: bold;
   text-align: center;
   padding: 7px;
-  width: 25%;
+  width: 130px;
+  font-size: 18px;
 }
 
 .dateSend{

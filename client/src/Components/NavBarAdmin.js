@@ -55,15 +55,6 @@ function NavBarAdmin() {
                 setUsername(response.data.username);
                 setUserid(response.data.id)
                 setLoading(false);
-
-                api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
-                    console.log(responseChatNotification.data);
-                    if(responseChatNotification.data.length == 0){
-                      setImgC();
-                    }else{
-                      setImgC(faCircle);
-                    }
-                  })
           }
         }).catch(err => {
           alert(err)
@@ -91,7 +82,6 @@ function NavBarAdmin() {
         <div className="header" style={{margin: "60px"}}>
             {loading === false ? (
           <Switch>
-                <Route exact path="/admin" >
                     <Navbar bg="white" expand="lg" fixed="top">
                         <Navbar.Brand href="/admin">SweetUni</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -100,50 +90,15 @@ function NavBarAdmin() {
                             <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
                                 {auth?<>
-                                    <NavDropdown title={username} id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href={ "/admin"}><FontAwesomeIcon icon={faHome}/> Alojamentos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/adminFeature"}><FontAwesomeIcon icon={faFile}/> Gerir de Caracteristicas</NavDropdown.Item>
+                                    <NavDropdown drop="left" title="Página do Admistrador" id="collasible-nav-dropdown">
+                                        <NavDropdown.Item href={ "/admin"}><FontAwesomeIcon icon={faHome}/> Gerir Alojamentos</NavDropdown.Item>
+                                        <NavDropdown.Item href={ "/adminFeature"}><FontAwesomeIcon icon={faFile}/> Gerir Caracteristicas</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link href="/" >Login como User</Nav.Link> 
                                     </>: <>
                                             <Nav.Link href="/login">Login</Nav.Link>
                                         </> }
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
-                </Route>
-                <Route exact path="/adminLogin">
-                    <Navbar bg="white" expand="lg" fixed="top">
-                        <Navbar.Brand href="/">SweetUni</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    </Navbar>
-                </Route>
-                
-                <Navbar bg="white" expand="lg" fixed="top">
-                        <Navbar.Brand href="/">SweetUni</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs">
-                            <Nav className="text-center ml-auto">
-                                {/* show auth user data  */}
-                                <Form inline >
-                                    <Form.Control type="text" placeholder="Onde?"  className="mr-sm-1 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
-                                    <Button variant="info" onClick={() => routeChange(local)}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
-                                </Form>
-                                {auth?<>
-                                    <NavDropdown title={username} id="collasible-nav-dropdown">
-                                    <NavDropdown.Item href={ "/admin"}><FontAwesomeIcon icon={faHome}/> Alojamentos</NavDropdown.Item>
-                                        <NavDropdown.Item href={ "/adminFeature"}><FontAwesomeIcon icon={faFile}/> Gerir de Caracteristicas</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt}/>Logout</NavDropdown.Item>
-                                    </NavDropdown> 
-                                    <Nav.Link href="/" >Login como User</Nav.Link>
-                                    </>: <>
-                                            <Nav.Link href="/login">Login</Nav.Link>
-                                        </> }
-                                    {/* @carol when do you want Alojamento to been seen href={ "/profileUser/"+userid} */}
-                                {/* <Nav.Link href="/profileAlojamento"> Alojamento</Nav.Link> */}
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

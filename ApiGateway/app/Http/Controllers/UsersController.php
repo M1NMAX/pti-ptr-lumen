@@ -153,9 +153,9 @@ class UsersController extends Controller
     public function update($id, Request $request)
     {
         $user = User::find($id);
-        //if (!Gate::authorize('update-user', $user)) {
-            //abort(403);
-        //}
+        // if (!Gate::authorize('update-user', $user)) {
+        //     abort(403);
+        // }
 
         $user->update($request->only('username', 'email', 'name', 'birthdate'));
         if($request->type === 'guest'){
@@ -179,7 +179,7 @@ class UsersController extends Controller
     public function uploadImage(Request $request)
     {
         $response = null;
-        
+
         if ($request->hasFile('image')) {
             $original_filename = $request->file('image')->getClientOriginalName();
             $original_filename_arr = explode('.', $original_filename);
@@ -197,7 +197,7 @@ class UsersController extends Controller
         } else {
             $response = ['message' => 'File not found'];
         }
-        
+
         return response($response, 422);
     }
 

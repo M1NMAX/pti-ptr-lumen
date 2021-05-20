@@ -16,6 +16,7 @@ function ListUsersChat() {
     const [username, setUsername] = useState('');
     const [userid, setUserid] = useState();
     const [userChats, setUserChats] = useState([]);
+    const [toNotifyChats, setChatsToNotify] = useState([]);
     const history = useHistory();
   
     useEffect(() => {
@@ -38,6 +39,11 @@ function ListUsersChat() {
                 api.get('api/chat/user/'+ response.data.id).then(responseChat => {
                   console.log(responseChat.data)
                   setUserChats(responseChat.data);
+                  api.get('api/chat/chatNotifications/' + response.data.id).then(responseChatNotification => {
+                    setChatsToNotify(responseChatNotification.data);
+                    
+                  })
+
               }).catch(err => {
                   alert(err)
               })

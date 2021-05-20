@@ -8,6 +8,8 @@ import {faEnvelope, faTimesCircle, faCheckCircle} from '@fortawesome/free-solid-
 import DefaultUserPic from "../img/standartUser3.png";
 import api from '../services/api';
 import {useHistory} from 'react-router-dom';
+import Spinner from './Spinner';
+
 
 
 function PendingAc({pending, acceptPending, rejectPending}) {
@@ -17,7 +19,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
     const[accommodationRequirements, setAccommodationRequirements] = useState([]);
     const[userAge, setUserAge]= useState(); 
 
-    
+    const [loading, setLoading] = useState(true);
 
     
     const history = useHistory();
@@ -48,6 +50,7 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                     if(response.data.status){
                         setAccommodationData(response.data.aboutAccommodation);
                         setAccommodationRequirements(response.data.aboutAccommodation.requirements);
+                        setLoading(false);
                     }else{
                         localStorage.clear();
                         history.push('/login')
@@ -73,13 +76,14 @@ function PendingAc({pending, acceptPending, rejectPending}) {
 
     return (
         <Container>
+            {loading === false ? (
         <Card className="mb-2 border" style={{padding: '2%'}}>
             <Card.Header>O senhorio do alojamento <b>{accommodationData.name}</b> aceitou-o, tem a certeza que quer prosseguir?</Card.Header>
             <Row className="d-flex justify-content-center" >
                 <Col className="pb-2 pt-2 pl-2 pr-2 center"  xm={4} sm={3} >
                     <AnimationWrapper>
                         <a href={ "/profileAccommodation/"+pending.accommodation_id} >
-                            <Card.Img onclick="href='/profileAlojamento" className="pb-2 pt-4 pl-2 pr-2 center" style={{ width: '100%'}} src={alojamento}></Card.Img>
+                            <Card.Img onclick="href='/profileAlojamento" className="pb-2 pt-4 pl-2 pr-2 center" style={{ width: '100%'}} src={"/img/" + accommodationData.id + ".jpg"}></Card.Img>
                         
                             <Card.Text>
                                 <p style={{ fontSize: '100%', color:'black', textDecoration:'none' }}>{accommodationData.name} </p>
@@ -102,6 +106,9 @@ function PendingAc({pending, acceptPending, rejectPending}) {
                 </Col>
             </Row>
         </Card> 
+         ) : (
+            <Spinner />
+          )}
         </Container>
     )
 }

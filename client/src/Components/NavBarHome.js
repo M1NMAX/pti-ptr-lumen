@@ -6,7 +6,9 @@ import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircle, faHeart, faSearch, faSignOutAlt, faSms, faUser } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../Components/Spinner';
-
+import { Typeahead } from 'react-bootstrap-typeahead'
+import localizacoes from '../Pages/RegisterAccommodation/localizacoes.js';
+import '../App.css'
 
 function NavBarHome() {
     const [token] = useState(localStorage.getItem('token'));
@@ -16,7 +18,7 @@ function NavBarHome() {
     const [loading, setLoading] = useState(true);
 
     const history = useHistory();
-    const [local, setLocal]=useState();
+    const [local, setLocal]=useState(undefined);
 
     const [imgC, setImgC] = useState();
 
@@ -150,9 +152,22 @@ function NavBarHome() {
                         <Navbar.Collapse id="basic-navbar-nav" className="nav-tabs">
                             <Nav className="text-center ml-auto">
                                 {/* show auth user data  */}
-                                <Form inline >
-                                    <Form.Control type="text" placeholder="Onde?"  className="mr-sm-1 search-box" onKeyPress={e => enter(e)}  onChange={e => setLocal(e.target.value)} />
-                                    <Button variant="info" onClick={() => routeChange()}  className="button"><FontAwesomeIcon icon={faSearch} /></Button>
+                                <Form inline className="search2">
+                                    <Typeahead
+                                        style={{width:"60%",right:"0"}}
+                                        className="mr-sm-2 search-box" 
+                                        id="basic-typeahead-single"
+                                        labelKey="name"
+                                        onChange={setLocal}
+                                        onKeyPress={e => enter(e)}
+                                        options={localizacoes}
+                                        placeholder="Onde?" 
+                                        selected={local}
+                                        allowNew
+                                        newSelectionPrefix=''
+                                        ignoreDiacritics
+                                    />
+                                    <Button variant="info" onClick={() => routeChange()} ><FontAwesomeIcon icon={faSearch} /></Button>
                                 </Form>
                                 {auth?<>
                                     <NavDropdown title={username} id="collasible-nav-dropdown">

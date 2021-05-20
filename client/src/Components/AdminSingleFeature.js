@@ -8,13 +8,13 @@ import alojamento from '../img/basicRoom.png'
 import api from '../services/api';
 
  
-function AdminSingleFeature({feat, removeFeat}) {
-    const [id] = useState(feat.feature_id);
+function AdminSingleFeature({feat, remove}) {
+    const [id] = useState(feat.id);
     const [token] = useState(localStorage.getItem('token'));
     const [feature, setFeature] = useState([]);
 
     useEffect(() => {
-          api.get( 'api/feature/'+id,{
+          api.get( 'api/accommodations/feature/',{
               headers:{
                   Authentication:`Bearer ${token}`,
               }
@@ -34,27 +34,29 @@ function AdminSingleFeature({feat, removeFeat}) {
 
       async function handleRemove(event){
         event.preventDefault();
-        await removeFeat(id);
+        await remove(id);
        
       }
     
    
     return (
         <Container fluid>
-            <Card className="mb-2" style={{padding: '2%'}}>
-                <Card.Header>{feature.name}</Card.Header>
+            <Card className="mb-2 border" style={{padding: '2%'}}>
                 <Row> 
                     <Col xm={12} sm={6}>
+                    <div className="d-flex justify-content-center">
+                        {feat.name}
+                    </div>
                     </Col>
                     <Col xm={12} sm={6}>
                     <div className="d-flex justify-content-center">
-                        <Button style={{margin:"0 auto", display:"block", width: "300px"}} className="m-1" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
+                        <Button size="sm" style={{margin:"0 auto", display:"block", width: "300px"}} className="m-1" variant="danger" onClick={handleRemove}><FontAwesomeIcon icon={faTrashAlt}/> Remover</Button>
                     </div>
                     </Col>
                 </Row>
             </Card> 
         </Container>
-    )
+    ) 
 }
 
 export default AdminSingleFeature

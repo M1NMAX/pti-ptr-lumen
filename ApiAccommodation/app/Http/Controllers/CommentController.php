@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -70,7 +70,6 @@ class CommentController extends Controller
             $comment = $this->comment->create($request->all());
         }
         return response()->json(['data' => ['message' => 'Comentario foi adicionado com sucesso.'], 'comment'=>$comment ,'status'=>true]);
-        return $query;
 
     
     }

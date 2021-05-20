@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Container,Row,Col,Form ,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form ,Button, Alert} from 'react-bootstrap';
 import DefaultUserPic from "../../img/standartUser3.png";
 import NavBarHome from '../../Components/NavBarHome';
 import {useHistory} from 'react-router-dom';
@@ -28,7 +28,7 @@ function ProfileUser(){
     const [userType, setUserType] = useState();
     const [feedback, setfeedback] = useState('');
     const [loading, setLoading] = useState(true);
-    
+
     const history = useHistory();
 
     useEffect(() => {
@@ -70,7 +70,7 @@ function ProfileUser(){
               'smoker': smoker,
               'pets': pets,
           }
-          
+
           var imgdata = new FormData();
           imgdata.append('image', document.getElementById("ProfileImg").files.item(0));
           imgdata.append('id', String(id));
@@ -78,19 +78,25 @@ function ProfileUser(){
         await api.put('api/users/'+id, data
             ).then(async (response) =>{
             if(response.data.status){
-                fetch('http://localhost:8000/api/users/img/', {method: 'POST', body: imgdata});
-                setfeedback('Os seus perfil foi atualizado com sucesso');
+                setfeedback( <Alert variant="success">
+                <Alert.Heading>Messagem</Alert.Heading>
+                <p>Os seus perfil foi atualizado com sucesso</p>
+                </Alert>);
                 window.scrollTo(0,0);
             }
-            
+
         }).catch (err => {
             console.log(err);
-            setfeedback('Ocorreu durante a atualização do seu perfil, por favor tente mais tarde');
+            setfeedback(<Alert variant="danger">
+            <Alert.Heading>Messagem</Alert.Heading>
+            <p>Ocorreu durante a atualização do seu perfil, por favor tente mais tarde</p>
+            </Alert>);
+            window.scrollTo(0,0);
         })
 
       }
 
-      
+
 
         return (
             <div>
@@ -102,18 +108,18 @@ function ProfileUser(){
                     <Col xs={6} md={4}>
                         <Button  size="sm" className= "ml-3 mr-3" variant="info" onClick={() => {history.goBack();}} >  <FontAwesomeIcon icon={faArrowLeft}/> Voltar</Button>
                     </Col>
-                    <Col xs={6} md={4} className='text-center'><h2>Sobre mim</h2></Col>                 
+                    <Col xs={6} md={4} className='text-center'><h2>Sobre mim</h2></Col>
                 </Row>
-                
+
                 <Row>
                     <Col sm={12} md={5} className="center">
                             <img src={DefaultUserPic} alt="profiles pic" className="mt-2" style={{maxWidth: '70%'}}/>
                             <input className="changeImage" variant="info" style={{margin: '4%'}} id="ProfileImg" type="file"/>
                     </Col>
                     <Col sm={12} md={7}>
-                        
-                        <Form className="form" onSubmit={handleUpdateUserData}>     
-                       
+
+                        <Form className="form" onSubmit={handleUpdateUserData}>
+
                             <Form.Group controlId="formCategory1">
                                 <Form.Label>Username:</Form.Label>
                                 <Form.Control type="text" value={username} onChange={e => setusername(e.target.value)}/>
@@ -141,7 +147,7 @@ function ProfileUser(){
                                     </Form.Control>
                                 </Form.Group>
                             </fieldset>
-                            
+
                             {userType === 'guest' && <>
                                 <Form.Group controlId="formCategory10">
                                     <Form.Label>Instituição:</Form.Label>
@@ -178,7 +184,7 @@ function ProfileUser(){
                                 </Form.Group>
                             </>
                             }
-                            
+
                             {/* Change profile picture  */}
                         {/* <Form.Group controlId="formCategory4">
                                 <Form.Control type="file" name="profileImage"/>

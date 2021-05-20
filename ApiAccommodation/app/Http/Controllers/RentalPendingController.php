@@ -38,8 +38,8 @@ class RentalPendingController extends Controller
                     ->where('landlord_id', $landlord_id)
                     ->where('landlordAccepted','=', 0)
                     ->get();
-        
-        
+
+
         $response =['pending'=>$landLordPending, 'status'=>true];
 
         $query = DB::table('rental_notification')
@@ -53,7 +53,7 @@ class RentalPendingController extends Controller
 
     public function guestIdSearch($guest_id)
     {
-    
+
         $guestPending = DB::table('rental_pending')
                     ->where('user_id', $guest_id)
                     ->where('landlordAccepted','=', 1)
@@ -88,7 +88,7 @@ class RentalPendingController extends Controller
         $query = DB::table('rental_notification')
                     ->where('user_id', $request->landlord_id)
                     ->get();
-
+        
         if(count($query) == 0){
             DB::table('rental_notification')
             ->insert(['user_id' => $request->landlord_id]);
@@ -135,9 +135,19 @@ class RentalPendingController extends Controller
     public function landlordAccept($id)
     {
         $rentalAccepted = RentalPending::find($id);
-        $rentalAccepted->landlordAccepted = false;
+        $rentalAccepted->landlordAccepted = true;
         $rentalAccepted->touch();
         $rentalAccepted->save();
+        
+        $query = DB::table('rental_notification')
+                    ->where('user_id', $rentalAccepted->user_id)
+                    ->get();
+
+        if(count($query) == 0){
+            DB::table('rental_notification')
+            ->insert(['user_id' => $rentalAccepted->user_id]);
+        }
+
         return response()->json(['data' => ['message' => 'Aluguer foi aceite pelo senhorio'], 'status'=>true]);
     }
 
@@ -147,10 +157,12 @@ class RentalPendingController extends Controller
         $rentalAccepted = RentalPending::find($id);
         DB::table('rental')->insert([
             'accommodation_id' => $rentalAccepted->accommodation_id,
-            'user_id' => $rentalAccepted->user_id,
+            'guest_id' => $rentalAccepted->user_id,
+            'landlord_id' => $rentalAccepted->landlord_id,
             'price' => $rentalAccepted->price,
             'beginDate' => $rentalAccepted->beginDate,
-            'endDate' => $rentalAccepted->endDate
+            'endDate' => $rentalAccepted->endDate,
+            'paymentState' => 0,
         ]);
         $rentalAccepted->delete();
         return response()->json(['data' => ['message' => 'Aluguer foi aceite com sucesso'], 'status'=>true]);
