@@ -71,9 +71,14 @@ function ProfileUser(){
               'pets': pets,
           }
           
+          var imgdata = new FormData();
+          imgdata.append('image', document.getElementById("ProfileImg").files.item(0));
+          imgdata.append('id', String(id));
+          console.log(imgdata.get('id'));
         await api.put('api/users/'+id, data
             ).then(async (response) =>{
             if(response.data.status){
+                fetch('http://localhost:8000/api/users/img/', {method: 'POST', body: imgdata});
                 setfeedback('Os seus perfil foi atualizado com sucesso');
                 window.scrollTo(0,0);
             }
@@ -103,7 +108,7 @@ function ProfileUser(){
                 <Row>
                     <Col sm={12} md={5} className="center">
                             <img src={DefaultUserPic} alt="profiles pic" className="mt-2" style={{maxWidth: '70%'}}/>
-                            <Button className="changeImage" variant="info" style={{margin: '4%'}}>Alterar imagem</Button>
+                            <input className="changeImage" variant="info" style={{margin: '4%'}} id="ProfileImg" type="file"/>
                     </Col>
                     <Col sm={12} md={7}>
                         

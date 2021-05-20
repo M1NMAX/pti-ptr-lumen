@@ -53,6 +53,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'UsersController@show');
         $router->put('/{id}', 'UsersController@update');
         $router->delete('/{id}', 'UsersController@destroy');
+        $router->group(['prefix' => 'img'], function () use ($router) {
+            $router->post('/', 'UsersController@uploadImage');
+            $router->get('/{id}', 'UsersController@sendImage');
+        });
     });
 
     $router->group(['prefix' => 'accommodations'], function () use ($router) {

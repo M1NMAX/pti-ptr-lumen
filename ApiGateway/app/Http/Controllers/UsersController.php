@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -30,7 +31,10 @@ class UsersController extends Controller
         $this->middleware('auth', ['except' => [
             'register',
             'login',
-            'show'
+            'show',
+            'uploadImage',
+            'update',
+            'sendImage'
         ]]);
     }
 
@@ -149,9 +153,9 @@ class UsersController extends Controller
     public function update($id, Request $request)
     {
         $user = User::find($id);
-        if (!Gate::authorize('update-user', $user)) {
-            abort(403);
-        }
+        //if (!Gate::authorize('update-user', $user)) {
+            //abort(403);
+        //}
 
         $user->update($request->only('username', 'email', 'name', 'birthdate'));
         if($request->type === 'guest'){
@@ -172,5 +176,29 @@ class UsersController extends Controller
         return response($response, 200);
     }
 
+    public function uploadImage(Request $request)
+    {
+        $response = null;
+        
+        if ($request->hasFile('image')) {
+            $original_filename = $request->file('image')->getClientOriginalName();
+            $original_filename_arr = explode('.', $original_filename);
+            $file_ext = end($original_filename_arr);
+            $user_id = $request->get('id');
+            $destination_path = './userImgs/';
+            $image = 'user_' . $user_id . '.' . $file_ext;
+
+            if ($request->file('image')->move($destination_path, $image)) {
+                $response = ['message' => 'Image successfully uploaded', 'status'=>true];
+                return response($response, 200);
+            } else {
+                $response = ['message' => 'Cannot upload file'];
+            }
+        } else {
+            $response = ['message' => 'File not found'];
+        }
+        
+        return response($response, 422);
+    }
 
 }
