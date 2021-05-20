@@ -314,11 +314,12 @@ class AccommodationController extends Controller
         $locationFilter = [];
         $addressFilter = [];
         $locationResults = [];
-
+        $check = false;
 
         if(in_array('location', $infos)){
             $index = array_search('location',$infos);
             if(!($infos[$index+1] == "")){
+                $check = true;
                 array_push($locationFilter,['location', 'like', '%' . $infos[$index+1] . '%']); 
                 array_push($addressFilter,['address', 'like', '%' . $infos[$index+1] . '%']); 
 
@@ -466,7 +467,7 @@ class AccommodationController extends Controller
             }
         }
         
-        if(count($locationResults) == 0){
+        if(!$check){
             $res = array_intersect($accommodationBasicInfoIds,$accommodationFeatureIds,$accommodationInfoIds,$accommodationRequirementsIds);
             $res = array_values($res);
         }else{
