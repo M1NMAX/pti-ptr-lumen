@@ -8,7 +8,7 @@ import {Container, Card,Row,Col, Form, Button, FormControl, Alert} from 'react-b
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import ReactExport from "react-data-export";
+
 
 function AdminFeature() {
     const [feature, setFeature] = useState([]);
