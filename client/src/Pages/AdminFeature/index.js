@@ -7,7 +7,9 @@ import AdminSingleFeature from '../../Components/AdminSingleFeature'
 import {Container, Card,Row,Col, Form, Button, FormControl, Alert} from 'react-bootstrap'
 import Footer from '../../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faFileDownload} from '@fortawesome/free-solid-svg-icons'
+import ToolkitProvider, { CSVExport } from 'react-bootstrap-table2-toolkit';
+import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 
 function AdminFeature() {
     const [feature, setFeature] = useState([]);
@@ -21,6 +23,16 @@ function AdminFeature() {
     const [result, setResult] = useState('');
 
     const history = useHistory();
+
+    const { ExportCSVButton } = CSVExport;
+    const columns = [{
+        dataField: 'id',
+        text: 'ID'
+        }, {
+        dataField: 'name',
+        text: 'Característica'
+        }];
+
    
     useEffect(() => {
         api.get('api/accommodations/feature').then(response => {
@@ -91,8 +103,24 @@ function AdminFeature() {
                 {showResult && result}
                 <div > 
                     {!newF &&
+                    <> 
                         <Button variant="info" className="m-3" onClick={() => setNew(true)}>Adicionar Nova Característica</Button>
-                        
+                           
+                        <ToolkitProvider
+                            keyField="id"
+                            data={ feature }
+                            columns={ columns }
+                            exportCSV
+                            >
+                            {
+                                props => (
+                                <div>
+                                    <ExportCSVButton className="border m-3" style={{backgroundColor:"grey", color:"white"}} { ...props.csvProps }> <FontAwesomeIcon icon={faFileDownload}/> Exportar Características</ExportCSVButton>
+                                </div>
+                                )
+                            }
+                        </ToolkitProvider>
+    </>
                     }
                     {newF &&
                     <Form inline onSubmit={handleNewCarac}>
