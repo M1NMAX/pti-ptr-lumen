@@ -78,6 +78,7 @@ function ProfileUser(){
         await api.put('api/users/'+id, data
             ).then(async (response) =>{
             if(response.data.status){
+                fetch('http://localhost:8000/api/users/img/', {method: "POST", body: imgdata});
                 setfeedback( <Alert variant="success">
                 <Alert.Heading>Messagem</Alert.Heading>
                 <p>Os seus perfil foi atualizado com sucesso</p>
