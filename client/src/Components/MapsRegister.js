@@ -121,5 +121,5 @@ const style = {
   }
 
   export default GoogleApiWrapper({
-    apiKey: 'AIzaSyClKX6D_oEcpoKjCCjvMKDuZ1JjvOx-3uM'
+    apiKey: API_KEY
   })(MapContainer);
